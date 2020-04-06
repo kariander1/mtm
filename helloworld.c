@@ -62,10 +62,11 @@ bool getInputSize(int* size)
 	}
 	return true;
 }
+
 // Receives all numbers according to size and checks if they are a whole power of TEST_NUMBER.
 // Also sums power_count
 bool getInputArray(int* array, int* powers, int size, int* power_count)
-{
+{ // Nice comment
 	printEnterNumber();
 	for (int i = 0; i < size; i++)
 	{
