@@ -43,7 +43,7 @@ int main()
 	{
 		error = !getInputArray(input_numbers, powers, input_size, &power_count); // Step 3
 	}
-	if (!error)
+	if (!error) // This is a comment
 	{
 		printEndMessage(input_numbers, powers, input_size, power_count); // Step 4
 	}
