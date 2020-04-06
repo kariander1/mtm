@@ -7,7 +7,7 @@
 #define PARITAL_POWER_INDICATOR -1 // Value to indicate the number is not a whole power of TEST_NUMBER.
 #define ARRAY_PLACEHOLDER -1 // Used to indicate element is not valid.
 
-// Tokens
+// Tokens comment
 bool getInputSize(int* size);
 bool getInputArray(int* array, int* powers, int size, int* power_count);
 
