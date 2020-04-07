@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-//TEST For Shelly
-//TEST2
+
 #define START_VAL 1 // Start value for checking power (Used in calcLogOfNumber). Should remain 1.
 #define TEST_NUM 2 // Powers of this number are checked.
 #define PARITAL_POWER_INDICATOR -1 // Value to indicate the number is not a whole power of TEST_NUMBER.
