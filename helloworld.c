@@ -20,7 +20,7 @@ void printEnterNumber();
 void printInvalidNumber();
 void printEndMessage(int* array, int* powers, int size, int power_count);
 
-// End tokens
+// End tokens Trying test
 
 int main()
 {
