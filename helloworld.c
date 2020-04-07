@@ -20,6 +20,10 @@ void printEnterNumber();
 void printInvalidNumber();
 void printEndMessage(int* array, int* powers, int size, int power_count);
 
+bool shellyIsNice()
+{
+	return true;
+}
 // End tokens Trying test
 
 int main()
@@ -50,7 +54,7 @@ int main()
 	}
 	free(input_numbers); //prevent memory leak
 	free(powers); //prevent memory leak
-	return 0;
+	return -1; //New error type
 }
 // Recives input for array size. returns bool whether input is valid
 bool getInputSize(int* size)
