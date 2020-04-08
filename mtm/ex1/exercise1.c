@@ -1,3 +1,5 @@
+#include "stdbool.h"
+
 typedef struct node_t {
 int x;
 struct node_t *next;
