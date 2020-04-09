@@ -139,32 +139,32 @@ mtm_tot/fast:
 	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/build
 .PHONY : mtm_tot/fast
 
-exercise1.obj: exercise1.c.obj
+exercise1_2_1.obj: exercise1_2_1.c.obj
 
-.PHONY : exercise1.obj
+.PHONY : exercise1_2_1.obj
 
 # target to build an object file
-exercise1.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1.c.obj
-.PHONY : exercise1.c.obj
+exercise1_2_1.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj
+.PHONY : exercise1_2_1.c.obj
 
-exercise1.i: exercise1.c.i
+exercise1_2_1.i: exercise1_2_1.c.i
 
-.PHONY : exercise1.i
+.PHONY : exercise1_2_1.i
 
 # target to preprocess a source file
-exercise1.c.i:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1.c.i
-.PHONY : exercise1.c.i
+exercise1_2_1.c.i:
+	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.i
+.PHONY : exercise1_2_1.c.i
 
-exercise1.s: exercise1.c.s
+exercise1_2_1.s: exercise1_2_1.c.s
 
-.PHONY : exercise1.s
+.PHONY : exercise1_2_1.s
 
 # target to generate assembly for a file
-exercise1.c.s:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1.c.s
-.PHONY : exercise1.c.s
+exercise1_2_1.c.s:
+	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.s
+.PHONY : exercise1_2_1.c.s
 
 # Help Target
 help:
@@ -175,9 +175,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... mtm_tot
-	@echo ... exercise1.obj
-	@echo ... exercise1.i
-	@echo ... exercise1.s
+	@echo ... exercise1_2_1.obj
+	@echo ... exercise1_2_1.i
+	@echo ... exercise1_2_1.s
 .PHONY : help
 
 

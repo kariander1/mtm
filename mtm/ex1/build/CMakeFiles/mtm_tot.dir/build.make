@@ -73,27 +73,27 @@ include CMakeFiles/mtm_tot.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/mtm_tot.dir/flags.make
 
-CMakeFiles/mtm_tot.dir/exercise1.c.obj: CMakeFiles/mtm_tot.dir/flags.make
-CMakeFiles/mtm_tot.dir/exercise1.c.obj: ../exercise1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\mtm\ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mtm_tot.dir/exercise1.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\mtm_tot.dir\exercise1.c.obj   -c C:\VScode\mtm\ex1\exercise1.c
+CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj: CMakeFiles/mtm_tot.dir/flags.make
+CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj: ../exercise1_2_1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\mtm\ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\mtm_tot.dir\exercise1_2_1.c.obj   -c C:\VScode\mtm\ex1\exercise1_2_1.c
 
-CMakeFiles/mtm_tot.dir/exercise1.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mtm_tot.dir/exercise1.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\mtm\ex1\exercise1.c > CMakeFiles\mtm_tot.dir\exercise1.c.i
+CMakeFiles/mtm_tot.dir/exercise1_2_1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mtm_tot.dir/exercise1_2_1.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\mtm\ex1\exercise1_2_1.c > CMakeFiles\mtm_tot.dir\exercise1_2_1.c.i
 
-CMakeFiles/mtm_tot.dir/exercise1.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mtm_tot.dir/exercise1.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\mtm\ex1\exercise1.c -o CMakeFiles\mtm_tot.dir\exercise1.c.s
+CMakeFiles/mtm_tot.dir/exercise1_2_1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mtm_tot.dir/exercise1_2_1.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\mtm\ex1\exercise1_2_1.c -o CMakeFiles\mtm_tot.dir\exercise1_2_1.c.s
 
 # Object files for target mtm_tot
 mtm_tot_OBJECTS = \
-"CMakeFiles/mtm_tot.dir/exercise1.c.obj"
+"CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj"
 
 # External object files for target mtm_tot
 mtm_tot_EXTERNAL_OBJECTS =
 
-mtm_tot.exe: CMakeFiles/mtm_tot.dir/exercise1.c.obj
+mtm_tot.exe: CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj
 mtm_tot.exe: CMakeFiles/mtm_tot.dir/build.make
 mtm_tot.exe: CMakeFiles/mtm_tot.dir/linklibs.rsp
 mtm_tot.exe: CMakeFiles/mtm_tot.dir/objects1.rsp

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/mtm_tot.dir/exercise1.c.obj"
+  "CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj"
   "libmtm_tot.dll.a"
   "mtm_tot.exe"
   "mtm_tot.exe.manifest"
