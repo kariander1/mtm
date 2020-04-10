@@ -21,19 +21,17 @@ int getListLength(Node list);
 bool isListSorted(Node list);
 ErrorCode mergeSortedLists(Node list1, Node list2, Node *merged_out);
 void distroyMergedNexts(Node merged_head);
-ErrorCode copyElementxToMerged(Node* merged, Node* current_list, Node* other_list, bool last_check);
+ErrorCode copyElementxToMerged(Node* merged, Node* current_list, Node* other_list, bool last_check, Node all_merged_for_distroy);
 
 bool isListSorted(Node list) {
 	return true;
 }
 
-ErrorCode copyElementxToMerged(Node* merged, Node* current_list, Node* other_list, bool last_check) {
+ErrorCode copyElementxToMerged(Node* merged, Node* current_list, Node* other_list, bool last_check, Node all_merged_for_distroy) {
 	(*merged)->x = (*current_list)->x;
-	(*merged)->next = malloc(sizeof(Node));
+	(*merged)->next = malloc(sizeof(*(*merged)));
 	if ((*merged)->next == NULL) {
-		free((*current_list));
-		free((*other_list));
-		distroyMergedNexts((*merged));
+		distroyMergedNexts(all_merged_for_distroy);
 		return MEMORY_ERROR;
 	}
 	(*current_list) = (*current_list)->next;
@@ -53,64 +51,52 @@ ErrorCode mergeSortedLists(Node list1, Node list2, Node *merged_out) {
 	if ((!list1) && (!list2)) {
 		return NULL_ARGUMENT;
 	}
-	int list1_len = 2;
-	int list2_len = 1;
-	//int list1_len = getListLength(list1);
-	//int list2_len = getListLength(list2);
+	//int list1_len = 2;
+	//int list2_len = 1;
+	int list1_len = getListLength(list1);
+	int list2_len = getListLength(list2);
 	if ((!list1_len) || (!list2_len)) {
 		return EMPTY_LIST;
 	}
 	if ((!isListSorted(list1)) || (!isListSorted(list2))) {
 		return UNSORTED_LIST;
 	}
-	Node merged_head = malloc(sizeof(Node));
+	Node merged_head = malloc(sizeof(*merged_head));
 	if (merged_head == NULL) {
 		return MEMORY_ERROR;
 	}
 	*merged_out = merged_head;
-	Node ptr_list1 = malloc(sizeof(*ptr_list1));
-	if (ptr_list1 == NULL) {
-		free(merged_head);
-		return MEMORY_ERROR;
-	}
-	Node ptr_list2 = malloc(sizeof(*ptr_list1));
-	if (ptr_list2 == NULL) {
-		free(ptr_list1);
-		free(merged_head);
-		return MEMORY_ERROR;
-	}
-	ptr_list1 = list1;
-	ptr_list2 = list2;
+
+	Node ptr_list1 = list1; 
+	Node ptr_list2 = list2;
 	while ((ptr_list1 != NULL) && (ptr_list2 != NULL)) {
 		if ((ptr_list1->x) <= (ptr_list2->x)) {
-			ErrorCode check_success = copyElementxToMerged(&merged_head, &ptr_list1, &ptr_list2, false);
+			ErrorCode check_success = copyElementxToMerged(&merged_head, &ptr_list1, &ptr_list2, false,*merged_out );
 			if (check_success == MEMORY_ERROR) {
 				return MEMORY_ERROR;
 			}
 		}
 		else {
-			ErrorCode check_success = copyElementxToMerged(&merged_head, &ptr_list2, &ptr_list1, false);
+			ErrorCode check_success = copyElementxToMerged(&merged_head, &ptr_list2, &ptr_list1, false, *merged_out);
 			if (check_success == MEMORY_ERROR) {
 				return MEMORY_ERROR;
 			}
 		}
 	}
 	while (ptr_list2 != NULL) {
-		ErrorCode check_success = copyElementxToMerged(&merged_head, &ptr_list2, &ptr_list1, true);
+		ErrorCode check_success = copyElementxToMerged(&merged_head, &ptr_list2, &ptr_list1, true, *merged_out);
 		if (check_success == MEMORY_ERROR) {
 			return MEMORY_ERROR;
 		}
 	}
 	while (ptr_list1 != NULL) {
-		ErrorCode check_success = copyElementxToMerged(&merged_head, &ptr_list1, &ptr_list2, true);
+		ErrorCode check_success = copyElementxToMerged(&merged_head, &ptr_list1, &ptr_list2, true, *merged_out);
 		if (check_success == MEMORY_ERROR) {
 			return MEMORY_ERROR;
 		}			
 	}
+	free(merged_head->next);
 	merged_head->next= NULL;
-	//*merged_out = merged_head;
-	free(ptr_list1);
-	free(ptr_list2);
 	return SUCCESS;
 }
 
@@ -122,21 +108,22 @@ int main() {
 	left->next = malloc(sizeof(*left));
 	left->next->x = 10;
 	left->next->next = NULL;
-distroyMergedNexts(left);
-	right = malloc(sizeof(Node));
+
+	right = malloc(sizeof(*right));
 	right->x = 8;
 	right->next = NULL;
 
 	ErrorCode result = mergeSortedLists(left, right, &merged);
-	printf("%d\n", result);
-	while (merged != NULL) {
-		printf("%d ", merged->x);
-		merged = merged->next;
-	}
 	distroyMergedNexts(left);
 	distroyMergedNexts(right);
-	distroyMergedNexts(merged);
-
+	if (result !=MEMORY_ERROR ){
+		Node new_merged = merged;
+		while (new_merged != NULL) {
+			printf("%d ", new_merged->x);
+			new_merged = new_merged->next;
+	}
+		distroyMergedNexts(merged);
+	}
 }
 
 
