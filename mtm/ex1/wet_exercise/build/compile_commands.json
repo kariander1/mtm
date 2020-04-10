@@ -1,7 +1,7 @@
 [
 {
-  "directory": "C:/VScode/mtm/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles\\mtm_ex1.dir\\map.c.obj   -c C:\\VScode\\mtm\\ex1\\wet_exercise\\map.c",
-  "file": "C:/VScode/mtm/ex1/wet_exercise/map.c"
+  "directory": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles\\mtm_ex1.dir\\map.c.obj   -c C:\\Users\\shell\\Technion\\MTM\\ex1\\build\\mtm-1\\mtm\\ex1\\wet_exercise\\map.c",
+  "file": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/map.c"
 }
 ]
