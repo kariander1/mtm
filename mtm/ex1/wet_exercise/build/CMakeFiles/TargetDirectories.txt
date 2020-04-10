@@ -1,0 +1,3 @@
+C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/edit_cache.dir
+C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex1.dir
+C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/rebuild_cache.dir
