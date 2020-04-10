@@ -1,5 +1,6 @@
 #include "mtm_map/map.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct node_t
 {
@@ -17,6 +18,6 @@ int main()
     shelly = malloc(sizeof(*shelly));
     shelly->key = "2020202";
     shelly->value = "Shelly Francis";
-
+    printf("%s", shelly->value);
     return 0;
 }
