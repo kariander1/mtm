@@ -2,6 +2,6 @@
 
 int main()
 {
-    
+    mapCopy(NULL);
     return 0;
 }
