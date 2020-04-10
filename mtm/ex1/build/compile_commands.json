@@ -1,7 +1,0 @@
-[
-{
-  "directory": "C:/VScode/mtm/ex1/build",
-  "command": "C:\\MinGW\\bin\\gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles\\mtm_tot.dir\\exercise1_2_1.c.obj   -c C:\\VScode\\mtm\\ex1\\exercise1_2_1.c",
-  "file": "C:/VScode/mtm/ex1/exercise1_2_1.c"
-}
-]

@@ -127,44 +127,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mtm_tot
+# Target rules for targets named mtm_ex1
 
 # Build rule for target.
-mtm_tot: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 mtm_tot
-.PHONY : mtm_tot
+mtm_ex1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 mtm_ex1
+.PHONY : mtm_ex1
 
 # fast build rule for target.
-mtm_tot/fast:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/build
-.PHONY : mtm_tot/fast
+mtm_ex1/fast:
+	$(MAKE) -f CMakeFiles\mtm_ex1.dir\build.make CMakeFiles/mtm_ex1.dir/build
+.PHONY : mtm_ex1/fast
 
-exercise1_2_1.obj: exercise1_2_1.c.obj
+map.obj: map.c.obj
 
-.PHONY : exercise1_2_1.obj
+.PHONY : map.obj
 
 # target to build an object file
-exercise1_2_1.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj
-.PHONY : exercise1_2_1.c.obj
+map.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex1.dir\build.make CMakeFiles/mtm_ex1.dir/map.c.obj
+.PHONY : map.c.obj
 
-exercise1_2_1.i: exercise1_2_1.c.i
+map.i: map.c.i
 
-.PHONY : exercise1_2_1.i
+.PHONY : map.i
 
 # target to preprocess a source file
-exercise1_2_1.c.i:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.i
-.PHONY : exercise1_2_1.c.i
+map.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex1.dir\build.make CMakeFiles/mtm_ex1.dir/map.c.i
+.PHONY : map.c.i
 
-exercise1_2_1.s: exercise1_2_1.c.s
+map.s: map.c.s
 
-.PHONY : exercise1_2_1.s
+.PHONY : map.s
 
 # target to generate assembly for a file
-exercise1_2_1.c.s:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.s
-.PHONY : exercise1_2_1.c.s
+map.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex1.dir\build.make CMakeFiles/mtm_ex1.dir/map.c.s
+.PHONY : map.c.s
 
 # Help Target
 help:
@@ -174,10 +174,10 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... mtm_tot
-	@echo ... exercise1_2_1.obj
-	@echo ... exercise1_2_1.i
-	@echo ... exercise1_2_1.s
+	@echo ... mtm_ex1
+	@echo ... map.obj
+	@echo ... map.i
+	@echo ... map.s
 .PHONY : help
 
 
