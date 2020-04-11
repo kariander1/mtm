@@ -154,7 +154,16 @@ MapResult mapClear(Map map)
 
     return MAP_SUCCESS;
 }
-
+void mapPrint(Map map) // Should use iterator or internal_iterator?
+{
+    char* current_key = mapGetFirst(map);
+    while (current_key)
+    {
+        printf("%s : %s\n",current_key,mapGet(map,current_key));
+        current_key = mapGetNext(map);
+    }
+    
+}
 
 
 //Only for debugging
