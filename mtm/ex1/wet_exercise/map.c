@@ -39,7 +39,7 @@ void logMessage(char *text, int logging_level)
 #endif
 }
 
-Map mapCreate()
+Map mapCreate() //For Shai - DONE FUNCTION!!!!
 {
     Map new_map = malloc(sizeof(*new_map));
     assert(new_map);
@@ -51,18 +51,19 @@ Map mapCreate()
     logMessage("Allocation successfull in creating new map", LOGGING_HIGH);
     return new_map;
 }
-void mapDestroy(Map map) //TODO: Implement!
+void mapDestroy(Map map)
 {
+    assert(map->iterator_internal && map->map_head);
     if (map == NULL){
         return;
     }
     mapClear(map);// clears all data from map
-    MapEntry map_to_free = map;
-    map_to_free->iterator_internal = map_to_free->map_head;
-    while (map_to_free->iterator_internal){
+    Map map_to_free = map;
+    map_to_free->iterator_internal = map_to_free->map_head; //set iterator_internal for the for the first element
+    while (map_to_free->iterator_internal){ //until the iterator_internal gets null addres (tails address +1)
         MapEntry todelete = map_to_free->iterator_internal; 
-        map_to_free->iterator_internal = map_to_free->iterator_internal->next;
-        mapFreeCurrentElement(todelete);
+        map_to_free->iterator_internal = map_to_free->iterator_internal->next; //promote the iterator_internal
+        free(todelete);
         
     }
     return;
@@ -172,19 +173,20 @@ MapResult mapClear(Map map)
 //Only for debugging
 int main()
 {
-    Map map = map = mapCreate();
-    Map test = mapCreate;
-    MapEntry shelly;
-    shelly = malloc(sizeof(*shelly));
-    shelly->key = "20202022";
-    shelly->value = "Shelly Francis";
-    MapEntry shai;
-    shai = malloc(sizeof(*shelly));
-    shai->key = "5534532";
-    shai->value = "Shai Yehezkel";
-    
-    test->iterator_internal = shelly;
-    test->iterator_internal->next = shai;
-    mapDestroy(test);
+	Map test = malloc(sizeof(*test));
+	MapEntry shelly;
+	shelly = malloc(sizeof(*shelly));
+	shelly->key = "20202022";
+	shelly->value = "Shelly Francis";
+	MapEntry shai;
+	shai = malloc(sizeof(*shelly));
+	shai->key = "5534532";
+	shai->value = "Shai Yehezkel";
+	test->iterator_internal = shelly;
+	test->map_head = shelly;
+	test->iterator_internal->next = shai;
+	test->iterator_internal->next->next = NULL;
+	mapDestroy(test);
+	return 0;
     return 0;
 }
