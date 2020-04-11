@@ -200,7 +200,7 @@ static char* mapGetFirstInternal(Map map) // These functions should be similar t
 static char* mapGetNextInternal(Map map) // These functions should be similar to mapGetNext
 {
     assert(map);
-    map->iterator=map->iterator->next;
+    map->iterator_internal=map->iterator_internal->next;
     return map->iterator_internal->key;
 }
 //Only for debugging
