@@ -59,14 +59,7 @@ void mapDestroy(Map map)//For Shai - DONE FUNCTION!!!!
         return; 
     }
     mapClear(map);// clears all data from map
-    Map map_to_free = map;
-    map_to_free->iterator_internal = map_to_free->map_head; //set iterator_internal for the for the first element
-    while (map_to_free->iterator_internal){ 
-        //until the iterator_internal gets null addres (tails address +1)
-        MapEntry todelete = map_to_free->iterator_internal; 
-        map_to_free->iterator_internal = map_to_free->iterator_internal->next; //promote the iterator_internal
-        free(todelete); 
-    }
+   
     free(map);
     return;
 }
@@ -171,13 +164,15 @@ MapResult mapClear(Map map)
     {
         return MAP_NULL_ARGUMENT;
     }
-    char* current_key = mapGetFirst(map);
-    while (current_key) // If first entry was NULL, then the loop won't be executed
-    {
-        mapRemove(map, current_key);
-        current_key = mapGetNext(map);
+
+   
+    mapGetFirstInternal(map); //set iterator_internal for the for the first element
+    while (map->iterator_internal){ 
+        //until the iterator_internal gets null addres (tails address +1)
+        MapEntry to_delete = map->iterator_internal; 
+        mapGetNextInternal(map); //promote the iterator_internal
+        free(to_delete); 
     }
-    map->map_head = map->map_tail; // Should we do this or the MapPut does that already?
 
     return MAP_SUCCESS;
 }
@@ -192,7 +187,19 @@ void mapPrint(Map map) // Should use iterator or internal_iterator?
     
 }
 
+static char* mapGetFirstInternal(Map map) // These functions should be similar to mapGetFirst
+{
+    assert(map);
 
+    map->iterator_internal=map->map_head;
+    return map->iterator->key;
+}
+static char* mapGetNextInternal(Map map) // These functions should be similar to mapGetNext
+{
+    assert(map);
+    map->iterator=map->iterator->next;
+    return map->iterator->key;
+}
 //Only for debugging
 int main()
 {
@@ -211,5 +218,4 @@ int main()
 	test->iterator_internal->next->next = NULL;
 	mapDestroy(test);
 	return 0;
-    return 0;
 }
