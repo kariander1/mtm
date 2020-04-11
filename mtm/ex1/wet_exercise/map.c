@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include <time.h>
 #include <stdio.h>
 
 #define LOGGING_NONE 1
@@ -35,11 +34,9 @@ struct Map_t
 void logMessage(char *text, int logging_level)
 {
 #if LOGGING_LEVEL >= logging_level
-    time_t raw_time;
-    struct tm *time_info;
-    time(&raw_time);
-    time_info = localtime(&raw_time);
-    printf("%s : %s", asctime(time_info), text);
+   
+  
+    printf("%s\n", text);
 #endif
 }
 
@@ -124,8 +121,10 @@ bool mapContains(Map map, const char *key) // If element was found, then interna
     return false;
 }
 static char* copyDataToString(const char* data){
-    char* str_copy = malloc(sizeof(*data)*strlen(data) +1);
+    char* str_copy = malloc(strlen(data) +1);
     strcpy(str_copy, data);
+    logMessage("Copied following string:",LOGGING_HIGH);
+    logMessage(str_copy,LOGGING_HIGH);
     return str_copy;
 }
 MapResult mapPut(Map map, const char* key, const char* data) //TODO: Implement!
@@ -238,6 +237,7 @@ static char* mapGetNextInternal(Map map) // These functions should be similar to
     return map->iterator_internal->key;
 }
 //Only for debugging
+/*
  int main()
 {
 	Map test = malloc(sizeof(*test));
@@ -256,8 +256,13 @@ static char* mapGetNextInternal(Map map) // These functions should be similar to
     mapPrint(test);
   //  Map test2=mapCopy(test);
     
-	mapDestroy(test);
-
-    mapPut(test, "1234", "test");
+//	mapDestroy(test);
+    char* it_string;
+    MAP_FOREACH(it_string,test) // It works!
+    {
+        printf("%s\n",it_string);
+    }
+    mapPut(test, "5534532", "test");
     return 0;
 }
+*/

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define OPTIONS 13
+#define OPTIONS 14
 #define MAX_MAPS 1000
 
 typedef enum Operation_t
@@ -21,6 +21,7 @@ typedef enum Operation_t
     MAP_GET_NEXT,
     MAP_CLEAR,
     MAP_PRINT,
+    MAP_ITERATE,
     QUIT
 } OperationType;
 
@@ -35,7 +36,11 @@ int addMapToMaps(Map map);
 int operationPrintMaps();
 void operationClearMap();
 void operationCopy();
+void operationPut();
+void operationDestroyMap();
+void operationGetSize();
 void removeFromMaps(int index);
+void operationGetFirst();
 
 void printOptions()
 {
@@ -82,6 +87,9 @@ void printOptions()
             break;
         case MAP_PRINT:
             option_text = "Print Map";
+            break;
+            case MAP_ITERATE:
+            option_text = "Iterate Map";
             break;
         case QUIT:
             option_text = "Quit";
@@ -130,11 +138,20 @@ bool executeOperations()
     case MAP_CONTAINS:
         operationContains();
         break;
-            case MAP_GET:
+    case MAP_GET:
         operationGet();
         break;
-   case MAP_REMOVE:
+    case MAP_REMOVE:
         operationRemove();
+        break;
+    case MAP_ITERATE:
+        operationIterate();
+        break;
+    case MAP_GET_FIRST:
+        operationGetFirst();
+        break;
+            case MAP_GET_NEXT:
+        operationGetNext();
         break;
     default:
     case QUIT:
@@ -142,52 +159,92 @@ bool executeOperations()
     }
     return false;
 }
-void operationRemove()
+void operationGetNext()
 {
-           int maxi = getMaxIndexOfMapsWithPrint();
+      int maxi = getMaxIndexOfMapsWithPrint();
     if (maxi == -1)
     {
         return;
     }
-     printf("From which map would you like to remove? [0-%d]\n", maxi);
-      int selection = getSelection(0, maxi, 0);
-  char key[50];
-      printf("Which key would you like to remove?\n");
-      scanf("%s",key);
-      MapResult status =mapRemove(maps[selection],key);
-      printf("Key %s removed has status of %s\n",key,status);
+    printf("From which map would you like to GetNext? [0-%d]\n", maxi);
+    int selection = getSelection(0, maxi, 0);
+    char* next = mapGetFirst(maps[selection]);
+    printf("Next entry is : %s\n",next);
+}
+void operationGetFirst()
+{
+      int maxi = getMaxIndexOfMapsWithPrint();
+    if (maxi == -1)
+    {
+        return;
+    }
+    printf("From which map would you like to GetFirst? [0-%d]\n", maxi);
+    int selection = getSelection(0, maxi, 0);
+    char* first = mapGetFirst(maps[selection]);
+    printf("First entry is : %s\n",first);
+}
+void operationIterate()
+{
+    int maxi = getMaxIndexOfMapsWithPrint();
+    if (maxi == -1)
+    {
+        return;
+    }
+    printf("From which map would you like to iterate? [0-%d]\n", maxi);
+    int selection = getSelection(0, maxi, 0);
+
+    char* it_string;
+    MAP_FOREACH(it_string,maps[selection])
+    {
+        printf("%s\n",it_string);
+    }
+}
+void operationRemove()
+{
+    int maxi = getMaxIndexOfMapsWithPrint();
+    if (maxi == -1)
+    {
+        return;
+    }
+    printf("From which map would you like to remove? [0-%d]\n", maxi);
+    int selection = getSelection(0, maxi, 0);
+    char key[50];
+    printf("Which key would you like to remove?\n");
+    scanf("%s", key);
+    MapResult status = mapRemove(maps[selection], key);
+    printf("Key %s removed has status of %s\n", key, status);
 }
 void operationGet()
 {
-            int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfMapsWithPrint();
     if (maxi == -1)
     {
         return;
     }
-     printf("From which map would you like to get? [0-%d]\n", maxi);
-      int selection = getSelection(0, maxi, 0);
+    printf("From which map would you like to get? [0-%d]\n", maxi);
+    int selection = getSelection(0, maxi, 0);
 
-        char key[50];
-      printf("Which key would you like to get?\n");
-      scanf("%s",key);
-      char* value =mapGet(maps[selection],key);
-      printf("Key %s has value of %s\n",key,value);
+    char key[50];
+    printf("Which key would you like to get?\n");
+    scanf("%s", key);
+    char *value = mapGet(maps[selection], key);
+    printf("Key %s has value of %s\n", key, value);
 }
 void operationContains()
 {
-        int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfMapsWithPrint();
     if (maxi == -1)
     {
         return;
     }
-     printf("From which map would you like to search? [0-%d]\n", maxi);
-      int selection = getSelection(0, maxi, 0);
-      char key[50];
-      printf("Which key would you like to search?\n");
-      scanf("%s",key);
-      bool contains =mapContains(maps[selection],key);
-      char* found_status = contains ? "Found" : "Not Found";
-      printf("Key %s was %s\n",key,found_status);
+    printf("From which map would you like to search? [0-%d]\n", maxi);
+    int selection = getSelection(0, maxi, 0);
+    char key[50];
+    printf("Which key would you like to search?\n");
+    scanf("%s", key);
+    bool contains = mapContains(maps[selection], key);
+    char *found_status = contains ? "Found" : "Not Found";
+    printf("Key %s was %s\n", key, found_status);
 }
 void operationCopy()
 {
@@ -285,7 +342,7 @@ void operationDestroyMap()
 }
 void operationClearMap()
 {
-        int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfMapsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -329,6 +386,7 @@ void removeFromMaps(int index)
 {
     maps[index] = NULL;
 }
+
 
 int main()
 {
