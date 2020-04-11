@@ -53,14 +53,15 @@ Map mapCreate()
 }
 void mapDestroy(Map map)//For Shai - DONE FUNCTION!!!!
 {
-    assert(map->iterator_internal && map->map_head);
+    assert(map->map_head);
     if (map == NULL){
-        return;
+        return; 
     }
     mapClear(map);// clears all data from map
     Map map_to_free = map;
     map_to_free->iterator_internal = map_to_free->map_head; //set iterator_internal for the for the first element
-    while (map_to_free->iterator_internal){ //until the iterator_internal gets null addres (tails address +1)
+    while (map_to_free->iterator_internal){ 
+        //until the iterator_internal gets null addres (tails address +1)
         MapEntry todelete = map_to_free->iterator_internal; 
         map_to_free->iterator_internal = map_to_free->iterator_internal->next; //promote the iterator_internal
         free(todelete); 
@@ -95,6 +96,10 @@ Map mapCopy(Map map)
 }
 int mapGetSize(Map map)// TODO Implement!
 {
+    if (map == NULL){
+        return -1;
+    }
+    if (map->map_head)
     return 0;
 }
 bool mapContains(Map map, const char *key)
