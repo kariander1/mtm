@@ -9,6 +9,7 @@
 #define LOGGING_LOW 1
 #define LOGGING_MEDIUM 2
 #define LOGGING_HIGH 3
+#define ZERO_ELEMENTS 0
 
 #define LOGGING_LEVEL HIGH
 
@@ -94,13 +95,21 @@ Map mapCopy(Map map)
 
     return new_map;
 }
-int mapGetSize(Map map)// TODO Implement!
+int mapGetSize(Map map)//For Shai - DONE FUNCTION!!!!
 {
     if (map == NULL){
         return -1;
     }
-    if (map->map_head)
-    return 0;
+    if ((map->map_head) == NULL){
+        return ZERO_ELEMENTS;
+    }
+    int num_elements = 0;
+    map->iterator_internal = map->map_head; //set iterator_internal for the for the first element
+    while (map->iterator_internal){
+        map->iterator_internal = map->iterator_internal->next;
+        num_elements++;
+    }
+    return num_elements;
 }
 bool mapContains(Map map, const char *key)
 {
