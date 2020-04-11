@@ -9,6 +9,7 @@
 #define LOGGING_LOW 1
 #define LOGGING_MEDIUM 2
 #define LOGGING_HIGH 3
+#define ZERO_ELEMENTS 0
 
 #define LOGGING_LEVEL HIGH
 
@@ -39,7 +40,7 @@ void logMessage(char *text, int logging_level)
 #endif
 }
 
-Map mapCreate()
+Map mapCreate() 
 {
     Map new_map = malloc(sizeof(*new_map));
     assert(new_map);
@@ -51,8 +52,22 @@ Map mapCreate()
     logMessage("Allocation successfull in creating new map", LOGGING_HIGH);
     return new_map;
 }
-void mapDestroy(Map map) //TODO: Implement!
+void mapDestroy(Map map)//For Shai - DONE FUNCTION!!!!
 {
+    assert(map->map_head);
+    if (map == NULL){
+        return; 
+    }
+    mapClear(map);// clears all data from map
+    Map map_to_free = map;
+    map_to_free->iterator_internal = map_to_free->map_head; //set iterator_internal for the for the first element
+    while (map_to_free->iterator_internal){ 
+        //until the iterator_internal gets null addres (tails address +1)
+        MapEntry todelete = map_to_free->iterator_internal; 
+        map_to_free->iterator_internal = map_to_free->iterator_internal->next; //promote the iterator_internal
+        free(todelete); 
+    }
+    free(map);
     return;
 }
 Map mapCopy(Map map)
@@ -80,9 +95,21 @@ Map mapCopy(Map map)
 
     return new_map;
 }
-int mapGetSize(Map map)// TODO Implement!
+int mapGetSize(Map map)//For Shai - DONE FUNCTION!!!!
 {
-    return 0;
+    if (map == NULL){
+        return -1;
+    }
+    if ((map->map_head) == NULL){
+        return ZERO_ELEMENTS;
+    }
+    int num_elements = 0;
+    map->iterator_internal = map->map_head; //set iterator_internal for the for the first element
+    while (map->iterator_internal){
+        map->iterator_internal = map->iterator_internal->next;
+        num_elements++;
+    }
+    return num_elements;
 }
 bool mapContains(Map map, const char *key)
 {
@@ -169,11 +196,20 @@ void mapPrint(Map map) // Should use iterator or internal_iterator?
 //Only for debugging
 int main()
 {
-    Map map = map = mapCreate();
-
-    MapEntry shelly;
-    shelly = malloc(sizeof(*shelly));
-    shelly->key = "20202022";
-    shelly->value = "Shelly Francis";
+	Map test = malloc(sizeof(*test));
+	MapEntry shelly;
+	shelly = malloc(sizeof(*shelly));
+	shelly->key = "20202022";
+	shelly->value = "Shelly Francis";
+	MapEntry shai;
+	shai = malloc(sizeof(*shelly));
+	shai->key = "5534532";
+	shai->value = "Shai Yehezkel";
+	test->iterator_internal = shelly;
+	test->map_head = shelly;
+	test->iterator_internal->next = shai;
+	test->iterator_internal->next->next = NULL;
+	mapDestroy(test);
+	return 0;
     return 0;
 }
