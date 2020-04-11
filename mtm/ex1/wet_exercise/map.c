@@ -173,10 +173,18 @@ MapResult mapClear(Map map)
 int main()
 {
     Map map = map = mapCreate();
-    Map test 
+    Map test = mapCreate;
     MapEntry shelly;
     shelly = malloc(sizeof(*shelly));
     shelly->key = "20202022";
     shelly->value = "Shelly Francis";
+    MapEntry shai;
+    shelly = malloc(sizeof(*shelly));
+    shelly->key = "5534532";
+    shelly->value = "Shai Yehezkel";
+    
+    test->iterator_internal = shelly;
+    test->iterator_internal->next = shai;
+    mapDestroy(test);
     return 0;
 }
