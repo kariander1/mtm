@@ -39,7 +39,7 @@ void logMessage(char *text, int logging_level)
 #endif
 }
 
-Map mapCreate() //For Shai - DONE FUNCTION!!!!
+Map mapCreate() 
 {
     Map new_map = malloc(sizeof(*new_map));
     assert(new_map);
@@ -51,7 +51,7 @@ Map mapCreate() //For Shai - DONE FUNCTION!!!!
     logMessage("Allocation successfull in creating new map", LOGGING_HIGH);
     return new_map;
 }
-void mapDestroy(Map map)
+void mapDestroy(Map map)//For Shai - DONE FUNCTION!!!!
 {
     assert(map->iterator_internal && map->map_head);
     if (map == NULL){
@@ -63,9 +63,9 @@ void mapDestroy(Map map)
     while (map_to_free->iterator_internal){ //until the iterator_internal gets null addres (tails address +1)
         MapEntry todelete = map_to_free->iterator_internal; 
         map_to_free->iterator_internal = map_to_free->iterator_internal->next; //promote the iterator_internal
-        free(todelete);
-        
+        free(todelete); 
     }
+    free(map);
     return;
 }
 Map mapCopy(Map map)
