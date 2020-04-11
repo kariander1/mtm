@@ -1,13 +1,24 @@
 #include "../mtm_map/map.h"
+#include "../map.c"
 #include <stdlib.h>
 #include <stdio.h>
 
-#define OPTIONS 7
+#define OPTIONS 11
 #define MAX_MAPS 1000
+
+Map maps[MAX_MAPS];
+
+
+void operationCreateMap();
+void printOptions();
+int getSelection();
+void operationCreateMap();
+bool executeOperations();
+void addMapToMaps(Map map);
 
 void printOptions()
 {
-    printf("Please select option: [1-11]");
+    printf("Please select option: [1-12]");
     char *option_text;
     for (int i = 0; i < OPTIONS; i++)
     {
@@ -48,6 +59,9 @@ void printOptions()
         case 10:
             option_text = "Print Map";
             break;
+            case 11:
+            option_text = "Quit";
+            break;
         default:
             break;
         }
@@ -57,13 +71,13 @@ void printOptions()
 int getSelection()
 {
     int option=-1;
-    while(!scanf("%d",option) || option<1 || option>11)
+    while(!scanf("%d",&option) || option<1 || option>11)
     {
         printf("Invalid input");
     }
     return option;
 }
-void executeOperations()
+bool executeOperations()
 {
     int selection = getSelection();
     switch (selection)
@@ -71,22 +85,45 @@ void executeOperations()
     case 1:
         operationCreateMap();
         break;
-    
+    case 11:
+        return true;
     default:
         break;
     }
+    return false;
 }
 void operationCreateMap()
 {
-
+    Map new_map = mapCreate();
+    addMapToMaps(new_map);
 }
 
-Map[MAX_MAPS] maps;
+
+void addMapToMaps(Map map)
+{
+    for (int i = 0; i < MAX_MAPS; i++)
+    {
+        if(!maps[i])
+        {
+            maps[i] =map;
+        }
+    }
+    
+}
+
+
+
 int main()
 {
+  for (int i = 0; i < MAX_MAPS; i++)
+  {
+      maps[i]=NULL;
+  }
+  
     printf("Welcome to map tester V1.0 C Shai Yehezkel");
-    print_options();
-
-
+    do
+    {
+        printOptions();
+    } while (!executeOperations());
     return 0;
 }
