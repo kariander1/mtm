@@ -63,12 +63,12 @@ Map mapCreate()
 }
 void mapDestroy(Map map)
 {
-    //assert(map->map_head);
-    if (map == NULL){
-        return; 
+    if (mapClear(map) ==MAP_NULL_ARGUMENT){ // clears all data from map
+       return;
     }
-    mapClear(map);// clears all data from map
-    free(map);
+    else{
+        free(map);
+    }
     return;
 }
 Map mapCopy(Map map)
@@ -101,16 +101,7 @@ int mapGetSize(Map map)//For Shai - DONE FUNCTION!!!!
     if (map == NULL){
         return -1;
     }
-    if ((map->map_head) == NULL){
-        return ZERO_ELEMENTS;
-    }
-    int num_elements = 0;
-    map->iterator_internal = map->map_head; //set iterator_internal for the for the first element
-    while (map->iterator_internal){
-        map->iterator_internal = map->iterator_internal->next;
-        num_elements++;
-    }
-    return num_elements;
+    return map->number_of_entries;
 }
 bool mapContains(Map map, const char *key) // If element was found, then internal_iterator is set there
 {
@@ -132,8 +123,30 @@ bool mapContains(Map map, const char *key) // If element was found, then interna
 
     return false;
 }
+static char* copyDataToString(const char* data){
+    char* str_copy = malloc(sizeof(*data)*strlen(data) +1);
+    strcpy(str_copy, data);
+    return str_copy;
+}
 MapResult mapPut(Map map, const char* key, const char* data) //TODO: Implement!
 {
+    if ((map == NULL) || (key == NULL) || (data== NULL)){
+        return MAP_NULL_ARGUMENT;
+    }
+    if (mapGetSize(map) == ZERO_ELEMENTS){
+        map->map_tail =  malloc(sizeof(*(map->map_tail)));
+        if (map->map_tail == NULL){
+            return MAP_OUT_OF_MEMORY;
+        }
+        else{
+            map->map_head = map->map_tail;
+        }
+    }
+    if (mapContains(map,key)){
+        char* str_copy = copyDataToString(data);
+        free((map->iterator_internal->value)); /// ERROR HERE <------
+        map->iterator_internal->value = str_copy;
+    }
     return MAP_SUCCESS;
 }
 char *mapGet(Map map, const char *key)
@@ -225,7 +238,7 @@ static char* mapGetNextInternal(Map map) // These functions should be similar to
     return map->iterator_internal->key;
 }
 //Only for debugging
-/* int main()
+ int main()
 {
 	Map test = malloc(sizeof(*test));
 	MapEntry shelly;
@@ -244,5 +257,7 @@ static char* mapGetNextInternal(Map map) // These functions should be similar to
   //  Map test2=mapCopy(test);
     
 	mapDestroy(test);
-	return 0;
-} */
+
+    mapPut(test, "1234", "test");
+    return 0;
+}
