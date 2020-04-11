@@ -53,6 +53,18 @@ Map mapCreate()
 }
 void mapDestroy(Map map) //TODO: Implement!
 {
+    if (map == NULL){
+        return;
+    }
+    mapClear(map);// clears all data from map
+    Map map_to_free = map;
+    map_to_free->iterator_internal = map_to_free->map_head;
+    while (map_to_free->iterator_internal){
+        Map todelete = map_to_free->iterator_internal; 
+        map_to_free->iterator_internal = map_to_free->iterator_internal->next;
+        mapFreeCurrentElement(todelete);
+        
+    }
     return;
 }
 Map mapCopy(Map map)
@@ -161,7 +173,7 @@ MapResult mapClear(Map map)
 int main()
 {
     Map map = map = mapCreate();
-
+    Map test 
     MapEntry shelly;
     shelly = malloc(sizeof(*shelly));
     shelly->key = "20202022";
