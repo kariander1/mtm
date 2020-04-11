@@ -3,9 +3,9 @@
 
 typedef struct Map_t
 {
-    Entry iterator;
-    Entry map_head;
-    Entry map_tail;
+    MapEntry iterator;
+    MapEntry map_head;
+    MapEntry map_tail;
 
 }* Map;
 typedef struct node_t
@@ -15,12 +15,12 @@ typedef struct node_t
     struct node_t *next;
     struct node_t *previous;
 
-} * Entry;
+} * MapEntry;
 
 
-Map mapCreate(Map map)
+MapEntry mapCreate(Map map)
 {
-    Map new_map = malloc(sizeof(*new_map));
+    MapEntry new_map = malloc(sizeof(*new_map));
     if(!new_map)
     {
         return NULL;
@@ -28,9 +28,9 @@ Map mapCreate(Map map)
     return new_map;
 }
 
-Map mapCopy(Map map)
+MapEntry mapCopy(Map map)
 {
-      Map new_map = malloc(sizeof(*new_map));
+      MapEntry new_map = malloc(sizeof(*new_map));
     if(!new_map)
     {
         return NULL;
