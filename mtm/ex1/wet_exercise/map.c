@@ -47,22 +47,27 @@ Map mapCreate()
 {
     Map new_map = malloc(sizeof(*new_map));
     assert(new_map);
+    
     if (!new_map)
     {
         logMessage("Allocation failure in creating new map", LOGGING_LOW);
         return NULL;
     }
+    new_map->number_of_entries=0;
+    new_map->iterator=NULL;
+    new_map->iterator_internal=NULL;
+    new_map->map_head=NULL;
+    new_map->map_tail=NULL;
     logMessage("Allocation successfull in creating new map", LOGGING_HIGH);
     return new_map;
 }
-void mapDestroy(Map map)//For Shai - DONE FUNCTION!!!!
+void mapDestroy(Map map)
 {
-    assert(map->map_head);
+    //assert(map->map_head);
     if (map == NULL){
         return; 
     }
     mapClear(map);// clears all data from map
-   
     free(map);
     return;
 }
@@ -107,7 +112,7 @@ int mapGetSize(Map map)//For Shai - DONE FUNCTION!!!!
     }
     return num_elements;
 }
-bool mapContains(Map map, const char *key)
+bool mapContains(Map map, const char *key) // If element was found, then internal_iterator is set there
 {
     assert(map);
     assert(key);
@@ -115,14 +120,14 @@ bool mapContains(Map map, const char *key)
     {
         return false;
     }
-    map->iterator_internal = map->map_tail;
+    char* current_key = mapGetFirstInternal(map);
     while (map->iterator_internal)
     {
-        if (!strcmp(map->iterator_internal->key, key))
+        if (!strcmp(current_key, key))
         {
             return true;
         }
-        map->iterator_internal = map->iterator_internal->next;
+        current_key = mapGetNextInternal(map);
     }
 
     return false;
@@ -152,12 +157,20 @@ MapResult mapRemove(Map map, const char* key)//TODO: Implement!
 
 char* mapGetFirst(Map map) // Shai's TEST, REMOVE THIS WHEN FUNCTION IS Implemented!
 {
-    map->iterator=map->map_tail;
+        assert(map);
+
+    map->iterator = map->map_head;
+    if (!(map->iterator))
+        return NULL;
     return map->iterator->key;
 }
 char* mapGetNext(Map map)// Shai's TEST, REMOVE THIS WHEN FUNCTION IS Implemented!
 {
-    map->iterator=map->iterator->next;
+       assert(map);
+
+    map->iterator = map->iterator->next;
+    if (!(map->iterator))
+        return NULL;
     return map->iterator->key;
 }
 MapResult mapClear(Map map)
@@ -179,32 +192,40 @@ MapResult mapClear(Map map)
 
     return MAP_SUCCESS;
 }
-void mapPrint(Map map) // Should use iterator or internal_iterator?
+void mapPrint(Map map)
 {
-    char* current_key = mapGetFirst(map);
+    if(!map)
+    {
+        return;
+    }
+    char* current_key = mapGetFirstInternal(map);
     while (current_key)
     {
-        printf("%s : %s\n",current_key,mapGet(map,current_key));
-        current_key = mapGetNext(map);
+        printf("%s : %s\n",current_key,map->iterator_internal->value);
+        current_key = mapGetNextInternal(map);
     }
     
 }
 
-static char* mapGetFirstInternal(Map map) // These functions should be similar to mapGetFirst
+static char *mapGetFirstInternal(Map map) // These functions should be similar to mapGetFirst
 {
     assert(map);
 
-    map->iterator_internal=map->map_head;
+    map->iterator_internal = map->map_head;
+    if (!(map->iterator_internal))
+        return NULL;
     return map->iterator_internal->key;
 }
 static char* mapGetNextInternal(Map map) // These functions should be similar to mapGetNext
 {
     assert(map);
     map->iterator_internal=map->iterator_internal->next;
+        if (!(map->iterator_internal))
+        return NULL;
     return map->iterator_internal->key;
 }
 //Only for debugging
-int main()
+/* int main()
 {
 	Map test = malloc(sizeof(*test));
 	MapEntry shelly;
@@ -219,6 +240,9 @@ int main()
 	test->map_head = shelly;
 	test->iterator_internal->next = shai;
 	test->iterator_internal->next->next = NULL;
+    mapPrint(test);
+  //  Map test2=mapCopy(test);
+    
 	mapDestroy(test);
 	return 0;
-}
+} */
