@@ -40,7 +40,7 @@ MapEntry mapCopy(Map map)
 int main()
 {
 
-    Entry shelly;
+    MapEntry shelly;
     shelly = malloc(sizeof(*shelly));
     shelly->key = "20202022";
     shelly->value = "Shelly Francis";
