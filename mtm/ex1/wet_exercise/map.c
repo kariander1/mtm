@@ -57,10 +57,10 @@ void mapDestroy(Map map) //TODO: Implement!
         return;
     }
     mapClear(map);// clears all data from map
-    Map map_to_free = map;
+    MapEntry map_to_free = map;
     map_to_free->iterator_internal = map_to_free->map_head;
     while (map_to_free->iterator_internal){
-        Map todelete = map_to_free->iterator_internal; 
+        MapEntry todelete = map_to_free->iterator_internal; 
         map_to_free->iterator_internal = map_to_free->iterator_internal->next;
         mapFreeCurrentElement(todelete);
         
@@ -179,9 +179,9 @@ int main()
     shelly->key = "20202022";
     shelly->value = "Shelly Francis";
     MapEntry shai;
-    shelly = malloc(sizeof(*shelly));
-    shelly->key = "5534532";
-    shelly->value = "Shai Yehezkel";
+    shai = malloc(sizeof(*shelly));
+    shai->key = "5534532";
+    shai->value = "Shai Yehezkel";
     
     test->iterator_internal = shelly;
     test->iterator_internal->next = shai;
