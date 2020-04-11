@@ -15,6 +15,8 @@
 
 static char* mapGetFirstInternal(Map map);
 static char* mapGetNextInternal(Map map);
+static char* copyEntryToString(const char* emtry);
+static MapEntry mapGetPrevious(Map map, const char* key);
 
 typedef struct node_t
 {
