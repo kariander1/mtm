@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-C:/VScode/mtm/ex1/exercise1_2_1.c
-stdbool.h
-C:/VScode/mtm/ex1/stdbool.h
+C:/VScode/mtm/ex1/dry_exercise/exercise1_2_1.c
 stdlib.h
-C:/VScode/mtm/ex1/stdlib.h
+-
+stdbool.h
+-
 

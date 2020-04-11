@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/map.c" "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex1.dir/map.c.obj"
+  "C:/VScode/mtm/ex1/wet_exercise/map.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex1.dir/map.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

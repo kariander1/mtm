@@ -64,10 +64,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\VScode\mtm\ex1
+CMAKE_SOURCE_DIR = C:\VScode\mtm\ex1\dry_exercise
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\build
+CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\dry_exercise\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -96,9 +96,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\build\CMakeFiles C:\VScode\mtm\ex1\build\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\dry_exercise\build\CMakeFiles C:\VScode\mtm\ex1\dry_exercise\build\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\dry_exercise\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -127,44 +127,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mtm_ex1
+# Target rules for targets named mtm_tot
 
 # Build rule for target.
-mtm_ex1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 mtm_ex1
-.PHONY : mtm_ex1
+mtm_tot: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 mtm_tot
+.PHONY : mtm_tot
 
 # fast build rule for target.
-mtm_ex1/fast:
-	$(MAKE) -f CMakeFiles\mtm_ex1.dir\build.make CMakeFiles/mtm_ex1.dir/build
-.PHONY : mtm_ex1/fast
+mtm_tot/fast:
+	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/build
+.PHONY : mtm_tot/fast
 
-map.obj: map.c.obj
+exercise1_2_1.obj: exercise1_2_1.c.obj
 
-.PHONY : map.obj
+.PHONY : exercise1_2_1.obj
 
 # target to build an object file
-map.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex1.dir\build.make CMakeFiles/mtm_ex1.dir/map.c.obj
-.PHONY : map.c.obj
+exercise1_2_1.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.obj
+.PHONY : exercise1_2_1.c.obj
 
-map.i: map.c.i
+exercise1_2_1.i: exercise1_2_1.c.i
 
-.PHONY : map.i
+.PHONY : exercise1_2_1.i
 
 # target to preprocess a source file
-map.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex1.dir\build.make CMakeFiles/mtm_ex1.dir/map.c.i
-.PHONY : map.c.i
+exercise1_2_1.c.i:
+	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.i
+.PHONY : exercise1_2_1.c.i
 
-map.s: map.c.s
+exercise1_2_1.s: exercise1_2_1.c.s
 
-.PHONY : map.s
+.PHONY : exercise1_2_1.s
 
 # target to generate assembly for a file
-map.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex1.dir\build.make CMakeFiles/mtm_ex1.dir/map.c.s
-.PHONY : map.c.s
+exercise1_2_1.c.s:
+	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/exercise1_2_1.c.s
+.PHONY : exercise1_2_1.c.s
 
 # Help Target
 help:
@@ -174,10 +174,10 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... mtm_ex1
-	@echo ... map.obj
-	@echo ... map.i
-	@echo ... map.s
+	@echo ... mtm_tot
+	@echo ... exercise1_2_1.obj
+	@echo ... exercise1_2_1.i
+	@echo ... exercise1_2_1.s
 .PHONY : help
 
 

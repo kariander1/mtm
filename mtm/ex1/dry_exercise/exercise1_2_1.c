@@ -1,5 +1,5 @@
-#include <stdbool.h>
 #include <stdlib.h> // used for NULL
+#include <stdbool.h>
 
 typedef struct node_t
 {
@@ -20,7 +20,7 @@ void freeList(Node node);
 int getListLength(Node list);
 bool isListSorted(Node list);
 ErrorCode mergeSortedLists(Node list1, Node list2, Node *merged_out);
-ErrorCode checkInputArguements(Node list1, Node list2, int *length1, int *length2);
+ErrorCode checkInputArguements(Node list1, Node list2, int *length1, int *length2,Node *merged_out);
 int getNextValueForList(Node *node_in_list1, Node *node_in_list2);
 ErrorCode allocateNextNode(Node *current_node, bool first_iteration);
 
@@ -34,7 +34,7 @@ ErrorCode mergeSortedLists(Node list1, Node list2, Node *merged_out)
 	ErrorCode input_check_code;
 
 	// Check if arguements are valid
-	if ((input_check_code = checkInputArguements(list1, list2, &length1, &length2)) != SUCCESS)
+	if ((input_check_code = checkInputArguements(list1, list2, &length1, &length2,merged_out)) != SUCCESS)
 	{
 		return input_check_code;
 	}
@@ -138,15 +138,15 @@ ErrorCode allocateNextNode(Node *current_node, bool first_iteration)
 				  At least one of the lists are unsorted - UNSORTED_LIST
 				  At least one of the lists are empty - EMPTY_LIST
 	Returns    :  ErrorCode indicating valid/invalid arguements  */
-ErrorCode checkInputArguements(Node list1, Node list2, int *length1, int *length2)
+ErrorCode checkInputArguements(Node list1, Node list2, int *length1, int *length2,Node *merged_out)
 {
-	if (!list1 || !list2)
+	if (!merged_out)
 	{
 		return NULL_ARGUMENT;
 	}
-	if (!isListSorted(list1) || !isListSorted(list2))
+	if(!list1||!list2)
 	{
-		return UNSORTED_LIST;
+		return EMPTY_LIST;
 	}
 	*length1 = getListLength(list1);
 	*length2 = getListLength(list2);
@@ -154,5 +154,15 @@ ErrorCode checkInputArguements(Node list1, Node list2, int *length1, int *length
 	{
 		return EMPTY_LIST;
 	}
+	if (!isListSorted(list1) || !isListSorted(list2))
+	{
+		return UNSORTED_LIST;
+	}
+
+
 	return SUCCESS;
+}
+int main()
+{
+	return 0;
 }
