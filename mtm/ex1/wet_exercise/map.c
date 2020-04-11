@@ -90,9 +90,9 @@ Map mapCopy(Map map)
 
     return new_map;
 }
-int mapGetSize(Map map)//For Shai - DONE FUNCTION!!!!
+int mapGetSize(Map map)//Done
 {
-    if (map == NULL){
+    if (!map){
         return -1;
     }
     return map->number_of_entries;
@@ -117,30 +117,47 @@ bool mapContains(Map map, const char *key)
 
     return false;
 }
-static char* copyDataToString(const char* data){
-    char* str_copy = malloc(sizeof(*data)*strlen(data) +1);
-    strcpy(str_copy, data);
+static char* copyEntryToString(const char* emtry){ // copys a constant string to a new allocated place and returns the copied string
+    char* str_copy = malloc(sizeof(char)*strlen(emtry) +1);
+    if (!str_copy){
+        return NULL;
+    }
+    strcpy(str_copy, emtry);
     return str_copy;
 }
-MapResult mapPut(Map map, const char* key, const char* data) //TODO: Implement!
+MapResult mapPut(Map map, const char* key, const char* data) //DONE
 {
-    if ((map == NULL) || (key == NULL) || (data== NULL)){
+    if ( !map || !key || !data){ //check if NULL ARUMENT
         return MAP_NULL_ARGUMENT;
     }
-    if (mapGetSize(map) == ZERO_ELEMENTS){
-        map->map_tail =  malloc(sizeof(*(map->map_tail)));
-        if (map->map_tail == NULL){
+    if (mapContains(map,key)){ // if  the dictionary contains the key -> puts th iterator on the place where a match was found
+        char* data_copy = copyEntryToString(data); // copy the data const char
+        if (!data_copy){
+            return MAP_OUT_OF_MEMORY ;
+        }
+        free((map->iterator_internal->value)); //free the previous value
+        map->iterator_internal->value = data_copy; // replace with new data
+    }
+    else{ // if the key does not exsists in the dictionary
+        map->map_tail =  malloc(sizeof(*(map->map_tail))); /// OR WRITE IN THE MALLOC JUST MAPENTRY? --------------------------------<<<<<<<<<<<<<<<<<<<<<
+        if (!(map->map_tail)){
             return MAP_OUT_OF_MEMORY;
         }
-        else{
-            map->map_head = map->map_tail;
+        char* data_copy = copyEntryToString(data);
+        char* key_copy = copyEntryToString(key);
+        if (!data_copy || !key_copy ){
+            free (data_copy); // maybe are NULL but just to check
+            free(key_copy);
+            return MAP_OUT_OF_MEMORY;
+        }
+        map->map_tail->key = key_copy;
+        map->map_tail->value = data_copy;
+        map->map_tail->next =NULL; // get the tail next to be NULL
+        if (mapGetSize == ZERO_ELEMENTS){
+            map->map_head = map->map_tail; // if this is the first element - get the head to point on it
         }
     }
-    if (mapContains(map,key)){
-        char* str_copy = copyDataToString(data);
-        free((map->iterator_internal->value)); /// ERROR HERE <------
-        map->iterator_internal->value = str_copy;
-    }
+    map->number_of_entries++;
     return MAP_SUCCESS;
 }
 char *mapGet(Map map, const char *key)
@@ -157,18 +174,46 @@ char *mapGet(Map map, const char *key)
     }
     return NULL;
 }
-MapResult mapRemove(Map map, const char* key)//TODO: Implement!
+// the functions gets the previus entry to the one with the entered key
+static MapEntry mapGetPrevious(Map map, const char* key){
+    assert (key);
+    map->iterator = map->map_head;
+    while(map->iterator->next->key != key){//check if the next entry is with the entered key
+        map->iterator = map->iterator->next;
+    }
+    return map->iterator;  
+}
+// internal iterator - where the current entry is
+// iterator - where the previos entry is
+MapResult mapRemove(Map map, const char* key)//Done
 {
+    if (!map || !key){
+        return MAP_NULL_ARGUMENT;
+    }
+    if (!mapContains(map, key)){ // now the internal iterator is on key element
+        return MAP_ITEM_DOES_NOT_EXIST;
+    }
+    MapEntry prevoius_entry = mapGetPrevious(map, key);
+    prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
+    free(map->iterator_internal->key); //free the key
+    free(map->iterator_internal->value); // free the value
+    free(map->iterator_internal); // free the current MapEntry
     return MAP_SUCCESS;
 }
 
 char* mapGetFirst(Map map) // Shai's TEST, REMOVE THIS WHEN FUNCTION IS Implemented!
 {
-    map->iterator=map->map_tail;
+    if (!map){
+        return NULL;
+    }
+    map->iterator = map->map_head;
     return map->iterator->key;
 }
 char* mapGetNext(Map map)// Shai's TEST, REMOVE THIS WHEN FUNCTION IS Implemented!
 {
+    if (!map){
+        return NULL;
+    }
     map->iterator=map->iterator->next;
     return map->iterator->key;
 }
