@@ -13,6 +13,9 @@
 
 #define LOGGING_LEVEL HIGH
 
+static char* mapGetFirstInternal(Map map);
+static char* mapGetNextInternal(Map map);
+
 typedef struct node_t
 {
     char *key;
@@ -192,13 +195,13 @@ static char* mapGetFirstInternal(Map map) // These functions should be similar t
     assert(map);
 
     map->iterator_internal=map->map_head;
-    return map->iterator->key;
+    return map->iterator_internal->key;
 }
 static char* mapGetNextInternal(Map map) // These functions should be similar to mapGetNext
 {
     assert(map);
     map->iterator=map->iterator->next;
-    return map->iterator->key;
+    return map->iterator_internal->key;
 }
 //Only for debugging
 int main()
