@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define OPTIONS 14
+#define OPTIONS 15
 #define MAX_MAPS 1000
 
 typedef enum Operation_t
@@ -20,6 +20,7 @@ typedef enum Operation_t
     MAP_GET_FIRST,
     MAP_GET_NEXT,
     MAP_CLEAR,
+    MAP_PRINT_INTERNAL,
     MAP_PRINT,
     MAP_ITERATE,
     QUIT
@@ -33,6 +34,7 @@ int getSelection();
 void operationCreateMap();
 bool executeOperations();
 int addMapToMaps(Map map);
+int operationPrintMapsInternal();
 int operationPrintMaps();
 void operationClearMap();
 void operationCopy();
@@ -44,7 +46,7 @@ void operationGetFirst();
 
 void printOptions()
 {
-    printf("Please select option: [1-14]\n");
+    printf("Please select option: [1-%d]\n",OPTIONS);
     char *option_text;
     for (int i = 1; i <= OPTIONS; i++)
     {
@@ -85,10 +87,13 @@ void printOptions()
         case MAP_CLEAR:
             option_text = "Clear Map";
             break;
-        case MAP_PRINT:
-            option_text = "Print Map";
+        case MAP_PRINT_INTERNAL:
+            option_text = "Print Map (internal)";
             break;
-            case MAP_ITERATE:
+        case MAP_PRINT:
+            option_text = "Print Map (script)";
+            break;
+        case MAP_ITERATE:
             option_text = "Iterate Map";
             break;
         case QUIT:
@@ -123,7 +128,10 @@ bool executeOperations()
     case MAP_CLEAR:
         operationClearMap();
         break;
-    case MAP_PRINT:
+    case MAP_PRINT_INTERNAL:
+        operationPrintMapsInternal();
+        break;
+        case MAP_PRINT:
         operationPrintMaps();
         break;
     case MAP_GET_SIZE:
@@ -307,7 +315,7 @@ void operationGetSize()
     printf("Which map would you like to get size from? [0-%d]\n", maxi);
     int selection = getSelection(0, maxi, 0);
     int size = mapGetSize(maps[selection]);
-    printf("Map N.%d Size is : %d", selection, size);
+    printf("Map N.%d Size is : %d\n", selection, size);
 }
 void operationCreateMap()
 {
@@ -353,6 +361,77 @@ void operationClearMap()
 }
 int operationPrintMaps()
 {
+     int count = 0;
+    int max_map_index = -1;
+    for (int i = 0; i < MAX_MAPS; i++)
+    {
+
+        if (maps[i])
+        {
+            printf("Map N. %d\n\n", i);
+            max_map_index = i;
+            char *current_key;
+            int num_elements = mapGetSize(maps[i]);
+            int k = 0;
+            int spaces_for_key = 20;
+            int spaces_for_value = 20;
+          
+            MAP_FOREACH(current_key, maps[i])
+            {
+                if (k == 0)
+                {
+                      putchar(' ');
+            printf("key");
+            for (int i = 0; i <= spaces_for_key-3; i++)
+            {
+                putchar(' ');
+            }
+             printf("value\n");
+
+                    putchar(' ');
+                    for (int i = 0; i < spaces_for_key; i++)
+                    {
+                        putchar('-');
+                    }
+                    putchar(' ');
+                    for (int i = 0; i < spaces_for_value; i++)
+                    {
+                        putchar('-');
+                    }
+                    putchar(' ');
+                    putchar('\n');
+                }
+
+                printf("|%-20s|", current_key);
+
+                printf("%-20s|\n", mapGet(maps[i], current_key));
+
+                k++;
+                if (k == num_elements)
+                { // Print ending
+                    putchar(' ');
+                    for (int i = 0; i < spaces_for_key; i++)
+                    {
+                        putchar('-');
+                    }
+                    putchar(' ');
+                    for (int i = 0; i < spaces_for_value; i++)
+                    {
+                        putchar('-');
+                    }
+                    putchar(' ');
+                    putchar('\n');
+                }
+            }
+
+            count++;
+            printf("\n");
+        }
+    }
+    return max_map_index;
+}
+int operationPrintMapsInternal()
+{
     int count = 0;
     int max_map_index = -1;
     for (int i = 0; i < MAX_MAPS; i++)
@@ -395,7 +474,7 @@ int main()
         maps[i] = NULL;
     }
 
-    printf("Welcome to map tester V1.0 C Shai Yehezkel\n\n");
+    printf("Welcome to map tester V1.5 C Shai Yehezkel\n\n");
     do
     {
         printOptions();

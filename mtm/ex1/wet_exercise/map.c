@@ -253,7 +253,7 @@ MapResult mapClear(Map map)
         mapGetNextInternal(map); //promote the iterator_internal
         free_entry(to_delete);
     }
-
+    initialize_attributes(map);
     return MAP_SUCCESS;
 }
 
