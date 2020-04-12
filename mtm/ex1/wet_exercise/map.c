@@ -33,9 +33,39 @@ static void initialize_attributes(Map map);
 static char *mapGetNextKeyAndPromote(MapEntry *original_entry, MapEntry *next_entry);
 static char *mapGetFirstInternal(Map map);
 static char *mapGetNextInternal(Map map);
-static char *copyEntryToString(const char *emtry);
+/**
+* copyEntryToString: copies const key or value to a string.
+*
+* @param entry - the const key / value to be copied.
+* @return
+* 	NULL if allocations failed.
+* 	 pointer to the new string.
+*/
+static char *copyEntryToString(const char *entry);
+/**
+* mapGetPrevious: get the previous item on the map.
+*
+* @param map - target map to search previous.
+* @param key - the key of the element that we want to find its previous
+* @return
+* 	returns NULL if we want to free the first element
+* 	 pointer to the previous MapEntry.
+*/
 static MapEntry mapGetPrevious(Map map, const char *key);
+/**
+* mapEntryCreateOrPromote: if the original_entry is empty - allocates it and initialize with NULL values  
+*                          if the original_entry is not empty - goes to the next item allocates it and initialize with NULL values
+* @param original_entry - the entry to create or promote.
+* @return
+* 	returns NULL if the allocation to new MapEntry failed
+* 	returns a pointer to the new MapEntry 
+*/
 static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry);
+/**
+* free_entry: frees the key, value and MapEntry of the given MapEntry  
+*                          
+* @param entry - the entry to free. 
+*/
 static void free_entry(MapEntry entry);
 
 void logMessage(char *text, int logging_level)
