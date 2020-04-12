@@ -348,10 +348,12 @@ static void free_entry(MapEntry entry)
     free(entry);        // free the current MapEntry
 }
 //Only for debugging
-/*
+
 int main()
 {
-    Map test = mapCreate();
+    return 0;
+}
+/*    Map test = mapCreate();
     
     MapEntry shelly;
     shelly = malloc(sizeof(*shelly));
