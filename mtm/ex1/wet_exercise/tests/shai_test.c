@@ -44,7 +44,7 @@ void operationGetFirst();
 
 void printOptions()
 {
-    printf("Please select option: [1-13]\n");
+    printf("Please select option: [1-14]\n");
     char *option_text;
     for (int i = 1; i <= OPTIONS; i++)
     {
@@ -387,7 +387,7 @@ void removeFromMaps(int index)
     maps[index] = NULL;
 }
 
-/*
+
 int main()
 {
     for (int i = 0; i < MAX_MAPS; i++)
@@ -402,4 +402,3 @@ int main()
     } while (!executeOperations());
     return 0;
 }
-*/
