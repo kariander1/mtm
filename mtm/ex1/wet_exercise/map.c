@@ -148,6 +148,7 @@ MapResult mapPut(Map map, const char* key, const char* data) //DONE
         char* data_copy = copyEntryToString(data);
         char* key_copy = copyEntryToString(key);
         if (!data_copy || !key_copy ){
+            free(map->map_tail);
             free (data_copy); // maybe are NULL but just to check
             free(key_copy);
             return MAP_OUT_OF_MEMORY;
@@ -179,6 +180,9 @@ char *mapGet(Map map, const char *key)
 // the functions gets the previus entry to the one with the entered key
 static MapEntry mapGetPrevious(Map map, const char* key){
     assert (key);
+    if(map->map_head->key == key){
+        return NULL; // returns the null if we want to free the first element
+    }
     map->iterator = map->map_head;
     while(map->iterator->next->key != key){//check if the next entry is with the entered key
         map->iterator = map->iterator->next;
@@ -189,18 +193,26 @@ static MapEntry mapGetPrevious(Map map, const char* key){
 // iterator - where the previos entry is
 MapResult mapRemove(Map map, const char* key)//Done
 {
-    if (!map || !key){
-        return MAP_NULL_ARGUMENT;
-    }
-    if (!mapContains(map, key)){ // now the internal iterator is on key element
-        return MAP_ITEM_DOES_NOT_EXIST;
-    }
-    MapEntry prevoius_entry = mapGetPrevious(map, key);
-    prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
-    free(map->iterator_internal->key); //free the key
-    free(map->iterator_internal->value); // free the value
-    free(map->iterator_internal); // free the current MapEntry
-    return MAP_SUCCESS;
+	if (!map || !key) {
+		return MAP_NULL_ARGUMENT;
+	}
+	if (!mapContains(map, key)) { // now the internal iterator is on key element
+		return MAP_ITEM_DOES_NOT_EXIST;
+	}
+	MapEntry prevoius_entry = mapGetPrevious(map, key);
+	if (prevoius_entry) { //if previus entry is not null
+		prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
+		if (!map->iterator_internal->next) { // if we want to remove the last element
+			map->map_tail = map->iterator_internal;
+		}
+	}
+	else {
+		map->map_head = map->iterator_internal->next;// if we want to remove the first element - set new head
+	}
+	free(map->iterator_internal->key); //free the key
+	free(map->iterator_internal->value); // free the value
+	free(map->iterator_internal); // free the current MapEntry
+	return MAP_SUCCESS;
 }
 
 char* mapGetFirst(Map map) // Shai's TEST, REMOVE THIS WHEN FUNCTION IS Implemented!
@@ -226,8 +238,6 @@ MapResult mapClear(Map map)
     {
         return MAP_NULL_ARGUMENT;
     }
-
-   
     mapGetFirstInternal(map); //set iterator_internal for the for the first element
     while (map->iterator_internal){ 
         //until the iterator_internal gets null addres (tails address +1)
