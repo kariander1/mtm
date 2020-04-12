@@ -46,7 +46,7 @@ void operationGetFirst();
 
 void printOptions()
 {
-    printf("Please select option: [1-%d]\n",OPTIONS);
+    printf("Please select option: [1-%d]\n", OPTIONS);
     char *option_text;
     for (int i = 1; i <= OPTIONS; i++)
     {
@@ -131,7 +131,7 @@ bool executeOperations()
     case MAP_PRINT_INTERNAL:
         operationPrintMapsInternal();
         break;
-        case MAP_PRINT:
+    case MAP_PRINT:
         operationPrintMaps();
         break;
     case MAP_GET_SIZE:
@@ -158,7 +158,7 @@ bool executeOperations()
     case MAP_GET_FIRST:
         operationGetFirst();
         break;
-            case MAP_GET_NEXT:
+    case MAP_GET_NEXT:
         operationGetNext();
         break;
     default:
@@ -169,27 +169,27 @@ bool executeOperations()
 }
 void operationGetNext()
 {
-      int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfMapsWithPrint();
     if (maxi == -1)
     {
         return;
     }
     printf("From which map would you like to GetNext? [0-%d]\n", maxi);
     int selection = getSelection(0, maxi, 0);
-    char* next = mapGetNext(maps[selection]);
-    printf("Next entry is : %s\n",next);
+    char *next = mapGetNext(maps[selection]);
+    printf("Next entry is : %s\n", next);
 }
 void operationGetFirst()
 {
-      int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfMapsWithPrint();
     if (maxi == -1)
     {
         return;
     }
     printf("From which map would you like to GetFirst? [0-%d]\n", maxi);
     int selection = getSelection(0, maxi, 0);
-    char* first = mapGetFirst(maps[selection]);
-    printf("First entry is : %s\n",first);
+    char *first = mapGetFirst(maps[selection]);
+    printf("First entry is : %s\n", first);
 }
 void operationIterate()
 {
@@ -201,10 +201,10 @@ void operationIterate()
     printf("From which map would you like to iterate? [0-%d]\n", maxi);
     int selection = getSelection(0, maxi, 0);
 
-    char* it_string;
-    MAP_FOREACH(it_string,maps[selection])
+    char *it_string;
+    MAP_FOREACH(it_string, maps[selection])
     {
-        printf("%s\n",it_string);
+        printf("%s\n", it_string);
     }
 }
 void operationRemove()
@@ -220,7 +220,25 @@ void operationRemove()
     printf("Which key would you like to remove?\n");
     scanf("%s", key);
     MapResult status = mapRemove(maps[selection], key);
-    printf("Key %s removed has status of %s\n", key, status);
+    char *status_string = "UNDEFINED";
+    switch (status)
+    {
+    case MAP_SUCCESS:
+        status_string = "MAP_SUCCESS";
+        break;
+    case MAP_NULL_ARGUMENT:
+        status_string = "MAP_NULL_ARGUMENT";
+        break;
+    case MAP_ITEM_DOES_NOT_EXIST:
+        status_string = "MAP_ITEM_DOES_NOT_EXIST";
+        break;
+    case MAP_ERROR:
+        status_string = "MAP_ERROR";
+        break;
+    default:
+        break;
+    }
+    printf("Key %s removed has status of %s\n", key, status_string);
 }
 void operationGet()
 {
@@ -361,7 +379,7 @@ void operationClearMap()
 }
 int operationPrintMaps()
 {
-     int count = 0;
+    int count = 0;
     int max_map_index = -1;
     for (int i = 0; i < MAX_MAPS; i++)
     {
@@ -375,18 +393,18 @@ int operationPrintMaps()
             int k = 0;
             int spaces_for_key = 20;
             int spaces_for_value = 20;
-          
+
             MAP_FOREACH(current_key, maps[i])
             {
                 if (k == 0)
                 {
-                      putchar(' ');
-            printf("key");
-            for (int i = 0; i <= spaces_for_key-3; i++)
-            {
-                putchar(' ');
-            }
-             printf("value\n");
+                    putchar(' ');
+                    printf("key");
+                    for (int i = 0; i <= spaces_for_key - 3; i++)
+                    {
+                        putchar(' ');
+                    }
+                    printf("value\n");
 
                     putchar(' ');
                     for (int i = 0; i < spaces_for_key; i++)
@@ -465,7 +483,6 @@ void removeFromMaps(int index)
 {
     maps[index] = NULL;
 }
-
 
 int main()
 {
