@@ -9,6 +9,7 @@
 #define LOGGING_MEDIUM 2
 #define LOGGING_HIGH 3
 #define ZERO_ELEMENTS 0
+#define SIZE_OF_NULL_MAP -1
 
 #define LOGGING_LEVEL HIGH
 
@@ -100,7 +101,7 @@ int mapGetSize(Map map) //Done
 {
     if (!map)
     {
-        return ZERO_ELEMENTS; // Should be zero?
+        return SIZE_OF_NULL_MAP;
     }
     return map->number_of_entries;
 }
