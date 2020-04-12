@@ -168,14 +168,15 @@ bool executeOperations()
     return false;
 }
 void operationGetNext()
-{
+{/*
     int maxi = getMaxIndexOfMapsWithPrint();
     if (maxi == -1)
     {
         return;
     }
-    printf("From which map would you like to GetNext? [0-%d]\n", maxi);
-    int selection = getSelection(0, maxi, 0);
+    */
+    printf("From which map would you like to GetNext? [0-%d]\n", MAX_MAPS);
+    int selection = getSelection(0, MAX_MAPS, 0);
     char *next = mapGetNext(maps[selection]);
     printf("Next entry is : %s\n", next);
 }
