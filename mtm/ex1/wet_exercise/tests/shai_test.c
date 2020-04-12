@@ -387,7 +387,7 @@ void removeFromMaps(int index)
     maps[index] = NULL;
 }
 
-
+/*
 int main()
 {
     for (int i = 0; i < MAX_MAPS; i++)
@@ -402,3 +402,4 @@ int main()
     } while (!executeOperations());
     return 0;
 }
+*/

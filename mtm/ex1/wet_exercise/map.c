@@ -101,7 +101,11 @@ int mapGetSize(Map map) //Done
 {
     if (!map)
     {
+<<<<<<< HEAD
         return SIZE_OF_NULL_MAP;
+=======
+        return -1; // Should be zero?
+>>>>>>> 483852aecf7e4eea97531ec08e84e89a97ba1174
     }
     return map->number_of_entries;
 }
@@ -137,49 +141,40 @@ static char *copyEntryToString(const char *entry)
 }
 MapResult mapPut(Map map, const char *key, const char *data) //DONE
 {
-      mapGetFirst(map); // Reset iterator;
+    mapGetFirst(map); // Reset iterator;
     if (!map || !key || !data)
     { //check if NULL ARUMENT
         return MAP_NULL_ARGUMENT;
     }
-  
-
     char *data_copy = copyEntryToString(data); // copy the data const char
     if (!data_copy)
     {
         return MAP_OUT_OF_MEMORY; // Break
     }
-
     if (mapContains(map, key))
     { // if  the dictionary contains the key -> puts the iterator on the place where a match was found
-
         free((map->iterator_internal->value));     //free the previous value
         map->iterator_internal->value = data_copy; // replace with new data
         return MAP_ITEM_ALREADY_EXISTS;
     }
-
-    //char *data_copy = copyEntryToString(data); // First check that copy was successful
-    char *key_copy = copyEntryToString(key);
-    if (!key_copy)
-    {
-        free(data_copy);
+    // if the key does not exsists in the dictionary
+    char* key_copy = copyEntryToString(key);
+    if (!key_copy ){
+        free (data_copy);
         return MAP_OUT_OF_MEMORY;
     }
+       // map->map_tail =  malloc(sizeof(*(map->map_tail))); /// OR WRITE IN THE MALLOC JUST MAPENTRY? --------------------------------<<<<<<<<<<<<<<<<<<<<<
+    if (!mapEntryCreateOrPromote(&(map->map_tail))){
+        return MAP_OUT_OF_MEMORY;
+    }
+        map->map_tail->key = key_copy;
+        map->map_tail->value = data_copy;
+        map->map_tail->next =NULL; // get the tail next to be NULL
+        if (mapGetSize == ZERO_ELEMENTS){
+            map->map_head = map->map_tail; // if this is the first element - get the head to point on it
+        }
     // map->map_tail = malloc(sizeof(*(map->map_tail))); /// This will override the tail node
-    if (!mapEntryCreateOrPromote(&(map->map_tail))) // Only afterwards create node, so there won't be an empty node
-    {
-        return MAP_OUT_OF_MEMORY; //Break
-    }
-
-    map->map_tail->key = key_copy;
-    map->map_tail->value = data_copy;
-    //  map->map_tail->next = NULL; // get the tail next to be NULL -----> Being set in mapEntryCreateOrPromote
-    if (mapGetSize(map) == ZERO_ELEMENTS)
-    {
-        map->map_head = map->map_tail; // if this is the first element - get the head to point on it
-    }
     map->number_of_entries++; // Should only increment if key didn't exist
-
     return MAP_SUCCESS;
 }
 char *mapGet(Map map, const char *key)
@@ -198,16 +193,22 @@ char *mapGet(Map map, const char *key)
 MapResult mapRemove(Map map, const char *key) //Done
 {
     mapGetFirst(map); // Reset iterator;
-    if (!map || !key)
-    {
-        return MAP_NULL_ARGUMENT;
-    }
-    if (!mapContains(map, key))
-    { // now the internal iterator is on key element
-        return MAP_ITEM_DOES_NOT_EXIST;
-    }
-    MapEntry prevoius_entry = mapGetPrevious(map, key);  // Maybe add a previous node?
-    prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
+	if (!map || !key) {
+		return MAP_NULL_ARGUMENT;
+	}
+	if (!mapContains(map, key)) { // now the internal iterator is on key element
+		return MAP_ITEM_DOES_NOT_EXIST;
+	}
+	MapEntry prevoius_entry = mapGetPrevious(map, key);
+	if (prevoius_entry) { //if previus entry is not null
+		prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
+		if (!map->iterator_internal->next) { // if we want to remove the last element
+			map->map_tail = map->iterator_internal;
+		}
+	}
+	else {
+		map->map_head = map->iterator_internal->next;// if we want to remove the first element - set new head
+	}
     free_entry(map->iterator_internal);
 
     map->number_of_entries--; // Added
