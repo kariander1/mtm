@@ -165,7 +165,7 @@ MapResult mapPut(Map map, const char *key, const char *data) //DONE
         map->map_tail->key = key_copy;
         map->map_tail->value = data_copy;
         map->map_tail->next =NULL; // get the tail next to be NULL
-        if (mapGetSize == ZERO_ELEMENTS){
+        if (mapGetSize(map) == ZERO_ELEMENTS){
             map->map_head = map->map_tail; // if this is the first element - get the head to point on it
         }
     // map->map_tail = malloc(sizeof(*(map->map_tail))); /// This will override the tail node
@@ -266,6 +266,9 @@ void mapPrint(Map map)
 static MapEntry mapGetPrevious(Map map, const char *key)
 {
     assert(key);
+    if (map->map_head->key == key) {
+		return NULL; // returns the null if we want to free the first element
+	}
     map->iterator = map->map_head;
     while (map->iterator->next->key != key)
     { //check if the next entry is with the entered key
@@ -329,11 +332,10 @@ static void free_entry(MapEntry entry)
     free(entry);        // free the current MapEntry
 }
 //Only for debugging
-
+/*
 int main()
 {
     Map test = mapCreate();
-    /*
     MapEntry shelly;
     shelly = malloc(sizeof(*shelly));
     shelly->key = "20202022";
@@ -346,7 +348,7 @@ int main()
     test->map_head = shelly;
     test->iterator_internal->next = shai;
     test->iterator_internal->next->next = NULL;
-    */
+
    mapPut(test,"20202022","Shelly Francis");
    mapPut(test,"5534532","Shai Yehezkel");
     mapPrint(test);
@@ -361,3 +363,4 @@ int main()
     mapPut(test, "5534532", "test"); // Tested works!
     return 0;
 }
+*/
