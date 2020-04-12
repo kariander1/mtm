@@ -6,21 +6,19 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/map.c
+C:/VScode/mtm/ex1/wet_exercise/map.c
 mtm_map/map.h
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
+C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 stdlib.h
 -
 assert.h
 -
 string.h
 -
-time.h
--
 stdio.h
 -
 
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
+C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 stdbool.h
 -
 string.h

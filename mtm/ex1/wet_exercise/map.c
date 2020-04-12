@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include <time.h>
 #include <stdio.h>
 
 #define LOGGING_NONE 1
@@ -12,11 +11,6 @@
 #define ZERO_ELEMENTS 0
 
 #define LOGGING_LEVEL HIGH
-
-static char* mapGetFirstInternal(Map map);
-static char* mapGetNextInternal(Map map);
-static char* copyEntryToString(const char* emtry);
-static MapEntry mapGetPrevious(Map map, const char* key);
 
 typedef struct node_t
 {
@@ -34,35 +28,45 @@ struct Map_t
     int number_of_entries;
 };
 
+static void initialize_attributes(Map map);
+static char *mapGetNextKeyAndPromote(MapEntry* original_entry, MapEntry* next_entry);
+static char *mapGetFirstInternal(Map map);
+static char *mapGetNextInternal(Map map);
+static char *copyEntryToString(const char *emtry);
+static MapEntry mapGetPrevious(Map map, const char *key);
+static MapEntry mapEntryCreateOrPromote(MapEntry* original_entry);
+static void free_entry(MapEntry entry);
+
 void logMessage(char *text, int logging_level)
 {
 #if LOGGING_LEVEL >= logging_level
-    time_t raw_time;
-    struct tm *time_info;
-    time(&raw_time);
-    time_info = localtime(&raw_time);
-    printf("%s : %s", asctime(time_info), text);
+    printf("%s\n", text);
 #endif
 }
 
-Map mapCreate() 
+Map mapCreate()
 {
     Map new_map = malloc(sizeof(*new_map));
     assert(new_map);
+
     if (!new_map)
     {
         logMessage("Allocation failure in creating new map", LOGGING_LOW);
         return NULL;
     }
+
+    initialize_attributes(new_map);
     logMessage("Allocation successfull in creating new map", LOGGING_HIGH);
     return new_map;
 }
-void mapDestroy(Map map)//For Shai - DONE FUNCTION!!!!
+void mapDestroy(Map map)
 {
-    if (mapClear(map) ==MAP_NULL_ARGUMENT){ // clears all data from map
-       return;
+    if (mapClear(map) == MAP_NULL_ARGUMENT)
+    { // clears all data from map
+        return;
     }
-    else{
+    else
+    {
         free(map);
     }
     return;
@@ -92,14 +96,15 @@ Map mapCopy(Map map)
 
     return new_map;
 }
-int mapGetSize(Map map)//Done
+int mapGetSize(Map map) //Done
 {
-    if (!map){
-        return -1;
+    if (!map)
+    {
+        return -1; // Should be zero?
     }
     return map->number_of_entries;
 }
-bool mapContains(Map map, const char *key)
+bool mapContains(Map map, const char *key) // If element was found, then internal_iterator is set there
 {
     assert(map);
     assert(key);
@@ -107,60 +112,64 @@ bool mapContains(Map map, const char *key)
     {
         return false;
     }
-    map->iterator_internal = map->map_tail;
+    char *current_key = mapGetFirstInternal(map);
     while (map->iterator_internal)
     {
-        if (!strcmp(map->iterator_internal->key, key))
+        if (!strcmp(current_key, key))
         {
             return true;
         }
-        map->iterator_internal = map->iterator_internal->next;
+        current_key = mapGetNextInternal(map);
     }
 
     return false;
 }
-static char* copyEntryToString(const char* emtry){ // copys a constant string to a new allocated place and returns the copied string
-    char* str_copy = malloc(sizeof(char)*strlen(emtry) +1);
-    if (!str_copy){
+static char *copyEntryToString(const char *entry)
+{ // copys a constant string to a new allocated place and returns the copied string
+    char *str_copy = malloc(strlen(entry) + 1);
+    if (!str_copy)
+    {
         return NULL;
     }
-    strcpy(str_copy, emtry);
+    strcpy(str_copy, entry);
     return str_copy;
 }
-MapResult mapPut(Map map, const char* key, const char* data) //DONE
+MapResult mapPut(Map map, const char *key, const char *data) //DONE
 {
-    if ( !map || !key || !data){ //check if NULL ARUMENT
+    mapGetFirst(map); // Reset iterator;
+    if (!map || !key || !data)
+    { //check if NULL ARUMENT
         return MAP_NULL_ARGUMENT;
     }
-    if (mapContains(map,key)){ // if  the dictionary contains the key -> puts th iterator on the place where a match was found
-        char* data_copy = copyEntryToString(data); // copy the data const char
-        if (!data_copy){
-            return MAP_OUT_OF_MEMORY ;
-        }
-        free((map->iterator_internal->value)); //free the previous value
-        map->iterator_internal->value = data_copy; // replace with new data
+    char *data_copy = copyEntryToString(data); // copy the data const char
+    if (!data_copy)
+    {
+        return MAP_OUT_OF_MEMORY; // Break
     }
-    else{ // if the key does not exsists in the dictionary
-        map->map_tail =  malloc(sizeof(*(map->map_tail))); /// OR WRITE IN THE MALLOC JUST MAPENTRY? --------------------------------<<<<<<<<<<<<<<<<<<<<<
-        if (!(map->map_tail)){
-            return MAP_OUT_OF_MEMORY;
-        }
-        char* data_copy = copyEntryToString(data);
-        char* key_copy = copyEntryToString(key);
-        if (!data_copy || !key_copy ){
-            free(map->map_tail);
-            free (data_copy); // maybe are NULL but just to check
-            free(key_copy);
-            return MAP_OUT_OF_MEMORY;
-        }
+    if (mapContains(map, key))
+    { // if  the dictionary contains the key -> puts the iterator on the place where a match was found
+        free((map->iterator_internal->value));     //free the previous value
+        map->iterator_internal->value = data_copy; // replace with new data
+        return MAP_ITEM_ALREADY_EXISTS;
+    }
+    // if the key does not exsists in the dictionary
+    char* key_copy = copyEntryToString(key);
+    if (!key_copy ){
+        free (data_copy);
+        return MAP_OUT_OF_MEMORY;
+    }
+       // map->map_tail =  malloc(sizeof(*(map->map_tail))); /// OR WRITE IN THE MALLOC JUST MAPENTRY? --------------------------------<<<<<<<<<<<<<<<<<<<<<
+    if (!mapEntryCreateOrPromote(&(map->map_tail))){
+        return MAP_OUT_OF_MEMORY;
+    }
         map->map_tail->key = key_copy;
         map->map_tail->value = data_copy;
         map->map_tail->next =NULL; // get the tail next to be NULL
         if (mapGetSize == ZERO_ELEMENTS){
             map->map_head = map->map_tail; // if this is the first element - get the head to point on it
         }
-    }
-    map->number_of_entries++;
+    // map->map_tail = malloc(sizeof(*(map->map_tail))); /// This will override the tail node
+    map->number_of_entries++; // Should only increment if key didn't exist
     return MAP_SUCCESS;
 }
 char *mapGet(Map map, const char *key)
@@ -171,28 +180,14 @@ char *mapGet(Map map, const char *key)
     {
         return NULL;
     }
-    if (mapContains(map, key)) // Map contains will set the internal_iterator on the found Entry
-    {
-        return map->iterator_internal->value;
-    }
-    return NULL;
+    return (mapContains(map, key) ? map->iterator_internal->value : NULL); // Map contains will set the internal_iterator on the found Entry
 }
-// the functions gets the previus entry to the one with the entered key
-static MapEntry mapGetPrevious(Map map, const char* key){
-    assert (key);
-    if(map->map_head->key == key){
-        return NULL; // returns the null if we want to free the first element
-    }
-    map->iterator = map->map_head;
-    while(map->iterator->next->key != key){//check if the next entry is with the entered key
-        map->iterator = map->iterator->next;
-    }
-    return map->iterator;  
-}
+
 // internal iterator - where the current entry is
-// iterator - where the previos entry is
-MapResult mapRemove(Map map, const char* key)//Done
+// iterator - where the previous entry is
+MapResult mapRemove(Map map, const char *key) //Done
 {
+    mapGetFirst(map); // Reset iterator;
 	if (!map || !key) {
 		return MAP_NULL_ARGUMENT;
 	}
@@ -209,28 +204,30 @@ MapResult mapRemove(Map map, const char* key)//Done
 	else {
 		map->map_head = map->iterator_internal->next;// if we want to remove the first element - set new head
 	}
-	free(map->iterator_internal->key); //free the key
-	free(map->iterator_internal->value); // free the value
-	free(map->iterator_internal); // free the current MapEntry
-	return MAP_SUCCESS;
+    free_entry(map->iterator_internal);
+
+    map->number_of_entries--; // Added
+
+    return MAP_SUCCESS;
 }
 
-char* mapGetFirst(Map map) // Shai's TEST, REMOVE THIS WHEN FUNCTION IS Implemented!
+char *mapGetFirst(Map map)
 {
-    if (!map){
+    if (!map)
+    {
         return NULL;
     }
-    map->iterator = map->map_head;
-    return map->iterator->key;
+    return mapGetNextKeyAndPromote(&(map->iterator), &(map->map_head)); // Exported to function
 }
-char* mapGetNext(Map map)// Shai's TEST, REMOVE THIS WHEN FUNCTION IS Implemented!
+char *mapGetNext(Map map)
 {
-    if (!map){
+    if (!map)
+    {
         return NULL;
     }
-    map->iterator=map->iterator->next;
-    return map->iterator->key;
+    return mapGetNextKeyAndPromote(&(map->iterator), &(map->iterator->next)); // Exported to function
 }
+
 MapResult mapClear(Map map)
 {
     assert(map);
@@ -238,56 +235,129 @@ MapResult mapClear(Map map)
     {
         return MAP_NULL_ARGUMENT;
     }
-    mapGetFirstInternal(map); //set iterator_internal for the for the first element
-    while (map->iterator_internal){ 
+
+    mapGetFirstInternal(map); //set iterator_internal for the for the first element, can be NULL and it's OK
+    while (map->iterator_internal)
+    {
         //until the iterator_internal gets null addres (tails address +1)
-        MapEntry to_delete = map->iterator_internal; 
+        MapEntry to_delete = map->iterator_internal;
         mapGetNextInternal(map); //promote the iterator_internal
-        free(to_delete); 
+        free_entry(to_delete);
     }
 
     return MAP_SUCCESS;
 }
-void mapPrint(Map map) // Should use iterator or internal_iterator?
+
+void mapPrint(Map map)
 {
-    char* current_key = mapGetFirst(map);
+    if (!map)
+    {
+        return;
+    }
+    char *current_key = mapGetFirstInternal(map);
     while (current_key)
     {
-        printf("%s : %s\n",current_key,mapGet(map,current_key));
-        current_key = mapGetNext(map);
+        printf("%s : %s\n", current_key, map->iterator_internal->value);
+        current_key = mapGetNextInternal(map);
     }
-    
 }
 
-static char* mapGetFirstInternal(Map map) // These functions should be similar to mapGetFirst
+// the functions gets the previous entry to the one with the entered key
+static MapEntry mapGetPrevious(Map map, const char *key)
 {
-    assert(map);
-
-    map->iterator_internal=map->map_head;
-    return map->iterator_internal->key;
+    assert(key);
+    map->iterator = map->map_head;
+    while (map->iterator->next->key != key)
+    { //check if the next entry is with the entered key
+        map->iterator = map->iterator->next;
+    }
+    return map->iterator;
 }
-static char* mapGetNextInternal(Map map) // These functions should be similar to mapGetNext
+static char *mapGetFirstInternal(Map map) // These functions should be similar to mapGetFirst
 {
-    assert(map);
-    map->iterator=map->iterator->next;
-    return map->iterator_internal->key;
+    if (!map)
+    {
+        return NULL;
+    }
+    return mapGetNextKeyAndPromote(&(map->iterator_internal), &(map->map_head)); // Exported to function
+}
+static char *mapGetNextInternal(Map map) // These functions should be similar to mapGetNext
+{
+    if (!map)
+    {
+        return NULL;
+    }
+    return mapGetNextKeyAndPromote(&(map->iterator_internal), &(map->iterator_internal->next)); // Exported to function
+}
+static char *mapGetNextKeyAndPromote(MapEntry* original_entry, MapEntry* next_entry)
+{
+    *original_entry = *next_entry;
+    return (*original_entry ? (*original_entry)->key : NULL); // Added check that the node is not NULL
+}
+static MapEntry mapEntryCreateOrPromote(MapEntry* original_entry)
+{
+    if (!(*original_entry))
+    {
+        (*original_entry) = malloc(sizeof(*(*original_entry)));
+    }
+    else
+    {
+        (*original_entry)->next = malloc(sizeof(*((*original_entry)->next)));
+        (*original_entry) = (*original_entry)->next;
+    }
+    if (!(*original_entry))
+    {
+        return NULL;
+    }
+    (*original_entry)->key = NULL;
+    (*original_entry)->value = NULL;
+    (*original_entry)->next = NULL;
+    return (*original_entry);
+}
+static void initialize_attributes(Map map)
+{
+    map->number_of_entries = 0;
+    map->iterator = NULL;
+    map->iterator_internal = NULL;
+    map->map_head = NULL;
+    map->map_tail = NULL;
+}
+static void free_entry(MapEntry entry)
+{
+    free(entry->key);   //free the key
+    free(entry->value); // free the value
+    free(entry);        // free the current MapEntry
 }
 //Only for debugging
+
 int main()
 {
-	Map test = malloc(sizeof(*test));
-	MapEntry shelly;
-	shelly = malloc(sizeof(*shelly));
-	shelly->key = "20202022";
-	shelly->value = "Shelly Francis";
-	MapEntry shai;
-	shai = malloc(sizeof(*shelly));
-	shai->key = "5534532";
-	shai->value = "Shai Yehezkel";
-	test->iterator_internal = shelly;
-	test->map_head = shelly;
-	test->iterator_internal->next = shai;
-	test->iterator_internal->next->next = NULL;
-    mapPut(test, "1234", "test");
+    Map test = mapCreate();
+    /*
+    MapEntry shelly;
+    shelly = malloc(sizeof(*shelly));
+    shelly->key = "20202022";
+    shelly->value = "Shelly Francis";
+    MapEntry shai;
+    shai = malloc(sizeof(*shelly));
+    shai->key = "5534532";
+    shai->value = "Shai Yehezkel";
+    test->iterator_internal = shelly;
+    test->map_head = shelly;
+    test->iterator_internal->next = shai;
+    test->iterator_internal->next->next = NULL;
+    */
+   mapPut(test,"20202022","Shelly Francis");
+   mapPut(test,"5534532","Shai Yehezkel");
+    mapPrint(test);
+    //  Map test2=mapCopy(test);
+
+    //	mapDestroy(test);
+    char *it_string;
+    MAP_FOREACH(it_string, test) // It works!
+    {
+        printf("%s\n", it_string);
+    }
+    mapPut(test, "5534532", "test"); // Tested works!
     return 0;
 }
