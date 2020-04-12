@@ -230,7 +230,7 @@ char *mapGetFirst(Map map)
 }
 char *mapGetNext(Map map)
 {
-    if (!map)
+    if (!map || !(map->iterator))
     {
         return NULL;
     }
@@ -275,8 +275,12 @@ void mapPrint(Map map)
 static MapEntry mapGetPrevious(Map map, const char *key)
 {
     assert(key);
+    if (strcmp(map->map_head->key, key) == 0)
+    {
+        return NULL; // returns the null if we want to free the first element
+    }
     map->iterator = map->map_head;
-    while (map->iterator->next->key != key)
+    while (strcmp(map->iterator->next->key, key) != 0)
     { //check if the next entry is with the entered key
         map->iterator = map->iterator->next;
     }
@@ -292,7 +296,7 @@ static char *mapGetFirstInternal(Map map) // These functions should be similar t
 }
 static char *mapGetNextInternal(Map map) // These functions should be similar to mapGetNext
 {
-    if (!map)
+    if (!map|| !map->iterator_internal)
     {
         return NULL;
     }
@@ -300,6 +304,12 @@ static char *mapGetNextInternal(Map map) // These functions should be similar to
 }
 static char *mapGetNextKeyAndPromote(MapEntry *original_entry, MapEntry *next_entry)
 {
+    /*
+    if (!(*original_entry))
+    {
+        return NULL;
+    }
+    */
     *original_entry = *next_entry;
     return (*original_entry ? (*original_entry)->key : NULL); // Added check that the node is not NULL
 }
@@ -338,7 +348,6 @@ static void free_entry(MapEntry entry)
     free(entry);        // free the current MapEntry
 }
 //Only for debugging
-
 /*
 int main()
 {

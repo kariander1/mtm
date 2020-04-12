@@ -168,7 +168,7 @@ void operationGetNext()
     }
     printf("From which map would you like to GetNext? [0-%d]\n", maxi);
     int selection = getSelection(0, maxi, 0);
-    char* next = mapGetFirst(maps[selection]);
+    char* next = mapGetNext(maps[selection]);
     printf("Next entry is : %s\n",next);
 }
 void operationGetFirst()
