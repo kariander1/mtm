@@ -349,10 +349,6 @@ static void free_entry(MapEntry entry)
 }
 //Only for debugging
 
-int main()
-{
-    return 0;
-}
 /*    Map test = mapCreate();
     
     MapEntry shelly;
