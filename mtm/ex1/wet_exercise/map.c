@@ -27,7 +27,7 @@ if (!(object))\
 
 typedef struct node_t
 {
-    char *key;
+    char *key;  
     char *value;
     struct node_t *next;
 } * MapEntry;
@@ -41,6 +41,13 @@ struct Map_t
     int number_of_entries;
 };
 
+/**
+* initialize_attributes: Initializes all attributes of struct Map_t to be null.
+*
+* @param map - the map to initialize;
+* @return
+* 	None.
+*/
 static void initialize_attributes(Map map);
 static char *mapGetNextKeyAndPromote(MapEntry *original_entry, MapEntry *next_entry);
 static char *mapGetFirstInternal(Map map);
@@ -304,7 +311,6 @@ static void initialize_attributes(Map map)
     map->map_head = NULL;
     map->map_tail = NULL;
 }
-
 static void freeEntry(MapEntry entry)
 {
     free(entry->key);   //free the key
