@@ -1,10 +1,15 @@
 #include "../election.h"
+#include "../mtm_map/map.h"
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+#include <stdio.h>
 
 #define AREA_INITIAL_SIZE 5
 struct election_t
 {
    Map tribes; // ID + name
-   Area* areas;
+   Area *area;
    int area_size;
    int allocated_size;
 };
@@ -35,14 +40,14 @@ if (!(object))\
 void initializeElectionAttributes(Election election){
     mapClear(election->tribes);
     election->tribes = NULL;
-    areaClear(election->areas);
+    //areaClear(election->areas);
 }
 
 Election electionCreate(){
     Election new_Election = malloc(sizeof(*new_Election));
     assert(new_Election);
     RETURN_ON_NONEXISTENCE(new_Election, NULL);
-    new_Election->tribes = malloc(sizeof(*(new_Election->tribes))*AREA_INITIAL_SIZE);
+    new_Election->tribes = malloc(sizeof((new_Election->tribes))*AREA_INITIAL_SIZE);
     initializeElectionAttributes(new_Election);
 
     return new_Election;
