@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise
-BuildDirectory: C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build
+SourceDirectory: C:/VScode/mtm/ex1/wet_exercise
+BuildDirectory: C:/VScode/mtm/ex1/wet_exercise/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: SHELLYF-LAPTOP
+Site: EEIT-129
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Win32-mingw32-make
@@ -26,8 +26,8 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "C:/Program Files (x86)/cmake-3.17.0-win64-x64/bin/cmake.exe" "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise"
-MakeCommand: C:/Program\ Files\ (x86)/cmake-3.17.0-win64-x64/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
+ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/VScode/mtm/ex1/wet_exercise"
+MakeCommand: C:/Program\ Files/CMake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
 # version control

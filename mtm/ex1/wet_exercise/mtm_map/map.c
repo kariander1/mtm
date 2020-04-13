@@ -1,6 +1,12 @@
-#include "mtm_map/map.h"
-#include <stdlib.h>
+
+#ifndef MAP_C
+#define MAP_C
+
+//Should add asserts
 #include <assert.h>
+#include "map.h"
+#include <stdlib.h>
+
 #include <string.h>
 #include <stdio.h>
 
@@ -317,3 +323,5 @@ static void freeEntry(MapEntry entry)
     free(entry->value); // free the value
     free(entry);        // free the current MapEntry
 }
+
+#endif //MAP_C

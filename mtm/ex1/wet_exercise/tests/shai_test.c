@@ -1,10 +1,9 @@
 #include "../mtm_map/map.h"
-#include "../map.c"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-#define OPTIONS 15
+#define OPTIONS 16
 #define MAX_MAPS 1000
 
 typedef enum Operation_t
@@ -23,6 +22,7 @@ typedef enum Operation_t
     MAP_PRINT_INTERNAL,
     MAP_PRINT,
     MAP_ITERATE,
+    MAP_INPUTS,
     QUIT
 } OperationType;
 
@@ -30,6 +30,9 @@ Map maps[MAX_MAPS];
 int inputs=0;
 
 static bool internal_printer = false;
+
+void printMapResult(MapResult result);
+void operationsOverrideInputs();
 void operationCreateMap();
 void printOptions();
 int getSelection();
@@ -106,6 +109,9 @@ void printOptions()
         case MAP_ITERATE:
             option_text = "Iterate Map";
             break;
+            case MAP_INPUTS:
+option_text = "Override Inputs";
+            break;
         case QUIT:
             option_text = "Quit";
             break;
@@ -174,11 +180,118 @@ bool executeOperations()
     case MAP_GET_NEXT:
         operationGetNext();
         break;
+    case MAP_INPUTS:
+        operationsOverrideInputs();
+        break;
     default:
     case QUIT:
         return true;
     }
     return false;
+}
+void operationsOverrideInputs()
+{
+    printf("mapDestroy(NULL):");
+    mapDestroy(NULL);
+    putchar('\n');
+    printf("mapCopy(NULL)");
+    mapCopy(NULL);
+    putchar('\n');
+    printf("mapGetSize(NULL)");
+    mapGetSize(NULL);
+    putchar('\n');
+    printf("mapContains(NULL,NULL)");
+    mapContains(NULL,NULL);
+    putchar('\n');
+    printf("mapContains(NULL,)");
+    mapContains(NULL,"");
+    putchar('\n');
+
+    Map tempMap = mapCreate();
+
+    printf("mapContains(map,NULL)");
+    mapContains(tempMap,NULL);
+    putchar('\n');
+        printf("mapContains(map,)");
+    mapContains(tempMap,"");
+    putchar('\n');
+
+    printf("mapPut(NULL,NULL,NULL)");
+    printMapResult(mapPut(NULL, NULL, NULL));
+    putchar('\n');
+
+    printf("mapPut(NULL,,NULL);");
+    printMapResult(mapPut(NULL, "", NULL));
+    putchar('\n');
+
+    printf("mapPut(NULL,NULL,);");
+    printMapResult(mapPut(NULL, NULL, ""));
+    putchar('\n');
+
+    printf("mapPut(NULL,,);");
+    printMapResult(mapPut(NULL, "", ""));
+    putchar('\n');
+
+    printf("mapPut(map,NULL,NULL);");
+    printMapResult(mapPut(tempMap, NULL, NULL));
+    putchar('\n');
+    
+    printf("mapPut(map,NULL,"");");
+    printMapResult(mapPut(tempMap, NULL, ""));
+    putchar('\n');
+
+
+    
+    printf("mapPut(map,"",NULL)");
+    printMapResult(mapPut(tempMap, "", NULL));
+    putchar('\n');
+
+            printf("mapPut(map,,);");
+    printMapResult(mapPut(tempMap, "", ""));
+    putchar('\n');
+
+
+
+    printf("mapGet(NULL,NULL)");
+    printf("%s",mapGet(NULL,NULL));
+    putchar('\n');
+    printf("mapGet(NULL,)");
+     printf("%s",mapGet(NULL,""));
+    putchar('\n');
+
+
+    printf("mapGet(map,NULL)");
+     printf("%s",mapGet(tempMap,NULL));
+    putchar('\n');
+        printf("mapGet(map,)");
+     printf("%s",mapGet(tempMap,""));
+    putchar('\n');
+
+
+    printf("mapGet(NULL,NULL)");
+    printMapResult(mapRemove(NULL,NULL));
+    putchar('\n');
+    printf("mapGet(NULL,)");
+     printMapResult(mapRemove(NULL,""));
+    putchar('\n');
+
+
+    printf("mapGet(map,NULL)");
+     printMapResult(mapRemove(tempMap,NULL));
+    putchar('\n');
+        printf("mapGet(map,)");
+     printMapResult(mapRemove(tempMap,""));
+    putchar('\n');
+
+
+        printf("mapClear(NULL)");
+     mapClear(NULL);
+    putchar('\n');
+
+    mapDestroy(tempMap);
+
+
+
 }
 void operationGetNext()
 { /*
@@ -234,25 +347,7 @@ void operationRemove()
     scanf("%s", key);
     inputs++;
     MapResult status = mapRemove(maps[selection], key);
-    char *status_string = "UNDEFINED";
-    switch (status)
-    {
-    case MAP_SUCCESS:
-        status_string = "MAP_SUCCESS";
-        break;
-    case MAP_NULL_ARGUMENT:
-        status_string = "MAP_NULL_ARGUMENT";
-        break;
-    case MAP_ITEM_DOES_NOT_EXIST:
-        status_string = "MAP_ITEM_DOES_NOT_EXIST";
-        break;
-    case MAP_ERROR:
-        status_string = "MAP_ERROR";
-        break;
-    default:
-        break;
-    }
-    printf("Key %s removed has status of %s\n", key, status_string);
+    printMapResult(status);
 }
 void operationGet()
 {
@@ -331,7 +426,7 @@ void operationPut()
         printf("Please enter value:\n");
         scanf("%s", value);
         inputs++;
-        mapPut(maps[selection], key, value);
+        printMapResult(mapPut(maps[selection], key, value));
     }
 }
 int getMaxIndexOfMapsWithPrint()
@@ -404,7 +499,30 @@ void operationClearMap()
     }
     printf("Which map would you like to clear? [0-%d]\n", maxi);
     int selection = getSelection(0, maxi, 0);
-    mapClear(maps[selection]);
+    printMapResult(mapClear(maps[selection]));
+    
+}
+void printMapResult(MapResult result)
+{
+ char *status_string = "UNDEFINED";
+    switch (result)
+    {
+    case MAP_SUCCESS:
+        status_string = "MAP_SUCCESS";
+        break;
+    case MAP_NULL_ARGUMENT:
+        status_string = "MAP_NULL_ARGUMENT";
+        break;
+    case MAP_ITEM_DOES_NOT_EXIST:
+        status_string = "MAP_ITEM_DOES_NOT_EXIST";
+        break;
+    case MAP_ERROR:
+        status_string = "MAP_ERROR";
+        break;
+    default:
+        break;
+    }
+    printf("Operation end with status of %s\n", status_string);
 }
 int operationPrintMaps()
 {
