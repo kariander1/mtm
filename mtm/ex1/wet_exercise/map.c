@@ -27,7 +27,7 @@ if (!(object))\
 
 typedef struct node_t
 {
-    char *key;
+    char *key;  
     char *value;
     struct node_t *next;
 } * MapEntry;
