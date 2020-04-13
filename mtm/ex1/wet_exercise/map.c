@@ -73,6 +73,11 @@ static MapEntry mapGetPrevious(Map map, const char *key);
 * 	returns a pointer to the new MapEntry 
 */
 static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry);
+/**
+* free_entry: frees the key, value and MapEntry of the given MapEntry  
+*                          
+* @param entry - the entry to free. 
+*/
 static void freeEntry(MapEntry entry);
 
 Map mapCreate()
