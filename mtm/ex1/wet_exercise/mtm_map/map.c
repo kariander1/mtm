@@ -46,6 +46,7 @@ struct Map_t
     MapEntry map_tail;
     int number_of_entries;
 };
+// HELPER FUNCTIONS TOKENS
 
 /**
 * initialize_attributes: Initializes all attributes of struct Map_t to be null.
@@ -55,8 +56,33 @@ struct Map_t
 * 	None.
 */
 static void initialize_attributes(Map map);
+/**
+* mapGetNextKeyAndPromote: Promotes the given Entry to the next entry given as the second arguement
+*
+* @param original_entry - Pointer to the entry desired to promote;
+* @param next_entry - Pointer to the entry desired to be promoted to;
+* @return
+* 	char*  depicting The promoted entry's key.
+*   NULL if the promoted entry is NULL
+*/
 static char *mapGetNextKeyAndPromote(MapEntry *original_entry, MapEntry *next_entry);
+/**
+* mapGetFirstInternal: Same as mapGetFirst, only for the internal_iterator
+*
+* @param map - The map in which the internal_iterator should be returned as first entry;
+* @return
+* 	char* of the key of the first entry
+*   NULL if the entry is NULL
+*/
 static char *mapGetFirstInternal(Map map);
+/**
+* mapGetNextInternal: Same as mapGetNext, only for the internal_iterator
+*
+* @param map - The map in which the internal_iterator should be returned as next entry;
+* @return
+* 	char* of the key of the next entry
+*   NULL if the entry is NULL
+*/
 static char *mapGetNextInternal(Map map);
 /**
 * copyEntryToString: copies const key or value to a string.
@@ -87,12 +113,13 @@ static MapEntry mapGetPrevious(Map map, const char *key);
 */
 static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry);
 /**
-* free_entry: frees the key, value and MapEntry of the given MapEntry  
+* freeEntry: frees the key, value and MapEntry of the given MapEntry  
 *                          
 * @param entry - the entry to free. 
 */
 static void freeEntry(MapEntry entry);
 
+// HELPER FUNCTIONS TOKENS END
 Map mapCreate()
 {
     Map new_map = malloc(sizeof(*new_map));
@@ -262,6 +289,7 @@ MapResult mapClear(Map map)
     return MAP_SUCCESS;
 }
 
+// HELPER FUNCTIONS
 static MapEntry mapGetPrevious(Map map, const char *key)
 {
     assert(key);
@@ -323,5 +351,5 @@ static void freeEntry(MapEntry entry)
     free(entry->value); // free the value
     free(entry);        // free the current MapEntry
 }
-
+// HELPER FUNCTIONS END
 #endif //MAP_C
