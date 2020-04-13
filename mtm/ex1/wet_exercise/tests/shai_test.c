@@ -27,7 +27,9 @@ typedef enum Operation_t
 } OperationType;
 
 Map maps[MAX_MAPS];
+int inputs=0;
 
+static bool internal_printer = false;
 void operationCreateMap();
 void printOptions();
 int getSelection();
@@ -36,6 +38,7 @@ bool executeOperations();
 int addMapToMaps(Map map);
 int operationPrintMapsInternal();
 int operationPrintMaps();
+int operationPrintMapSelector();
 void operationClearMap();
 void operationCopy();
 void operationPut();
@@ -43,6 +46,13 @@ void operationDestroyMap();
 void operationGetSize();
 void removeFromMaps(int index);
 void operationGetFirst();
+void operationContains();
+void operationGet();
+void operationRemove();
+void operationIterate();
+void operationGetNext();
+int getMaxIndexOfMapsWithPrint();
+
 
 void printOptions()
 {
@@ -110,8 +120,11 @@ int getSelection(int lower, int upper, int exception)
     int option = -1;
     while (!scanf("%d", &option) || ((option < lower || option > upper) && option != exception))
     {
-        printf("Invalid input\n");
+        inputs++;
+        printf("Invalid input - input N.%d\n",inputs);
+        exit(0);
     }
+    inputs++;
     return option;
 }
 bool executeOperations()
@@ -168,7 +181,7 @@ bool executeOperations()
     return false;
 }
 void operationGetNext()
-{/*
+{ /*
     int maxi = getMaxIndexOfMapsWithPrint();
     if (maxi == -1)
     {
@@ -202,7 +215,6 @@ void operationIterate()
     printf("From which map would you like to iterate? [0-%d]\n", maxi);
     int selection = getSelection(0, maxi, 0);
 
-    char *it_string;
     MAP_FOREACH(it_string, maps[selection])
     {
         printf("%s\n", it_string);
@@ -220,6 +232,7 @@ void operationRemove()
     char key[50];
     printf("Which key would you like to remove?\n");
     scanf("%s", key);
+    inputs++;
     MapResult status = mapRemove(maps[selection], key);
     char *status_string = "UNDEFINED";
     switch (status)
@@ -254,6 +267,7 @@ void operationGet()
     char key[50];
     printf("Which key would you like to get?\n");
     scanf("%s", key);
+    inputs++;
     char *value = mapGet(maps[selection], key);
     printf("Key %s has value of %s\n", key, value);
 }
@@ -269,6 +283,7 @@ void operationContains()
     char key[50];
     printf("Which key would you like to search?\n");
     scanf("%s", key);
+    inputs++;
     bool contains = mapContains(maps[selection], key);
     char *found_status = contains ? "Found" : "Not Found";
     printf("Key %s was %s\n", key, found_status);
@@ -301,27 +316,40 @@ void operationPut()
     int num_of_vals = 0;
     if (!scanf("%d", &num_of_vals))
     {
-        printf("Invalid input\n");
+        inputs++;
+        printf("Invalid input input N.%d\n",inputs);
+        exit(0);
         return;
     }
+    inputs++;
     for (int i = 0; i < num_of_vals; i++)
     {
         char key[50], value[50];
         printf("Please enter key:\n");
         scanf("%s", key);
+        inputs++;
         printf("Please enter value:\n");
         scanf("%s", value);
+        inputs++;
         mapPut(maps[selection], key, value);
     }
 }
 int getMaxIndexOfMapsWithPrint()
 {
-    int maxi = operationPrintMaps();
+    int maxi = operationPrintMapSelector();
     if (maxi == -1)
     {
         printf("No maps stored\n");
     }
     return maxi;
+}
+int operationPrintMapSelector()
+{
+    if (internal_printer)
+    {
+        return operationPrintMapsInternal();
+    }
+    return operationPrintMaps();
 }
 void operationGetSize()
 {
@@ -389,7 +417,6 @@ int operationPrintMaps()
         {
             printf("Map N. %d\n\n", i);
             max_map_index = i;
-            char *current_key;
             int num_elements = mapGetSize(maps[i]);
             int k = 0;
             int spaces_for_key = 20;
@@ -442,7 +469,6 @@ int operationPrintMaps()
                     putchar('\n');
                 }
             }
-
             count++;
             printf("\n");
         }
@@ -460,7 +486,7 @@ int operationPrintMapsInternal()
         {
             printf("Map N. %d\n\n", i);
             max_map_index = i;
-            mapPrint(maps[i]);
+            //mapPrint(maps[i]);
             count++;
             printf("\n");
         }
@@ -485,14 +511,24 @@ void removeFromMaps(int index)
     maps[index] = NULL;
 }
 
+
 int main()
 {
     for (int i = 0; i < MAX_MAPS; i++)
     {
         maps[i] = NULL;
     }
+    printf("Welcome to map tester V1.6 C Shai Yehezkel\n\n");
+    printf("Using internal printer calls the \"void mapPrint\" implemented in map.h/c.\nOtherwise a built-in printer is being called that would be the same for each implementation.\n\n");
+    printf("**NOTE : The built-in printer utilizes the MAP_FOREACH Macro, and thus changes the iterator every print.\n\n");
+    printf("Would you like to use internal printer for prints? (Y/N) ");
+    char selection = getchar();
+    inputs++;
+    if (selection == 'y' || selection == 'Y')
+    {
+        internal_printer = true;
+    }
 
-    printf("Welcome to map tester V1.5 C Shai Yehezkel\n\n");
     do
     {
         printOptions();
