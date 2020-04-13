@@ -61,7 +61,7 @@ static char *copyEntryToString(const char *entry);
 * @param key - the key of the element that we want to find its previous
 * @return
 * 	returns NULL if we want to free the first element
-* 	 pointer to the previous MapEntry.
+* 	pointer to the previous MapEntry.
 */
 static MapEntry mapGetPrevious(Map map, const char *key);
 /**
@@ -249,14 +249,6 @@ MapResult mapClear(Map map)
     return MAP_SUCCESS;
 }
 
-/**
-* 	mapGetPrevious: the functions gets the previous entry to the given key
-* @param map - Map to read from.
-* @return
-* 	NULL if a NULL was sent to the function
-*   MAP_ITEM_DOES_NOT_EXIST if an equal key item does not already exists in the map
-* 	MAP_SUCCESS the paired elements had been removed successfully
-*/
 static MapEntry mapGetPrevious(Map map, const char *key)
 {
     assert(key);
@@ -312,16 +304,7 @@ static void initialize_attributes(Map map)
     map->map_head = NULL;
     map->map_tail = NULL;
 }
-/**
-* 	freeEntry: Frees 
-*   Frees a given entry all attributes and then frees the struct
-* @param entry
-* 	The desired entry to free
-* @return
-* 	MAP_NULL_ARGUMENT if a NULL was sent to the function
-*  MAP_ITEM_DOES_NOT_EXIST if an equal key item does not already exists in the map
-* 	MAP_SUCCESS the paired elements had been removed successfully
-*/
+
 static void freeEntry(MapEntry entry)
 {
     free(entry->key);   //free the key
