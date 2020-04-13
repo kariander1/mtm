@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "MinGW Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+<<<<<<< HEAD
   "C:/Program Files/CMake/share/cmake-3.17/Modules/CMakeCCompiler.cmake.in"
   "C:/Program Files/CMake/share/cmake-3.17/Modules/CMakeCCompilerABI.c"
   "C:/Program Files/CMake/share/cmake-3.17/Modules/CMakeCInformation.cmake"
@@ -80,6 +81,27 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-3.17/Modules/Platform/Windows-windres.cmake"
   "C:/Program Files/CMake/share/cmake-3.17/Modules/Platform/Windows.cmake"
   "C:/Program Files/CMake/share/cmake-3.17/Modules/Platform/WindowsPaths.cmake"
+=======
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeCInformation.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeCommonLanguageInclude.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeGenericSystem.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeInitializeConfigs.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeLanguageInformation.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeRCInformation.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeSystemSpecificInformation.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/CMakeSystemSpecificInitialize.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Compiler/GNU-C.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Compiler/GNU.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Internal/CMakeCheckCompilerFlag.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Platform/Windows-GNU-C-ABI.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Platform/Windows-GNU-C.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Platform/Windows-GNU.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Platform/Windows-windres.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Platform/Windows.cmake"
+  "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17/Modules/Platform/WindowsPaths.cmake"
+>>>>>>> c4c919e5bb12479272c517c661d5e14c32814fe1
   "../CMakeLists.txt"
   "CMakeFiles/3.17.0/CMakeCCompiler.cmake"
   "CMakeFiles/3.17.0/CMakeRCCompiler.cmake"
@@ -94,10 +116,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/3.17.0/CMakeSystem.cmake"
-  "CMakeFiles/3.17.0/CMakeCCompiler.cmake"
-  "CMakeFiles/3.17.0/CMakeRCCompiler.cmake"
-  "CMakeFiles/3.17.0/CMakeCCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
