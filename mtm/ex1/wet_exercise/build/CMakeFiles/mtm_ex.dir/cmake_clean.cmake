@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj"
   "CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj"
+  "CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj"
   "CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
   "libmtm_ex.dll.a"
   "mtm_ex.exe"

@@ -1,24 +1,61 @@
-#ifndef AREA_C
-#define AREA_C
+#ifndef AREA_C_
+#define AREA_C_
 
 #include "area.h"
 #include "../mtm_map/map.h"
-
+#include <stdlib.h>
+#include "electionUtils.h"
 struct area_t
 {
     int area_id;
-    char* area_name;
+    const char* area_name;
     Map votes;
 };
 
 
 Area areaCreate(int area_id,const char* area_name)
 {
-    return NULL;
+    Area new_area = malloc(sizeof(*new_area));
+    RETURN_ON_NONEXISTENCE(new_area,NULL);
+
+    new_area->area_id = area_id;
+    new_area->area_name = area_name;
+
+    Map new_map =mapCreate();
+       RETURN_ON_NONEXISTENCE(new_map,NULL);
+    new_area->votes =new_map;
+    return new_area;
+
 }
-AreaResult areaDestroy(Area area)
+void areaDestroy(Area area)
 {
-    return AREA_OUT_OF_MEMORY;
+    if(!area)
+    {
+        return;
+    }
+    mapDestroy(area->votes);
+    free(area);
+}
+AreaResult areaChangeVotesToTribe(Area area, const char* tribe_id, int num_of_votes)
+{
+    RETURN_ON_NONEXISTENCE(area,AREA_NULL_ARGUEMENT);// CHANGE from NULL
+    char* votes_str = mapGet(area->votes,tribe_id);
+    int current_votes=0;
+    if (votes_str)
+    { // Tribe votes exist in votes 
+        current_votes = stringToInt(votes_str);
+    }
+    //Calc new votes
+    current_votes+=num_of_votes;
+    char* new_votes_str = intToString(num_of_votes);
+    RETURN_ON_NONEXISTENCE(new_votes_str,AREA_FAILED_CONVERSION);
+    if(mapPut(area->votes,tribe_id,new_votes_str)!=MAP_SUCCESS)
+    {
+        return AREA_OUT_OF_MEMORY;///Find corrent val
+    }
+
+    return AREA_SUCCESS;
+
 }
 AreaResult areaClear(Area area)
 {
@@ -28,4 +65,6 @@ bool areaEquals(Area area_1,int id)
 {
     return area_1->area_id == id;
 }
+
+//static int stringToInt
 #endif // AREA_C

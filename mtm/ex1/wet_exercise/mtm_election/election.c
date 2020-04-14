@@ -1,6 +1,6 @@
 
-#ifndef ELECTION_C
-#define ELECTION_C
+#ifndef ELECTION_C_
+#define ELECTION_C_
 
 #include "../election.h"
 #include "../mtm_map/map.h"
@@ -9,13 +9,13 @@
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
-#include <math.h>
+#include "electionUtils.h"
 
 #define AREA_INITIAL_SIZE 1
 #define AREA_MULTIPLIER_SIZE 2
 #define AREA_NOT_FOUND -1
 #define LEGAL_DELIMITER ' '
-#define NUMBERING_BASE 10
+
 
 struct election_t
 {
@@ -32,35 +32,9 @@ static bool isLegalName(const char* name);
 static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
-static const char *intToChar(int int_to_convert);
 
-#define IS_LOWER(c) ((c) >= 'a' && (c) <= 'z') 
-/*!
-* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
-*/
-#define RETURN_ON_CONDITION(object,comparator, return_value) \
-    if ((object) == comparator)                                   \
-    {                                                \
-        return (return_value);                       \
-    }
 
-    /*!
-* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
-*/
-#define DESTROY_ON_CONDITION(object,comparator,election, return_value) \
-    if ((object) == comparator)                                   \
-    {                                                \
-        electionDestroy(election); \
-        return return_value;                       \
-    }
-/*!
-* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
-*/
-#define RETURN_ON_CONDITION_NO_VALUE(object,comparator) \
-    if ((object) == comparator)                                   \
-    {                                                \
-        return;                       \
-    }
+
 
 
 /* FUNCTUIONS REGARDING AREA:
@@ -93,16 +67,16 @@ void electionDestroy(Election election)
 ElectionResult electionAddTribe(Election election, int tribe_id, const char *tribe_name) // Shelly
 {
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
-    RETURN_ON_CONDITION(tribe_id, NULL,ELECTION_NULL_ARGUMENT);
+    //RETURN_ON_CONDITION(tribe_id, NULL,ELECTION_NULL_ARGUMENT); // BUG! should use isLegalID
     RETURN_ON_CONDITION(tribe_name, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
-    const char* string_of_tribe_id = intToChar(tribe_id); // create the car for the mapGet function
+    const char* string_of_tribe_id = intToString(tribe_id); // create the car for the mapGet function
     RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
     RETURN_ON_CONDITION(mapGet(election->tribes, string_of_tribe_id), false, ELECTION_INVALID_ID);
     //free(string_of_tribe_id); // free the string after usage
     RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
     mapPut(election->tribes,string_of_tribe_id,tribe_name); // the free of string_of_tribe_id is done by mapClear
-    free(string_of_tribe_id); // free the string after usage
+    //free(string_of_tribe_id); // free the string after usage // Shai :  // BUG! should use isLegalID
     // You can use islegalID and isLegalNAME static functions located down V
     return ELECTION_SUCCESS; // Placeholder
 }
@@ -141,17 +115,18 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     RETURN_ON_CONDITION(isLegalId(area_id), false, ELECTION_INVALID_ID);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
     RETURN_ON_CONDITION(isLegalVotes(num_of_votes), false, ELECTION_INVALID_VOTES);
+    // Arguements are valid
 
     int area_index;
     RETURN_ON_CONDITION(area_index=getAreaIndexById(election,area_id),AREA_NOT_FOUND,ELECTION_AREA_NOT_EXIST);
-
+    // Area exists
     const char* tribe_id_str;
-    DESTROY_ON_CONDITION(tribe_id_str =intToChar(area_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+    DESTROY_ON_CONDITION(tribe_id_str =intToString(area_id),NULL,election,ELECTION_OUT_OF_MEMORY);
     RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
+    //Tribe exists
+    RETURN_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes),AREA_SUCCESS,ELECTION_SUCCESS);
     
-  
-    
-    return ELECTION_SUCCESS;
+    return ELECTION_OUT_OF_MEMORY; //Maybe?
 }
 ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, int num_of_votes) // Shelly
 {
@@ -207,36 +182,31 @@ static bool isLegalId(int id)
 static bool isLegalName(const char* name)
 {
 
-    char* iterating_char =malloc(strlen(name) +1) ;
-    while (iterating_char)
-    {
-        if((!IS_LOWER(*iterating_char) )&& (!((*iterating_char)==(LEGAL_DELIMITER ))))
+//    char* temp_str =malloc(strlen(name) +1) ;
+
+    int index=0;
+
+   while (name[index])
+   {
+         char current_char = name[index];
+        if((!IS_LOWER(current_char) )&& (!((current_char)==(LEGAL_DELIMITER ))))
         {
-            free(iterating_char);
+           
             return false;
         }
-        iterating_char++;
-    }
-    free(iterating_char);
+        index++;
+
+    } 
+
     return true;
 }
-static const char *intToChar(int int_to_convert)
-{
-    int num_of_digits = ceil(log10(int_to_convert)); // check the log to se  how many chars we need for the itoa() function
 
-    char *string_of_int = malloc(sizeof(char) * num_of_digits + 1); // +1 for "/0" ceil rounds the double up
-    RETURN_ON_CONDITION(string_of_int, NULL, NULL);                 // check if allocation failed - if so returns NULL in string_of_int
-   RETURN_ON_CONDITION(itoa(int_to_convert, string_of_int, NUMBERING_BASE),NULL, NULL);
-  
-    const char *const_string_to_int = string_of_int;
-
-    return const_string_to_int;
-}
 static void initializeElectionAttributes(Election election)
 {
     //mapClear(election->tribes);
     election->area_count = 0;
     election->allocated_size = AREA_INITIAL_SIZE;
+    election->tribes=NULL; // Added, or createMap
     for (int x = 0; x < election->allocated_size; x++)
     {
         election->areas[x] = NULL; // dont need to clear the map because it wasn't created yet
@@ -256,9 +226,12 @@ static void areasDestroy(Election election) // This is NOT areaDestroy!
 //for gebug
 int main()
 {
-    int id=2134;
-    const char* id_str = intToChar(id);
-    printf("%s",id_str);
+    Election elec =electionCreate();
+    electionAddArea(elec,1234,"winterfell");
+      electionAddArea(elec,1234,"kings landing");
+      electionAddArea(elec,12,"kings landing");
+      electionAddVote(elec,12,676,10);
+    electionDestroy(elec);
 }
 
 #endif //ELECTION_C
