@@ -131,7 +131,7 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     RETURN_ON_CONDITION(area_index=getAreaIndexById(election,area_id),AREA_NOT_FOUND,ELECTION_AREA_NOT_EXIST);
 
     char* tribe_id_str; 
-    DESTROY_ON_CONDITION(tribe_id_str = intToString(area_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+    DESTROY_ON_CONDITION(tribe_id_str = intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
     RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
     //Tribe exists
     RETURN_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes),AREA_SUCCESS,ELECTION_SUCCESS);
