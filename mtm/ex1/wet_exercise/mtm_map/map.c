@@ -256,7 +256,7 @@ MapResult mapRemove(Map map, const char *key) //Done
         prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
         if (!map->iterator_internal->next)
         { // if we want to remove the last element
-            map->map_tail = map->iterator_internal;
+            map->map_tail = map->iterator;
         }
     }
     else
