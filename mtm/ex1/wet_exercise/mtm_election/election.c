@@ -32,6 +32,7 @@ static bool isLegalName(const char* name);
 static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
+static char * checkTribeExsistsAndReturnName(Election election, int tribe_id);
 
 
 
@@ -77,7 +78,7 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
 
     if (mapGet(election->tribes, const_string_of_tribe_id) != NULL){
         free(string_of_tribe_id);
-        return ELECTION_INVALID_ID; // Should be EXIST_ALREADY_TRIBE_ELECTION?
+        return ELECTION_TRIBE_ALREADY_EXIST; // Should be EXIST_ALREADY_TRIBE_ELECTION?
     }
     //RETURN_ON_CONDITION(mapGet(election->tribes, const_string_of_tribe_id), (!NULL), ELECTION_INVALID_ID); // check if tribe_id exsists
     EXECUTE_ON_CONDITION(isLegalName(tribe_name), false,free(string_of_tribe_id), ELECTION_INVALID_NAME);
@@ -113,18 +114,13 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      election->area_count++;
      return ELECTION_SUCCESS;
 }
-//static char * checkIfTribeExsistsAndReturnName();
 const char *electionGetTribeName(Election election, int tribe_id) // Shelly
 {
     RETURN_ON_CONDITION(election, NULL, NULL);
     //does not check the tribe_id is leagal!
-    char* string_of_tribe_id = intToString(tribe_id); // create the char* for the mapGet function
-    RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
-    const char * const_string_of_tribe_id = string_of_tribe_id; // convert char to const char 
-    char* tribe_name = mapGet(election->tribes, const_string_of_tribe_id); // check if tribe_id exsists
+    char* tribe_name = checkTribeExsistsAndReturnName(election, tribe_id);
     RETURN_ON_CONDITION(tribe_name, NULL, NULL);
     const char* const_tribe_name = tribe_name;
-    free(string_of_tribe_id);
     return const_tribe_name;
 }
 ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int num_of_votes)
@@ -139,7 +135,7 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     RETURN_ON_CONDITION(area_index=getAreaIndexById(election,area_id),AREA_NOT_FOUND,ELECTION_AREA_NOT_EXIST);
     // Area exists
     const char* tribe_id_str;
-    DESTROY_ON_CONDITION(tribe_id_str =intToString(area_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+    DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
     RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
     //Tribe exists
     RETURN_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes),AREA_SUCCESS,ELECTION_SUCCESS);
@@ -224,7 +220,6 @@ static void initializeElectionAttributes(Election election)
     //mapClear(election->tribes);
     election->area_count = 0;
     election->allocated_size = AREA_INITIAL_SIZE;
-   // election->tribes = NULL;
     for (int x = 0; x < election->allocated_size; x++)
     {
         election->areas[x] = NULL; // dont need to clear the map because it wasn't created yet
@@ -240,6 +235,14 @@ static void areasDestroy(Election election) // This is NOT areaDestroy!
         areaDestroy(election->areas[i]);
     }
     free(election->areas);
+}
+static char * checkTribeExsistsAndReturnName(Election election, int tribe_id){
+    char* string_of_tribe_id = intToString(tribe_id); // create the char* for the mapGet function
+    RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
+    const char * const_string_of_tribe_id = string_of_tribe_id; // convert char to const char 
+    char* tribe_name = mapGet(election->tribes, const_string_of_tribe_id); // check if tribe_id exsists
+    free(string_of_tribe_id);
+    return tribe_name; // return Tribe nam or NULL if the tribe doesnt exsists
 }
 //for gebug
 int main()

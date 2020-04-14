@@ -161,6 +161,87 @@ mtm_ex/fast:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
 .PHONY : mtm_ex/fast
 
+mtm_election/area.obj: mtm_election/area.c.obj
+
+.PHONY : mtm_election/area.obj
+
+# target to build an object file
+mtm_election/area.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj
+.PHONY : mtm_election/area.c.obj
+
+mtm_election/area.i: mtm_election/area.c.i
+
+.PHONY : mtm_election/area.i
+
+# target to preprocess a source file
+mtm_election/area.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/area.c.i
+.PHONY : mtm_election/area.c.i
+
+mtm_election/area.s: mtm_election/area.c.s
+
+.PHONY : mtm_election/area.s
+
+# target to generate assembly for a file
+mtm_election/area.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/area.c.s
+.PHONY : mtm_election/area.c.s
+
+mtm_election/election.obj: mtm_election/election.c.obj
+
+.PHONY : mtm_election/election.obj
+
+# target to build an object file
+mtm_election/election.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj
+.PHONY : mtm_election/election.c.obj
+
+mtm_election/election.i: mtm_election/election.c.i
+
+.PHONY : mtm_election/election.i
+
+# target to preprocess a source file
+mtm_election/election.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election.c.i
+.PHONY : mtm_election/election.c.i
+
+mtm_election/election.s: mtm_election/election.c.s
+
+.PHONY : mtm_election/election.s
+
+# target to generate assembly for a file
+mtm_election/election.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election.c.s
+.PHONY : mtm_election/election.c.s
+
+mtm_election/electionUtils.obj: mtm_election/electionUtils.c.obj
+
+.PHONY : mtm_election/electionUtils.obj
+
+# target to build an object file
+mtm_election/electionUtils.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj
+.PHONY : mtm_election/electionUtils.c.obj
+
+mtm_election/electionUtils.i: mtm_election/electionUtils.c.i
+
+.PHONY : mtm_election/electionUtils.i
+
+# target to preprocess a source file
+mtm_election/electionUtils.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.i
+.PHONY : mtm_election/electionUtils.c.i
+
+mtm_election/electionUtils.s: mtm_election/electionUtils.c.s
+
+.PHONY : mtm_election/electionUtils.s
+
+# target to generate assembly for a file
+mtm_election/electionUtils.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.s
+.PHONY : mtm_election/electionUtils.c.s
+
 mtm_map/map.obj: mtm_map/map.c.obj
 
 .PHONY : mtm_map/map.obj
@@ -188,33 +269,6 @@ mtm_map/map.c.s:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.s
 .PHONY : mtm_map/map.c.s
 
-tests/shai_test.obj: tests/shai_test.c.obj
-
-.PHONY : tests/shai_test.obj
-
-# target to build an object file
-tests/shai_test.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj
-.PHONY : tests/shai_test.c.obj
-
-tests/shai_test.i: tests/shai_test.c.i
-
-.PHONY : tests/shai_test.i
-
-# target to preprocess a source file
-tests/shai_test.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.i
-.PHONY : tests/shai_test.c.i
-
-tests/shai_test.s: tests/shai_test.c.s
-
-.PHONY : tests/shai_test.s
-
-# target to generate assembly for a file
-tests/shai_test.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.s
-.PHONY : tests/shai_test.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -226,12 +280,18 @@ help:
 	@echo ... package_source
 	@echo ... rebuild_cache
 	@echo ... mtm_ex
+	@echo ... mtm_election/area.obj
+	@echo ... mtm_election/area.i
+	@echo ... mtm_election/area.s
+	@echo ... mtm_election/election.obj
+	@echo ... mtm_election/election.i
+	@echo ... mtm_election/election.s
+	@echo ... mtm_election/electionUtils.obj
+	@echo ... mtm_election/electionUtils.i
+	@echo ... mtm_election/electionUtils.s
 	@echo ... mtm_map/map.obj
 	@echo ... mtm_map/map.i
 	@echo ... mtm_map/map.s
-	@echo ... tests/shai_test.obj
-	@echo ... tests/shai_test.i
-	@echo ... tests/shai_test.s
 .PHONY : help
 
 
