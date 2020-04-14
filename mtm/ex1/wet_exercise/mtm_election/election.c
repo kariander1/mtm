@@ -35,6 +35,7 @@ static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
 static char *intToChar(int int_to_convert);
+static char * checkTribeExsistsAndReturnName(Election election, int tribe_id);
 
 #define IS_LOWER(c) ((c) >= 'a' && (c) <= 'z') 
 /*!
@@ -135,18 +136,14 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      election->area_count++;
      return ELECTION_SUCCESS;
 }
-static char * checkIfTribeExsistsAndReturnName();
+
 const char *electionGetTribeName(Election election, int tribe_id) // Shelly
 {
     RETURN_ON_CONDITION(election, NULL, NULL);
     //does not check the tribe_id is leagal!
-    char* string_of_tribe_id = intToChar(tribe_id); // create the char* for the mapGet function
-    RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
-    const char * const_string_of_tribe_id = string_of_tribe_id; // convert char to const char 
-    char* tribe_name = mapGet(election->tribes, const_string_of_tribe_id); // check if tribe_id exsists
+    char* tribe_name = checkTribeExsistsAndReturnName(election, tribe_id);
     RETURN_ON_CONDITION(tribe_name, NULL, NULL);
     const char* const_tribe_name = tribe_name;
-    free(string_of_tribe_id);
     return const_tribe_name;
 }
 ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int num_of_votes)
@@ -236,9 +233,8 @@ static bool isLegalName(const char* name)
 }
 static char *intToChar(int int_to_convert)
 {
-    int num_of_digits = ceil(log10(int_to_convert)); // check the log to se  how many chars we need for the itoa() function
-
-    char *string_of_int = malloc(sizeof(char) * num_of_digits + 1); // +1 for "/0" ceil rounds the double up
+    int num_of_digits = log10(int_to_convert); // check the log to se  how many chars we need for the itoa() function
+    char *string_of_int = malloc(sizeof(char) * num_of_digits + 2); // +1 for "/0" +1 for round up
     RETURN_ON_CONDITION(string_of_int, NULL, NULL);                 // check if allocation failed - if so returns NULL in string_of_int
     RETURN_ON_CONDITION(itoa(int_to_convert, string_of_int, NUMBERING_BASE),NULL, NULL);
   
@@ -250,8 +246,7 @@ static void initializeElectionAttributes(Election election)
 {
     //mapClear(election->tribes);
     election->area_count = 0;
-    election->allocated_size = 0;
-    election->tribes = NULL;
+    election->allocated_size = AREA_INITIAL_SIZE;
     for (int x = 0; x < election->allocated_size; x++)
     {
         election->areas[x] = NULL; // dont need to clear the map because it wasn't created yet
@@ -268,12 +263,21 @@ static void areasDestroy(Election election) // This is NOT areaDestroy!
     }
     free(election->areas);
 }
+static char * checkTribeExsistsAndReturnName(Election election, int tribe_id){
+    char* string_of_tribe_id = intToChar(tribe_id); // create the char* for the mapGet function
+    RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
+    const char * const_string_of_tribe_id = string_of_tribe_id; // convert char to const char 
+    char* tribe_name = mapGet(election->tribes, const_string_of_tribe_id); // check if tribe_id exsists
+    free(string_of_tribe_id);
+    return tribe_name; // return Tribe nam or NULL if the tribe doesnt exsists
+}
 //for gebug
 int main()
 {
     Election election1 = electionCreate();
-    electionAddTribe(election1, 55, "Test");
-    electionGetTribeName(election1, 55);
+    //electionAddTribe(election1, 55, "Test");
+    //electionGetTribeName(election1, 55);
+    checkTribeExsistsAndReturnName(election1, 55);
 }
 
 #endif //ELECTION_C
