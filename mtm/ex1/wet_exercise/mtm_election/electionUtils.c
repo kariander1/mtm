@@ -12,7 +12,6 @@
 
 int stringToInt(char* str)
 {
-    
     return atoi(str);
 }
 char *intToString(int int_to_convert)

@@ -18,6 +18,7 @@
 #define AREA_MULTIPLIER_SIZE 2
 #define AREA_NOT_FOUND -1
 #define LEGAL_DELIMITER ' '
+#define EMPTY 0
 
 
 struct election_t
@@ -130,11 +131,11 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     int area_index;
     RETURN_ON_CONDITION(area_index=getAreaIndexById(election,area_id),AREA_NOT_FOUND,ELECTION_AREA_NOT_EXIST);
 
-    char* tribe_id_str; 
-    DESTROY_ON_CONDITION(tribe_id_str = intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+    char* tribe_id_str = intToString(tribe_id); 
+    DESTROY_ON_CONDITION(tribe_id_str ,NULL ,election,ELECTION_OUT_OF_MEMORY);
     RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
     //Tribe exists
-    RETURN_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes),AREA_SUCCESS,ELECTION_SUCCESS);
+    RETURN_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes),AREA_SUCCESS,ELECTION_SUCCESS); //don't you need to set as const char?------
     
     return ELECTION_OUT_OF_MEMORY; //Maybe?
 }
@@ -149,8 +150,12 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
     RETURN_ON_CONDITION(area_index, AREA_NOT_FOUND, ELECTION_AREA_NOT_EXIST);
 
     RETURN_ON_CONDITION(electionGetTribeName(election, tribe_id), NULL, ELECTION_TRIBE_NOT_EXIST);
-    areaChangeVotesToTribe(election->areas[area_index], tribe_id, 0-num_of_votes); //NEED TO IMPLEMENT
-    DESTROY_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index], tribe_id, 0-num_of_votes),ELECTION_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY)
+
+    char * string_tribe_id = intToString(tribe_id);
+    DESTROY_ON_CONDITION(string_tribe_id ,NULL ,election,ELECTION_OUT_OF_MEMORY);
+    const char * const_tribe_id = string_tribe_id;
+    DESTROY_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index], const_tribe_id, 0-num_of_votes),ELECTION_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY)
+    
     return ELECTION_SUCCESS; // Placeholder
 }
 ElectionResult electionSetTribeName(Election election, int tribe_id, const char *tribe_name) // Shai
@@ -212,9 +217,22 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
     }
     return ELECTION_SUCCESS; // Placeholder
 }
+
 Map electionComputeAreasToTribesMapping(Election election) // UNITED!
 {
-    return NULL; // Placeholder
+    RETURN_ON_CONDITION(election, NULL, mapCreate()); // if null -create empty map
+    RETURN_ON_CONDITION(mapGetSize(election->tribes), EMPTY, mapCreate());// if empty -create empty map
+    RETURN_ON_CONDITION(*(election->areas), NULL, mapCreate());// if null -create empty map
+    Map elections_map = mapCreate();
+    for(int index = 0; index < election->area_count; index ++){
+        const char * most_votes_tribe_id = areaGetMostVotesTribe(election->areas[index]); // get the tribe_id with most votes
+        RETURN_ON_CONDITION(most_votes_tribe_id, NULL,NULL);
+        char * area_id_string = intToString(election->areas[index]->area_id); // get area_id
+        RETURN_ON_CONDITION(area_id_string, NULL,NULL);
+        const char * const_area_id = area_id_string; // turn area_id to const char
+        mapPut(elections_map, const_area_id,most_votes_tribe_id ); // put {area_id : tribe_id} in map
+    }
+    return elections_map; // Placeholder
 }
 
 
@@ -303,19 +321,19 @@ int main()
     bool (*ptr)(int) = NULL;
     ptr = Todelete_area;
     Election elec =electionCreate();
-     //   electionAddArea(elec,1234,"winterfell");
+    electionAddArea(elec,1234,"winterfell");
    //   electionAddArea(elec,1234,"kings landing");
-    //  electionAddArea(elec,12,"kings landing");
- //     electionAddTribe(elec, 676, "voodoo");
-      electionAddTribe(elec, 350, "popo");
-     // electionAddVote(elec, 12, 676, 10);
-     // electionAddVote(elec, 12, 350, 20);
-    //  electionAddVote(elec, 1234, 350, 30);
-      electionRemoveTribe(elec, 350);
+    electionAddArea(elec,12,"kings landing");
+    electionAddTribe(elec, 676, "voodoo");
     electionAddTribe(elec, 350, "popo");
-   // electionAddVote(elec, 1234, 350, 30); // Maybe also bug here
+    electionAddVote(elec, 12, 676, 10);
+    electionAddVote(elec, 12, 350, 20);
+    electionAddVote(elec, 1234, 350, 30);
+    //electionRemoveTribe(elec, 350);
+    //electionAddTribe(elec, 350, "popo");
+    //electionRemoveVote(elec, 12, 676, 6); // Maybe also bug here
      // electionSetTribeName(elec, 6766, "power");
-
+    electionComputeAreasToTribesMapping(elec);
       electionDestroy(elec);
 }
 
