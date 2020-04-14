@@ -48,9 +48,10 @@ Election electionCreate() //Shelly
     Election new_Election = malloc(sizeof(*new_Election));
     assert(new_Election);
     RETURN_ON_CONDITION(new_Election,NULL, NULL); // check if new_election in NULL and return NULL if so
-    //Map tribes = mapCreate();
-    //RETURN_ON_CONDITION(tribes,NULL, NULL); // I think we need to use MapCreate no? - I don't think so because the new_Election creates it
+    new_Election->tribes = mapCreate();// create Map tribes 
+    RETURN_ON_CONDITION(new_Election->tribes,NULL, NULL); 
     new_Election->areas = malloc(sizeof(*new_Election->areas)*AREA_INITIAL_SIZE); // create an array of areas
+    RETURN_ON_CONDITION(new_Election->areas,NULL, NULL);
     initializeElectionAttributes(new_Election); // initial all attributes to be null or 0 accordingly
     return new_Election;
 }
@@ -67,18 +68,25 @@ void electionDestroy(Election election)
 ElectionResult electionAddTribe(Election election, int tribe_id, const char *tribe_name) // Shelly
 {
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
-    //RETURN_ON_CONDITION(tribe_id, NULL,ELECTION_NULL_ARGUMENT); // BUG! should use isLegalID
     RETURN_ON_CONDITION(tribe_name, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
-    const char* string_of_tribe_id = intToString(tribe_id); // create the car for the mapGet function
+    char* string_of_tribe_id = intToString(tribe_id); // create the char* for the mapGet function
     RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
-    RETURN_ON_CONDITION(mapGet(election->tribes, string_of_tribe_id), false, ELECTION_INVALID_ID);
-    //free(string_of_tribe_id); // free the string after usage
-    RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
-    mapPut(election->tribes,string_of_tribe_id,tribe_name); // the free of string_of_tribe_id is done by mapClear
-    //free(string_of_tribe_id); // free the string after usage // Shai :  // BUG! should use isLegalID
-    // You can use islegalID and isLegalNAME static functions located down V
-    return ELECTION_SUCCESS; // Placeholder
+    const char * const_string_of_tribe_id = string_of_tribe_id;
+     // free the string after usage// should be freed here, if later, the program might return wthout freeing
+
+    if (mapGet(election->tribes, const_string_of_tribe_id) != NULL){
+        free(string_of_tribe_id);
+        return ELECTION_INVALID_ID; // Should be EXIST_ALREADY_TRIBE_ELECTION?
+    }
+    //RETURN_ON_CONDITION(mapGet(election->tribes, const_string_of_tribe_id), (!NULL), ELECTION_INVALID_ID); // check if tribe_id exsists
+    EXECUTE_ON_CONDITION(isLegalName(tribe_name), false,free(string_of_tribe_id), ELECTION_INVALID_NAME);
+    EXECUTE_ON_CONDITION(mapPut(election->tribes,const_string_of_tribe_id,tribe_name),MAP_SUCCESS,     free(string_of_tribe_id),ELECTION_SUCCESS); //add the new tribe // should check for errors!
+    // If reached here, something went wrong
+     free(string_of_tribe_id);
+    
+    electionDestroy(election);
+    return ELECTION_OUT_OF_MEMORY; // Placeholder
 }
 
 ElectionResult electionAddArea(Election election, int area_id, const char *area_name)
@@ -105,9 +113,19 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      election->area_count++;
      return ELECTION_SUCCESS;
 }
+//static char * checkIfTribeExsistsAndReturnName();
 const char *electionGetTribeName(Election election, int tribe_id) // Shelly
 {
-    return ""; // Placeholder
+    RETURN_ON_CONDITION(election, NULL, NULL);
+    //does not check the tribe_id is leagal!
+    char* string_of_tribe_id = intToString(tribe_id); // create the char* for the mapGet function
+    RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
+    const char * const_string_of_tribe_id = string_of_tribe_id; // convert char to const char 
+    char* tribe_name = mapGet(election->tribes, const_string_of_tribe_id); // check if tribe_id exsists
+    RETURN_ON_CONDITION(tribe_name, NULL, NULL);
+    const char* const_tribe_name = tribe_name;
+    free(string_of_tribe_id);
+    return const_tribe_name;
 }
 ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int num_of_votes)
 {
@@ -206,7 +224,7 @@ static void initializeElectionAttributes(Election election)
     //mapClear(election->tribes);
     election->area_count = 0;
     election->allocated_size = AREA_INITIAL_SIZE;
-    election->tribes=NULL; // Added, or createMap
+   // election->tribes = NULL;
     for (int x = 0; x < election->allocated_size; x++)
     {
         election->areas[x] = NULL; // dont need to clear the map because it wasn't created yet
@@ -230,8 +248,9 @@ int main()
     electionAddArea(elec,1234,"winterfell");
       electionAddArea(elec,1234,"kings landing");
       electionAddArea(elec,12,"kings landing");
+      electionAddTribe(elec,676,"voodoo");
       electionAddVote(elec,12,676,10);
     electionDestroy(elec);
 }
 
-#endif //ELECTION_C
+#endif //ELECTION_C_

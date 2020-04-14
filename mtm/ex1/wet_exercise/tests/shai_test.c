@@ -144,7 +144,7 @@ int getSelection(int lower, int upper, int exception)
 bool executeOperations()
 {
     int selection = getSelection(1, OPTIONS, 1);
-    printf("Chosen operation : %s",getOptionText(selection));
+    printf("Chosen operation : %s\n\n",getOptionText(selection));
     switch (selection)
     {
     case MAP_CREATE:
