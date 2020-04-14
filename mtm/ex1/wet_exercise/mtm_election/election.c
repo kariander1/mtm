@@ -103,7 +103,7 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
     RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
     const char * const_string_of_tribe_id = string_of_tribe_id;
     if (mapGet(election->tribes, const_string_of_tribe_id) != NULL){
-        return ELECTION_INVALID_ID;
+        return ELECTION_TRIBE_ALREADY_EXIST;
     }
     //RETURN_ON_CONDITION(mapGet(election->tribes, const_string_of_tribe_id), (!NULL), ELECTION_INVALID_ID); // check if tribe_id exsists
     RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
