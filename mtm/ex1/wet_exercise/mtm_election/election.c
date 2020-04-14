@@ -46,7 +46,14 @@ static char* checkTribeExsistsAndReturnName(Election election, int tribe_id);
     {                                                \
         return (return_value);                       \
     }
-
+/*!
+* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
+*/
+#define RETURN_ON_NOT_CONDITION(object,comparator, return_value) \
+    if ((object) != comparator)                                   \
+    {                                                \
+        return (return_value);                       \
+    }
     /*!
 * Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
 */
@@ -64,12 +71,29 @@ static char* checkTribeExsistsAndReturnName(Election election, int tribe_id);
     {                                                \
         return;                       \
     }
-
-
+/*!
+* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
+*/
+#define EXECUTE_ON_CONDITION(object,comparator, expression,return_value) \
+if ((object) == (comparator))\
+{\
+    expression;\
+    return (return_value);\
+}
+/*!
+* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
+*/
+#define EXECUTE_ON_NOT_CONDITION(object,comparator, expression,return_value) \
+if ((object) != (comparator))\
+{\
+    expression;\
+    return (return_value);\
+}
 /* FUNCTUIONS REGARDING AREA:
 - areaClear(Area area)
 - areaCreate()
 - areaDestroy(Area area)
+- areaChangeNumOfVotes(Area area, tribe_id, +-num_of_votes);
 */
 
 Election electionCreate() //Shelly
@@ -100,13 +124,14 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
     RETURN_ON_CONDITION(tribe_name, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
     char* string_of_tribe_id = intToChar(tribe_id); // create the char* for the mapGet function
-    RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
-    const char * const_string_of_tribe_id = string_of_tribe_id;
-    if (mapGet(election->tribes, const_string_of_tribe_id) != NULL){
-        return ELECTION_TRIBE_ALREADY_EXIST;
+    if (string_of_tribe_id == NULL){
+        free(string_of_tribe_id);
+        electionDestroy(election);
+        return  ELECTION_OUT_OF_MEMORY;
     }
-    //RETURN_ON_CONDITION(mapGet(election->tribes, const_string_of_tribe_id), (!NULL), ELECTION_INVALID_ID); // check if tribe_id exsists
-    RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
+    const char * const_string_of_tribe_id = string_of_tribe_id;
+    EXECUTE_ON_NOT_CONDITION(mapGet(election->tribes, const_string_of_tribe_id), NULL, free(string_of_tribe_id),ELECTION_TRIBE_ALREADY_EXIST );
+    EXECUTE_ON_CONDITION(isLegalName(tribe_name), false ,free(string_of_tribe_id), ELECTION_INVALID_NAME );
     mapPut(election->tribes,const_string_of_tribe_id,tribe_name); //add the new tribe
     free(string_of_tribe_id); // free the string after usage
     return ELECTION_SUCCESS; // Placeholder
@@ -156,7 +181,7 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     int area_index;
     RETURN_ON_CONDITION(area_index=getAreaIndexById(election,area_id),AREA_NOT_FOUND,ELECTION_AREA_NOT_EXIST);
 
-    const char* tribe_id_str;
+    char* tribe_id_str; // you can use electionGetTribeName - returns NULL if tribe name not found
     DESTROY_ON_CONDITION(tribe_id_str =intToChar(area_id),NULL,election,ELECTION_OUT_OF_MEMORY);
     RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
     
@@ -166,8 +191,17 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
 }
 ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, int num_of_votes) // Shelly
 {
+    RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
+    RETURN_ON_CONDITION(isLegalId(area_id), false, ELECTION_INVALID_ID);
+    RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
+    RETURN_ON_CONDITION(isLegalVotes(num_of_votes), false, ELECTION_INVALID_VOTES);
 
-    // You can use getAreaIndexById function
+    int area_index = getAreaIndexById(election, area_id);
+    RETURN_ON_CONDITION(area_index, AREA_NOT_FOUND, ELECTION_AREA_NOT_EXIST);
+
+    RETURN_ON_CONDITION(electionGetTribeName(election, tribe_id), NULL, ELECTION_TRIBE_NOT_EXIST);
+    // areaChangeNumOfVotes(election->areas[area_index], tribe_id, 0-num_of_votes); -- NEED TO IMPLEMENT
+    //DESTROY_ON_CONDITION(areaChangeNumOfVotes,NULL,election,ELECTION_OUT_OF_MEMORY)
     return ELECTION_SUCCESS; // Placeholder
 }
 ElectionResult electionSetTribeName(Election election, int tribe_id, const char *tribe_name) // Shai
