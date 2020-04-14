@@ -9,7 +9,6 @@ struct area_t
     int area_id;
     char* area_name;
     Map votes;
-    
 };
 
 

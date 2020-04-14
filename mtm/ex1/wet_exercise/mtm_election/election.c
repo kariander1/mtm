@@ -19,7 +19,7 @@
 
 struct election_t
 {
-    Map tribes;  // ID + name
+    Map tribes;  // ID = key , name = value
     Area *areas; // Array of areas
     int area_count;
     int allocated_size;
@@ -69,19 +69,18 @@ static const char *intToChar(int int_to_convert);
 - areaDestroy(Area area)
 */
 
-Election electionCreate()
+Election electionCreate() //Shelly
 {
     Election new_Election = malloc(sizeof(*new_Election));
     assert(new_Election);
     RETURN_ON_CONDITION(new_Election,NULL, NULL); // check if new_election in NULL and return NULL if so
-                                                // new_Election->tribes = malloc(sizeof(new_Election->tribes)*AREA_INITIAL_SIZE); // create an initialized size of areas
-    Map tribes = mapCreate();
-    RETURN_ON_CONDITION(tribes,NULL, NULL); // I think we need to use MapCreate no?
-    new_Election->tribes = tribes;
+    //Map tribes = mapCreate();
+    //RETURN_ON_CONDITION(tribes,NULL, NULL); // I think we need to use MapCreate no? - I don't think so because the new_Election creates it
+    new_Election->areas = malloc(sizeof(*new_Election->areas)*AREA_INITIAL_SIZE); // create an array of areas
     initializeElectionAttributes(new_Election); // initial all attributes to be null or 0 accordingly
-
     return new_Election;
 }
+
 void electionDestroy(Election election)
 {
     RETURN_ON_CONDITION_NO_VALUE(election,NULL);
@@ -93,9 +92,21 @@ void electionDestroy(Election election)
 
 ElectionResult electionAddTribe(Election election, int tribe_id, const char *tribe_name) // Shelly
 {
+    RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
+    RETURN_ON_CONDITION(tribe_id, NULL,ELECTION_NULL_ARGUMENT);
+    RETURN_ON_CONDITION(tribe_name, NULL,ELECTION_NULL_ARGUMENT);
+    RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
+    const char* string_of_tribe_id = intToChar(tribe_id); // create the car for the mapGet function
+    RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
+    RETURN_ON_CONDITION(mapGet(election->tribes, string_of_tribe_id), false, ELECTION_INVALID_ID);
+    //free(string_of_tribe_id); // free the string after usage
+    RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
+    mapPut(election->tribes,string_of_tribe_id,tribe_name); // the free of string_of_tribe_id is done by mapClear
+    free(string_of_tribe_id); // free the string after usage
     // You can use islegalID and isLegalNAME static functions located down V
     return ELECTION_SUCCESS; // Placeholder
 }
+
 ElectionResult electionAddArea(Election election, int area_id, const char *area_name)
 {
      RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
@@ -223,15 +234,16 @@ static const char *intToChar(int int_to_convert)
 }
 static void initializeElectionAttributes(Election election)
 {
-    mapClear(election->tribes);
-    for (int x = 0; x < election->area_count; x++)
-    {
-        //election->tribes[x] = NULL;
-    }
+    //mapClear(election->tribes);
     election->area_count = 0;
     election->allocated_size = AREA_INITIAL_SIZE;
-    // areaClear(election->areas); //Will implement, should be iterating over all areas
+    for (int x = 0; x < election->allocated_size; x++)
+    {
+        election->areas[x] = NULL; // dont need to clear the map because it wasn't created yet
+    }
+    return;
 }
+
 static void areasDestroy(Election election) // This is NOT areaDestroy!
 {
     RETURN_ON_CONDITION_NO_VALUE(election,NULL);
@@ -241,7 +253,7 @@ static void areasDestroy(Election election) // This is NOT areaDestroy!
     }
     free(election->areas);
 }
-
+//for gebug
 int main()
 {
     int id=2134;
