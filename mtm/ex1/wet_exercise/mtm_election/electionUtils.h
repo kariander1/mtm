@@ -45,6 +45,17 @@ if (!(object))\
 /*!
 * Macro for shortening returning values for non-existence of a object with an extra expression to execute.
 */
+#define EXECUTE_ON_NOT_CONDITION(object,comparator, expression,return_value) \
+if ((object) != (comparator))\
+{\
+    expression;\
+    return (return_value);\
+}
+
+
+/*!
+* Macro for shortening returning values for non-existence of a object with an extra expression to execute.
+*/
 #define EXECUTE_ON_CONDITION(object,comparator, expression,return_value) \
 if ((object) == (comparator))\
 {\

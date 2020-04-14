@@ -55,19 +55,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\VScode\mtm\ex1\wet_exercise
+CMAKE_SOURCE_DIR = C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
+CMAKE_BINARY_DIR = C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -75,7 +75,7 @@ CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/VScode/mtm/ex1/wet_exercise/build/CPackSourceConfig.cmake
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -86,7 +86,7 @@ package_source/fast: package_source
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackConfig.cmake
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cpack.exe" --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -97,7 +97,7 @@ package/fast: package
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -108,7 +108,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -118,9 +118,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target

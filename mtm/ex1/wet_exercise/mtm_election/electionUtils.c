@@ -17,11 +17,11 @@ int stringToInt(char* str)
 }
 char *intToString(int int_to_convert)
 {
-    int num_of_digits = ceil(log10(int_to_convert)); // check the log to se  how many chars we need for the itoa() function
+    int num_of_digits = log10(int_to_convert); // check the log to se  how many chars we need for the itoa() function
 
-    char *string_of_int = malloc(sizeof(char) * num_of_digits + 1); // +1 for "/0" ceil rounds the double up
+    char *string_of_int = malloc(sizeof(char) * num_of_digits + 2); // +1 for "/0"  +1 for round up int
     RETURN_ON_CONDITION(string_of_int, NULL, NULL);                 // check if allocation failed - if so returns NULL in string_of_int
-   RETURN_ON_CONDITION(itoa(int_to_convert, string_of_int, NUMBERING_BASE),NULL, NULL);
+    RETURN_ON_CONDITION(itoa(int_to_convert, string_of_int, NUMBERING_BASE),NULL, NULL);
   
     //const char *const_string_to_int = string_of_int;
 

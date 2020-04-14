@@ -12,6 +12,12 @@ struct area_t
     Map votes;
 };
 
+/* FUNCTUIONS REGARDING AREA:
+- areaClear(Area area)
+- areaCreate()
+- areaDestroy(Area area)
+- areaChangeNumOfVotes(Area area, tribe_id, +-num_of_votes);
+*/
 
 Area areaCreate(int area_id,const char* area_name)
 {
