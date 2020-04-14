@@ -1,6 +1,6 @@
 
-#ifndef MAP_C
-#define MAP_C
+#ifndef MAP_C_
+#define MAP_C_
 
 //Should add asserts
 #include <assert.h>
@@ -8,11 +8,11 @@
 #include <stdlib.h>
 
 #include <string.h>
-#include <stdio.h>
 
 #define ZERO_ELEMENTS 0
 #define SIZE_OF_NULL_MAP -1
 
+#ifndef RETURN_ON_NONEXISTENCE
 /*!
 * Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
 */
@@ -21,6 +21,9 @@ if (!(object))\
 {\
     return (return_value);\
 }
+
+#endif
+#ifndef EXECUTE_ON_NONEXISTENCE
 /*!
 * Macro for shortening returning values for non-existence of a object with an extra expression to execute.
 */
@@ -30,7 +33,18 @@ if (!(object))\
     expression;\
     return (return_value);\
 }
+#endif
+#ifndef RETURN_ON_CONDITION_NO_VALUE
+/*!
+* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
+*/
+#define RETURN_ON_CONDITION_NO_VALUE(object,comparator) \
+    if ((object) == comparator)                                   \
+    {                                                \
+        return;                       \
+    }
 
+#endif
 typedef struct node_t
 {
     char *key;  
@@ -132,14 +146,11 @@ Map mapCreate()
 }
 void mapDestroy(Map map)
 {
-    if (mapClear(map) == MAP_NULL_ARGUMENT)
-    { // clears all data from map
-        return;
-    }
-    else
-    {
+    RETURN_ON_CONDITION_NO_VALUE(map,NULL);
+    RETURN_ON_CONDITION_NO_VALUE(mapClear(map),MAP_NULL_ARGUMENT);
+
         free(map);
-    }
+    
     return;
 }
 Map mapCopy(Map map)
@@ -317,6 +328,8 @@ static char *mapGetNextInternal(Map map) //Similar to mapGetNext, only this time
 }
 static char *mapGetNextKeyAndPromote(MapEntry *original_entry, MapEntry *next_entry)
 {
+     RETURN_ON_NONEXISTENCE(original_entry,NULL); // Check pointers aren't NULL! bug found from elections
+     RETURN_ON_NONEXISTENCE(next_entry,NULL);
     *original_entry = *next_entry;
     return (*original_entry ? (*original_entry)->key : NULL);
 }

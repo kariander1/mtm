@@ -1,5 +1,5 @@
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build/CMakeFiles/package_source.dir
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build/CMakeFiles/package.dir
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build/CMakeFiles/edit_cache.dir
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build/CMakeFiles/rebuild_cache.dir
+C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/package_source.dir
+C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir
+C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/package.dir
+C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/edit_cache.dir
+C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/rebuild_cache.dir
