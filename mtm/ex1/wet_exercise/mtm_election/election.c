@@ -34,12 +34,7 @@ static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
 static char * checkTribeExsistsAndReturnName(Election election, int tribe_id);
 
-/* FUNCTUIONS REGARDING AREA:
-- areaClear(Area area)
-- areaCreate()
-- areaDestroy(Area area)
-- areaChangeNumOfVotes(Area area, tribe_id, +-num_of_votes);
-*/
+
 
 Election electionCreate() //Shelly
 {
