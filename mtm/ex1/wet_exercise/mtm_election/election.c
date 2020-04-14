@@ -34,8 +34,8 @@ static bool isLegalName(const char* name);
 static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
-static char *intToChar(int int_to_convert);
-static char * checkTribeExsistsAndReturnName(Election election, int tribe_id);
+static char* intToChar(int int_to_convert);
+static char* checkTribeExsistsAndReturnName(Election election, int tribe_id);
 
 #define IS_LOWER(c) ((c) >= 'a' && (c) <= 'z') 
 /*!
@@ -166,6 +166,7 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
 }
 ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, int num_of_votes) // Shelly
 {
+
     // You can use getAreaIndexById function
     return ELECTION_SUCCESS; // Placeholder
 }
