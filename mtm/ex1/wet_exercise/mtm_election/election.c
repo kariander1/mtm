@@ -102,6 +102,7 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
     //free(string_of_tribe_id); // free the string after usage
     RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
     mapPut(election->tribes,string_of_tribe_id,tribe_name); // the free of string_of_tribe_id is done by mapClear
+    free(string_of_tribe_id); // free the string after usage
     // You can use islegalID and isLegalNAME static functions located down V
     return ELECTION_SUCCESS; // Placeholder
 }
