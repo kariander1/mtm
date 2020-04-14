@@ -10,6 +10,12 @@ C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/election.h
 mtm_map/map.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
 
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.c
+area.h
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.h
+../mtm_map/map.h
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
+
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.h
 stdbool.h
 -
@@ -30,6 +36,18 @@ string.h
 stdio.h
 -
 math.h
+-
+
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.c
+assert.h
+-
+map.h
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
+stdlib.h
+-
+string.h
+-
+stdio.h
 -
 
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
