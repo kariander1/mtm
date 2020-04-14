@@ -269,7 +269,7 @@ MapResult mapRemove(Map map, const char *key) //Done
     }
     freeEntry(map->iterator_internal);
 
-    map->number_of_entries--; // Added
+    map->number_of_entries--; 
 
     return MAP_SUCCESS;
 }
