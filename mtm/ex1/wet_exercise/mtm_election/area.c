@@ -13,7 +13,7 @@ struct area_t
 };
 
 
-Area areaCreate(int area_id,char* area_name)
+Area areaCreate(int area_id,const char* area_name)
 {
     return NULL;
 }

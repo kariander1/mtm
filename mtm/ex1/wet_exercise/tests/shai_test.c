@@ -55,15 +55,12 @@ void operationRemove();
 void operationIterate();
 void operationGetNext();
 int getMaxIndexOfMapsWithPrint();
+char* getOptionText(int i);
 
-
-void printOptions()
+char* getOptionText(int i)
 {
-    printf("Please select option: [1-%d]\n", OPTIONS);
-    char *option_text;
-    for (int i = 1; i <= OPTIONS; i++)
-    {
-        switch (i)
+        char *option_text;
+switch (i)
         {
         case MAP_CREATE:
             option_text = "Create Map";
@@ -118,6 +115,16 @@ option_text = "Override Inputs";
         default:
             break;
         }
+
+        return option_text;
+}
+void printOptions()
+{
+    printf("Please select option: [1-%d]\n", OPTIONS);
+    char *option_text;
+    for (int i = 1; i <= OPTIONS; i++)
+    {
+        option_text = getOptionText(i);
         printf("%d - %s\n", i, option_text);
     }
 }
@@ -130,12 +137,14 @@ int getSelection(int lower, int upper, int exception)
         printf("Invalid input - input N.%d\n",inputs);
         exit(0);
     }
+    printf("Got selection : %d\n",option);
     inputs++;
     return option;
 }
 bool executeOperations()
 {
     int selection = getSelection(1, OPTIONS, 1);
+    printf("Chosen operation : %s",getOptionText(selection));
     switch (selection)
     {
     case MAP_CREATE:
@@ -303,6 +312,7 @@ void operationGetNext()
     */
     printf("From which map would you like to GetNext? [0-%d]\n", MAX_MAPS);
     int selection = getSelection(0, MAX_MAPS, 0);
+    
     char *next = mapGetNext(maps[selection]);
     printf("Next entry is : %s\n", next);
 }
@@ -315,6 +325,7 @@ void operationGetFirst()
     }
     printf("From which map would you like to GetFirst? [0-%d]\n", maxi);
     int selection = getSelection(0, maxi, 0);
+  
     char *first = mapGetFirst(maps[selection]);
     printf("First entry is : %s\n", first);
 }
@@ -345,6 +356,7 @@ void operationRemove()
     char key[50];
     printf("Which key would you like to remove?\n");
     scanf("%s", key);
+    printf("Got key : %s\n",key);
     inputs++;
     MapResult status = mapRemove(maps[selection], key);
     printMapResult(status);
@@ -362,6 +374,7 @@ void operationGet()
     char key[50];
     printf("Which key would you like to get?\n");
     scanf("%s", key);
+     printf("Got key : %s\n",key);
     inputs++;
     char *value = mapGet(maps[selection], key);
     printf("Key %s has value of %s\n", key, value);
@@ -378,6 +391,7 @@ void operationContains()
     char key[50];
     printf("Which key would you like to search?\n");
     scanf("%s", key);
+     printf("Got key : %s\n",key);
     inputs++;
     bool contains = mapContains(maps[selection], key);
     char *found_status = contains ? "Found" : "Not Found";
@@ -416,15 +430,19 @@ void operationPut()
         exit(0);
         return;
     }
+     printf("Got num_of_vals : %d\n",num_of_vals);
     inputs++;
     for (int i = 0; i < num_of_vals; i++)
     {
         char key[50], value[50];
         printf("Please enter key:\n");
         scanf("%s", key);
+
+           printf("Got key : %s\n",key);
         inputs++;
         printf("Please enter value:\n");
         scanf("%s", value);
+            printf("Got value : %s\n",value);
         inputs++;
         printMapResult(mapPut(maps[selection], key, value));
     }
