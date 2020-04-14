@@ -261,6 +261,10 @@ MapResult mapRemove(Map map, const char *key) //Done
     }
     else
     {
+        if (map->iterator_internal->next == NULL){// if the next element is null - the fisrt and last map in the list
+            map->map_head = map->iterator_internal;
+            map->map_tail = map->iterator_internal;
+        } 
         map->map_head = map->iterator_internal->next; // if we want to remove the first element - set new head
     }
     freeEntry(map->iterator_internal);

@@ -1,22 +1,22 @@
 [
 {
-  "directory": "C:/VScode/mtm/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm_election\\election.c.obj   -c C:\\VScode\\mtm\\ex1\\wet_exercise\\mtm_election\\election.c",
-  "file": "C:/VScode/mtm/ex1/wet_exercise/mtm_election/election.c"
+  "directory": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm_election\\election.c.obj   -c C:\\Users\\shell\\Technion\\MTM\\ex1\\build\\mtm-1\\mtm\\ex1\\wet_exercise\\mtm_election\\election.c",
+  "file": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/election.c"
 },
 {
-  "directory": "C:/VScode/mtm/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm_election\\area.c.obj   -c C:\\VScode\\mtm\\ex1\\wet_exercise\\mtm_election\\area.c",
-  "file": "C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.c"
+  "directory": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm_election\\area.c.obj   -c C:\\Users\\shell\\Technion\\MTM\\ex1\\build\\mtm-1\\mtm\\ex1\\wet_exercise\\mtm_election\\area.c",
+  "file": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.c"
 },
 {
-  "directory": "C:/VScode/mtm/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm_map\\map.c.obj   -c C:\\VScode\\mtm\\ex1\\wet_exercise\\mtm_map\\map.c",
-  "file": "C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.c"
+  "directory": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm_map\\map.c.obj   -c C:\\Users\\shell\\Technion\\MTM\\ex1\\build\\mtm-1\\mtm\\ex1\\wet_exercise\\mtm_map\\map.c",
+  "file": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.c"
 },
 {
-  "directory": "C:/VScode/mtm/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm_election\\electionUtils.c.obj   -c C:\\VScode\\mtm\\ex1\\wet_exercise\\mtm_election\\electionUtils.c",
-  "file": "C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.c"
+  "directory": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm_election\\electionUtils.c.obj   -c C:\\Users\\shell\\Technion\\MTM\\ex1\\build\\mtm-1\\mtm\\ex1\\wet_exercise\\mtm_election\\electionUtils.c",
+  "file": "C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/electionUtils.c"
 }
 ]

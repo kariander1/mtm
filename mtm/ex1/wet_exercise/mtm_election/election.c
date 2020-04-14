@@ -10,6 +10,9 @@
 #include <string.h>
 #include <stdio.h>
 #include "electionUtils.h"
+#include "area.c"
+#include "../mtm_map/map.c"
+#include "electionUtils.c"
 
 #define AREA_INITIAL_SIZE 1
 #define AREA_MULTIPLIER_SIZE 2
@@ -33,7 +36,13 @@ static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
 static char * checkTribeExsistsAndReturnName(Election election, int tribe_id);
-
+//for debug
+bool Todelete_area(int area_id){
+    if (area_id%2 == 0){
+        return true;
+    }
+    return false;
+}
 
 
 Election electionCreate() //Shelly
@@ -63,7 +72,7 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(tribe_name, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
-    char* string_of_tribe_id = intToChar(tribe_id); // create the char* for the mapGet function
+    char* string_of_tribe_id = intToString(tribe_id); // create the char* for the mapGet function
     if (string_of_tribe_id == NULL){
         free(string_of_tribe_id);
         electionDestroy(election);
@@ -121,8 +130,8 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     int area_index;
     RETURN_ON_CONDITION(area_index=getAreaIndexById(election,area_id),AREA_NOT_FOUND,ELECTION_AREA_NOT_EXIST);
 
-    char* tribe_id_str; // you can use electionGetTribeName - returns NULL if tribe name not found
-    DESTROY_ON_CONDITION(tribe_id_str =intToChar(area_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+    char* tribe_id_str; 
+    DESTROY_ON_CONDITION(tribe_id_str = intToString(area_id),NULL,election,ELECTION_OUT_OF_MEMORY);
     RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
     //Tribe exists
     RETURN_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes),AREA_SUCCESS,ELECTION_SUCCESS);
@@ -140,8 +149,8 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
     RETURN_ON_CONDITION(area_index, AREA_NOT_FOUND, ELECTION_AREA_NOT_EXIST);
 
     RETURN_ON_CONDITION(electionGetTribeName(election, tribe_id), NULL, ELECTION_TRIBE_NOT_EXIST);
-    // areaChangeNumOfVotes(election->areas[area_index], tribe_id, 0-num_of_votes); -- NEED TO IMPLEMENT
-    //DESTROY_ON_CONDITION(areaChangeNumOfVotes,NULL,election,ELECTION_OUT_OF_MEMORY)
+    areaChangeVotesToTribe(election->areas[area_index], tribe_id, 0-num_of_votes); //NEED TO IMPLEMENT
+    DESTROY_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index], tribe_id, 0-num_of_votes),ELECTION_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY)
     return ELECTION_SUCCESS; // Placeholder
 }
 ElectionResult electionSetTribeName(Election election, int tribe_id, const char *tribe_name) // Shai
@@ -152,8 +161,26 @@ ElectionResult electionRemoveTribe(Election election, int tribe_id)
 {
     return ELECTION_SUCCESS;
 }
+static void promoteEachElementAfter(Election election, int current_index){
+    for (int area_index = current_index; area_index < election->area_count -1; area_index ++){
+        election->areas[area_index] = election->areas[area_index+1]; 
+    }
+    return;
+}
 ElectionResult electionRemoveAreas(Election election, AreaConditionFunction should_delete_area) //Shelly
 {
+    RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
+    RETURN_ON_CONDITION(should_delete_area, NULL,ELECTION_NULL_ARGUMENT);
+    for (int area_index = 0; area_index < election->area_count;){
+        if (should_delete_area(election->areas[area_index]->area_id)){
+            areaDestroy(election->areas[area_index]);
+            promoteEachElementAfter(election, area_index);
+            election->area_count --;
+        }
+        else{
+            area_index ++;
+        }   
+    }
     return ELECTION_SUCCESS; // Placeholder
 }
 Map electionComputeAreasToTribesMapping(Election election) // UNITED!
@@ -244,12 +271,18 @@ static char * checkTribeExsistsAndReturnName(Election election, int tribe_id){
 //for gebug
 int main()
 {
+    bool (*ptr)(int) = NULL;
+    ptr = Todelete_area;
     Election elec =electionCreate();
     electionAddArea(elec,1234,"winterfell");
-      electionAddArea(elec,1234,"kings landing");
-      electionAddArea(elec,12,"kings landing");
-      electionAddTribe(elec,676,"voodoo");
-      electionAddVote(elec,12,676,10);
+    electionAddArea(elec,1234,"kings landing");
+    electionAddArea(elec,4,"th kings landing");
+    electionAddTribe(elec,676,"voodoo");
+    electionAddVote(elec,4,676,10);
+    electionAddArea(elec,333,"kings landing");
+    //electionRemoveAreas(elec,ptr );
+    electionRemoveVote(elec,4, 676, 5);
+    electionRemoveVote(elec,4, 676, 6);
     electionDestroy(elec);
 }
 
