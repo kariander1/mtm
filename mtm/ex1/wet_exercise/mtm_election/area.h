@@ -15,7 +15,7 @@ typedef enum AreaResult_t {
 AreaResult areaChangeVotesToTribe(Area area, const char* tribe_id, int num_of_votes);
 Area areaCreate(int area_id,const char* area_name);
 void areaDestroy(Area area);
-AreaResult areaClear(Area area);
+void areaRemoveTribe(Area area, const char* tribe_id);
 bool areaEquals(Area area_1,int id);
 
 

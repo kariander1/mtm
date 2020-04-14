@@ -167,6 +167,22 @@ MapResult put_result = mapPut(election->tribes,tribe_id_str,tribe_name);
 }
 ElectionResult electionRemoveTribe(Election election, int tribe_id)
 {
+    RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
+    RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
+  const char* tribe_id_str;
+    DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+   
+   //Remove from tribes map:
+   MapResult remove_result = mapRemove(election->tribes,tribe_id_str);
+
+    RETURN_ON_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST,ELECTION_TRIBE_NOT_EXIST);
+    
+    for (int i = 0; i < election->area_count; i++)
+    {
+        areaRemoveTribe(election->areas[i],tribe_id_str);
+    }
+    
+
     return ELECTION_SUCCESS;
 }
 ElectionResult electionRemoveAreas(Election election, AreaConditionFunction should_delete_area) //Shelly
@@ -262,13 +278,20 @@ static char * checkTribeExsistsAndReturnName(Election election, int tribe_id){
 int main()
 {
     Election elec =electionCreate();
-    electionAddArea(elec,1234,"winterfell");
-      electionAddArea(elec,1234,"kings landing");
-      electionAddArea(elec,12,"kings landing");
-      electionAddTribe(elec,676,"voodoo");
-      electionAddVote(elec,12,676,10);
-      electionSetTribeName(elec,6766,"power");
-    electionDestroy(elec);
+     //   electionAddArea(elec,1234,"winterfell");
+   //   electionAddArea(elec,1234,"kings landing");
+    //  electionAddArea(elec,12,"kings landing");
+ //     electionAddTribe(elec, 676, "voodoo");
+      electionAddTribe(elec, 350, "popo");
+     // electionAddVote(elec, 12, 676, 10);
+     // electionAddVote(elec, 12, 350, 20);
+    //  electionAddVote(elec, 1234, 350, 30);
+      electionRemoveTribe(elec, 350);
+    electionAddTribe(elec, 350, "popo");
+   // electionAddVote(elec, 1234, 350, 30); // Maybe also bug here
+     // electionSetTribeName(elec, 6766, "power");
+
+      electionDestroy(elec);
 }
 
 #endif //ELECTION_C_

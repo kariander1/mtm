@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 15,
+				"line" : 16,
 				"parent" : 0
 			}
 		]
@@ -45,9 +45,7 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2,
-				3
+				1
 			]
 		}
 	],
@@ -85,9 +83,7 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2,
-				3
+				1
 			]
 		}
 	],
@@ -96,25 +92,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "mtm_election/election.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "mtm_election/area.c",
+			"path" : "tests/shai_test.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "mtm_map/map.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "mtm_election/electionUtils.c",
 			"sourceGroupIndex" : 0
 		}
 	],
