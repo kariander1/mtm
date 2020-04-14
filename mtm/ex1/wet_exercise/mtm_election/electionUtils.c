@@ -21,7 +21,7 @@ char *intToString(int int_to_convert)
 
     char *string_of_int = malloc(sizeof(char) * num_of_digits + 1); // +1 for "/0" ceil rounds the double up
     RETURN_ON_CONDITION(string_of_int, NULL, NULL);                 // check if allocation failed - if so returns NULL in string_of_int
-   RETURN_ON_CONDITION(itoa(int_to_convert, string_of_int, NUMBERING_BASE),NULL, NULL);
+    RETURN_ON_CONDITION(itoa(int_to_convert, string_of_int, NUMBERING_BASE),NULL, NULL);
   
     //const char *const_string_to_int = string_of_int;
 
