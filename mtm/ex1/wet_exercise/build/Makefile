@@ -55,19 +55,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\VScode\mtm\ex1\wet_exercise
+CMAKE_SOURCE_DIR = C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
+CMAKE_BINARY_DIR = C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -75,7 +75,7 @@ CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/VScode/mtm/ex1/wet_exercise/build/CPackSourceConfig.cmake
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -86,7 +86,7 @@ package_source/fast: package_source
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackConfig.cmake
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cpack.exe" --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -97,7 +97,7 @@ package/fast: package
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -108,7 +108,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -118,9 +118,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -161,6 +161,60 @@ mtm_ex/fast:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
 .PHONY : mtm_ex/fast
 
+mtm_election/area.obj: mtm_election/area.c.obj
+
+.PHONY : mtm_election/area.obj
+
+# target to build an object file
+mtm_election/area.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj
+.PHONY : mtm_election/area.c.obj
+
+mtm_election/area.i: mtm_election/area.c.i
+
+.PHONY : mtm_election/area.i
+
+# target to preprocess a source file
+mtm_election/area.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/area.c.i
+.PHONY : mtm_election/area.c.i
+
+mtm_election/area.s: mtm_election/area.c.s
+
+.PHONY : mtm_election/area.s
+
+# target to generate assembly for a file
+mtm_election/area.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/area.c.s
+.PHONY : mtm_election/area.c.s
+
+mtm_election/election.obj: mtm_election/election.c.obj
+
+.PHONY : mtm_election/election.obj
+
+# target to build an object file
+mtm_election/election.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj
+.PHONY : mtm_election/election.c.obj
+
+mtm_election/election.i: mtm_election/election.c.i
+
+.PHONY : mtm_election/election.i
+
+# target to preprocess a source file
+mtm_election/election.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election.c.i
+.PHONY : mtm_election/election.c.i
+
+mtm_election/election.s: mtm_election/election.c.s
+
+.PHONY : mtm_election/election.s
+
+# target to generate assembly for a file
+mtm_election/election.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election.c.s
+.PHONY : mtm_election/election.c.s
+
 mtm_map/map.obj: mtm_map/map.c.obj
 
 .PHONY : mtm_map/map.obj
@@ -188,33 +242,6 @@ mtm_map/map.c.s:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.s
 .PHONY : mtm_map/map.c.s
 
-tests/shai_test.obj: tests/shai_test.c.obj
-
-.PHONY : tests/shai_test.obj
-
-# target to build an object file
-tests/shai_test.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj
-.PHONY : tests/shai_test.c.obj
-
-tests/shai_test.i: tests/shai_test.c.i
-
-.PHONY : tests/shai_test.i
-
-# target to preprocess a source file
-tests/shai_test.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.i
-.PHONY : tests/shai_test.c.i
-
-tests/shai_test.s: tests/shai_test.c.s
-
-.PHONY : tests/shai_test.s
-
-# target to generate assembly for a file
-tests/shai_test.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.s
-.PHONY : tests/shai_test.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -226,12 +253,15 @@ help:
 	@echo ... package_source
 	@echo ... rebuild_cache
 	@echo ... mtm_ex
+	@echo ... mtm_election/area.obj
+	@echo ... mtm_election/area.i
+	@echo ... mtm_election/area.s
+	@echo ... mtm_election/election.obj
+	@echo ... mtm_election/election.i
+	@echo ... mtm_election/election.s
 	@echo ... mtm_map/map.obj
 	@echo ... mtm_map/map.i
 	@echo ... mtm_map/map.s
-	@echo ... tests/shai_test.obj
-	@echo ... tests/shai_test.i
-	@echo ... tests/shai_test.s
 .PHONY : help
 
 
