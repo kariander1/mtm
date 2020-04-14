@@ -144,6 +144,7 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
 }
 ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, int num_of_votes) // Shelly
 {
+
     // You can use getAreaIndexById function
     return ELECTION_SUCCESS; // Placeholder
 }
