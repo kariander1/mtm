@@ -42,9 +42,16 @@ void areaDestroy(Area area)
     mapDestroy(area->votes);
     free(area);
 }
+void areaRemoveTribe(Area area, const char* tribe_id)
+{
+    RETURN_ON_CONDITION_NO_VALUE(area,NULL);
+    RETURN_ON_CONDITION_NO_VALUE(tribe_id,NULL);
+    mapRemove(area->votes,tribe_id); // Doesn't matter what is returned, cannot be memory error
+}
 AreaResult areaChangeVotesToTribe(Area area, const char* tribe_id, int num_of_votes)
 {
     RETURN_ON_NONEXISTENCE(area,AREA_NULL_ARGUEMENT);// CHANGE from NULL
+    RETURN_ON_NONEXISTENCE(tribe_id,AREA_NULL_ARGUEMENT);
     char* votes_str = mapGet(area->votes,tribe_id);
     int current_votes=0;
     if (votes_str)
@@ -62,10 +69,6 @@ AreaResult areaChangeVotesToTribe(Area area, const char* tribe_id, int num_of_vo
 
     return AREA_SUCCESS;
 
-}
-AreaResult areaClear(Area area)
-{
-    return AREA_OUT_OF_MEMORY;
 }
 bool areaEquals(Area area_1,int id)
 {

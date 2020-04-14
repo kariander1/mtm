@@ -90,12 +90,20 @@ clean: CMakeFiles/mtm_ex.dir/clean
 CMakeFiles/mtm_ex.dir/all:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/depend
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
+<<<<<<< HEAD
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=1,2,3 "Built target mtm_ex"
+=======
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=1,2,3,4,5 "Built target mtm_ex"
+>>>>>>> 5a9f5cb902c576f4d65f1891ebf5d75f0f37132d
 .PHONY : CMakeFiles/mtm_ex.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mtm_ex.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles 3
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles 5
+>>>>>>> 5a9f5cb902c576f4d65f1891ebf5d75f0f37132d
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/mtm_ex.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/mtm_ex.dir/rule

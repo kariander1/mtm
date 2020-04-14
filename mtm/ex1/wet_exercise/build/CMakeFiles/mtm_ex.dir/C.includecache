@@ -6,6 +6,9 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
+C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
+=======
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/election.h
 mtm_map/map.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
@@ -21,9 +24,17 @@ electionUtils.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
 
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.h
+>>>>>>> 5a9f5cb902c576f4d65f1891ebf5d75f0f37132d
 stdbool.h
 -
+string.h
+-
 
+<<<<<<< HEAD
+C:/VScode/mtm/ex1/wet_exercise/tests/shai_test.c
+../mtm_map/map.h
+C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
+=======
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/election.c
 ../election.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/election.h
@@ -31,14 +42,13 @@ C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/election.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
 area.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.h
+>>>>>>> 5a9f5cb902c576f4d65f1891ebf5d75f0f37132d
 stdlib.h
--
-assert.h
--
-string.h
 -
 stdio.h
 -
+<<<<<<< HEAD
+=======
 electionUtils.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
 area.c
@@ -71,6 +81,7 @@ string.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
 stdbool.h
 -
+>>>>>>> 5a9f5cb902c576f4d65f1891ebf5d75f0f37132d
 string.h
 -
 

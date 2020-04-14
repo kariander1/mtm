@@ -73,6 +73,25 @@ include CMakeFiles/mtm_ex.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/mtm_ex.dir/flags.make
 
+<<<<<<< HEAD
+CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj: CMakeFiles/mtm_ex.dir/flags.make
+CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj: ../tests/shai_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\mtm_ex.dir\tests\shai_test.c.obj   -c C:\VScode\mtm\ex1\wet_exercise\tests\shai_test.c
+
+CMakeFiles/mtm_ex.dir/tests/shai_test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mtm_ex.dir/tests/shai_test.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\mtm\ex1\wet_exercise\tests\shai_test.c > CMakeFiles\mtm_ex.dir\tests\shai_test.c.i
+
+CMakeFiles/mtm_ex.dir/tests/shai_test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mtm_ex.dir/tests/shai_test.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\mtm\ex1\wet_exercise\tests\shai_test.c -o CMakeFiles\mtm_ex.dir\tests\shai_test.c.s
+
+CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: CMakeFiles/mtm_ex.dir/flags.make
+CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: ../mtm_map/map.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\mtm_ex.dir\mtm_map\map.c.obj   -c C:\VScode\mtm\ex1\wet_exercise\mtm_map\map.c
+=======
 CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj: CMakeFiles/mtm_ex.dir/flags.make
 CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj: ../mtm_election/election.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj"
@@ -103,6 +122,7 @@ CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: CMakeFiles/mtm_ex.dir/flags.make
 CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: ../mtm_map/map.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\mtm_ex.dir\mtm_map\map.c.obj   -c C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\mtm_map\map.c
+>>>>>>> 5a9f5cb902c576f4d65f1891ebf5d75f0f37132d
 
 CMakeFiles/mtm_ex.dir/mtm_map/map.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mtm_ex.dir/mtm_map/map.c.i"
@@ -112,6 +132,8 @@ CMakeFiles/mtm_ex.dir/mtm_map/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mtm_ex.dir/mtm_map/map.c.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\mtm_map\map.c -o CMakeFiles\mtm_ex.dir\mtm_map\map.c.s
 
+<<<<<<< HEAD
+=======
 CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj: CMakeFiles/mtm_ex.dir/flags.make
 CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj: ../mtm_election/electionUtils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj"
@@ -125,25 +147,26 @@ CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\mtm_election\electionUtils.c -o CMakeFiles\mtm_ex.dir\mtm_election\electionUtils.c.s
 
+>>>>>>> 5a9f5cb902c576f4d65f1891ebf5d75f0f37132d
 # Object files for target mtm_ex
 mtm_ex_OBJECTS = \
-"CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj" \
-"CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj" \
-"CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj" \
-"CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj"
+"CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj" \
+"CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
 
 # External object files for target mtm_ex
 mtm_ex_EXTERNAL_OBJECTS =
 
-mtm_ex.exe: CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj
-mtm_ex.exe: CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj
+mtm_ex.exe: CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj
-mtm_ex.exe: CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/build.make
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/linklibs.rsp
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/objects1.rsp
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/link.txt
+<<<<<<< HEAD
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable mtm_ex.exe"
+=======
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\shell\Technion\MTM\ex1\build\mtm-1\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable mtm_ex.exe"
+>>>>>>> 5a9f5cb902c576f4d65f1891ebf5d75f0f37132d
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\mtm_ex.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
