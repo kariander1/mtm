@@ -150,6 +150,19 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
 }
 ElectionResult electionSetTribeName(Election election, int tribe_id, const char *tribe_name) // Shai
 {
+    RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
+    RETURN_ON_CONDITION(tribe_name,NULL,ELECTION_NULL_ARGUMENT);
+    RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
+  const char* tribe_id_str;
+   DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+    RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
+    RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
+
+MapResult put_result = mapPut(election->tribes,tribe_id_str,tribe_name);
+    RETURN_ON_CONDITION(put_result,MAP_SUCCESS,ELECTION_SUCCESS);
+    DESTROY_ON_CONDITION(put_result,MAP_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY);
+
+// Shouldn't reach here since mapPut gets non-NULL arguements, thus returns SUCCESS or OUT_OF_MEMORY
     return ELECTION_SUCCESS;
 }
 ElectionResult electionRemoveTribe(Election election, int tribe_id)
@@ -243,7 +256,7 @@ static char * checkTribeExsistsAndReturnName(Election election, int tribe_id){
     const char * const_string_of_tribe_id = string_of_tribe_id; // convert char to const char 
     char* tribe_name = mapGet(election->tribes, const_string_of_tribe_id); // check if tribe_id exsists
     free(string_of_tribe_id);
-    return tribe_name; // return Tribe nam or NULL if the tribe doesnt exsists
+    return tribe_name; // return Tribe name or NULL if the tribe doesnt exsists
 }
 //for gebug
 int main()
@@ -254,6 +267,7 @@ int main()
       electionAddArea(elec,12,"kings landing");
       electionAddTribe(elec,676,"voodoo");
       electionAddVote(elec,12,676,10);
+      electionSetTribeName(elec,6766,"power");
     electionDestroy(elec);
 }
 
