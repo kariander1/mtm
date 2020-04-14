@@ -6,18 +6,8 @@
 
 #IncludeRegexTransform: 
 
-<<<<<<< HEAD
-C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
-stdbool.h
-=======
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/election.h
 mtm_map/map.h
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
-
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.c
-area.h
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.h
-../mtm_map/map.h
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
 
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_election/area.h
@@ -42,28 +32,8 @@ stdio.h
 math.h
 -
 
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.c
-assert.h
--
-map.h
-C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
-stdlib.h
->>>>>>> dd6d7cd07114e2f9144c29168fb15b9b5bb25df9
--
-string.h
--
-
-<<<<<<< HEAD
-C:/VScode/mtm/ex1/wet_exercise/tests/shai_test.c
-../mtm_map/map.h
-C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
-stdlib.h
--
-stdio.h
-=======
 C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
 stdbool.h
->>>>>>> dd6d7cd07114e2f9144c29168fb15b9b5bb25df9
 -
 string.h
 -

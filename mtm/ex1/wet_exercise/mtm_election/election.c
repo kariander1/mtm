@@ -32,7 +32,7 @@ static bool isLegalName(const char* name);
 static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
-static const char *intToChar(int int_to_convert);
+static char *intToChar(int int_to_convert);
 
 #define IS_LOWER(c) ((c) >= 'a' && (c) <= 'z') 
 /*!
@@ -74,9 +74,10 @@ Election electionCreate() //Shelly
     Election new_Election = malloc(sizeof(*new_Election));
     assert(new_Election);
     RETURN_ON_CONDITION(new_Election,NULL, NULL); // check if new_election in NULL and return NULL if so
-    //Map tribes = mapCreate();
-    //RETURN_ON_CONDITION(tribes,NULL, NULL); // I think we need to use MapCreate no? - I don't think so because the new_Election creates it
+    new_Election->tribes = mapCreate();// create Map tribes 
+    RETURN_ON_CONDITION(new_Election->tribes,NULL, NULL); 
     new_Election->areas = malloc(sizeof(*new_Election->areas)*AREA_INITIAL_SIZE); // create an array of areas
+    RETURN_ON_CONDITION(new_Election->areas,NULL, NULL);
     initializeElectionAttributes(new_Election); // initial all attributes to be null or 0 accordingly
     return new_Election;
 }
@@ -93,17 +94,15 @@ void electionDestroy(Election election)
 ElectionResult electionAddTribe(Election election, int tribe_id, const char *tribe_name) // Shelly
 {
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
-    RETURN_ON_CONDITION(tribe_id, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(tribe_name, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
-    const char* string_of_tribe_id = intToChar(tribe_id); // create the car for the mapGet function
+    char* string_of_tribe_id = intToChar(tribe_id); // create the char* for the mapGet function
     RETURN_ON_CONDITION(string_of_tribe_id, NULL,ELECTION_OUT_OF_MEMORY );// check if allocation of string_of_int failed
-    RETURN_ON_CONDITION(mapGet(election->tribes, string_of_tribe_id), false, ELECTION_INVALID_ID);
-    //free(string_of_tribe_id); // free the string after usage
+    const char * const_string_of_tribe_id = string_of_tribe_id;
+    RETURN_ON_CONDITION(mapGet(election->tribes, const_string_of_tribe_id), false, ELECTION_INVALID_ID);
     RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
-    mapPut(election->tribes,string_of_tribe_id,tribe_name); // the free of string_of_tribe_id is done by mapClear
+    mapPut(election->tribes,const_string_of_tribe_id,tribe_name); // the free of string_of_tribe_id is done by mapClear
     free(string_of_tribe_id); // free the string after usage
-    // You can use islegalID and isLegalNAME static functions located down V
     return ELECTION_SUCCESS; // Placeholder
 }
 
@@ -220,23 +219,24 @@ static bool isLegalName(const char* name)
     free(iterating_char);
     return true;
 }
-static const char *intToChar(int int_to_convert)
+static char *intToChar(int int_to_convert)
 {
     int num_of_digits = ceil(log10(int_to_convert)); // check the log to se  how many chars we need for the itoa() function
 
     char *string_of_int = malloc(sizeof(char) * num_of_digits + 1); // +1 for "/0" ceil rounds the double up
     RETURN_ON_CONDITION(string_of_int, NULL, NULL);                 // check if allocation failed - if so returns NULL in string_of_int
-   RETURN_ON_CONDITION(itoa(int_to_convert, string_of_int, NUMBERING_BASE),NULL, NULL);
+    RETURN_ON_CONDITION(itoa(int_to_convert, string_of_int, NUMBERING_BASE),NULL, NULL);
   
-    const char *const_string_to_int = string_of_int;
+    //const char *const_string_to_int = string_of_int;
 
-    return const_string_to_int;
+    return string_of_int;
 }
 static void initializeElectionAttributes(Election election)
 {
     //mapClear(election->tribes);
     election->area_count = 0;
-    election->allocated_size = AREA_INITIAL_SIZE;
+    election->allocated_size = 0;
+    election->tribes = NULL;
     for (int x = 0; x < election->allocated_size; x++)
     {
         election->areas[x] = NULL; // dont need to clear the map because it wasn't created yet
@@ -257,7 +257,7 @@ static void areasDestroy(Election election) // This is NOT areaDestroy!
 int main()
 {
     int id=2134;
-    const char* id_str = intToChar(id);
+    char* id_str = intToChar(id);
     printf("%s",id_str);
 }
 
