@@ -6,10 +6,6 @@
 #include <stdlib.h>
 #include "electionUtils.h"
 
-#include "../mtm_election/electionUtils.c"
-#include "../mtm_election/election.c"
-#include "../mtm_map/map.c"
-
 #define INITIAL_ZERO "0"
 struct area_t
 {
