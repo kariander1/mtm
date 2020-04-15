@@ -10,20 +10,32 @@ C:/VScode/mtm/ex1/wet_exercise/election.h
 mtm_map/map.h
 C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 
-C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
+C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.h
 stdbool.h
 -
-string.h
--
 
-C:/VScode/mtm/ex1/wet_exercise/tests/shai_test_election.c
+C:/VScode/mtm/ex1/wet_exercise/mtm_election/election.c
 ../election.h
 C:/VScode/mtm/ex1/wet_exercise/election.h
 ../mtm_map/map.h
 C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
+area.h
+C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.h
 stdlib.h
 -
+assert.h
+-
+string.h
+-
 stdio.h
+-
+electionUtils.h
+C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
+
+C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
+
+C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
+stdbool.h
 -
 string.h
 -

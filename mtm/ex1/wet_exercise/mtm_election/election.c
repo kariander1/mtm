@@ -6,7 +6,6 @@
 #include "../mtm_map/map.h"
 #include "area.h"
 #include <stdlib.h>
-#include <assert.h>
 #include <string.h>
 #include <stdio.h>
 #include "electionUtils.h"
@@ -28,7 +27,6 @@ struct election_t
 };
 
 static void areasDestroy(Election election);
-static void initializeElectionAttributes(Election election);
 static bool isLegalId(int id);
 static bool isLegalName(const char *name);
 static bool isLegalVotes(int votes);
@@ -37,27 +35,23 @@ static bool multiplyAreasSize(Election election);
 static const char *checkTribeExistsAndReturnName(Election election, int tribe_id);
 static void shiftElementsLeft(Election election, int current_index);
 static MapResult initializeTribesToArea(Area area,Map tribes);
-//for debug
-bool Todelete_area(int area_id)
-{
-    if (area_id % 2 == 0)
-    {
-        return true;
-    }
-    return false;
-}
+
 
 Election electionCreate() //Shelly
 {
-    Election new_Election = malloc(sizeof(*new_Election));
-    assert(new_Election);
-    RETURN_ON_NULL(new_Election, NULL); // check if new_election in NULL and return NULL if so
-    new_Election->tribes = mapCreate();// create Map tribes 
-    RETURN_ON_NULL(new_Election->tribes, NULL); 
-    new_Election->areas = malloc(sizeof(*new_Election->areas)*AREA_INITIAL_SIZE); // create an array of areas
-    RETURN_ON_NULL(new_Election->areas, NULL);
-    initializeElectionAttributes(new_Election); // initial all attributes to be null or 0 accordingly
-    return new_Election;
+    Election new_election = malloc(sizeof(*new_election));
+    RETURN_ON_NULL(new_election, NULL); // check if new_election in NULL and return NULL if so
+    new_election->tribes = mapCreate();// create Map tribes 
+    RETURN_ON_NULL(new_election->tribes, NULL); 
+    new_election->areas = malloc(sizeof(*new_election->areas)*AREA_INITIAL_SIZE); // create an array of areas
+    RETURN_ON_NULL(new_election->areas, NULL);
+      new_election->area_count = 0;// initial all attributes to be null or 0 accordingly
+    new_election->allocated_size = AREA_INITIAL_SIZE;
+    for (int x = 0; x < new_election->allocated_size; x++)
+    {
+        new_election->areas[x] = NULL;
+    } 
+    return new_election;
 }
 
 void electionDestroy(Election election)
@@ -68,13 +62,6 @@ void electionDestroy(Election election)
     free(election);
  
 }
-static void removeTribeVotedFromAllAreas(Election election, const char * tribe_id, int max_index_to_remove){
-    for(int i = 0; i<=max_index_to_remove; i++){
-        areaRemoveTribe(election->areas[i],tribe_id);
-    }
-    mapRemove(election->tribes,max_index_to_remove);
-}
-
 ElectionResult electionAddTribe(Election election, int tribe_id, const char *tribe_name) // Shelly
 {
     RETURN_ON_NULL(election,ELECTION_NULL_ARGUMENT);
@@ -89,8 +76,8 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
     ElectionResult result_to_return = (put_result == MAP_OUT_OF_MEMORY ? ELECTION_OUT_OF_MEMORY : ELECTION_SUCCESS);
     // add to all exsisting areas the new tribe with 0 votes if fails delete all votes of that tribe
     for (int i = 0;i< election->area_count; i++){
-        if (areaChangeVotesToTribe(election->areas[i],tribe_id_str, EMPTY) == MAP_OUT_OF_MEMORY){
-            electionRemoveTribe(election,tribe_id_str);
+        if (areaChangeVotesToTribe(election->areas[i],tribe_id_str, EMPTY) == AREA_OUT_OF_MEMORY){
+            electionRemoveTribe(election,tribe_id);
             free(tribe_id_str);
             return ELECTION_OUT_OF_MEMORY;
         }
@@ -201,7 +188,7 @@ ElectionResult electionRemoveTribe(Election election, int tribe_id) // Shai
     RETURN_ON_NULL(election,ELECTION_NULL_ARGUMENT);
     RETURN_ON_NULL(isLegalId(tribe_id), ELECTION_INVALID_ID);
     char* tribe_id_str=intToString(tribe_id);
-    EXECUTE_ON_CONDITION(tribe_id_str ,NULL, free(tribe_id_str),ELECTION_OUT_OF_MEMORY );
+   RETURN_ON_NULL(tribe_id_str ,ELECTION_OUT_OF_MEMORY);
    MapResult remove_result = mapRemove(election->tribes,tribe_id_str);
 
     EXECUTE_ON_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST, free(tribe_id_str),ELECTION_TRIBE_NOT_EXIST);
@@ -312,17 +299,6 @@ static bool isLegalName(const char* name)
     return true;
 }
 
-static void initializeElectionAttributes(Election election)
-{
-    //mapClear(election->tribes);
-    election->area_count = 0;
-    election->allocated_size = AREA_INITIAL_SIZE;
-    for (int x = 0; x < election->allocated_size; x++)
-    {
-        election->areas[x] = NULL; // dont need to clear the map because it wasn't created yet
-    }
-    return;
-}
 
 static void areasDestroy(Election election)
 {

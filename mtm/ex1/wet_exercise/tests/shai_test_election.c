@@ -187,7 +187,7 @@ bool executeOperations()
         operationMapping(true);
         break;
     case ELECTION_TESTS:
-        // operationsOverrideInputs();
+         operationsOverrideInputs();
         break;
     default:
     case QUIT:
@@ -197,100 +197,68 @@ bool executeOperations()
 }
 void operationsOverrideInputs()
 {
-    /*
-    printf("mapDestroy(NULL):");
-    mapDestroy(NULL);
-    putchar('\n');
-    printf("mapCopy(NULL)");
-    mapCopy(NULL);
-    putchar('\n');
-    printf("mapGetSize(NULL)");
-    mapGetSize(NULL);
-    putchar('\n');
-    printf("mapContains(NULL,NULL)");
-    mapContains(NULL, NULL);
-    putchar('\n');
-    printf("mapContains(NULL,)");
-    mapContains(NULL, "");
-    putchar('\n');
+        writeLine("electionCreate();");
+    Election elec =electionCreate();
+    
+    writeLine(" electionDestroy(elec);");
+    electionDestroy(elec);
 
-    Map tempMap = mapCreate();
+    writeLine(" electionDestroy(NULL);");
+    electionDestroy(NULL);
+    for (int i = 0; i < 3; i++)
+    {
+        elec=electionCreate();
+        if(i==1)
+        {
+            
+            electionAddArea(elec,1,"area 1");
+            electionAddArea(elec,2,"area 2");
+            electionAddTribe(elec,1001,"tribe 1");
+            electionAddTribe(elec,1002,"tribe 2");
+            electionAddVote(elec,1,1001,20);
+            electionAddVote(elec,1,1002,10);
+            electionAddVote(elec,2,1002,40);
+            electionAddVote(elec,2,1001,30);
+        }
+        if(i==2)
+        {
+            electionAddTribe(elec,1001,"tribe 1");
+            electionAddTribe(elec,1002,"tribe 2");
+            electionAddArea(elec,1,"area 1");
+            electionAddArea(elec,2,"area 2");
 
-    printf("mapContains(map,NULL)");
-    mapContains(tempMap, NULL);
-    putchar('\n');
-    printf("mapContains(map,)");
-    mapContains(tempMap, "");
-    putchar('\n');
+            electionAddVote(elec,1,1001,20);
+            electionAddVote(elec,1,1002,10);
+            electionAddVote(elec,2,1002,40);
+            electionAddVote(elec,2,1001,30);
+        }
+        electionAddTribe(elec,2000,"tribe test");
+        electionAddTribe(NULL,3000,"tribe test");
+    electionAddTribe(elec,NULL,"tribe test");
+    electionAddTribe(elec,-1,"tribe test");
+electionAddTribe(elec,0,"tribe test");
+ electionAddTribe(elec,3000,"Tribe test");
+ electionAddTribe(elec,3000,"tribe-test");
+ electionAddTribe(elec,3000,"?");
+ electionAddTribe(elec,3000,"");
+ electionAddTribe(NULL,-1,"tribe test");
+ electionAddTribe(NULL,NULL,"tribe test");
+ electionAddTribe(NULL,-1,"Tribe test");
+ 
+        free(elec);
+    }
+    
 
-    printf("mapPut(NULL,NULL,NULL)");
-    //  printMapResult(mapPut(NULL, NULL, NULL));
-    putchar('\n');
+    
 
-    printf("mapPut(NULL,,NULL);");
-    printMapResult(mapPut(NULL, "", NULL));
-    putchar('\n');
+    
+    
 
-    printf("mapPut(NULL,NULL,);");
-    printMapResult(mapPut(NULL, NULL, ""));
-    putchar('\n');
 
-    printf("mapPut(NULL,,);");
-    printMapResult(mapPut(NULL, "", ""));
-    putchar('\n');
-
-    printf("mapPut(map,NULL,NULL);");
-    printMapResult(mapPut(tempMap, NULL, NULL));
-    putchar('\n');
-
-    printf("mapPut(map,NULL,"
-           ");");
-    printMapResult(mapPut(tempMap, NULL, ""));
-    putchar('\n');
-
-    printf("mapPut(map,"
-           ",NULL)");
-    printMapResult(mapPut(tempMap, "", NULL));
-    putchar('\n');
-
-    printf("mapPut(map,,);");
-    printMapResult(mapPut(tempMap, "", ""));
-    putchar('\n');
-
-    printf("mapGet(NULL,NULL)");
-    printf("%s", mapGet(NULL, NULL));
-    putchar('\n');
-    printf("mapGet(NULL,)");
-    printf("%s", mapGet(NULL, ""));
-    putchar('\n');
-
-    printf("mapGet(map,NULL)");
-    printf("%s", mapGet(tempMap, NULL));
-    putchar('\n');
-    printf("mapGet(map,)");
-    printf("%s", mapGet(tempMap, ""));
-    putchar('\n');
-
-    printf("mapGet(NULL,NULL)");
-    printMapResult(mapRemove(NULL, NULL));
-    putchar('\n');
-    printf("mapGet(NULL,)");
-    printMapResult(mapRemove(NULL, ""));
-    putchar('\n');
-
-    printf("mapGet(map,NULL)");
-    printMapResult(mapRemove(tempMap, NULL));
-    putchar('\n');
-    printf("mapGet(map,)");
-    printMapResult(mapRemove(tempMap, ""));
-    putchar('\n');
-
-    printf("mapClear(NULL)");
-    mapClear(NULL);
-    putchar('\n');
-
-    mapDestroy(tempMap);
-    */
+}
+void writeLine(char* text)
+{
+    printf("%s/n",text);
 }
 void operationMapping(bool with_tribe_names)
 {
@@ -718,7 +686,7 @@ void sortEntries(Map map, node *head)
     }
     return;
 }
-void printLexicographic(Map map)
+void printLexicographic(Map map,char* first_label,char* second_label)
 {
     //printf("Map N. %d\n\n", i);
     //        max_map_index = i;
@@ -735,12 +703,12 @@ void printLexicographic(Map map)
         if (k == 0)
         {
             putchar(' ');
-            printf("Area ID");
+            printf("$s",first_label);
             for (int i = 0; i <= spaces_for_key - 3; i++)
             {
                 putchar(' ');
             }
-            printf("Tribe ID\n");
+            printf("$s\n",second_label);
 
             putchar(' ');
             for (int i = 0; i < spaces_for_key; i++)
