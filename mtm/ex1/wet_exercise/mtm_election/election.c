@@ -196,11 +196,10 @@ ElectionResult electionRemoveTribe(Election election, int tribe_id)
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
     char* tribe_id_str;
     DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
-   const char * constant_tribe_id = tribe_id_str;
+    const char * constant_tribe_id = tribe_id_str;
    //Remove from tribes map:
-   MapResult remove_result = mapRemove(election->tribes,constant_tribe_id);
-
-    EXECUTE_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST, free(tribe_id_str),ELECTION_TRIBE_NOT_EXIST);
+    MapResult remove_result = mapRemove(election->tribes,constant_tribe_id);
+    EXECUTE_ON_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST, free(tribe_id_str),ELECTION_TRIBE_NOT_EXIST);
     
     for (int i = 0; i < election->area_count; i++)
     {
@@ -235,10 +234,11 @@ Map electionComputeAreasToTribesMapping(Election election) // UNITED!
     RETURN_ON_CONDITION(mapGetSize(election->tribes), EMPTY, mapCreate());// if empty -create empty map
     RETURN_ON_CONDITION(*(election->areas), NULL, mapCreate());// if null -create empty map
     Map elections_map = mapCreate();
+    char * area_id_string;
     for(int index = 0; index < election->area_count; index ++){
         const char * most_votes_tribe_id = areaGetMostVotesTribe(election->areas[index]); // get the tribe_id with most votes
         EXECUTE_ON_CONDITION(most_votes_tribe_id, NULL, mapDestroy(elections_map),NULL);
-        char * area_id_string = intToString(election->areas[index]->area_id); // get area_id - NEED TO CHANGE
+        area_id_string = intToString(election->areas[index]->area_id); // get area_id - NEED TO CHANGE
         EXECUTE_ON_CONDITION(area_id_string, NULL, mapDestroy(elections_map),NULL);
         const char * constant_area_id = area_id_string; // turn area_id to const char
         if (mapPut(elections_map, constant_area_id,most_votes_tribe_id ) !=MAP_SUCCESS ){ // put {area_id : tribe_id} in map
