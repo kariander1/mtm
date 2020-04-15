@@ -8,10 +8,10 @@
 		},
 		"paths" : 
 		{
-			"cmake" : "C:/Program Files (x86)/cmake-3.17.0-win64-x64/bin/cmake.exe",
-			"cpack" : "C:/Program Files (x86)/cmake-3.17.0-win64-x64/bin/cpack.exe",
-			"ctest" : "C:/Program Files (x86)/cmake-3.17.0-win64-x64/bin/ctest.exe",
-			"root" : "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17"
+			"cmake" : "C:/Program Files/CMake/bin/cmake.exe",
+			"cpack" : "C:/Program Files/CMake/bin/cpack.exe",
+			"ctest" : "C:/Program Files/CMake/bin/ctest.exe",
+			"root" : "C:/Program Files/CMake/share/cmake-3.17"
 		},
 		"version" : 
 		{
@@ -26,11 +26,7 @@
 	"objects" : 
 	[
 		{
-<<<<<<< HEAD:mtm/ex1/wet_exercise/build/.cmake/api/v1/reply/index-2020-04-14T21-36-34-0125.json
 			"jsonFile" : "codemodel-v2-8307bca3e5846d9e44be.json",
-=======
-			"jsonFile" : "codemodel-v2-572e2ece43dcbc52a200.json",
->>>>>>> 1080d52c3f53bfccb46be9a6ef14d034e9081936:mtm/ex1/wet_exercise/build/.cmake/api/v1/reply/index-2020-04-15T11-38-11-0282.json
 			"kind" : "codemodel",
 			"version" : 
 			{
@@ -39,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-bfc2520edf9d4c30a8a8.json",
+			"jsonFile" : "cache-v2-fccf4cbe8fbabf50a0a2.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -68,7 +64,7 @@
 				"responses" : 
 				[
 					{
-						"jsonFile" : "cache-v2-bfc2520edf9d4c30a8a8.json",
+						"jsonFile" : "cache-v2-fccf4cbe8fbabf50a0a2.json",
 						"kind" : "cache",
 						"version" : 
 						{
@@ -77,11 +73,7 @@
 						}
 					},
 					{
-<<<<<<< HEAD:mtm/ex1/wet_exercise/build/.cmake/api/v1/reply/index-2020-04-14T21-36-34-0125.json
 						"jsonFile" : "codemodel-v2-8307bca3e5846d9e44be.json",
-=======
-						"jsonFile" : "codemodel-v2-572e2ece43dcbc52a200.json",
->>>>>>> 1080d52c3f53bfccb46be9a6ef14d034e9081936:mtm/ex1/wet_exercise/build/.cmake/api/v1/reply/index-2020-04-15T11-38-11-0282.json
 						"kind" : "codemodel",
 						"version" : 
 						{

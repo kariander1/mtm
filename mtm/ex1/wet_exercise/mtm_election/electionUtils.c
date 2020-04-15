@@ -16,14 +16,6 @@ int stringToInt(char* str)
 {
     return atoi(str);
 }
-int getNumOfDigits (int num){
-    int count = 0;
-    while (num != 0) {
-	num /= 10;     
-	count++;
-	}
-    return count;
-}
 char *intToString(int int_to_convert)
 {
     int num_of_digits = getNumOfDigits(int_to_convert); // check the log to se  how many chars we need for the itoa() function
