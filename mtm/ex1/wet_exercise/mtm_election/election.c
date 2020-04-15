@@ -277,7 +277,7 @@ static int getAreaIndexById(Election election,int id)
 }
 static bool multiplyAreasSize(Election election)
 {
-    realloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
+    election->areas= realloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
     RETURN_ON_NULL(election->areas,false);
     election->allocated_size*=2;
     return true;
@@ -362,25 +362,33 @@ static MapResult initializeTribesToArea(Area area,Map tribes)
 }
 
 //for gebug
+
+bool condition(int area_id)
+{
+    return area_id==1234;
+}
 int main()
 {
    
    // bool (*ptr)(int) = NULL;
    // ptr = Todelete_area;
     Election elec =electionCreate();
-   // electionAddArea(elec,1234,"winterfell");
-   //   electionAddArea(elec,1234,"kings landing");
-  //  electionAddArea(elec,12,"kings landing");
+   // 
+     electionAddArea(elec,1234,"kings landing");
+    electionAddArea(elec,12,"kings landing");
     electionAddTribe(elec, 676, "voodoo");
     electionAddTribe(elec, 350, "popo");
+    electionAddArea(elec,1234,"winterfell");
+ //    electionRemoveAreas(elec,condition);
     electionAddVote(elec, 12, 676, 10);
     electionAddVote(elec, 12, 350, 20);
     electionAddVote(elec, 1234, 350, 30);
     //electionRemoveTribe(elec, 350);
     //electionAddTribe(elec, 350, "popo");
-    //electionRemoveVote(elec, 12, 676, 6); // Maybe also bug here
+    electionRemoveVote(elec, 12, 676, 6); // Maybe also bug here
      // electionSetTribeName(elec, 6766, "power");
-    electionComputeAreasToTribesMapping(elec);
+    Map temp =electionComputeAreasToTribesMapping(elec);
+    mapDestroy(temp);
       electionDestroy(elec);
 }
 
