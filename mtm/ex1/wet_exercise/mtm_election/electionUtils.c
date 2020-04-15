@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "electionUtils.h"
+#define NUMBERING_BASE 10
 
 
 int stringToInt(char* str);

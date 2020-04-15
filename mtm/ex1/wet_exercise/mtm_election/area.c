@@ -6,6 +6,10 @@
 #include <stdlib.h>
 #include "electionUtils.h"
 
+#include "../mtm_election/electionUtils.c"
+#include "../mtm_election/election.c"
+#include "../mtm_map/map.c"
+
 #define INITIAL_ZERO "0"
 struct area_t
 {
@@ -72,6 +76,7 @@ AreaResult areaChangeVotesToTribe(Area area, const char *tribe_id, int num_of_vo
     }
     //Calc new votes
     current_votes += num_of_votes;
+    current_votes = (current_votes < 0 ? 0 : current_votes);  // if current votes <0 then votes = 0
     char *new_votes_str = intToString(current_votes);
     //  const char * new_votes_constant = new_votes_str; // No nneed
     RETURN_ON_NULL(new_votes_str, AREA_OUT_OF_MEMORY);
@@ -111,28 +116,7 @@ char *areaGetMostVotesTribe(Area area)
             max_votes_tribe = (stringToInt(max_votes_tribe) < stringToInt(current_tribe) ? max_votes_tribe : current_tribe); // get the tribe with the largest id // Should be lowest
         }
     }
-    /*
-    char *current_tribe = mapGetFirst(area->votes); // returns the key - tribe_id
-    char *max_votes_tribe = current_tribe;          // initialize max_votes_tribe
-
-    while (current_tribe)
-    {
-        const char *const_current_tribe = current_tribe;                       // create const fot tribe_id
-        char *current_num_of_votes = mapGet(area->votes, const_current_tribe); // get the number of votes for the current tribe
-        int num_of_votes = stringToInt(current_num_of_votes);
-        if (num_of_votes > max_num_of_votes)
-        {
-            max_num_of_votes = num_of_votes;
-            max_votes_tribe = current_tribe; // tribe_id
-        }
-        else if (num_of_votes == max_num_of_votes)
-        {
-           max_votes_tribe = (stringToInt(max_votes_tribe) < stringToInt(current_tribe) ? max_votes_tribe : current_tribe); // get the tribe with the largest id // Should be lowest
-        }
-        current_tribe = mapGetNext(area->votes); // promote current tribe
-    }
-    */
     return max_votes_tribe;
 }
-//static int stringToInt
+
 #endif // AREA_C

@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "electionUtils.h"
 
+
 #define AREA_INITIAL_SIZE 1
 #define AREA_MULTIPLIER_SIZE 2
 #define AREA_NOT_FOUND -1
@@ -160,7 +161,7 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
     char * string_tribe_id = intToString(tribe_id);
     RETURN_ON_NULL(string_tribe_id ,ELECTION_OUT_OF_MEMORY);
 
-  AreaResult change_result =areaChangeVotesToTribe(election->areas[area_index], string_tribe_id, 0-num_of_votes);
+    AreaResult change_result =areaChangeVotesToTribe(election->areas[area_index], string_tribe_id, 0-num_of_votes);
     EXECUTE_ON_NOT_CONDITION(change_result,AREA_SUCCESS,free(string_tribe_id),ELECTION_OUT_OF_MEMORY)
  
     free(string_tribe_id);
@@ -346,9 +347,6 @@ bool condition(int area_id)
 /*
 int main()
 {
-   
-   // bool (*ptr)(int) = NULL;
-   // ptr = Todelete_area;
     Election elec =electionCreate();
    // 
      electionAddArea(elec,1234,"kings landing");
@@ -356,17 +354,22 @@ int main()
     electionAddTribe(elec, 676, "voodoo");
     electionAddTribe(elec, 350, "popo");
     electionAddArea(elec,1234,"winterfell");
- //    electionRemoveAreas(elec,condition);
+    electionRemoveAreas(elec,condition);
+    electionAddArea(elec,1234,"winterfell");
     electionAddVote(elec, 12, 676, 10);
     electionAddVote(elec, 12, 350, 20);
     electionAddVote(elec, 1234, 350, 30);
     //electionRemoveTribe(elec, 350);
-    //electionAddTribe(elec, 350, "popo");
+    electionAddTribe(elec, 100, "popo");
     electionRemoveVote(elec, 12, 676, 6); // Maybe also bug here
+    electionAddVote(elec, 1234, 100, 30);
+    electionAddVote(elec, 12, 100, 15);
+    electionRemoveVote(elec, 12, 100, 17);
      // electionSetTribeName(elec, 6766, "power");
     Map temp =electionComputeAreasToTribesMapping(elec);
+    //operationPrintMaps(elec);
     mapDestroy(temp);
-      electionDestroy(elec);
+    electionDestroy(elec);
 }
 */
 #endif //ELECTION_C_
