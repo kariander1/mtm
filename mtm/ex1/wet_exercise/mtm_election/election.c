@@ -36,6 +36,7 @@ static int getAreaIndexById(Election election, int id);
 static bool multiplyAreasSize(Election election);
 static const char *checkTribeExistsAndReturnName(Election election, int tribe_id);
 static void shiftElementsLeft(Election election, int current_index);
+static MapResult initializeTribesToArea(Area area,Map tribes);
 //for debug
 bool Todelete_area(int area_id)
 {
@@ -104,12 +105,15 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      }
     
     Area new_area = areaCreate(area_id,area_name);
-    EXECUTE_ON_CONDITION(new_area,NULL,areaDestroy(new_area),ELECTION_OUT_OF_MEMORY);
+    RETURN_ON_NULL(new_area,ELECTION_OUT_OF_MEMORY);
+
+    EXECUTE_ON_CONDITION(initializeTribesToArea(new_area,election->tribes),MAP_OUT_OF_MEMORY,areaDestroy(new_area),ELECTION_OUT_OF_MEMORY);
 
     election->areas[election->area_count] = new_area;
      election->area_count++;
      return ELECTION_SUCCESS;
 }
+
 const char *electionGetTribeName(Election election, int tribe_id) // Shelly
 {
     RETURN_ON_NULL(election, NULL);
@@ -126,8 +130,8 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     RETURN_ON_NULL(isLegalVotes(num_of_votes), ELECTION_INVALID_VOTES);
     // Arguements are valid
 
-    int area_index;
-    RETURN_ON_CONDITION(area_index=getAreaIndexById(election,area_id),AREA_NOT_FOUND,ELECTION_AREA_NOT_EXIST);
+    int area_index=getAreaIndexById(election,area_id);
+    RETURN_ON_CONDITION(area_index,AREA_NOT_FOUND,ELECTION_AREA_NOT_EXIST);
 
     char* tribe_id_str = intToString(tribe_id);
     RETURN_ON_NULL(tribe_id_str ,ELECTION_OUT_OF_MEMORY);
@@ -333,6 +337,16 @@ static void shiftElementsLeft(Election election, int current_index)
     election->areas[current_index] = NULL; // Last element should point to NULL
     return;
 }
+static MapResult initializeTribesToArea(Area area,Map tribes)
+{
+    MAP_FOREACH(tribe_id,tribes)
+    {
+        RETURN_ON_CONDITION(areaChangeVotesToTribe(area,tribe_id,EMPTY),AREA_OUT_OF_MEMORY,MAP_OUT_OF_MEMORY); // Will create tribe with 0 votes or do nothing
+       // RETURN_ON_CONDITION(areaIntializeTribe(area,tribe_id),MAP_OUT_OF_MEMORY,MAP_OUT_OF_MEMORY);
+    }
+    return MAP_SUCCESS;
+}
+
 //for gebug
 int main()
 {
@@ -340,9 +354,9 @@ int main()
    // bool (*ptr)(int) = NULL;
    // ptr = Todelete_area;
     Election elec =electionCreate();
-    electionAddArea(elec,1234,"winterfell");
+   // electionAddArea(elec,1234,"winterfell");
    //   electionAddArea(elec,1234,"kings landing");
-    electionAddArea(elec,12,"kings landing");
+  //  electionAddArea(elec,12,"kings landing");
     electionAddTribe(elec, 676, "voodoo");
     electionAddTribe(elec, 350, "popo");
     electionAddVote(elec, 12, 676, 10);

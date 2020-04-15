@@ -5,6 +5,8 @@
 #include "../mtm_map/map.h"
 #include <stdlib.h>
 #include "electionUtils.h"
+
+#define INITIAL_ZERO "0"
 struct area_t
 {
     int area_id;
@@ -41,6 +43,17 @@ void areaDestroy(Area area)
     mapDestroy(area->votes);
     free(area);
 }
+/*
+MapResult areaIntializeTribe(Area area,const char *tribe_id)
+{
+    MapResult put_result =MAP_SUCCESS;
+    if(!mapContains(area,tribe_id))
+    {
+        put_result= mapPut(area->votes,tribe_id,INITIAL_ZERO);
+    }
+    return put_result;
+}
+*/
 void areaRemoveTribe(Area area, const char *tribe_id)
 {
     RETURN_ON_CONDITION_NO_VALUE(area, NULL);
@@ -49,7 +62,7 @@ void areaRemoveTribe(Area area, const char *tribe_id)
 }
 AreaResult areaChangeVotesToTribe(Area area, const char *tribe_id, int num_of_votes)
 {
-    RETURN_ON_NULL(area, AREA_NULL_ARGUEMENT); // CHANGE from NULL
+    RETURN_ON_NULL(area, AREA_NULL_ARGUEMENT);
     RETURN_ON_NULL(tribe_id, AREA_NULL_ARGUEMENT);
     char *votes_str = mapGet(area->votes, tribe_id);
     int current_votes = 0;
@@ -61,7 +74,7 @@ AreaResult areaChangeVotesToTribe(Area area, const char *tribe_id, int num_of_vo
     current_votes += num_of_votes;
     char *new_votes_str = intToString(current_votes);
     //  const char * new_votes_constant = new_votes_str; // No nneed
-    EXECUTE_ON_CONDITION(new_votes_str, NULL, free(new_votes_str), AREA_FAILED_CONVERSION);
+    RETURN_ON_NULL(new_votes_str, AREA_OUT_OF_MEMORY);
     if (mapPut(area->votes, tribe_id, new_votes_str) != MAP_SUCCESS)
     {
         free(new_votes_str);
