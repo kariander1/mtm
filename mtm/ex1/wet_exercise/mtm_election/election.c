@@ -68,6 +68,12 @@ void electionDestroy(Election election)
     free(election);
  
 }
+static void removeTribeVotedFromAllAreas(Election election, const char * tribe_id, int max_index_to_remove){
+    for(int i = 0; i<=max_index_to_remove; i++){
+        areaRemoveTribe(election->areas[i],tribe_id);
+    }
+    mapRemove(election->tribes,max_index_to_remove);
+}
 
 ElectionResult electionAddTribe(Election election, int tribe_id, const char *tribe_name) // Shelly
 {
@@ -81,6 +87,14 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
     EXECUTE_ON_CONDITION(isLegalName(tribe_name), false ,free(tribe_id_str), ELECTION_INVALID_NAME );
     MapResult put_result = mapPut(election->tribes,tribe_id_str,tribe_name); //add the new tribe
     ElectionResult result_to_return = (put_result == MAP_OUT_OF_MEMORY ? ELECTION_OUT_OF_MEMORY : ELECTION_SUCCESS);
+    // add to all exsisting areas the new tribe with 0 votes if fails delete all votes of that tribe
+    for (int i = 0;i< election->area_count; i++){
+        if (areaChangeVotesToTribe(election->areas[i],tribe_id_str, EMPTY) == MAP_OUT_OF_MEMORY){
+            electionRemoveTribe(election,tribe_id_str);
+            free(tribe_id_str);
+            return ELECTION_OUT_OF_MEMORY;
+        }
+    }
     free(tribe_id_str); // free the string after usage
     return result_to_return; // Placeholder
 }
@@ -110,7 +124,7 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
     EXECUTE_ON_CONDITION(initializeTribesToArea(new_area,election->tribes),MAP_OUT_OF_MEMORY,areaDestroy(new_area),ELECTION_OUT_OF_MEMORY);
 
     election->areas[election->area_count] = new_area;
-     election->area_count++;
+    election->area_count++;
      return ELECTION_SUCCESS;
 }
 
@@ -140,7 +154,8 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     //Tribe exists
     AreaResult change_result =areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes);
     EXECUTE_ON_CONDITION(change_result,AREA_SUCCESS,free(tribe_id_str),ELECTION_SUCCESS);
-     EXECUTE_ON_CONDITION(change_result,AREA_OUT_OF_MEMORY,free(tribe_id_str),ELECTION_OUT_OF_MEMORY);
+    EXECUTE_ON_CONDITION(change_result,AREA_OUT_OF_MEMORY,free(tribe_id_str),ELECTION_OUT_OF_MEMORY);
+    free(tribe_id_str);
     return ELECTION_SUCCESS;
 }
 ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, int num_of_votes) // Shelly
@@ -159,7 +174,7 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
     RETURN_ON_NULL(string_tribe_id ,ELECTION_OUT_OF_MEMORY);
 
   AreaResult change_result =areaChangeVotesToTribe(election->areas[area_index], string_tribe_id, 0-num_of_votes);
-     EXECUTE_ON_NOT_CONDITION(change_result,AREA_SUCCESS,free(string_tribe_id),ELECTION_OUT_OF_MEMORY)
+    EXECUTE_ON_NOT_CONDITION(change_result,AREA_SUCCESS,free(string_tribe_id),ELECTION_OUT_OF_MEMORY)
  
     free(string_tribe_id);
     return ELECTION_SUCCESS;
@@ -186,7 +201,7 @@ ElectionResult electionRemoveTribe(Election election, int tribe_id) // Shai
     RETURN_ON_NULL(election,ELECTION_NULL_ARGUMENT);
     RETURN_ON_NULL(isLegalId(tribe_id), ELECTION_INVALID_ID);
     char* tribe_id_str=intToString(tribe_id);
-    RETURN_ON_NULL(tribe_id_str ,ELECTION_OUT_OF_MEMORY);
+    EXECUTE_ON_CONDITION(tribe_id_str ,NULL, free(tribe_id_str),ELECTION_OUT_OF_MEMORY );
    MapResult remove_result = mapRemove(election->tribes,tribe_id_str);
 
     EXECUTE_ON_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST, free(tribe_id_str),ELECTION_TRIBE_NOT_EXIST);
@@ -240,8 +255,7 @@ Map electionComputeAreasToTribesMapping(Election election) // UNITED!
         
         MapResult put_result= mapPut(elections_map, area_id_string,most_votes_tribe_id ); // put {area_id : tribe_id} in map
         free(area_id_string); // No nned for it anymore
-        EXECUTE_ON_CONDITION(put_result,MAP_OUT_OF_MEMORY,mapDestroy(elections_map),NULL);
-          
+        EXECUTE_ON_CONDITION(put_result,MAP_OUT_OF_MEMORY,mapDestroy(elections_map),NULL);  
      
     }
     return elections_map; 

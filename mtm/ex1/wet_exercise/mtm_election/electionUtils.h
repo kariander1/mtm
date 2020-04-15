@@ -24,6 +24,15 @@ if (!(object))\
     {                                                \
         return (return_value);                       \
     }
+ /*!
+* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
+*/
+#define RETURN_ON_NOT_CONDITION(object,comparator, return_value) \
+    if ((object) != (comparator))                                   \
+    {                                                \
+        return (return_value);                       \
+    }
+       
 /*!
 * Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
 */
@@ -41,7 +50,6 @@ if ((object) != (comparator))\
     expression;\
     return (return_value);\
 }
-
 
 /*!
 * Macro for shortening returning values for non-existence of a object with an extra expression to execute.
