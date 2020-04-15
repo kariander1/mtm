@@ -6,14 +6,29 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
 C:/VScode/mtm/ex1/wet_exercise/election.h
 mtm_map/map.h
 C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 
 C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.h
+=======
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.c
+assert.h
+-
+map.h
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
+stdlib.h
+-
+string.h
+-
+
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
+>>>>>>> 1080d52c3f53bfccb46be9a6ef14d034e9081936
 stdbool.h
 -
 
+<<<<<<< HEAD
 C:/VScode/mtm/ex1/wet_exercise/mtm_election/election.c
 ../election.h
 C:/VScode/mtm/ex1/wet_exercise/election.h
@@ -21,10 +36,16 @@ C:/VScode/mtm/ex1/wet_exercise/election.h
 C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 area.h
 C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.h
+=======
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/tests/shai_test.c
+../mtm_map/map.h
+C:/Users/shell/Technion/MTM/ex1/build/mtm-1/mtm/ex1/wet_exercise/mtm_map/map.h
+>>>>>>> 1080d52c3f53bfccb46be9a6ef14d034e9081936
 stdlib.h
 -
 assert.h
 -
+<<<<<<< HEAD
 string.h
 -
 stdio.h
@@ -37,6 +58,8 @@ C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
 C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 stdbool.h
 -
+=======
+>>>>>>> 1080d52c3f53bfccb46be9a6ef14d034e9081936
 string.h
 -
 
