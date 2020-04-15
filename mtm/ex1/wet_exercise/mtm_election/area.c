@@ -61,12 +61,14 @@ AreaResult areaChangeVotesToTribe(Area area, const char* tribe_id, int num_of_vo
     //Calc new votes
     current_votes+=num_of_votes;
     char* new_votes_str = intToString(current_votes);
-    RETURN_ON_NONEXISTENCE(new_votes_str,AREA_FAILED_CONVERSION);
-    if(mapPut(area->votes,tribe_id,new_votes_str)!=MAP_SUCCESS)
+    const char * new_votes_constant = new_votes_str;
+    RETURN_ON_CONDITION(new_votes_str,NULL, AREA_FAILED_CONVERSION);
+    if(mapPut(area->votes,tribe_id,new_votes_constant)!=MAP_SUCCESS)
     {
+        free (new_votes_str);
         return AREA_OUT_OF_MEMORY;///Find corrent val
     }
-
+    free (new_votes_str);
     return AREA_SUCCESS;
 
 }
@@ -89,7 +91,7 @@ const char* areaGetMostVotesTribe(Area area){
             max_votes_tribe = current_tribe; // tribe_id
         }
         else if (num_of_votes = max_num_of_votes){
-            max_votes_tribe = (stringToInt(max_votes_tribe) > stringToInt(current_tribe) ? max_votes_tribe : current_tribe); // get the tribe with the largest id
+            max_votes_tribe = (stringToInt(max_votes_tribe) < stringToInt(current_tribe) ? max_votes_tribe : current_tribe); // get the tribe with the  id
         }
         current_tribe = mapGetNext(area->votes); // promote current tribe
     }

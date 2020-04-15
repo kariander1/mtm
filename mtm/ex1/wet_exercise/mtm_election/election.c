@@ -19,6 +19,7 @@
 #define AREA_NOT_FOUND -1
 #define LEGAL_DELIMITER ' '
 #define EMPTY 0
+# define NULL_POINTER -1
 
 
 struct election_t
@@ -37,6 +38,7 @@ static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
 static char * checkTribeExsistsAndReturnName(Election election, int tribe_id);
+static void promoteEachElementAfter(Election election, int current_index);
 //for debug
 bool Todelete_area(int area_id){
     if (area_id%2 == 0){
@@ -133,10 +135,11 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
 
     char* tribe_id_str = intToString(tribe_id); 
     DESTROY_ON_CONDITION(tribe_id_str ,NULL ,election,ELECTION_OUT_OF_MEMORY);
-    RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
+    const char * constant_tribe_id = tribe_id_str;
+    EXECUTE_ON_CONDITION(mapContains(election->tribes,constant_tribe_id),false, free(tribe_id_str), ELECTION_TRIBE_NOT_EXIST);
     //Tribe exists
-    RETURN_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes),AREA_SUCCESS,ELECTION_SUCCESS); //don't you need to set as const char?------
-    
+    EXECUTE_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index],constant_tribe_id,num_of_votes),AREA_SUCCESS, free(tribe_id_str),ELECTION_SUCCESS); //don't you need to set as const char?------
+    free(tribe_id_str);
     return ELECTION_OUT_OF_MEMORY; //Maybe?
 }
 ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, int num_of_votes) // Shelly
@@ -152,10 +155,15 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
     RETURN_ON_CONDITION(electionGetTribeName(election, tribe_id), NULL, ELECTION_TRIBE_NOT_EXIST);
 
     char * string_tribe_id = intToString(tribe_id);
-    DESTROY_ON_CONDITION(string_tribe_id ,NULL ,election,ELECTION_OUT_OF_MEMORY);
-    const char * const_tribe_id = string_tribe_id;
-    DESTROY_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index], const_tribe_id, 0-num_of_votes),ELECTION_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY)
-    
+    DESTROY_ON_CONDITION(string_tribe_id ,NULL ,election,ELECTION_OUT_OF_MEMORY); // dont need to free string_tribe_id
+    const char * constant_tribe_id = string_tribe_id;
+     if (areaChangeVotesToTribe(election->areas[area_index], constant_tribe_id, 0-num_of_votes) != AREA_SUCCESS){
+        free(string_tribe_id);
+        electionDestroy(election);
+        return ELECTION_OUT_OF_MEMORY;
+    }
+    //DESTROY_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index], const_tribe_id, 0-num_of_votes),ELECTION_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY)
+    free(string_tribe_id);
     return ELECTION_SUCCESS; // Placeholder
 }
 ElectionResult electionSetTribeName(Election election, int tribe_id, const char *tribe_name) // Shai
@@ -163,44 +171,46 @@ ElectionResult electionSetTribeName(Election election, int tribe_id, const char 
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(tribe_name,NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
-  const char* tribe_id_str;
-   DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
-    RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
-    RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
+    char* tribe_id_str;
+    DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+    const char * constant_tribe_id = tribe_id_str;
+    EXECUTE_ON_CONDITION(mapContains(election->tribes,constant_tribe_id), false, free(tribe_id_str),ELECTION_TRIBE_NOT_EXIST);
+    //RETURN_ON_CONDITION(mapContains(election->tribes,constant_tribe_id),false,ELECTION_TRIBE_NOT_EXIST);
+    EXECUTE_ON_CONDITION(isLegalName(tribe_name), false, free(tribe_id_str) ,ELECTION_INVALID_NAME);
 
-MapResult put_result = mapPut(election->tribes,tribe_id_str,tribe_name);
-    RETURN_ON_CONDITION(put_result,MAP_SUCCESS,ELECTION_SUCCESS);
-    DESTROY_ON_CONDITION(put_result,MAP_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY);
-
+    MapResult put_result = mapPut(election->tribes,constant_tribe_id,tribe_name);
+    EXECUTE_ON_CONDITION(put_result,MAP_SUCCESS, free(tribe_id_str),ELECTION_SUCCESS);
+    //DESTROY_ON_CONDITION(put_result,MAP_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY);
+    if (put_result == MAP_OUT_OF_MEMORY){
+        free(tribe_id_str);
+        electionDestroy(election);
+        return ELECTION_OUT_OF_MEMORY;
+    }
 // Shouldn't reach here since mapPut gets non-NULL arguements, thus returns SUCCESS or OUT_OF_MEMORY
+    
     return ELECTION_SUCCESS;
 }
 ElectionResult electionRemoveTribe(Election election, int tribe_id)
 {
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
-  const char* tribe_id_str;
+    char* tribe_id_str;
     DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
-   
+   const char * constant_tribe_id = tribe_id_str;
    //Remove from tribes map:
-   MapResult remove_result = mapRemove(election->tribes,tribe_id_str);
+   MapResult remove_result = mapRemove(election->tribes,constant_tribe_id);
 
-    RETURN_ON_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST,ELECTION_TRIBE_NOT_EXIST);
+    EXECUTE_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST, free(tribe_id_str),ELECTION_TRIBE_NOT_EXIST);
     
     for (int i = 0; i < election->area_count; i++)
     {
-        areaRemoveTribe(election->areas[i],tribe_id_str);
+        areaRemoveTribe(election->areas[i],constant_tribe_id);
     }
     
-
+    free(tribe_id_str);
     return ELECTION_SUCCESS;
 }
-static void promoteEachElementAfter(Election election, int current_index){
-    for (int area_index = current_index; area_index < election->area_count -1; area_index ++){
-        election->areas[area_index] = election->areas[area_index+1]; 
-    }
-    return;
-}
+
 ElectionResult electionRemoveAreas(Election election, AreaConditionFunction should_delete_area) //Shelly
 {
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
@@ -220,7 +230,8 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
 
 Map electionComputeAreasToTribesMapping(Election election) // UNITED!
 {
-    RETURN_ON_CONDITION(election, NULL, mapCreate()); // if null -create empty map
+    RETURN_ON_CONDITION(election, NULL, NULL; // if null - return NULL
+    RETURN_ON_CONDITION(mapGetSize(election->tribes), NULL_POINTER, mapCreate()); // if a null pointer was sent
     RETURN_ON_CONDITION(mapGetSize(election->tribes), EMPTY, mapCreate());// if empty -create empty map
     RETURN_ON_CONDITION(*(election->areas), NULL, mapCreate());// if null -create empty map
     Map elections_map = mapCreate();
@@ -230,8 +241,10 @@ Map electionComputeAreasToTribesMapping(Election election) // UNITED!
         char * area_id_string = intToString(election->areas[index]->area_id); // get area_id
         RETURN_ON_CONDITION(area_id_string, NULL,NULL);
         const char * const_area_id = area_id_string; // turn area_id to const char
-        mapPut(elections_map, const_area_id,most_votes_tribe_id ); // put {area_id : tribe_id} in map
+        EXECUTE_ON_NOT_CONDITION(mapPut(elections_map, const_area_id,most_votes_tribe_id ), MAP_SUCCESS, free(area_id_string), elections_map );// put {area_id : tribe_id} in map
+        //mapPut(elections_map, const_area_id,most_votes_tribe_id ); 
     }
+    free(area_id_string);
     return elections_map; // Placeholder
 }
 
@@ -314,6 +327,12 @@ static char * checkTribeExsistsAndReturnName(Election election, int tribe_id){
     char* tribe_name = mapGet(election->tribes, const_string_of_tribe_id); // check if tribe_id exsists
     free(string_of_tribe_id);
     return tribe_name; // return Tribe name or NULL if the tribe doesnt exsists
+}
+static void promoteEachElementAfter(Election election, int current_index){ // promotes the area index
+    for (int area_index = current_index; area_index < election->area_count -1; area_index ++){
+        election->areas[area_index] = election->areas[area_index+1]; 
+    }
+    return;
 }
 //for gebug
 int main()
