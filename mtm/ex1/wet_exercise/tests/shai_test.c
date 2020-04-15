@@ -67,7 +67,7 @@ char *getOptionText(int i);
 
 char *getOptionText(int i)
 {
-    char *option_text;
+    char *option_text = "";
     switch (i)
     {
     case MAP_CREATE:
@@ -151,8 +151,11 @@ int getSelection(int lower, int upper, int exception)
 }
 bool executeOperations()
 {
-    int selection = getSelection(1, OPTIONS, 1);
-    printf("Chosen operation : %s\n\n", getOptionText(selection));
+    int selection = OPTIONS; //Quit;
+    selection = getSelection(1, OPTIONS, 1);
+
+    char* option_text =getOptionText(selection);
+    printf("Chosen operation : %s\n\n", option_text);
     switch (selection)
     {
     case MAP_CREATE:
@@ -540,17 +543,17 @@ void printMapResult(MapResult result)
     }
     printf("Operation end with status of %s\n", status_string);
 }
-node sortEntries(Map map)
+void sortEntries(Map map,node* head)
 {
 
-    node head = NULL;
+    (*head) = NULL;
     MAP_FOREACH(key, map)
     { //=malloc(sizeof(*sorted_list))
         char *value = mapGet(map, key);
         
-        node temp = malloc(sizeof(*temp));
-        node dummy =temp;
-        temp->next = head;
+        node dummy = malloc(sizeof(*dummy));
+        node temp =dummy;
+        temp->next = (*head);
         int k = 0;
         while (temp->next && strcmp(key, temp->next->key) > 0)
         {
@@ -567,12 +570,12 @@ node sortEntries(Map map)
 
         if (k == 0)
         {
-            head = temp->next;
+            *head = temp->next;
         }
         new_node->next = after;
         free(dummy);
     }
-    return head;
+    return;
 }
 void printLexicoggraphic(Map map)
 {
@@ -582,9 +585,9 @@ void printLexicoggraphic(Map map)
     int k = 0;
     int spaces_for_key = 20;
     int spaces_for_value = 20;
-
-    node sorted = sortEntries(map);
-    node head = sorted;
+node head;
+     sortEntries(map,&head);
+    node sorted = head;
     while (sorted)
     {
 
@@ -636,7 +639,15 @@ void printLexicoggraphic(Map map)
     }
 
     printf("\n");
-    free(head);
+    while (head)
+    {
+        node to_free = head;
+        head=head->next;
+            free(to_free);
+    }
+    
+
+    free(sorted);
 }
 
 int operationPrintMaps(bool lexi)

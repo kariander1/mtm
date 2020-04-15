@@ -1,9 +1,11 @@
-#include "../mtm_map/map.h"
+
+
+#include "../election.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-#define OPTIONS 16
+#define OPTIONS 14
 #define MAX_ELECTIONS 1000
 
 typedef enum Operation_t
@@ -13,48 +15,37 @@ typedef enum Operation_t
     ADD_TRIBE,
     ADD_AREA,
     GET_TRIBE_NAME,
+    ADD_VOTE,
+    REMOVE_VOTE,
     SET_TRIBE_NAME,
-    MAP_GET,
-    MAP_REMOVE,
-    MAP_GET_FIRST,
-    MAP_GET_NEXT,
-    MAP_CLEAR,
-    MAP_PRINT_INTERNAL,
-    MAP_PRINT,
-    MAP_ITERATE,
-    MAP_INPUTS,
+    REMOVE_TRIBE,
+    REMOVE_AREAS,
+    TRIBES_MAP,
+    ELECTION_PRINT,
+    ELECTION_INPUTS,
     QUIT
 } OperationType;
 
-Map maps[MAX_MAPS];
+Election elections[MAX_ELECTIONS];
 int inputs=0;
 
 static bool internal_printer = false;
 
 void printMapResult(MapResult result);
 void operationsOverrideInputs();
-void operationCreateMap();
+void operationCreateElection();
 void printOptions();
 int getSelection();
-void operationCreateMap();
+
 bool executeOperations();
-int addMapToMaps(Map map);
-int operationPrintMapsInternal();
-int operationPrintMaps();
-int operationPrintMapSelector();
-void operationClearMap();
-void operationCopy();
-void operationPut();
-void operationDestroyMap();
-void operationGetSize();
-void removeFromMaps(int index);
-void operationGetFirst();
-void operationContains();
-void operationGet();
-void operationRemove();
-void operationIterate();
-void operationGetNext();
-int getMaxIndexOfMapsWithPrint();
+
+int operationPrintElectionsInternal();
+int operationPrintElections();
+int operationPrintElectionSelector();
+int addElecToElecs(Election elec);
+void removeFromElections(int index);
+
+int getMaxIndexOfElectionsWithPrint();
 char* getOptionText(int i);
 
 char* getOptionText(int i)
@@ -62,58 +53,52 @@ char* getOptionText(int i)
         char *option_text;
 switch (i)
         {
-        case MAP_CREATE:
-            option_text = "Create Map";
+        case ELECTION_CREATE:
+            option_text = "Create Election";
             break;
-        case MAP_DESTROY:
-            option_text = "Destroy Map";
+        case ELECTION_DESTROY:
+            option_text = "Destroy Election";
             break;
-        case MAP_COPY:
-            option_text = "Copy Map";
+        case ADD_TRIBE:
+            option_text = "Add Tribe";
             break;
-        case MAP_GET_SIZE:
-            option_text = "Get Map Size";
-            break;
-
-        case MAP_CONTAINS:
-            option_text = "Check Existence of key";
-            break;
-        case MAP_PUT:
-            option_text = "Put Element";
-            break;
-        case MAP_GET:
-            option_text = "Get Element";
-            break;
-        case MAP_REMOVE:
-            option_text = "Remove Element";
-            break;
-        case MAP_GET_FIRST:
-            option_text = "Get first element";
+        case ADD_AREA:
+            option_text = "Add Area";
             break;
 
-        case MAP_GET_NEXT:
-            option_text = "Get next element";
+        case GET_TRIBE_NAME:
+            option_text = "Get Tribe Name";
             break;
-        case MAP_CLEAR:
-            option_text = "Clear Map";
+        case ADD_VOTE:
+            option_text = "Add Vote";
             break;
-        case MAP_PRINT_INTERNAL:
-            option_text = "Print Map (internal)";
+        case REMOVE_VOTE:
+            option_text = "Remove Vote";
             break;
-        case MAP_PRINT:
-            option_text = "Print Map (script)";
+        case SET_TRIBE_NAME:
+            option_text = "Set Tribe Name";
             break;
-        case MAP_ITERATE:
-            option_text = "Iterate Map";
+        case REMOVE_TRIBE:
+            option_text = "Remove Tribe";
             break;
-            case MAP_INPUTS:
-option_text = "Override Inputs";
+
+        case REMOVE_AREAS:
+            option_text = "Remove Areas";
             break;
+        case TRIBES_MAP:
+            option_text = "Areas-to-Tribes mapping";
+            break;
+        case ELECTION_PRINT:
+            option_text = "Print Election";
+            break;
+        case ELECTION_INPUTS:
+            option_text = "Inputs override";
+            break;
+            default:
         case QUIT:
             option_text = "Quit";
             break;
-        default:
-            break;
+ 
         }
 
         return option_text;
@@ -131,11 +116,11 @@ void printOptions()
 int getSelection(int lower, int upper, int exception)
 {
     int option = -1;
-    while (!scanf("%d", &option) || ((option < lower || option > upper) && option != exception))
+    while (!scanf("%d", &option))
     {
         inputs++;
         printf("Invalid input - input N.%d\n",inputs);
-        exit(0);
+     
     }
     printf("Got selection : %d\n",option);
     inputs++;
@@ -147,20 +132,18 @@ bool executeOperations()
     printf("Chosen operation : %s\n\n",getOptionText(selection));
     switch (selection)
     {
-    case MAP_CREATE:
-        operationCreateMap();
+    case ELECTION_CREATE:
+        operationCreateElection();
         break;
-    case MAP_DESTROY:
-        operationDestroyMap();
+    case ELECTION_DESTROY:
+        operationDestroyElection();
         break;
     case MAP_CLEAR:
         operationClearMap();
         break;
-    case MAP_PRINT_INTERNAL:
-        operationPrintMapsInternal();
-        break;
-    case MAP_PRINT:
-        operationPrintMaps();
+        
+    case ELECTION_PRINT:
+        operationPrintElections();
         break;
     case MAP_GET_SIZE:
         operationGetSize();
@@ -303,22 +286,17 @@ void operationsOverrideInputs()
 
 }
 void operationGetNext()
-{ /*
-    int maxi = getMaxIndexOfMapsWithPrint();
-    if (maxi == -1)
-    {
-        return;
-    }
-    */
-    printf("From which map would you like to GetNext? [0-%d]\n", MAX_MAPS);
-    int selection = getSelection(0, MAX_MAPS, 0);
+{ 
+
+    printf("From which map would you like to GetNext? [0-%d]\n", MAX_ELECTIONS);
+    int selection = getSelection(0, MAX_ELECTIONS, 0);
     
     char *next = mapGetNext(maps[selection]);
     printf("Next entry is : %s\n", next);
 }
 void operationGetFirst()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -331,7 +309,7 @@ void operationGetFirst()
 }
 void operationIterate()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -346,7 +324,7 @@ void operationIterate()
 }
 void operationRemove()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -363,7 +341,7 @@ void operationRemove()
 }
 void operationGet()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -381,7 +359,7 @@ void operationGet()
 }
 void operationContains()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -399,7 +377,7 @@ void operationContains()
 }
 void operationCopy()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -413,7 +391,7 @@ void operationCopy()
 }
 void operationPut()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -447,26 +425,26 @@ void operationPut()
         printMapResult(mapPut(maps[selection], key, value));
     }
 }
-int getMaxIndexOfMapsWithPrint()
+int getMaxIndexOfElectionsWithPrint()
 {
-    int maxi = operationPrintMapSelector();
+    int maxi = operationPrintElectionSelector();
     if (maxi == -1)
     {
-        printf("No maps stored\n");
+        printf("No elections stored\n");
     }
     return maxi;
 }
-int operationPrintMapSelector()
+int operationPrintElectionSelector()
 {
     if (internal_printer)
     {
-        return operationPrintMapsInternal();
+        return operationPrintElectionsInternal();
     }
-    return operationPrintMaps();
+    return operationPrintElections();
 }
 void operationGetSize()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -477,40 +455,40 @@ void operationGetSize()
     int size = mapGetSize(maps[selection]);
     printf("Map N.%d Size is : %d\n", selection, size);
 }
-void operationCreateMap()
+void operationCreateElection()
 {
-    Map new_map = mapCreate();
-    addMapToMaps(new_map);
+    Election new_elec = electionCreate();
+    addElecToElecs(new_elec);
 }
-void operationDestroyMap()
+void operationDestroyElection()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
     }
-    printf("Which map would you like to destroy? [0-%d] [-9->Destroy all]\n", maxi);
+    printf("Which election would you like to destroy? [0-%d] [-9->Destroy all]\n", maxi);
     int selection = getSelection(0, maxi, -9);
     if (selection == -9)
     {
-        for (int i = 0; i < MAX_MAPS; i++)
+        for (int i = 0; i < MAX_ELECTIONS; i++)
         {
-            if (maps[i])
+            if (elections[i])
             {
-                mapDestroy(maps[i]);
-                removeFromMaps(i);
+                electionDestroy(elections[i]);
+                removeFromElections(i);
             }
         }
     }
     else
     {
-        mapDestroy(maps[selection]);
-        removeFromMaps(selection);
+        electionDestroy(elections[selection]);
+        removeFromElections(selection);
     }
 }
 void operationClearMap()
 {
-    int maxi = getMaxIndexOfMapsWithPrint();
+    int maxi = getMaxIndexOfElectionsWithPrint();
     if (maxi == -1)
     {
         return;
@@ -542,9 +520,116 @@ void printMapResult(MapResult result)
     }
     printf("Operation end with status of %s\n", status_string);
 }
-int operationPrintMaps()
+void sortEntries(Map map,node* head)
 {
-    int count = 0;
+
+    (*head) = NULL;
+    MAP_FOREACH(key, map)
+    { //=malloc(sizeof(*sorted_list))
+        char *value = mapGet(map, key);
+        
+        node dummy = malloc(sizeof(*dummy));
+        node temp =dummy;
+        temp->next = (*head);
+        int k = 0;
+        while (temp->next && strcmp(key, temp->next->key) > 0)
+        {
+            temp = temp->next;
+            k++;
+        }
+     
+        node after = temp->next;
+        node new_node = malloc(sizeof(*new_node));
+        new_node->key = key;
+        new_node->value = value;
+
+        temp->next = new_node;
+
+        if (k == 0)
+        {
+            *head = temp->next;
+        }
+        new_node->next = after;
+        free(dummy);
+    }
+    return;
+}
+void printLexicoggraphic(Map map)
+{
+    //printf("Map N. %d\n\n", i);
+    //        max_map_index = i;
+    int num_elements = mapGetSize(map);
+    int k = 0;
+    int spaces_for_key = 20;
+    int spaces_for_value = 20;
+node head;
+     sortEntries(map,&head);
+    node sorted = head;
+    while (sorted)
+    {
+
+        if (k == 0)
+        {
+            putchar(' ');
+            printf("key");
+            for (int i = 0; i <= spaces_for_key - 3; i++)
+            {
+                putchar(' ');
+            }
+            printf("value\n");
+
+            putchar(' ');
+            for (int i = 0; i < spaces_for_key; i++)
+            {
+                putchar('-');
+            }
+            putchar(' ');
+            for (int i = 0; i < spaces_for_value; i++)
+            {
+                putchar('-');
+            }
+            putchar(' ');
+            putchar('\n');
+        }
+
+        printf("|%-20s|", (sorted->key));
+
+        printf("%-20s|\n", sorted->value);
+
+        k++;
+        if (k == num_elements)
+        { // Print ending
+            putchar(' ');
+            for (int i = 0; i < spaces_for_key; i++)
+            {
+                putchar('-');
+            }
+            putchar(' ');
+            for (int i = 0; i < spaces_for_value; i++)
+            {
+                putchar('-');
+            }
+            putchar(' ');
+            putchar('\n');
+        }
+        sorted = sorted->next;
+    }
+
+    printf("\n");
+    while (head)
+    {
+        node to_free = head;
+        head=head->next;
+            free(to_free);
+    }
+    
+
+    free(sorted);
+}
+
+int operationPrintMaps(bool lexi)
+{
+    //  int count = 0;
     int max_map_index = -1;
     for (int i = 0; i < MAX_MAPS; i++)
     {
@@ -553,12 +638,90 @@ int operationPrintMaps()
         {
             printf("Map N. %d\n\n", i);
             max_map_index = i;
-            int num_elements = mapGetSize(maps[i]);
+
+            if (lexi)
+            {
+                printLexicoggraphic(maps[i]);
+            }
+            else
+            {
+                int num_elements = mapGetSize(maps[i]);
+                int k = 0;
+                int spaces_for_key = 20;
+                int spaces_for_value = 20;
+
+                MAP_FOREACH(current_key, maps[i])
+                {
+                    if (k == 0)
+                    {
+                        putchar(' ');
+                        printf("key");
+                        for (int i = 0; i <= spaces_for_key - 3; i++)
+                        {
+                            putchar(' ');
+                        }
+                        printf("value\n");
+
+                        putchar(' ');
+                        for (int i = 0; i < spaces_for_key; i++)
+                        {
+                            putchar('-');
+                        }
+                        putchar(' ');
+                        for (int i = 0; i < spaces_for_value; i++)
+                        {
+                            putchar('-');
+                        }
+                        putchar(' ');
+                        putchar('\n');
+                    }
+
+                    printf("|%-20s|", current_key);
+
+                    printf("%-20s|\n", mapGet(maps[i], current_key));
+
+                    k++;
+                    if (k == num_elements)
+                    { // Print ending
+                        putchar(' ');
+                        for (int i = 0; i < spaces_for_key; i++)
+                        {
+                            putchar('-');
+                        }
+                        putchar(' ');
+                        for (int i = 0; i < spaces_for_value; i++)
+                        {
+                            putchar('-');
+                        }
+                        putchar(' ');
+                        putchar('\n');
+                    }
+                }
+                printf("\n");
+            }
+
+            //     count++;
+        }
+    }
+    return max_map_index;
+}
+int operationPrintElections()
+{
+    int count = 0;
+    int max_map_index = -1;
+    for (int i = 0; i < MAX_ELECTIONS; i++)
+    {
+
+        if (elections[i])
+        {
+            printf("Map N. %d\n\n", i);
+            max_map_index = i;
+            int num_elements = mapGetSize(elections[i]);
             int k = 0;
             int spaces_for_key = 20;
             int spaces_for_value = 20;
 
-            MAP_FOREACH(current_key, maps[i])
+            MAP_FOREACH(current_key, elections[i])
             {
                 if (k == 0)
                 {
@@ -586,7 +749,7 @@ int operationPrintMaps()
 
                 printf("|%-20s|", current_key);
 
-                printf("%-20s|\n", mapGet(maps[i], current_key));
+                printf("%-20s|\n", mapGet(elections[i], current_key));
 
                 k++;
                 if (k == num_elements)
@@ -611,48 +774,48 @@ int operationPrintMaps()
     }
     return max_map_index;
 }
-int operationPrintMapsInternal()
+int operationPrintElectionsInternal()
 {
     int count = 0;
-    int max_map_index = -1;
-    for (int i = 0; i < MAX_MAPS; i++)
+    int max_election_index = -1;
+    for (int i = 0; i < MAX_ELECTIONS; i++)
     {
 
-        if (maps[i])
+        if (elections[i])
         {
             printf("Map N. %d\n\n", i);
-            max_map_index = i;
+            max_election_index = i;
             //mapPrint(maps[i]);
             count++;
             printf("\n");
         }
     }
-    return max_map_index;
+    return max_election_index;
 }
 
-int addMapToMaps(Map map)
+int addElecToElecs(Election elec)
 {
-    for (int i = 0; i < MAX_MAPS; i++)
+    for (int i = 0; i < MAX_ELECTIONS; i++)
     {
-        if (!maps[i])
+        if (!elections[i])
         {
-            maps[i] = map;
+            elections[i] = elec;
             return i;
         }
     }
     return -1;
 }
-void removeFromMaps(int index)
+void removeFromElections(int index)
 {
-    maps[index] = NULL;
+    elections[index] = NULL;
 }
 
 
 int main()
 {
-    for (int i = 0; i < MAX_MAPS; i++)
+    for (int i = 0; i < MAX_ELECTIONS; i++)
     {
-        maps[i] = NULL;
+        elections[i] = NULL;
     }
     printf("Welcome to map tester V1.6 C Shai Yehezkel\n\n");
     printf("Using internal printer calls the \"void mapPrint\" implemented in map.h/c.\nOtherwise a built-in printer is being called that would be the same for each implementation.\n\n");

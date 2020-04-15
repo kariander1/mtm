@@ -1,2 +1,0 @@
-C:\TDM-GCC-64\bin\ar.exe qc libelections.a  CMakeFiles/elections.dir/elections.cpp.obj
-C:\TDM-GCC-64\bin\ranlib.exe libelections.a

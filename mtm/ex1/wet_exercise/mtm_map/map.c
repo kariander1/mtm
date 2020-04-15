@@ -63,13 +63,13 @@ struct Map_t
 // HELPER FUNCTIONS TOKENS
 
 /**
-* initialize_attributes: Initializes all attributes of struct Map_t to be null.
+* initializeAttributes: Initializes all attributes of struct Map_t to be null.
 *
 * @param map - the map to initialize;
 * @return
 * 	None.
 */
-static void initialize_attributes(Map map);
+static void initializeAttributes(Map map);
 /**
 * mapGetNextKeyAndPromote: Promotes the given Entry to the next entry given as the second arguement
 *
@@ -141,7 +141,7 @@ Map mapCreate()
 
     RETURN_ON_NONEXISTENCE(new_map, NULL);
 
-    initialize_attributes(new_map);
+    initializeAttributes(new_map);
     return new_map;
 }
 void mapDestroy(Map map)
@@ -297,7 +297,7 @@ MapResult mapClear(Map map)
         mapGetNextInternal(map); //promote the iterator_internal
         freeEntry(to_delete);
     }
-    initialize_attributes(map);
+    initializeAttributes(map);
     return MAP_SUCCESS;
 }
 
@@ -351,7 +351,7 @@ static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry)
     (*original_entry)->next = NULL;
     return (*original_entry);
 }
-static void initialize_attributes(Map map)
+static void initializeAttributes(Map map)
 {
     map->number_of_entries = 0;
     map->iterator = NULL;
