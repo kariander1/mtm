@@ -244,7 +244,7 @@ electionAddTribe(elec,0,"tribe test");
  electionAddTribe(NULL,-1,"tribe test");
  electionAddTribe(NULL,NULL,"tribe test");
  electionAddTribe(NULL,-1,"Tribe test");
- 
+
         free(elec);
     }
     
@@ -273,7 +273,7 @@ void operationMapping(bool with_tribe_names)
     Map mapping = electionComputeAreasToTribesMapping(elections[selection]);
     if (!mapping)
         printf("Map is NULL\n");
-    printLexicographic(mapping);
+    printLexicographic(mapping,"Area ID","Tribe ID");
 
     if (!with_tribe_names)
     {
@@ -289,7 +289,7 @@ void operationMapping(bool with_tribe_names)
         mapPut(tribes, tribe_id, tribe_name);
     }
     free(mapping);
-    printLexicographic(tribes);
+    printLexicographic(tribes,"Tribe ID","Tribe Name");
     free(tribes);
     //printMapResult(status);
 }
@@ -771,7 +771,7 @@ int operationPrintElections()
             max_map_index = i;
 
             Map tempMap = electionComputeAreasToTribesMapping(elections[i]);
-            printLexicographic(tempMap);
+            printLexicographic(tempMap,"Area ID","Tribe ID");
             mapDestroy(tempMap);
             printf("\n");
         }
