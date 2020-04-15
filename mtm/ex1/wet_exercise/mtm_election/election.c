@@ -87,7 +87,7 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
     EXECUTE_ON_CONDITION(isLegalName(tribe_name), false ,free(tribe_id_str), ELECTION_INVALID_NAME );
     MapResult put_result = mapPut(election->tribes,tribe_id_str,tribe_name); //add the new tribe
     ElectionResult result_to_return = (put_result == MAP_OUT_OF_MEMORY ? ELECTION_OUT_OF_MEMORY : ELECTION_SUCCESS);
-    // add to all exsisting areas the new tribe with 0 votes
+    // add to all exsisting areas the new tribe with 0 votes if fails delete all votes of that tribe
     for (int i = 0;i< election->area_count; i++){
         if (areaChangeVotesToTribe(election->areas[i],tribe_id_str, EMPTY) == MAP_OUT_OF_MEMORY){
             electionRemoveTribe(election,tribe_id_str);
