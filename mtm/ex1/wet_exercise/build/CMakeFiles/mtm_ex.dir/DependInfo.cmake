@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/VScode/mtm/ex1/wet_exercise/mtm_election/election.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj"
   "C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj"
   "C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
+  "C:/VScode/mtm/ex1/wet_exercise/tests/shai_test_election.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

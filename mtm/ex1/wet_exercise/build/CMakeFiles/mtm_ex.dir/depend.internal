@@ -18,3 +18,7 @@ CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj
 CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj
  C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.c
  C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
+CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj
+ C:/VScode/mtm/ex1/wet_exercise/election.h
+ C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
+ C:/VScode/mtm/ex1/wet_exercise/tests/shai_test_election.c

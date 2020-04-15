@@ -770,7 +770,7 @@ int main()
     {
         maps[i] = NULL;
     }
-    printf("Welcome to map tester V3 C Shai Yehezkel\n\n");
+    printf("Welcome to map tester V3.3 C Shai Yehezkel\n\n");
     printf("**NOTE : The built-in printer utilizes the MAP_FOREACH Macro, and thus changes the iterator every print.\n\n");
     printf("Would you like to suppress printer? (Y/N)");
     char selection = getchar();

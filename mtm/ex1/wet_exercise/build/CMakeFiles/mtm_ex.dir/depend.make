@@ -18,3 +18,7 @@ CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj: ../mtm_election/election
 CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: ../mtm_map/map.c
 CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: ../mtm_map/map.h
 
+CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj: ../election.h
+CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj: ../mtm_map/map.h
+CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj: ../tests/shai_test_election.c
+

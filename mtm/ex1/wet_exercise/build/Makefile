@@ -269,6 +269,33 @@ mtm_map/map.c.s:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.s
 .PHONY : mtm_map/map.c.s
 
+tests/shai_test_election.obj: tests/shai_test_election.c.obj
+
+.PHONY : tests/shai_test_election.obj
+
+# target to build an object file
+tests/shai_test_election.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj
+.PHONY : tests/shai_test_election.c.obj
+
+tests/shai_test_election.i: tests/shai_test_election.c.i
+
+.PHONY : tests/shai_test_election.i
+
+# target to preprocess a source file
+tests/shai_test_election.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.i
+.PHONY : tests/shai_test_election.c.i
+
+tests/shai_test_election.s: tests/shai_test_election.c.s
+
+.PHONY : tests/shai_test_election.s
+
+# target to generate assembly for a file
+tests/shai_test_election.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.s
+.PHONY : tests/shai_test_election.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -292,6 +319,9 @@ help:
 	@echo ... mtm_map/map.obj
 	@echo ... mtm_map/map.i
 	@echo ... mtm_map/map.s
+	@echo ... tests/shai_test_election.obj
+	@echo ... tests/shai_test_election.i
+	@echo ... tests/shai_test_election.s
 .PHONY : help
 
 

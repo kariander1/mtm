@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "electionUtils.h"
 
 #define NUMBERING_BASE 10
@@ -22,8 +23,12 @@ char *intToString(int int_to_convert)
 
     char *string_of_int = malloc(sizeof(char) * num_of_digits + 1); // +1 for "/0"  
     RETURN_ON_NULL(string_of_int, NULL);                 // check if allocation failed - if so returns NULL in string_of_int
-    RETURN_ON_NULL(itoa(int_to_convert, string_of_int, NUMBERING_BASE), NULL);
-  
+   // RETURN_ON_NULL(itoa(int_to_convert, string_of_int, NUMBERING_BASE), NULL);
+    if(sprintf(string_of_int,"%d",int_to_convert)<0)
+    {
+        free(string_of_int);
+        return NULL;
+    }
     //const char *const_string_to_int = string_of_int;
 
     return string_of_int;
