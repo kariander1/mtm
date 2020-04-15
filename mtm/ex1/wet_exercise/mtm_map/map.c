@@ -207,12 +207,13 @@ static char *copyEntryToString(const char *entry)
 }
 MapResult mapPut(Map map, const char *key, const char *data) //DONE
 {
-    RETURN_ON_NONEXISTENCE(map, MAP_NULL_ARGUMENT);
-    RETURN_ON_NONEXISTENCE(key, MAP_NULL_ARGUMENT);
     RETURN_ON_NONEXISTENCE(data, MAP_NULL_ARGUMENT);
 
     char *data_copy = copyEntryToString(data); // copy the data const char
     RETURN_ON_NONEXISTENCE(data_copy, MAP_OUT_OF_MEMORY);
+    RETURN_ON_NONEXISTENCE(map, MAP_NULL_ARGUMENT);
+    RETURN_ON_NONEXISTENCE(key, MAP_NULL_ARGUMENT);
+
     if (mapContains(map, key))
     {                                              // if  the dictionary contains the key -> puts the iterator on the place where a match was found
         free((map->iterator_internal->value));     //free the previous value
@@ -266,7 +267,7 @@ MapResult mapRemove(Map map, const char *key) //Done
     }
     freeEntry(map->iterator_internal);
 
-    map->number_of_entries--; // Added
+    map->number_of_entries--; 
 
     return MAP_SUCCESS;
 }

@@ -60,7 +60,7 @@ AreaResult areaChangeVotesToTribe(Area area, const char* tribe_id, int num_of_vo
     }
     //Calc new votes
     current_votes+=num_of_votes;
-    char* new_votes_str = intToString(num_of_votes);
+    char* new_votes_str = intToString(current_votes);
     RETURN_ON_NONEXISTENCE(new_votes_str,AREA_FAILED_CONVERSION);
     if(mapPut(area->votes,tribe_id,new_votes_str)!=MAP_SUCCESS)
     {
@@ -74,6 +74,28 @@ bool areaEquals(Area area_1,int id)
 {
     return area_1->area_id == id;
 }
+const char* areaGetMostVotesTribe(Area area){
+    RETURN_ON_CONDITION(area, NULL,NULL);
+    int max_num_of_votes = 0;
+    char * current_tribe = mapGetFirst(area->votes);// returns the key - tribe_id
+    char * max_votes_tribe = current_tribe; // initialize max_votes_tribe 
 
+    while(current_tribe){
+        const char * const_current_tribe = current_tribe; // create const fot tribe_id
+        char * current_num_of_votes = mapGet(area->votes,const_current_tribe); // get the number of votes for the current tribe
+        int num_of_votes = stringToInt(current_num_of_votes);
+        if (num_of_votes >max_num_of_votes ){
+            max_num_of_votes = num_of_votes;
+            max_votes_tribe = current_tribe; // tribe_id
+        }
+        else if (num_of_votes = max_num_of_votes){
+            max_votes_tribe = (stringToInt(max_votes_tribe) > stringToInt(current_tribe) ? max_votes_tribe : current_tribe); // get the tribe with the largest id
+        }
+        current_tribe = mapGetNext(area->votes); // promote current tribe
+    }
+    
+    const char * max_votes_tribe_const = max_votes_tribe;
+    return max_votes_tribe_const;
+}
 //static int stringToInt
 #endif // AREA_C
