@@ -54,7 +54,8 @@ void operationRemoveTribe();
 int stringToIntconv(char *str);
 bool RemoveAreaIDLowerLimit(int area_id);
 void printElectionResult(ElectionResult result);
-void printLexicographic(Map map);
+void printLexicographic(Map map,char* first_label,char* second_label);
+void writeLine(char* text);
 void operationMapping(bool with_tribe_names);
 bool executeOperations();
 void operationDestroyElection();
@@ -234,7 +235,7 @@ void operationsOverrideInputs()
         }
         electionAddTribe(elec,2000,"tribe test");
         electionAddTribe(NULL,3000,"tribe test");
-    electionAddTribe(elec,NULL,"tribe test");
+    electionAddTribe(elec,3000,NULL);
     electionAddTribe(elec,-1,"tribe test");
 electionAddTribe(elec,0,"tribe test");
  electionAddTribe(elec,3000,"Tribe test");
@@ -242,7 +243,7 @@ electionAddTribe(elec,0,"tribe test");
  electionAddTribe(elec,3000,"?");
  electionAddTribe(elec,3000,"");
  electionAddTribe(NULL,-1,"tribe test");
- electionAddTribe(NULL,NULL,"tribe test");
+ electionAddTribe(NULL,3000,NULL);
  electionAddTribe(NULL,-1,"Tribe test");
 
         free(elec);
@@ -703,12 +704,12 @@ void printLexicographic(Map map,char* first_label,char* second_label)
         if (k == 0)
         {
             putchar(' ');
-            printf("$s",first_label);
-            for (int i = 0; i <= spaces_for_key - 3; i++)
+            printf("%s",first_label);
+            for (int i = 0; i <= spaces_for_key - strlen(first_label); i++)
             {
                 putchar(' ');
             }
-            printf("$s\n",second_label);
+            printf("%s\n",second_label);
 
             putchar(' ');
             for (int i = 0; i < spaces_for_key; i++)
