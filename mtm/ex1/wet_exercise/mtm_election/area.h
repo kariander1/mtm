@@ -18,7 +18,7 @@ void areaDestroy(Area area);
 void areaRemoveTribe(Area area, const char* tribe_id);
 bool areaEquals(Area area,int id);
 int areaGetId(Area area);
-const char* areaGetMostVotesTribe(Area area);
+char *areaGetMostVotesTribe(Area area);
 
 
 #endif //AREA_H
