@@ -16,7 +16,7 @@
 #define AREA_NOT_FOUND -1
 #define LEGAL_DELIMITER ' '
 #define EMPTY 0
-#define NULL_EMPTY -1
+# define NULL_POINTER -1
 
 
 struct election_t
@@ -34,8 +34,8 @@ static bool isLegalName(const char* name);
 static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election,int id);
 static bool multiplyAreasSize(Election election);
-static char * checkTribeExistsAndReturnName(Election election, int tribe_id);
-/*
+static char * checkTribeExsistsAndReturnName(Election election, int tribe_id);
+static void promoteEachElementAfter(Election election, int current_index);
 //for debug
 bool Todelete_area(int area_id){
     if (area_id%2 == 0){
@@ -43,7 +43,7 @@ bool Todelete_area(int area_id){
     }
     return false;
 }
-*/
+
 
 Election electionCreate() //Shelly
 {
@@ -98,10 +98,11 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      if (election->area_count == election->allocated_size)
      {
          RETURN_ON_NULL(multiplyAreasSize(election),ELECTION_OUT_OF_MEMORY); // Wasn't able to allocate more space
+         // Will not destroy the original areas array
      }
     
     Area new_area = areaCreate(area_id,area_name);
-    RETURN_ON_CONDITION(new_area,NULL,ELECTION_OUT_OF_MEMORY);
+    EXECUTE_ON_CONDITION(new_area,NULL,areaDestroy(new_area),ELECTION_OUT_OF_MEMORY);
 
     election->areas[election->area_count] = new_area;
      election->area_count++;
@@ -129,7 +130,8 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
 
     char* tribe_id_str = intToString(tribe_id); // Should free!
     DESTROY_ON_CONDITION(tribe_id_str ,NULL ,election,ELECTION_OUT_OF_MEMORY);
-    RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
+    const char * constant_tribe_id = tribe_id_str;
+    EXECUTE_ON_CONDITION(mapContains(election->tribes,constant_tribe_id),false, free(tribe_id_str), ELECTION_TRIBE_NOT_EXIST);
     //Tribe exists
     AreaResult change_result =areaChangeVotesToTribe(election->areas[area_index],tribe_id_str,num_of_votes);
     RETURN_ON_CONDITION(change_result,AREA_SUCCESS,ELECTION_SUCCESS);
@@ -149,11 +151,15 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
     RETURN_ON_CONDITION(electionGetTribeName(election, tribe_id), NULL, ELECTION_TRIBE_NOT_EXIST);
 
     char * string_tribe_id = intToString(tribe_id);
-    DESTROY_ON_CONDITION(string_tribe_id ,NULL ,election,ELECTION_OUT_OF_MEMORY);
-    const char * const_tribe_id = string_tribe_id;
-    AreaResult change_result =areaChangeVotesToTribe(election->areas[area_index], const_tribe_id, 0-num_of_votes); 
-    DESTROY_ON_CONDITION(change_result,AREA_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY)
-    
+    DESTROY_ON_CONDITION(string_tribe_id ,NULL ,election,ELECTION_OUT_OF_MEMORY); // dont need to free string_tribe_id
+    const char * constant_tribe_id = string_tribe_id;
+     if (areaChangeVotesToTribe(election->areas[area_index], constant_tribe_id, 0-num_of_votes) != AREA_SUCCESS){
+        free(string_tribe_id);
+        electionDestroy(election);
+        return ELECTION_OUT_OF_MEMORY;
+    }
+    //DESTROY_ON_CONDITION(areaChangeVotesToTribe(election->areas[area_index], const_tribe_id, 0-num_of_votes),ELECTION_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY)
+    free(string_tribe_id);
     return ELECTION_SUCCESS; // Placeholder
 }
 ElectionResult electionSetTribeName(Election election, int tribe_id, const char *tribe_name) // Shai
@@ -161,44 +167,46 @@ ElectionResult electionSetTribeName(Election election, int tribe_id, const char 
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(tribe_name,NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
-  const char* tribe_id_str;
-   DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
-    RETURN_ON_CONDITION(mapContains(election->tribes,tribe_id_str),false,ELECTION_TRIBE_NOT_EXIST);
-    RETURN_ON_CONDITION(isLegalName(tribe_name), false, ELECTION_INVALID_NAME);
+    char* tribe_id_str;
+    DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
+    const char * constant_tribe_id = tribe_id_str;
+    EXECUTE_ON_CONDITION(mapContains(election->tribes,constant_tribe_id), false, free(tribe_id_str),ELECTION_TRIBE_NOT_EXIST);
+    //RETURN_ON_CONDITION(mapContains(election->tribes,constant_tribe_id),false,ELECTION_TRIBE_NOT_EXIST);
+    EXECUTE_ON_CONDITION(isLegalName(tribe_name), false, free(tribe_id_str) ,ELECTION_INVALID_NAME);
 
-MapResult put_result = mapPut(election->tribes,tribe_id_str,tribe_name);
-    RETURN_ON_CONDITION(put_result,MAP_SUCCESS,ELECTION_SUCCESS);
-    DESTROY_ON_CONDITION(put_result,MAP_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY);
-
+    MapResult put_result = mapPut(election->tribes,constant_tribe_id,tribe_name);
+    EXECUTE_ON_CONDITION(put_result,MAP_SUCCESS, free(tribe_id_str),ELECTION_SUCCESS);
+    //DESTROY_ON_CONDITION(put_result,MAP_OUT_OF_MEMORY,election,ELECTION_OUT_OF_MEMORY);
+    if (put_result == MAP_OUT_OF_MEMORY){
+        free(tribe_id_str);
+        electionDestroy(election);
+        return ELECTION_OUT_OF_MEMORY;
+    }
 // Shouldn't reach here since mapPut gets non-NULL arguements, thus returns SUCCESS or OUT_OF_MEMORY
+    
     return ELECTION_SUCCESS;
 }
 ElectionResult electionRemoveTribe(Election election, int tribe_id) // Shai
 {
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
     RETURN_ON_CONDITION(isLegalId(tribe_id), false, ELECTION_INVALID_ID);
-  const char* tribe_id_str;
+    char* tribe_id_str;
     DESTROY_ON_CONDITION(tribe_id_str =intToString(tribe_id),NULL,election,ELECTION_OUT_OF_MEMORY);
-   
+   const char * constant_tribe_id = tribe_id_str;
    //Remove from tribes map:
-   MapResult remove_result = mapRemove(election->tribes,tribe_id_str);
+   MapResult remove_result = mapRemove(election->tribes,constant_tribe_id);
 
-    RETURN_ON_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST,ELECTION_TRIBE_NOT_EXIST);
+    EXECUTE_CONDITION(remove_result,MAP_ITEM_DOES_NOT_EXIST, free(tribe_id_str),ELECTION_TRIBE_NOT_EXIST);
     
     for (int i = 0; i < election->area_count; i++)
     {
-        areaRemoveTribe(election->areas[i],tribe_id_str);
+        areaRemoveTribe(election->areas[i],constant_tribe_id);
     }
     
-
+    free(tribe_id_str);
     return ELECTION_SUCCESS;
 }
-static void promoteEachElementAfter(Election election, int current_index){
-    for (int area_index = current_index; area_index < election->area_count -1; area_index ++){
-        election->areas[area_index] = election->areas[area_index+1]; 
-    }
-    return;
-}
+
 ElectionResult electionRemoveAreas(Election election, AreaConditionFunction should_delete_area) //Shelly
 {
     RETURN_ON_CONDITION(election, NULL,ELECTION_NULL_ARGUMENT);
@@ -221,7 +229,7 @@ Map electionComputeAreasToTribesMapping(Election election) // UNITED!
     Map elections_map = mapCreate(); // Create empty map
     RETURN_ON_CONDITION(election, NULL, NULL); // if null - return NULL
     RETURN_ON_CONDITION(mapGetSize(election->tribes), EMPTY, elections_map);// if empty -create empty map
-    RETURN_ON_CONDITION(mapGetSize(election->tribes), NULL_EMPTY, elections_map);
+    RETURN_ON_CONDITION(mapGetSize(election->tribes), NULL_POINTER, elections_map);
     
     RETURN_ON_CONDITION(election->area_count, EMPTY, elections_map);// Better to check area_count no?
     
@@ -317,6 +325,12 @@ static char *checkTribeExistsAndReturnName(Election election, int tribe_id)
     char *tribe_name = mapGet(election->tribes, const_string_of_tribe_id); // check if tribe_id exsists
     free(string_of_tribe_id);
     return tribe_name; // return Tribe name or NULL if the tribe doesnt exists
+}
+static void promoteEachElementAfter(Election election, int current_index){ // promotes the area index
+    for (int area_index = current_index; area_index < election->area_count -1; area_index ++){
+        election->areas[area_index] = election->areas[area_index+1]; 
+    }
+    return;
 }
 //for gebug
 int main()

@@ -61,12 +61,14 @@ AreaResult areaChangeVotesToTribe(Area area, const char* tribe_id, int num_of_vo
     //Calc new votes
     current_votes+=num_of_votes;
     char* new_votes_str = intToString(current_votes);
-    RETURN_ON_NULL(new_votes_str,AREA_FAILED_CONVERSION);
+  //  const char * new_votes_constant = new_votes_str; // No nneed
+    EXECUTE_ON_CONDITION(new_votes_str,NULL, free (new_votes_str), AREA_FAILED_CONVERSION);
     if(mapPut(area->votes,tribe_id,new_votes_str)!=MAP_SUCCESS)
     {
+        free (new_votes_str);
         return AREA_OUT_OF_MEMORY;///Find corrent val
     }
-
+    free (new_votes_str);
     return AREA_SUCCESS;
 
 }
