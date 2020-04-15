@@ -83,8 +83,8 @@ const char* areaGetMostVotesTribe(Area area){
     char * max_votes_tribe = current_tribe; // initialize max_votes_tribe 
 
     while(current_tribe){
-        const char * const_current_tribe = current_tribe; // create const fot tribe_id
-        char * current_num_of_votes = mapGet(area->votes,const_current_tribe); // get the number of votes for the current tribe
+        const char * constant_current_tribe = current_tribe; // create const fot tribe_id
+        char * current_num_of_votes = mapGet(area->votes,constant_current_tribe); // get the number of votes for the current tribe
         int num_of_votes = stringToInt(current_num_of_votes);
         if (num_of_votes >max_num_of_votes ){
             max_num_of_votes = num_of_votes;
@@ -96,8 +96,8 @@ const char* areaGetMostVotesTribe(Area area){
         current_tribe = mapGetNext(area->votes); // promote current tribe
     }
     
-    const char * max_votes_tribe_const = max_votes_tribe;
-    return max_votes_tribe_const;
+    const char * max_votes_tribe_constant = max_votes_tribe;
+    return max_votes_tribe_constant;
 }
 //static int stringToInt
 #endif // AREA_C
