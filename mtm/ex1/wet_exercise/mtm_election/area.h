@@ -16,7 +16,8 @@ AreaResult areaChangeVotesToTribe(Area area, const char* tribe_id, int num_of_vo
 Area areaCreate(int area_id,const char* area_name);
 void areaDestroy(Area area);
 void areaRemoveTribe(Area area, const char* tribe_id);
-bool areaEquals(Area area_1,int id);
+bool areaEquals(Area area,int id);
+int areaGetId(Area area);
 const char* areaGetMostVotesTribe(Area area);
 
 

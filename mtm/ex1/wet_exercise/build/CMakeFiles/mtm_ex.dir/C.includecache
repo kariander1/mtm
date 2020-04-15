@@ -10,16 +10,6 @@ C:/VScode/mtm/ex1/wet_exercise/election.h
 mtm_map/map.h
 C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.c
-area.h
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.h
-../mtm_map/map.h
-C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
-stdlib.h
--
-electionUtils.h
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
-
 C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.h
 stdbool.h
 -
@@ -41,32 +31,8 @@ stdio.h
 -
 electionUtils.h
 C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
-area.c
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.c
-../mtm_map/map.c
-C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.c
-electionUtils.c
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.c
-
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.c
-stdlib.h
--
-math.h
--
-electionUtils.h
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
 
 C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
-
-C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.c
-assert.h
--
-map.h
-C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
-stdlib.h
--
-string.h
--
 
 C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 stdbool.h

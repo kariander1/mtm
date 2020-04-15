@@ -1,4 +1,4 @@
-
+/*
 
 #include "../election.h"
 #include <stdlib.h>
@@ -834,3 +834,4 @@ int main()
     } while (!executeOperations());
     return 0;
 }
+*/

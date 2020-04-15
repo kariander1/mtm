@@ -10,7 +10,7 @@ int stringToInt(char* str);
 /*!
 * Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
 */
-#define RETURN_ON_NONEXISTENCE(object, return_value) \
+#define RETURN_ON_NULL(object, return_value) \
 if (!(object))\
 {\
     return (return_value);\
@@ -23,16 +23,6 @@ if (!(object))\
     if ((object) == (comparator))                                   \
     {                                                \
         return (return_value);                       \
-    }
-
-    /*!
-* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
-*/
-#define DESTROY_ON_CONDITION(object,comparator,election, return_value) \
-    if ((object) == (comparator))                                   \
-    {                                                \
-        electionDestroy(election); \
-        return return_value;                       \
     }
 /*!
 * Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
