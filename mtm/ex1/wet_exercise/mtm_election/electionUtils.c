@@ -6,9 +6,9 @@
 #include <string.h>
 #include "electionUtils.h"
 
-#define NUMBERING_BASE 10
 
-
+int stringToInt(char* str);
+char *intToString(int int_to_convert);
 static int getNumOfDigits(int number);
 
 
@@ -38,6 +38,5 @@ static int getNumOfDigits(int number)
     } while(number);
     return digits;
 }
-
 
 #endif

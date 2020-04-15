@@ -51,7 +51,6 @@ if ((object) != (comparator))\
     return (return_value);\
 }
 
-
 /*!
 * Macro for shortening returning values for non-existence of a object with an extra expression to execute.
 */
