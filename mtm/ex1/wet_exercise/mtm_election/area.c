@@ -6,6 +6,10 @@
 #include <stdlib.h>
 #include "electionUtils.h"
 
+#include "../mtm_election/electionUtils.c"
+#include "../mtm_election/election.c"
+#include "../mtm_map/map.c"
+
 #define INITIAL_ZERO "0"
 struct area_t
 {
@@ -72,6 +76,7 @@ AreaResult areaChangeVotesToTribe(Area area, const char *tribe_id, int num_of_vo
     }
     //Calc new votes
     current_votes += num_of_votes;
+    current_votes = (current_votes < 0 ? 0 : current_votes);  // if current votes <0 then votes = 0
     char *new_votes_str = intToString(current_votes);
     //  const char * new_votes_constant = new_votes_str; // No nneed
     RETURN_ON_NULL(new_votes_str, AREA_OUT_OF_MEMORY);
