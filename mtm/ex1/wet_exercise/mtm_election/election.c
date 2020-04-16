@@ -428,7 +428,7 @@ bool condition(int area_id)
 {
     return area_id==1234;
 }
-
+/*
 int main()
 {
     Election elec =electionCreate();
@@ -456,5 +456,5 @@ int main()
     mapDestroy(temp);
     electionDestroy(elec);
 }
-
+*/
 #endif //ELECTION_C_
