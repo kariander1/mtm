@@ -55,19 +55,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\VScode
+CMAKE_SOURCE_DIR = C:\VScode\mtm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\VScode\build
+CMAKE_BINARY_DIR = C:\VScode\mtm\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -75,7 +75,7 @@ CMAKE_BINARY_DIR = C:\VScode\build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -86,7 +86,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -96,9 +96,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\build\CMakeFiles C:\VScode\build\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\build\CMakeFiles C:\VScode\mtm\build\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -127,44 +127,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mtm_tot
+# Target rules for targets named mtm_ex
 
 # Build rule for target.
-mtm_tot: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 mtm_tot
-.PHONY : mtm_tot
+mtm_ex: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 mtm_ex
+.PHONY : mtm_ex
 
 # fast build rule for target.
-mtm_tot/fast:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/build
-.PHONY : mtm_tot/fast
-
-helloworld.obj: helloworld.c.obj
-
-.PHONY : helloworld.obj
-
-# target to build an object file
-helloworld.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/helloworld.c.obj
-.PHONY : helloworld.c.obj
-
-helloworld.i: helloworld.c.i
-
-.PHONY : helloworld.i
-
-# target to preprocess a source file
-helloworld.c.i:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/helloworld.c.i
-.PHONY : helloworld.c.i
-
-helloworld.s: helloworld.c.s
-
-.PHONY : helloworld.s
-
-# target to generate assembly for a file
-helloworld.c.s:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/helloworld.c.s
-.PHONY : helloworld.c.s
+mtm_ex/fast:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
+.PHONY : mtm_ex/fast
 
 # Help Target
 help:
@@ -174,10 +147,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... mtm_tot
-	@echo ... helloworld.obj
-	@echo ... helloworld.i
-	@echo ... helloworld.s
+	@echo ... mtm_ex
 .PHONY : help
 
 

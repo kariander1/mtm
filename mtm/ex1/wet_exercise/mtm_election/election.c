@@ -4,11 +4,14 @@
 
 #include "../election.h"
 #include "../mtm_map/map.h"
+#include "../mtm_map/map.c"
 #include "area.h"
+#include "area.c"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include "electionUtils.h"
+#include "electionUtils.c"
 
 
 #define AREA_INITIAL_SIZE 1
@@ -32,9 +35,43 @@ static bool isLegalId(int id);
 static bool isLegalName(const char *name);
 static bool isLegalVotes(int votes);
 static int getAreaIndexById(Election election, int id);
+/**
+* multiplyAreasSize: realloc the size of area - multiply it by 2
+*
+* @param election - the election to enlarge it's area size
+* @return
+* 	false if allocation falied
+*   true if allocation succeeded
+*/
 static bool multiplyAreasSize(Election election);
+/**
+* checkTribeExistsAndReturnName: check if the tribe_id exsists and if so returns the tribe name
+*
+* @param election - the election to check tribe_id from
+* @param tribe_id - the tribe_id to check if exsists
+* @return
+* 	ELECTION_OUT_OF_MEMORY if allocation falied
+*   tribe name otherwise
+*/
 static const char *checkTribeExistsAndReturnName(Election election, int tribe_id);
+/**
+* shiftElementsLeft: shift all area elements from current index until the end one place left
+*
+* @param election - the election to move area elements to 
+* @param current_index - where to start to move left the elements
+* @return
+* 	nothing - void function
+*/
 static void shiftElementsLeft(Election election, int current_index);
+/**
+* initializeTribesToArea: when creating new area - initialize all tribe votes to 0
+*
+* @param area - area to initialize tribes votes from 
+* @param tribes - the map of tribes - to check current tribes
+* @return
+* 	MAP_OUT_OF_MEMORY -  if allocation falied
+*   MAP_SUCCESS - if the functions succeeded initialize all tribe votes to 0
+*/
 static MapResult initializeTribesToArea(Area area,Map tribes);
 
 
@@ -270,8 +307,9 @@ static int getAreaIndexById(Election election,int id)
 }
 static bool multiplyAreasSize(Election election)
 {
-    election->areas= realloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
-    RETURN_ON_NULL(election->areas,false);
+    Area * new_areas = realloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
+    RETURN_ON_NULL(new_areas,false);
+    election->areas= new_areas;
     election->allocated_size*=2;
     return true;
 }
@@ -350,13 +388,14 @@ bool condition(int area_id)
 {
     return area_id==1234;
 }
-/*
+
 int main()
 {
     Election elec =electionCreate();
    // 
-     electionAddArea(elec,1234,"kings landing");
+    electionAddArea(elec,1234,"kings landing");
     electionAddArea(elec,12,"kings landing");
+    electionAddArea(elec,14,"winter kings landing");
     electionAddTribe(elec, 676, "voodoo");
     electionAddTribe(elec, 350, "popo");
     electionAddArea(elec,1234,"winterfell");
@@ -377,5 +416,5 @@ int main()
     mapDestroy(temp);
     electionDestroy(elec);
 }
-*/
+
 #endif //ELECTION_C_

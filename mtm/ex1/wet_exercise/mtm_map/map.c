@@ -366,4 +366,5 @@ static void freeEntry(MapEntry entry)
     free(entry);        // free the current MapEntry
 }
 // HELPER FUNCTIONS END
+
 #endif //MAP_C

@@ -51,25 +51,25 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\VScode
+CMAKE_SOURCE_DIR = C:\VScode\mtm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\VScode\build
+CMAKE_BINARY_DIR = C:\VScode\mtm\build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/mtm_tot.dir/all
+all: CMakeFiles/mtm_ex.dir/all
 
 .PHONY : all
 
@@ -79,36 +79,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/mtm_tot.dir/clean
+clean: CMakeFiles/mtm_ex.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/mtm_tot.dir
+# Target rules for target CMakeFiles/mtm_ex.dir
 
 # All Build rule for target.
-CMakeFiles/mtm_tot.dir/all:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/depend
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\build\CMakeFiles --progress-num=1,2 "Built target mtm_tot"
-.PHONY : CMakeFiles/mtm_tot.dir/all
+CMakeFiles/mtm_ex.dir/all:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/depend
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\mtm\build\CMakeFiles --progress-num= "Built target mtm_ex"
+.PHONY : CMakeFiles/mtm_ex.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/mtm_tot.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\build\CMakeFiles 2
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/mtm_tot.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\build\CMakeFiles 0
-.PHONY : CMakeFiles/mtm_tot.dir/rule
+CMakeFiles/mtm_ex.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\build\CMakeFiles 0
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/mtm_ex.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\build\CMakeFiles 0
+.PHONY : CMakeFiles/mtm_ex.dir/rule
 
 # Convenience name for target.
-mtm_tot: CMakeFiles/mtm_tot.dir/rule
+mtm_ex: CMakeFiles/mtm_ex.dir/rule
 
-.PHONY : mtm_tot
+.PHONY : mtm_ex
 
 # clean rule for target.
-CMakeFiles/mtm_tot.dir/clean:
-	$(MAKE) -f CMakeFiles\mtm_tot.dir\build.make CMakeFiles/mtm_tot.dir/clean
-.PHONY : CMakeFiles/mtm_tot.dir/clean
+CMakeFiles/mtm_ex.dir/clean:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/clean
+.PHONY : CMakeFiles/mtm_ex.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/VScode/build",
-		"source" : "C:/VScode"
+		"build" : "C:/VScode/mtm/build",
+		"source" : "C:/VScode/mtm"
 	},
 	"version" : 
 	{
