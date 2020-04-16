@@ -9,8 +9,13 @@
 #define NUMBERING_BASE 10
 
 
-int stringToInt(char* str);
-char *intToString(int int_to_convert);
+/**
+* getNumOfDigits: Gets the number of digits of a non-negative number
+*
+* @param number - The number to get digits from
+* @return
+* 	int of number of digits
+*/
 static int getNumOfDigits(int number);
 
 
