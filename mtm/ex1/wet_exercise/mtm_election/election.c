@@ -27,10 +27,50 @@ struct election_t
     int allocated_size;
 };
 
+/**
+* areasDestroy: Destroys all areas stored in election, used as part of election destroy
+*
+* @param election - The election in which the areas desired to destroy
+* @return
+* 	NONE
+*/
 static void areasDestroy(Election election);
+/**
+* isLegalId: Validates the ID given according to instructions (>=0)
+*
+* @param id - The ID to check
+* @return
+* 	True -  ID complies with the condition given
+*   False - ID does not comply with the node
+*/
 static bool isLegalId(int id);
+/**
+* isLegalName: Validates the name given according to instructions (lowercase and ' ' as delimiters)
+*
+* @param name - The name to check
+* @return
+* 	True -  Name complies with the condition given
+*   False - Name does not comply with the node
+*/
 static bool isLegalName(const char *name);
+/**
+* isLegalVotes: Validates the votes given according to instructions (non-negative)
+*
+* @param votes - The number of votes
+* @return
+* 	True -  Number of votes comply with the condition given
+*   False - Number of votes does not comply with the node
+*/
 static bool isLegalVotes(int votes);
+/**
+* getAreaIndexById: Gets the index of the area in the array of areas in a given election
+*
+* @param election - The to search in
+* @param id       - The ID of the area searched
+* @return
+* 	Index of the area in the array of areas.
+*   AREA_NOT_FOUND if the area doesn't exist.
+*/
 static int getAreaIndexById(Election election, int id);
 static bool multiplyAreasSize(Election election);
 static const char *checkTribeExistsAndReturnName(Election election, int tribe_id);
@@ -38,7 +78,7 @@ static void shiftElementsLeft(Election election, int current_index);
 static MapResult initializeTribesToArea(Area area,Map tribes);
 
 
-Election electionCreate() //Shelly
+Election electionCreate()
 {
     Election new_election = malloc(sizeof(*new_election));
     RETURN_ON_NULL(new_election, NULL); // check if new_election in NULL and return NULL if so

@@ -3,38 +3,51 @@
 #define ELECTION_UTILS_h_
 
 
+/**
+* intToString: Converts an int to an array of characters
+*
+* @param int_to_convert - The integer that is desired to convert
+* @return
+* 	String representation of the number. **NOTE** - the string is malloced and should be freed.
+*   In case of memory allocation failure - NULL.
+*/
 char *intToString(int int_to_convert);
+/**
+* stringToInt: Converts a int to an array of characters
+*
+* @param str - The string representation of the number
+* @return
+* 	Int representation of the string
+*/
 int stringToInt(char* str);
 
 
 /*!
-* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
+* Macro for shortening returning values for NULL or false objects
 */
 #define RETURN_ON_NULL(object, return_value) \
 if (!(object))\
 {\
     return (return_value);\
 }
-#define IS_LOWER(c) ((c) >= 'a' && (c) <= 'z') 
+
 /*!
-* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
+* Macro for returning whether a char is lower case
+*/
+#define IS_LOWER(c) ((c) >= 'a' && (c) <= 'z') 
+
+/*!
+* Macro for shortening returning values for a certain condition of a object.
 */
 #define RETURN_ON_CONDITION(object,comparator, return_value) \
     if ((object) == (comparator))                                   \
     {                                                \
         return (return_value);                       \
     }
- /*!
-* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
-*/
-#define RETURN_ON_NOT_CONDITION(object,comparator, return_value) \
-    if ((object) != (comparator))                                   \
-    {                                                \
-        return (return_value);                       \
-    }
+
        
 /*!
-* Macro for shortening returning values for non-existence of a object(object is NULL or object is false).
+* Macro for shortening a return with a certain condition on the object.
 */
 #define RETURN_ON_CONDITION_NO_VALUE(object,comparator) \
     if ((object) == (comparator))                                   \
@@ -42,7 +55,7 @@ if (!(object))\
         return;                       \
     }
 /*!
-* Macro for shortening returning values for non-existence of a object with an extra expression to execute.
+* Executes an expression given when a certain condition is taken, and return an according value
 */
 #define EXECUTE_ON_NOT_CONDITION(object,comparator, expression,return_value) \
 if ((object) != (comparator))\
@@ -52,7 +65,7 @@ if ((object) != (comparator))\
 }
 
 /*!
-* Macro for shortening returning values for non-existence of a object with an extra expression to execute.
+* Executes an expression given when a certain condition is not taken, and return an according value
 */
 #define EXECUTE_ON_CONDITION(object,comparator, expression,return_value) \
 if ((object) == (comparator))\

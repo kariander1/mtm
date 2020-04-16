@@ -6,10 +6,9 @@
 
 typedef struct area_t* Area;
 typedef enum AreaResult_t {
-    AREA_OUT_OF_MEMORY,
+    AREA_OUT_OF_MEMORY=1,
     AREA_NULL_ARGUEMENT,
-    AREA_SUCCESS,
-    AREA_FAILED_CONVERSION,
+    AREA_SUCCESS
 } AreaResult;
 
 /**
