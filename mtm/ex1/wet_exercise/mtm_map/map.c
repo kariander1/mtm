@@ -150,7 +150,6 @@ void mapDestroy(Map map)
     RETURN_ON_CONDITION_NO_VALUE(mapClear(map), MAP_NULL_ARGUMENT);
 
     free(map);
-
     return;
 }
 Map mapCopy(Map map)

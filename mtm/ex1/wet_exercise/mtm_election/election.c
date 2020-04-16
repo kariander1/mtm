@@ -42,26 +42,29 @@ Election electionCreate() //Shelly
 {
     Election new_election = malloc(sizeof(*new_election));
     RETURN_ON_NULL(new_election, NULL); // check if new_election in NULL and return NULL if so
-    new_election->tribes = mapCreate();// create Map tribes 
-    RETURN_ON_NULL(new_election->tribes, NULL); 
-    new_election->areas = malloc(sizeof(*new_election->areas)*AREA_INITIAL_SIZE); // create an array of areas
-    RETURN_ON_NULL(new_election->areas, NULL);
-      new_election->area_count = 0;// initial all attributes to be null or 0 accordingly
+    new_election->tribes = mapCreate(); // create Map tribes
+    EXECUTE_ON_CONDITION(new_election->tribes, NULL, electionDestroy(new_election), NULL);
+    new_election->areas = malloc(sizeof(*new_election->areas) * AREA_INITIAL_SIZE); // create an array of areas
+    EXECUTE_ON_CONDITION(new_election->areas, NULL, electionDestroy(new_election), NULL);
+    new_election->area_count = 0; // initial all attributes to be null or 0 accordingly
     new_election->allocated_size = AREA_INITIAL_SIZE;
     for (int x = 0; x < new_election->allocated_size; x++)
     {
         new_election->areas[x] = NULL;
-    } 
+    }
+
     return new_election;
 }
 
 void electionDestroy(Election election)
 {
+
     RETURN_ON_CONDITION_NO_VALUE(election,NULL);
     mapDestroy(election->tribes);
     areasDestroy(election);
     free(election);
- 
+    
+    //(temp)=NULL;
 }
 ElectionResult electionAddTribe(Election election, int tribe_id, const char *tribe_name) // Shelly
 {
@@ -119,7 +122,8 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
 const char *electionGetTribeName(Election election, int tribe_id) // Shelly
 {
     RETURN_ON_NULL(election, NULL);
-    //does not check the tribe_id is leagal!
+    RETURN_ON_NULL(isLegalId(tribe_id), NULL);
+
     const char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id);
     RETURN_ON_NULL(tribe_name, NULL);   
     return tribe_name;
@@ -225,8 +229,9 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
 
 Map electionComputeAreasToTribesMapping(Election election) // UNITED!
 {
+    RETURN_ON_NULL(election,NULL);
     Map elections_map = mapCreate(); // Create empty map
-    RETURN_ON_NULL(election, NULL); // if null - return NULL
+    RETURN_ON_NULL(elections_map, NULL); // if null - return NULL
     // Tribes or areas are zero
     RETURN_ON_CONDITION(mapGetSize(election->tribes), EMPTY, elections_map);// if empty -create empty map
     RETURN_ON_CONDITION(mapGetSize(election->tribes), NULL_POINTER, elections_map);
@@ -308,6 +313,7 @@ static void areasDestroy(Election election)
     {
         areaDestroy(election->areas[i]);
     }
+    election->area_count=0;
     free(election->areas);
 }
 static const char *checkTribeExistsAndReturnName(Election election, int tribe_id)
