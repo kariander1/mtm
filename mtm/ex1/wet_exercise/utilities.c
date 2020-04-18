@@ -1,11 +1,11 @@
 
-#ifndef ELECTION_UTILS_C_
-#define ELECTION_UTILS_C_
+#ifndef UTILS_C_
+#define UTILS_C_
 
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "electionUtils.h"
+#include "utilities.h"
 #define NUMBERING_BASE 10
 
 
@@ -19,11 +19,11 @@
 static int getNumOfDigits(int number);
 
 
-int stringToInt(char* str)
+int stringToInt(const char* str)
 {
     return atoi(str);
 }
-char *intToString(int int_to_convert)
+char *intToString(const int int_to_convert)
 {
     int num_of_digits = getNumOfDigits(int_to_convert); // check the log to se  how many chars we need for the itoa() function
 
@@ -38,7 +38,7 @@ char *intToString(int int_to_convert)
 
     return string_of_int;
 }
-char *getCopyOfString(char* str)
+char *getCopyOfString(const char* str)
 {
     RETURN_ON_NULL(str,NULL);
     char * copy_of_str = xmalloc(sizeof(char)*strlen(str)+1);
@@ -56,7 +56,7 @@ static int getNumOfDigits(int number)
     } while(number);
     return digits;
 }
-static int fail_after = 100; // Keep at zero to make malloc untouched
+static int fail_after = 0; // Keep at zero to make malloc untouched
 static int num_allocs = 0;
 void *xmalloc(size_t size)
 {

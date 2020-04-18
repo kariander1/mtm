@@ -1,6 +1,6 @@
 
-#ifndef ELECTION_UTILS_h_
-#define ELECTION_UTILS_h_
+#ifndef UTILS_h_
+#define UTILS_h_
 
 
 /**
@@ -11,7 +11,7 @@
 * 	String representation of the number. **NOTE** - the string is malloced and should be freed.
 *   In case of memory allocation failure - NULL.
 */
-char *intToString(int int_to_convert);
+char *intToString(const int int_to_convert);
 /**
 * stringToInt: Converts a int to an array of characters
 *
@@ -19,7 +19,7 @@ char *intToString(int int_to_convert);
 * @return
 * 	Int representation of the string
 */
-int stringToInt(char* str);
+int stringToInt(const char* str);
 /**
 * getCopyOfString: Return a copy of the string given
 *
@@ -27,7 +27,7 @@ int stringToInt(char* str);
 * @return
 * 	Copy of the string with malloc
 */
-char *getCopyOfString(char* str);
+char *getCopyOfString(const char* str);
 /**
 * xmalloc: Simulates malloc failures, otherwise mallocs the same amount given.
 *          xmalloc will fail every "fail_after" times variable at electionUtils.c
@@ -70,7 +70,7 @@ if (!(object))\
         return;                       \
     }
 /*!
-* Executes an expression given when a certain condition is taken, and return an according value
+* Executes an expression given when a certain condition not taken, and return an according value
 */
 #define EXECUTE_ON_NOT_CONDITION(object,comparator, expression,return_value) \
 if ((object) != (comparator))\
@@ -80,7 +80,7 @@ if ((object) != (comparator))\
 }
 
 /*!
-* Executes an expression given when a certain condition is not taken, and return an according value
+* Executes an expression given when a certain condition is taken, and return an according value
 */
 #define EXECUTE_ON_CONDITION(object,comparator, expression,return_value) \
 if ((object) == (comparator))\

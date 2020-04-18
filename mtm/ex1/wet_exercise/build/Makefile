@@ -215,33 +215,6 @@ mtm_election/election.c.s:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election.c.s
 .PHONY : mtm_election/election.c.s
 
-mtm_election/electionUtils.obj: mtm_election/electionUtils.c.obj
-
-.PHONY : mtm_election/electionUtils.obj
-
-# target to build an object file
-mtm_election/electionUtils.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj
-.PHONY : mtm_election/electionUtils.c.obj
-
-mtm_election/electionUtils.i: mtm_election/electionUtils.c.i
-
-.PHONY : mtm_election/electionUtils.i
-
-# target to preprocess a source file
-mtm_election/electionUtils.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.i
-.PHONY : mtm_election/electionUtils.c.i
-
-mtm_election/electionUtils.s: mtm_election/electionUtils.c.s
-
-.PHONY : mtm_election/electionUtils.s
-
-# target to generate assembly for a file
-mtm_election/electionUtils.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.s
-.PHONY : mtm_election/electionUtils.c.s
-
 mtm_map/map.obj: mtm_map/map.c.obj
 
 .PHONY : mtm_map/map.obj
@@ -296,6 +269,33 @@ tests/shai_test_election.c.s:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.s
 .PHONY : tests/shai_test_election.c.s
 
+utilities.obj: utilities.c.obj
+
+.PHONY : utilities.obj
+
+# target to build an object file
+utilities.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/utilities.c.obj
+.PHONY : utilities.c.obj
+
+utilities.i: utilities.c.i
+
+.PHONY : utilities.i
+
+# target to preprocess a source file
+utilities.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/utilities.c.i
+.PHONY : utilities.c.i
+
+utilities.s: utilities.c.s
+
+.PHONY : utilities.s
+
+# target to generate assembly for a file
+utilities.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/utilities.c.s
+.PHONY : utilities.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -313,15 +313,15 @@ help:
 	@echo ... mtm_election/election.obj
 	@echo ... mtm_election/election.i
 	@echo ... mtm_election/election.s
-	@echo ... mtm_election/electionUtils.obj
-	@echo ... mtm_election/electionUtils.i
-	@echo ... mtm_election/electionUtils.s
 	@echo ... mtm_map/map.obj
 	@echo ... mtm_map/map.i
 	@echo ... mtm_map/map.s
 	@echo ... tests/shai_test_election.obj
 	@echo ... tests/shai_test_election.i
 	@echo ... tests/shai_test_election.s
+	@echo ... utilities.obj
+	@echo ... utilities.i
+	@echo ... utilities.s
 .PHONY : help
 
 
