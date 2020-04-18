@@ -211,6 +211,7 @@ void operationsOverrideInputs()
     electionDestroy(NULL);
     for (int i = 0; i < 3; i++)
     {
+        writeLine("electionCreate();");
         elec = electionCreate();
         if (i == 1)
         {
