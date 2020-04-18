@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 #define OPTIONS 14
 #define MAX_ELECTIONS 1000
 

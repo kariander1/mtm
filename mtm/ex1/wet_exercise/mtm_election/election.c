@@ -93,7 +93,7 @@ static bool multiplyAreasSize(Election election);
 * 	ELECTION_OUT_OF_MEMORY if allocation falied
 *   tribe name otherwise
 */
-static const char *checkTribeExistsAndReturnName(Election election, int tribe_id);
+static char *checkTribeExistsAndReturnName(Election election, int tribe_id);
 /**
 * shiftElementsLeft: shift all area elements from current index until the end one place left
 *
@@ -196,12 +196,12 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      return ELECTION_SUCCESS;
 }
 
-const char *electionGetTribeName(Election election, int tribe_id) // Shelly
+char *electionGetTribeName(Election election, int tribe_id) // Shelly
 {
     RETURN_ON_NULL(election, NULL);
     RETURN_ON_NULL(isLegalId(tribe_id), NULL);
 
-    const char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id);
+    char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id);
     RETURN_ON_NULL(tribe_name, NULL);   
     return tribe_name;
 }
@@ -394,11 +394,11 @@ static void areasDestroy(Election election)
     election->area_count=0;
     free(election->areas);
 }
-static const char *checkTribeExistsAndReturnName(Election election, int tribe_id)
+static char *checkTribeExistsAndReturnName(Election election, int tribe_id)
 {
     char *string_of_tribe_id = intToString(tribe_id);                                                         // create the char* for the mapGet function
     RETURN_ON_NULL(string_of_tribe_id, ELECTION_OUT_OF_MEMORY); // check if allocation of string_of_int failed
-    const char *tribe_name = mapGet(election->tribes, string_of_tribe_id);                                    // check if tribe_id exsists
+    char *tribe_name = mapGet(election->tribes, string_of_tribe_id);                                    // check if tribe_id exsists
     free(string_of_tribe_id);
     return tribe_name; // return Tribe name or NULL if the tribe doesnt exists
 }
@@ -428,7 +428,7 @@ bool condition(int area_id)
 {
     return area_id==1234;
 }
-/*
+
 int main()
 {
     Election elec =electionCreate();
@@ -437,6 +437,7 @@ int main()
     electionAddArea(elec,12,"kings landing");
     electionAddArea(elec,14,"winter kings landing");
     electionAddTribe(elec, 676, "voodoo");
+    electionGetTribeName(elec, 676);
     electionAddTribe(elec, 350, "popo");
     electionAddArea(elec,1234,"winterfell");
     electionRemoveAreas(elec,condition);
@@ -456,5 +457,5 @@ int main()
     mapDestroy(temp);
     electionDestroy(elec);
 }
-*/
+
 #endif //ELECTION_C_

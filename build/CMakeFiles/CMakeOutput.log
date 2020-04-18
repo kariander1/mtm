@@ -250,3 +250,57 @@ Parsed C implicit link information from above output:
   implicit fwks: []
 
 
+The system is: Windows - 10.0.18362 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/TDM-GCC-64/bin/gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/TDM-GCC-64/bin/x86_64-w64-mingw32-gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is GNU, found in "C:/VScode/mtm/build/CMakeFiles/3.17.1/CompilerIdC/a.exe"
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/TDM-GCC-64/bin/gcc.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is GNU, found in "C:/VScode/mtm/build/CMakeFiles/3.17.1/CompilerIdC/CMakeCCompilerId.o"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/VScode/mtm/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/TDM-GCC-64/bin/mingw32-make.exe cmTC_e66e3/fast && C:/TDM-GCC-64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_e66e3.dir\build.make CMakeFiles/cmTC_e66e3.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/VScode/mtm/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e66e3.dir/testCCompiler.c.obj
+C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe    -o CMakeFiles\cmTC_e66e3.dir\testCCompiler.c.obj   -c C:\VScode\mtm\build\CMakeFiles\CMakeTmp\testCCompiler.c
+Linking C executable cmTC_e66e3.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_e66e3.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\cmTC_e66e3.dir/objects.a
+C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\cmTC_e66e3.dir/objects.a @CMakeFiles\cmTC_e66e3.dir\objects1.rsp
+C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_e66e3.dir/objects.a -Wl,--no-whole-archive  -o cmTC_e66e3.exe -Wl,--out-implib,libcmTC_e66e3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_e66e3.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'C:/VScode/mtm/build/CMakeFiles/CMakeTmp'
+
+
+

@@ -40,6 +40,9 @@ default_target: all
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
+# Command-line flag to silence nested $(MAKE).
+$(VERBOSE)MAKESILENT = -s
+
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -55,10 +58,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -71,6 +74,28 @@ CMAKE_BINARY_DIR = C:\VScode\mtm\build
 
 #=============================================================================
 # Targets provided globally by CMake.
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/VScode/mtm/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -86,7 +111,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -97,13 +122,13 @@ rebuild_cache/fast: rebuild_cache
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\build\CMakeFiles C:\VScode\mtm\build\CMakeFiles\progress.marks
-	$(MAKE) -f CMakeFiles\Makefile2 all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles\Makefile2 clean
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 clean
 .PHONY : clean
 
 # The main clean target
@@ -113,12 +138,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles\Makefile2 preinstall
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles\Makefile2 preinstall
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -131,13 +156,148 @@ depend:
 
 # Build rule for target.
 mtm_ex: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 mtm_ex
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 mtm_ex
 .PHONY : mtm_ex
 
 # fast build rule for target.
 mtm_ex/fast:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
 .PHONY : mtm_ex/fast
+
+mtm/ex1/wet_exercise/mtm_election/area.obj: mtm/ex1/wet_exercise/mtm_election/area.c.obj
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/area.obj
+
+# target to build an object file
+mtm/ex1/wet_exercise/mtm_election/area.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/area.c.obj
+.PHONY : mtm/ex1/wet_exercise/mtm_election/area.c.obj
+
+mtm/ex1/wet_exercise/mtm_election/area.i: mtm/ex1/wet_exercise/mtm_election/area.c.i
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/area.i
+
+# target to preprocess a source file
+mtm/ex1/wet_exercise/mtm_election/area.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/area.c.i
+.PHONY : mtm/ex1/wet_exercise/mtm_election/area.c.i
+
+mtm/ex1/wet_exercise/mtm_election/area.s: mtm/ex1/wet_exercise/mtm_election/area.c.s
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/area.s
+
+# target to generate assembly for a file
+mtm/ex1/wet_exercise/mtm_election/area.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/area.c.s
+.PHONY : mtm/ex1/wet_exercise/mtm_election/area.c.s
+
+mtm/ex1/wet_exercise/mtm_election/election.obj: mtm/ex1/wet_exercise/mtm_election/election.c.obj
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/election.obj
+
+# target to build an object file
+mtm/ex1/wet_exercise/mtm_election/election.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/election.c.obj
+.PHONY : mtm/ex1/wet_exercise/mtm_election/election.c.obj
+
+mtm/ex1/wet_exercise/mtm_election/election.i: mtm/ex1/wet_exercise/mtm_election/election.c.i
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/election.i
+
+# target to preprocess a source file
+mtm/ex1/wet_exercise/mtm_election/election.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/election.c.i
+.PHONY : mtm/ex1/wet_exercise/mtm_election/election.c.i
+
+mtm/ex1/wet_exercise/mtm_election/election.s: mtm/ex1/wet_exercise/mtm_election/election.c.s
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/election.s
+
+# target to generate assembly for a file
+mtm/ex1/wet_exercise/mtm_election/election.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/election.c.s
+.PHONY : mtm/ex1/wet_exercise/mtm_election/election.c.s
+
+mtm/ex1/wet_exercise/mtm_election/electionUtils.obj: mtm/ex1/wet_exercise/mtm_election/electionUtils.c.obj
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/electionUtils.obj
+
+# target to build an object file
+mtm/ex1/wet_exercise/mtm_election/electionUtils.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/electionUtils.c.obj
+.PHONY : mtm/ex1/wet_exercise/mtm_election/electionUtils.c.obj
+
+mtm/ex1/wet_exercise/mtm_election/electionUtils.i: mtm/ex1/wet_exercise/mtm_election/electionUtils.c.i
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/electionUtils.i
+
+# target to preprocess a source file
+mtm/ex1/wet_exercise/mtm_election/electionUtils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/electionUtils.c.i
+.PHONY : mtm/ex1/wet_exercise/mtm_election/electionUtils.c.i
+
+mtm/ex1/wet_exercise/mtm_election/electionUtils.s: mtm/ex1/wet_exercise/mtm_election/electionUtils.c.s
+
+.PHONY : mtm/ex1/wet_exercise/mtm_election/electionUtils.s
+
+# target to generate assembly for a file
+mtm/ex1/wet_exercise/mtm_election/electionUtils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_election/electionUtils.c.s
+.PHONY : mtm/ex1/wet_exercise/mtm_election/electionUtils.c.s
+
+mtm/ex1/wet_exercise/mtm_map/map.obj: mtm/ex1/wet_exercise/mtm_map/map.c.obj
+
+.PHONY : mtm/ex1/wet_exercise/mtm_map/map.obj
+
+# target to build an object file
+mtm/ex1/wet_exercise/mtm_map/map.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_map/map.c.obj
+.PHONY : mtm/ex1/wet_exercise/mtm_map/map.c.obj
+
+mtm/ex1/wet_exercise/mtm_map/map.i: mtm/ex1/wet_exercise/mtm_map/map.c.i
+
+.PHONY : mtm/ex1/wet_exercise/mtm_map/map.i
+
+# target to preprocess a source file
+mtm/ex1/wet_exercise/mtm_map/map.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_map/map.c.i
+.PHONY : mtm/ex1/wet_exercise/mtm_map/map.c.i
+
+mtm/ex1/wet_exercise/mtm_map/map.s: mtm/ex1/wet_exercise/mtm_map/map.c.s
+
+.PHONY : mtm/ex1/wet_exercise/mtm_map/map.s
+
+# target to generate assembly for a file
+mtm/ex1/wet_exercise/mtm_map/map.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/mtm_map/map.c.s
+.PHONY : mtm/ex1/wet_exercise/mtm_map/map.c.s
+
+mtm/ex1/wet_exercise/tests/shai_test_election.obj: mtm/ex1/wet_exercise/tests/shai_test_election.c.obj
+
+.PHONY : mtm/ex1/wet_exercise/tests/shai_test_election.obj
+
+# target to build an object file
+mtm/ex1/wet_exercise/tests/shai_test_election.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/tests/shai_test_election.c.obj
+.PHONY : mtm/ex1/wet_exercise/tests/shai_test_election.c.obj
+
+mtm/ex1/wet_exercise/tests/shai_test_election.i: mtm/ex1/wet_exercise/tests/shai_test_election.c.i
+
+.PHONY : mtm/ex1/wet_exercise/tests/shai_test_election.i
+
+# target to preprocess a source file
+mtm/ex1/wet_exercise/tests/shai_test_election.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/tests/shai_test_election.c.i
+.PHONY : mtm/ex1/wet_exercise/tests/shai_test_election.c.i
+
+mtm/ex1/wet_exercise/tests/shai_test_election.s: mtm/ex1/wet_exercise/tests/shai_test_election.c.s
+
+.PHONY : mtm/ex1/wet_exercise/tests/shai_test_election.s
+
+# target to generate assembly for a file
+mtm/ex1/wet_exercise/tests/shai_test_election.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm/ex1/wet_exercise/tests/shai_test_election.c.s
+.PHONY : mtm/ex1/wet_exercise/tests/shai_test_election.c.s
 
 # Help Target
 help:
@@ -146,8 +306,25 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
+	@echo ... package
+	@echo ... package_source
 	@echo ... rebuild_cache
 	@echo ... mtm_ex
+	@echo ... mtm/ex1/wet_exercise/mtm_election/area.obj
+	@echo ... mtm/ex1/wet_exercise/mtm_election/area.i
+	@echo ... mtm/ex1/wet_exercise/mtm_election/area.s
+	@echo ... mtm/ex1/wet_exercise/mtm_election/election.obj
+	@echo ... mtm/ex1/wet_exercise/mtm_election/election.i
+	@echo ... mtm/ex1/wet_exercise/mtm_election/election.s
+	@echo ... mtm/ex1/wet_exercise/mtm_election/electionUtils.obj
+	@echo ... mtm/ex1/wet_exercise/mtm_election/electionUtils.i
+	@echo ... mtm/ex1/wet_exercise/mtm_election/electionUtils.s
+	@echo ... mtm/ex1/wet_exercise/mtm_map/map.obj
+	@echo ... mtm/ex1/wet_exercise/mtm_map/map.i
+	@echo ... mtm/ex1/wet_exercise/mtm_map/map.s
+	@echo ... mtm/ex1/wet_exercise/tests/shai_test_election.obj
+	@echo ... mtm/ex1/wet_exercise/tests/shai_test_election.i
+	@echo ... mtm/ex1/wet_exercise/tests/shai_test_election.s
 .PHONY : help
 
 

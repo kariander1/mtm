@@ -36,12 +36,10 @@ char *intToString(int int_to_convert)
         return NULL;
     }
 
-
     return string_of_int;
 }
 static int getNumOfDigits(int number)
 {
-    
     int digits=0;
     do
     {
