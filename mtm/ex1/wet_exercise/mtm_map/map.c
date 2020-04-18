@@ -6,7 +6,7 @@
 #include <assert.h>
 #include "map.h"
 #include <stdlib.h>
-
+#include "../mtm_election/electionUtils.h"
 #include <string.h>
 
 #define ZERO_ELEMENTS 0
@@ -136,7 +136,7 @@ static void freeEntry(MapEntry entry);
 // HELPER FUNCTIONS TOKENS END
 Map mapCreate()
 {
-    Map new_map = malloc(sizeof(*new_map));
+    Map new_map = xmalloc(sizeof(*new_map));
     assert(new_map);
 
     RETURN_ON_NULL(new_map, NULL);
@@ -199,19 +199,20 @@ bool mapContains(Map map, const char *key) // If element was found, then interna
 }
 static char *copyEntryToString(const char *entry)
 { // copys a constant string to a new allocated place and returns the copied string
-    char *str_copy = malloc(strlen(entry) + 1);
+    char *str_copy = xmalloc(strlen(entry) + 1);
     RETURN_ON_NULL(str_copy, NULL);
     strcpy(str_copy, entry);
     return str_copy;
 }
 MapResult mapPut(Map map, const char *key, const char *data) //DONE
 {
+    RETURN_ON_NULL(map, MAP_NULL_ARGUMENT);
+    RETURN_ON_NULL(key, MAP_NULL_ARGUMENT);
     RETURN_ON_NULL(data, MAP_NULL_ARGUMENT);
 
     char *data_copy = copyEntryToString(data); // copy the data const char
     RETURN_ON_NULL(data_copy, MAP_OUT_OF_MEMORY);
-    RETURN_ON_NULL(map, MAP_NULL_ARGUMENT);
-    RETURN_ON_NULL(key, MAP_NULL_ARGUMENT);
+
 
     if (mapContains(map, key))
     {                                              // if  the dictionary contains the key -> puts the iterator on the place where a match was found
@@ -338,11 +339,11 @@ static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry)
 {
     if (!(*original_entry))
     {
-        (*original_entry) = malloc(sizeof(*(*original_entry)));
+        (*original_entry) = xmalloc(sizeof(*(*original_entry)));
     }
     else
     {
-        (*original_entry)->next = malloc(sizeof(*((*original_entry)->next)));
+        (*original_entry)->next = xmalloc(sizeof(*((*original_entry)->next)));
         (*original_entry) = (*original_entry)->next;
     }
     RETURN_ON_NULL((*original_entry), NULL);

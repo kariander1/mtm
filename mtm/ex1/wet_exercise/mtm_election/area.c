@@ -17,7 +17,7 @@ struct area_t
 
 Area areaCreate(int area_id, const char *area_name)
 {
-    Area new_area = malloc(sizeof(*new_area));
+    Area new_area = xmalloc(sizeof(*new_area));
     RETURN_ON_NULL(new_area, NULL);
 
     new_area->area_id = area_id;

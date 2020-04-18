@@ -21,14 +21,22 @@ char *intToString(int int_to_convert);
 */
 int stringToInt(char* str);
 /**
-* get_copy_of_string: Return a copy of the string given
+* getCopyOfString: Return a copy of the string given
 *
 * @param str - The string desired to copy
 * @return
 * 	Copy of the string with malloc
 */
-char *get_copy_of_string(char* str);
-
+char *getCopyOfString(char* str);
+/**
+* xmalloc: Simulates malloc failures, otherwise mallocs the same amount given.
+*          xmalloc will fail every "fail_after" times variable at electionUtils.c
+*
+* @param size - The size o bytes to allocate
+* @return
+* 	Pointer to the first block allocated or NULL on a *SIMULATED* failure
+*/
+void *xmalloc(size_t size);
 /*!
 * Macro for shortening returning values for NULL or false objects
 */

@@ -114,11 +114,11 @@ static MapResult initializeTribesToArea(Area area,Map tribes);
 
 Election electionCreate()
 {
-    Election new_election = malloc(sizeof(*new_election));
+    Election new_election = xmalloc(sizeof(*new_election));
     RETURN_ON_NULL(new_election, NULL); // check if new_election in NULL and return NULL if so
     new_election->tribes = mapCreate(); // create Map tribes
     EXECUTE_ON_CONDITION(new_election->tribes, NULL, electionDestroy(new_election), NULL);
-    new_election->areas = malloc(sizeof(*new_election->areas) * AREA_INITIAL_SIZE); // create an array of areas
+    new_election->areas = xmalloc(sizeof(*new_election->areas) * AREA_INITIAL_SIZE); // create an array of areas
     EXECUTE_ON_CONDITION(new_election->areas, NULL, electionDestroy(new_election), NULL);
     new_election->area_count = 0; // initial all attributes to be null or 0 accordingly
     new_election->allocated_size = AREA_INITIAL_SIZE;
@@ -361,9 +361,6 @@ static bool isLegalId(int id)
 }
 static bool isLegalName(const char* name)
 {
-
-//    char* temp_str =malloc(strlen(name) +1) ;
-
     int index=0;
 
    while (name[index])
@@ -396,7 +393,7 @@ static char *checkTribeExistsAndReturnName(Election election, int tribe_id)
 {
     char *string_of_tribe_id = intToString(tribe_id);                                                         // create the char* for the mapGet function
     RETURN_ON_NULL(string_of_tribe_id, ELECTION_OUT_OF_MEMORY); // check if allocation of string_of_int failed
-    char *tribe_name =get_copy_of_string(mapGet(election->tribes, string_of_tribe_id));     // check if tribe_id exsists
+    char *tribe_name =getCopyOfString(mapGet(election->tribes, string_of_tribe_id));     // check if tribe_id exsists
     free(string_of_tribe_id);
     
     return tribe_name; // return Tribe name or NULL if the tribe doesnt exists or the Malloc for the copy string failed.
