@@ -38,6 +38,13 @@ char *intToString(int int_to_convert)
 
     return string_of_int;
 }
+char *get_copy_of_string(char* str)
+{
+    RETURN_ON_NULL(str,NULL);
+    char * copy_of_str = malloc(sizeof(char)*strlen(str)+1);
+    strcpy(copy_of_str,str);
+    return copy_of_str;
+}
 static int getNumOfDigits(int number)
 {
     int digits=0;

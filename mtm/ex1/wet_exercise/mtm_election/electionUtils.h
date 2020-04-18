@@ -20,7 +20,14 @@ char *intToString(int int_to_convert);
 * 	Int representation of the string
 */
 int stringToInt(char* str);
-
+/**
+* get_copy_of_string: Return a copy of the string given
+*
+* @param str - The string desired to copy
+* @return
+* 	Copy of the string with malloc
+*/
+char *get_copy_of_string(char* str);
 
 /*!
 * Macro for shortening returning values for NULL or false objects

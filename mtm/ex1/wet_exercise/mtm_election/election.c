@@ -4,14 +4,11 @@
 
 #include "../election.h"
 #include "../mtm_map/map.h"
-#include "../mtm_map/map.c"
 #include "area.h"
-#include "area.c"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include "electionUtils.h"
-#include "electionUtils.c"
 
 
 #define AREA_INITIAL_SIZE 1
@@ -201,7 +198,7 @@ char *electionGetTribeName(Election election, int tribe_id) // Shelly
     RETURN_ON_NULL(election, NULL);
     RETURN_ON_NULL(isLegalId(tribe_id), NULL);
 
-    char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id);
+    char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id); // Malloc'd string or NULL
     RETURN_ON_NULL(tribe_name, NULL);   
     return tribe_name;
 }
@@ -398,9 +395,10 @@ static char *checkTribeExistsAndReturnName(Election election, int tribe_id)
 {
     char *string_of_tribe_id = intToString(tribe_id);                                                         // create the char* for the mapGet function
     RETURN_ON_NULL(string_of_tribe_id, ELECTION_OUT_OF_MEMORY); // check if allocation of string_of_int failed
-    char *tribe_name = mapGet(election->tribes, string_of_tribe_id);                                    // check if tribe_id exsists
+    char *tribe_name =get_copy_of_string(mapGet(election->tribes, string_of_tribe_id));     // check if tribe_id exsists
     free(string_of_tribe_id);
-    return tribe_name; // return Tribe name or NULL if the tribe doesnt exists
+    
+    return tribe_name; // return Tribe name or NULL if the tribe doesnt exists or the Malloc for the copy string failed.
 }
 static void shiftElementsLeft(Election election, int current_index)
 { // Decreases area index
