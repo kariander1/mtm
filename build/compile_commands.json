@@ -1,7 +1,27 @@
 [
 {
-  "directory": "C:/VScode/build",
-  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles\\mtm_tot.dir\\helloworld.c.obj   -c C:\\VScode\\helloworld.c",
-  "file": "C:/VScode/helloworld.c"
+  "directory": "C:/VScode/mtm/build",
+  "command": "C:\\TDM-GCC-64\\bin\\gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm\\ex1\\wet_exercise\\mtm_election\\election.c.obj   -c C:\\VScode\\mtm\\mtm\\ex1\\wet_exercise\\mtm_election\\election.c",
+  "file": "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/election.c"
+},
+{
+  "directory": "C:/VScode/mtm/build",
+  "command": "C:\\TDM-GCC-64\\bin\\gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm\\ex1\\wet_exercise\\mtm_election\\area.c.obj   -c C:\\VScode\\mtm\\mtm\\ex1\\wet_exercise\\mtm_election\\area.c",
+  "file": "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/area.c"
+},
+{
+  "directory": "C:/VScode/mtm/build",
+  "command": "C:\\TDM-GCC-64\\bin\\gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm\\ex1\\wet_exercise\\mtm_map\\map.c.obj   -c C:\\VScode\\mtm\\mtm\\ex1\\wet_exercise\\mtm_map\\map.c",
+  "file": "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_map/map.c"
+},
+{
+  "directory": "C:/VScode/mtm/build",
+  "command": "C:\\TDM-GCC-64\\bin\\gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm\\ex1\\wet_exercise\\mtm_election\\electionUtils.c.obj   -c C:\\VScode\\mtm\\mtm\\ex1\\wet_exercise\\mtm_election\\electionUtils.c",
+  "file": "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/electionUtils.c"
+},
+{
+  "directory": "C:/VScode/mtm/build",
+  "command": "C:\\TDM-GCC-64\\bin\\gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\mtm_ex.dir\\mtm\\ex1\\wet_exercise\\tests\\shai_test_election.c.obj   -c C:\\VScode\\mtm\\mtm\\ex1\\wet_exercise\\tests\\shai_test_election.c",
+  "file": "C:/VScode/mtm/mtm/ex1/wet_exercise/tests/shai_test_election.c"
 }
 ]

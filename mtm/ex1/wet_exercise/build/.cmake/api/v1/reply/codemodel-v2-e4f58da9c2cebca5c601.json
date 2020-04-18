@@ -26,7 +26,7 @@
 					[
 						0
 					],
-					"name" : "hw0",
+					"name" : "hw1",
 					"targetIndexes" : 
 					[
 						0
@@ -37,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "mtm_tot::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-mtm_tot-Debug-a9293ebfaaf31a85443c.json",
-					"name" : "mtm_tot",
+					"id" : "mtm_ex::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mtm_ex-Debug-db1a41aaa56262ea2e9f.json",
+					"name" : "mtm_ex",
 					"projectIndex" : 0
 				}
 			]
@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/VScode/build",
-		"source" : "C:/VScode"
+		"build" : "C:/VScode/mtm/mtm/ex1/wet_exercise/build",
+		"source" : "C:/VScode/mtm/mtm/ex1/wet_exercise"
 	},
 	"version" : 
 	{

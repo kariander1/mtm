@@ -32,7 +32,7 @@ ElectionResult electionAddTribe (Election election, int tribe_id, const char* tr
 
 ElectionResult electionAddArea(Election election, int area_id, const char* area_name); // Shai
 
-const char* electionGetTribeName (Election election, int tribe_id); // Shelly
+char* electionGetTribeName (Election election, int tribe_id); // Shelly
 
 ElectionResult electionAddVote (Election election, int area_id, int tribe_id, int num_of_votes); // Shai
 

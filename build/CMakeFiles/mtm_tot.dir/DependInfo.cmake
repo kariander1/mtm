@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/VScode/helloworld.c" "C:/VScode/build/CMakeFiles/mtm_tot.dir/helloworld.c.obj"
+  "C:/VScode/mtm/helloworld.c" "C:/VScode/mtm/build/CMakeFiles/mtm_tot.dir/helloworld.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

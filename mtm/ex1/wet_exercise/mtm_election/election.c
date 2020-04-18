@@ -4,11 +4,14 @@
 
 #include "../election.h"
 #include "../mtm_map/map.h"
+#include "../mtm_map/map.c"
 #include "area.h"
+#include "area.c"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include "electionUtils.h"
+#include "electionUtils.c"
 
 
 #define AREA_INITIAL_SIZE 1
@@ -72,9 +75,43 @@ static bool isLegalVotes(int votes);
 *   AREA_NOT_FOUND if the area doesn't exist.
 */
 static int getAreaIndexById(Election election, int id);
+/**
+* multiplyAreasSize: realloc the size of area - multiply it by 2
+*
+* @param election - the election to enlarge it's area size
+* @return
+* 	false if allocation falied
+*   true if allocation succeeded
+*/
 static bool multiplyAreasSize(Election election);
-static const char *checkTribeExistsAndReturnName(Election election, int tribe_id);
+/**
+* checkTribeExistsAndReturnName: check if the tribe_id exsists and if so returns the tribe name
+*
+* @param election - the election to check tribe_id from
+* @param tribe_id - the tribe_id to check if exsists
+* @return
+* 	ELECTION_OUT_OF_MEMORY if allocation falied
+*   tribe name otherwise
+*/
+static char *checkTribeExistsAndReturnName(Election election, int tribe_id);
+/**
+* shiftElementsLeft: shift all area elements from current index until the end one place left
+*
+* @param election - the election to move area elements to 
+* @param current_index - where to start to move left the elements
+* @return
+* 	nothing - void function
+*/
 static void shiftElementsLeft(Election election, int current_index);
+/**
+* initializeTribesToArea: when creating new area - initialize all tribe votes to 0
+*
+* @param area - area to initialize tribes votes from 
+* @param tribes - the map of tribes - to check current tribes
+* @return
+* 	MAP_OUT_OF_MEMORY -  if allocation falied
+*   MAP_SUCCESS - if the functions succeeded initialize all tribe votes to 0
+*/
 static MapResult initializeTribesToArea(Area area,Map tribes);
 
 
@@ -159,12 +196,12 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      return ELECTION_SUCCESS;
 }
 
-const char *electionGetTribeName(Election election, int tribe_id) // Shelly
+char *electionGetTribeName(Election election, int tribe_id) // Shelly
 {
     RETURN_ON_NULL(election, NULL);
     RETURN_ON_NULL(isLegalId(tribe_id), NULL);
 
-    const char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id);
+    char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id);
     RETURN_ON_NULL(tribe_name, NULL);   
     return tribe_name;
 }
@@ -310,8 +347,9 @@ static int getAreaIndexById(Election election,int id)
 }
 static bool multiplyAreasSize(Election election)
 {
-    election->areas= realloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
-    RETURN_ON_NULL(election->areas,false);
+    Area * new_areas = realloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
+    RETURN_ON_NULL(new_areas,false);
+    election->areas= new_areas;
     election->allocated_size*=2;
     return true;
 }
@@ -356,11 +394,11 @@ static void areasDestroy(Election election)
     election->area_count=0;
     free(election->areas);
 }
-static const char *checkTribeExistsAndReturnName(Election election, int tribe_id)
+static char *checkTribeExistsAndReturnName(Election election, int tribe_id)
 {
     char *string_of_tribe_id = intToString(tribe_id);                                                         // create the char* for the mapGet function
     RETURN_ON_NULL(string_of_tribe_id, ELECTION_OUT_OF_MEMORY); // check if allocation of string_of_int failed
-    const char *tribe_name = mapGet(election->tribes, string_of_tribe_id);                                    // check if tribe_id exsists
+    char *tribe_name = mapGet(election->tribes, string_of_tribe_id);                                    // check if tribe_id exsists
     free(string_of_tribe_id);
     return tribe_name; // return Tribe name or NULL if the tribe doesnt exists
 }
@@ -395,9 +433,11 @@ int main()
 {
     Election elec =electionCreate();
    // 
-     electionAddArea(elec,1234,"kings landing");
+    electionAddArea(elec,1234,"kings landing");
     electionAddArea(elec,12,"kings landing");
+    electionAddArea(elec,14,"winter kings landing");
     electionAddTribe(elec, 676, "voodoo");
+    electionGetTribeName(elec, 676);
     electionAddTribe(elec, 350, "popo");
     electionAddArea(elec,1234,"winterfell");
     electionRemoveAreas(elec,condition);
