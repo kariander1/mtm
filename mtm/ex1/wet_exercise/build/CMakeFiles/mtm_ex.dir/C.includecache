@@ -6,15 +6,23 @@
 
 #IncludeRegexTransform: 
 
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.c
+C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
+
+C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.c
+assert.h
+-
+map.h
+C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
 stdlib.h
+-
+../mtm_election/electionUtils.h
+C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
+string.h
+-
+
+C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.h
+stdbool.h
 -
 string.h
 -
-stdio.h
--
-electionUtils.h
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
-
-C:/VScode/mtm/ex1/wet_exercise/mtm_election/electionUtils.h
 

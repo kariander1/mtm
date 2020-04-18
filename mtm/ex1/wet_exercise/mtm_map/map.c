@@ -197,13 +197,6 @@ bool mapContains(Map map, const char *key) // If element was found, then interna
 
     return false;
 }
-static char *copyEntryToString(const char *entry)
-{ // copys a constant string to a new allocated place and returns the copied string
-    char *str_copy = xmalloc(strlen(entry) + 1);
-    RETURN_ON_NULL(str_copy, NULL);
-    strcpy(str_copy, entry);
-    return str_copy;
-}
 MapResult mapPut(Map map, const char *key, const char *data) //DONE
 {
     RETURN_ON_NULL(map, MAP_NULL_ARGUMENT);
@@ -223,7 +216,11 @@ MapResult mapPut(Map map, const char *key, const char *data) //DONE
     // if the key does not exists in the dictionary
     char *key_copy = copyEntryToString(key);
     EXECUTE_ON_NULL(key_copy, free(data_copy), MAP_OUT_OF_MEMORY);
-    RETURN_ON_NULL(mapEntryCreateOrPromote(&(map->map_tail)), MAP_OUT_OF_MEMORY);
+    if (!mapEntryCreateOrPromote(&(map->map_tail))){
+        free(data_copy);
+        free(key_copy);
+        return MAP_OUT_OF_MEMORY;
+    }
 
     map->map_tail->key = key_copy;
     map->map_tail->value = data_copy;
@@ -231,7 +228,6 @@ MapResult mapPut(Map map, const char *key, const char *data) //DONE
     {
         map->map_head = map->map_tail; // if this is the first element - get the head to point on it
     }
-    // map->map_tail = malloc(sizeof(*(map->map_tail))); /// This will override the tail node
     map->number_of_entries++; // Should only increment if key didn't exist
     return MAP_SUCCESS;
 }
@@ -340,13 +336,15 @@ static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry)
     if (!(*original_entry))
     {
         (*original_entry) = xmalloc(sizeof(*(*original_entry)));
+        RETURN_ON_NULL((*original_entry), NULL);
     }
     else
     {
         (*original_entry)->next = xmalloc(sizeof(*((*original_entry)->next)));
+         RETURN_ON_NULL((*original_entry)->next, NULL);
         (*original_entry) = (*original_entry)->next;
     }
-    RETURN_ON_NULL((*original_entry), NULL);
+
     (*original_entry)->key = NULL;
     (*original_entry)->value = NULL;
     (*original_entry)->next = NULL;
@@ -365,6 +363,13 @@ static void freeEntry(MapEntry entry)
     free(entry->key);   //free the key
     free(entry->value); // free the value
     free(entry);        // free the current MapEntry
+}
+static char *copyEntryToString(const char *entry)
+{ // copys a constant string to a new allocated place and returns the copied string
+    char *str_copy = xmalloc(strlen(entry) + 1);
+    RETURN_ON_NULL(str_copy, NULL);
+    strcpy(str_copy, entry);
+    return str_copy;
 }
 // HELPER FUNCTIONS END
 
