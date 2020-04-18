@@ -234,8 +234,9 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
     int area_index = getAreaIndexById(election, area_id);
     RETURN_ON_CONDITION(area_index, AREA_NOT_FOUND, ELECTION_AREA_NOT_EXIST);
 
-    RETURN_ON_NULL(electionGetTribeName(election, tribe_id), ELECTION_TRIBE_NOT_EXIST);
-
+    char* tribe_name =electionGetTribeName(election, tribe_id);
+    RETURN_ON_NULL(tribe_name, ELECTION_TRIBE_NOT_EXIST);
+    free(tribe_name);
     char * string_tribe_id = intToString(tribe_id);
     RETURN_ON_NULL(string_tribe_id ,ELECTION_OUT_OF_MEMORY);
 
