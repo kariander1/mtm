@@ -16,7 +16,7 @@
 #define AREA_NOT_FOUND -1
 #define LEGAL_DELIMITER ' '
 #define EMPTY 0
-# define NULL_POINTER -1
+#define NULL_POINTER -1
 
 
 struct election_t
@@ -345,7 +345,7 @@ static int getAreaIndexById(Election election,int id)
 }
 static bool multiplyAreasSize(Election election)
 {
-    Area * new_areas = realloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
+    Area * new_areas = xrealloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
     RETURN_ON_NULL(new_areas,false);
     election->areas= new_areas;
     election->allocated_size*=2;
