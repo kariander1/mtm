@@ -179,7 +179,7 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      RETURN_ON_NULL(isLegalName(area_name), ELECTION_INVALID_NAME);
      if (election->area_count == election->allocated_size)
      {
-         RETURN_ON_NULL(multiplyAreasSize(election),ELECTION_OUT_OF_MEMORY); // Wasn't able to allocate more space
+         RETURN_ON_CONDITION(multiplyAreasSize(election), false,ELECTION_OUT_OF_MEMORY);// Wasn't able to allocate more space
          // Will not destroy the original areas array
      }
     

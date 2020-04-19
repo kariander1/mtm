@@ -202,7 +202,7 @@ MapResult mapRemove(Map map, const char *key) //Done
     {                                                        //if previous entry is not null
         prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
     }
-    else 
+    else
     {
 
         map->map_head = map->iterator_internal->next;

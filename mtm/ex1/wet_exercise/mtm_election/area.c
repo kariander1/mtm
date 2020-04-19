@@ -24,7 +24,11 @@ Area areaCreate(int area_id, const char *area_name)
     new_area->area_name = area_name;
 
     Map new_map = mapCreate();
-    EXECUTE_ON_CONDITION(new_map, NULL, areaDestroy(new_area), NULL);
+    if (new_map == NULL){
+        new_area->votes = NULL; // set to NULL insted of an unknown address in orderto distroy area
+        areaDestroy(new_area);
+        return NULL;
+    }
     new_area->votes = new_map;
     return new_area;
 }
