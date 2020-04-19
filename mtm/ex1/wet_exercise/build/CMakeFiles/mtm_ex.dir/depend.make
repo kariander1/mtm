@@ -3,22 +3,23 @@
 
 CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj: ../mtm_election/area.c
 CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj: ../mtm_election/area.h
-CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj: ../mtm_election/electionUtils.h
 CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj: ../mtm_map/map.h
+CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj: ../utilities.h
 
 CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj: ../election.h
 CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj: ../mtm_election/area.h
 CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj: ../mtm_election/election.c
-CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj: ../mtm_election/electionUtils.h
 CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj: ../mtm_map/map.h
-
-CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj: ../mtm_election/electionUtils.c
-CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj: ../mtm_election/electionUtils.h
+CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj: ../utilities.h
 
 CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: ../mtm_map/map.c
 CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: ../mtm_map/map.h
+CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj: ../utilities.h
 
 CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj: ../election.h
 CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj: ../mtm_map/map.h
 CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj: ../tests/shai_test_election.c
+
+CMakeFiles/mtm_ex.dir/utilities.c.obj: ../utilities.c
+CMakeFiles/mtm_ex.dir/utilities.c.obj: ../utilities.h
 

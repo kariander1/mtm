@@ -112,18 +112,18 @@ CMakeFiles/mtm_ex.dir/mtm_map/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mtm_ex.dir/mtm_map/map.c.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\mtm\ex1\wet_exercise\mtm_map\map.c -o CMakeFiles\mtm_ex.dir\mtm_map\map.c.s
 
-CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj: CMakeFiles/mtm_ex.dir/flags.make
-CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj: ../mtm_election/electionUtils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\mtm_ex.dir\mtm_election\electionUtils.c.obj   -c C:\VScode\mtm\ex1\wet_exercise\mtm_election\electionUtils.c
+CMakeFiles/mtm_ex.dir/utilities.c.obj: CMakeFiles/mtm_ex.dir/flags.make
+CMakeFiles/mtm_ex.dir/utilities.c.obj: ../utilities.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/mtm_ex.dir/utilities.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\mtm_ex.dir\utilities.c.obj   -c C:\VScode\mtm\ex1\wet_exercise\utilities.c
 
-CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\mtm\ex1\wet_exercise\mtm_election\electionUtils.c > CMakeFiles\mtm_ex.dir\mtm_election\electionUtils.c.i
+CMakeFiles/mtm_ex.dir/utilities.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mtm_ex.dir/utilities.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\mtm\ex1\wet_exercise\utilities.c > CMakeFiles\mtm_ex.dir\utilities.c.i
 
-CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\mtm\ex1\wet_exercise\mtm_election\electionUtils.c -o CMakeFiles\mtm_ex.dir\mtm_election\electionUtils.c.s
+CMakeFiles/mtm_ex.dir/utilities.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mtm_ex.dir/utilities.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\mtm\ex1\wet_exercise\utilities.c -o CMakeFiles\mtm_ex.dir\utilities.c.s
 
 CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj: CMakeFiles/mtm_ex.dir/flags.make
 CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj: ../tests/shai_test_election.c
@@ -143,7 +143,7 @@ mtm_ex_OBJECTS = \
 "CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj" \
 "CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj" \
 "CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj" \
-"CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj" \
+"CMakeFiles/mtm_ex.dir/utilities.c.obj" \
 "CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj"
 
 # External object files for target mtm_ex
@@ -152,7 +152,7 @@ mtm_ex_EXTERNAL_OBJECTS =
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj
-mtm_ex.exe: CMakeFiles/mtm_ex.dir/mtm_election/electionUtils.c.obj
+mtm_ex.exe: CMakeFiles/mtm_ex.dir/utilities.c.obj
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/build.make
 mtm_ex.exe: CMakeFiles/mtm_ex.dir/linklibs.rsp

@@ -4,7 +4,7 @@
 #include "area.h"
 #include "../mtm_map/map.h"
 #include <stdlib.h>
-#include "electionUtils.h"
+#include "../utilities.h"
 
 #define INITIAL_ZERO "0"
 struct area_t
@@ -17,7 +17,7 @@ struct area_t
 
 Area areaCreate(int area_id, const char *area_name)
 {
-    Area new_area = malloc(sizeof(*new_area));
+    Area new_area = xmalloc(sizeof(*new_area));
     RETURN_ON_NULL(new_area, NULL);
 
     new_area->area_id = area_id;
