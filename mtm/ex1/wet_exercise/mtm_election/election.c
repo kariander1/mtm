@@ -184,7 +184,7 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
      }
     
     Area new_area = areaCreate(area_id,area_name);
-    EXECUTE_ON_NULL(new_area,ELECTION_OUT_OF_MEMORY);
+    RETURN_ON_NULL(new_area,ELECTION_OUT_OF_MEMORY);
 
     EXECUTE_ON_CONDITION(initializeTribesToArea(new_area,election->tribes),MAP_OUT_OF_MEMORY,areaDestroy(new_area),ELECTION_OUT_OF_MEMORY);
 
