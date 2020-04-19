@@ -24,7 +24,7 @@ Area areaCreate(int area_id, const char *area_name)
     new_area->area_name = area_name;
 
     Map new_map = mapCreate();
-    RETURN_ON_NULL(new_map, NULL);
+    EXECUTE_ON_CONDITION(new_map, NULL, areaDestroy(new_area), NULL);
     new_area->votes = new_map;
     return new_area;
 }
