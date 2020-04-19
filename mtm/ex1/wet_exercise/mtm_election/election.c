@@ -8,7 +8,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "../utilities.h"
+#include "../macro.h"
+#include "election_utilities.h"
 
 
 #define AREA_INITIAL_SIZE 1

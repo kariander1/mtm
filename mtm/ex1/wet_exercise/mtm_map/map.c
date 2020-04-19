@@ -4,7 +4,8 @@
 
 #include "map.h"
 #include <stdlib.h>
-#include "../utilities.h"
+#include "../macro.h"
+
 #include <string.h>
 
 #define ZERO_ELEMENTS 0
