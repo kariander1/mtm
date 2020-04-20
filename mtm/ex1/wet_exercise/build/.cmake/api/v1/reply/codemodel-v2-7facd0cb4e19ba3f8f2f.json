@@ -38,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "mtm_ex::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-mtm_ex-Debug-496ceaf4818750c13501.json",
+					"jsonFile" : "target-mtm_ex-Debug-3e33133cf39c5a07e381.json",
 					"name" : "mtm_ex",
 					"projectIndex" : 0
 				}
@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/VScode/mtm/ex1/wet_exercise/build",
-		"source" : "C:/VScode/mtm/ex1/wet_exercise"
+		"build" : "C:/VScode/mtm/mtm/ex1/wet_exercise/build",
+		"source" : "C:/VScode/mtm/mtm/ex1/wet_exercise"
 	},
 	"version" : 
 	{

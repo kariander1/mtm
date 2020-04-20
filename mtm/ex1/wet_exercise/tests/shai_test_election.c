@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "../mtm_election/area.c"
-#include "../mtm_map/map.c"
-#include "../utilities.c"
-#include "../mtm_election/election.c"
+#include "../mtm_election/election_utilities.h"
+#include "../mtm_election/area.h"
+//#include "../mtm_map/map.c"
+//#include "../mtm_election/election.c"
 
 #define OPTIONS 14
 #define MAX_ELECTIONS 1000
@@ -29,7 +29,7 @@ typedef enum Operation_t
     ELECTION_TESTS,
     QUIT
 } OperationType;
-typedef struct node_tt
+typedef struct node_tn
 {
     char *key;
     char *value;

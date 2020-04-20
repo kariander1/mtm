@@ -55,19 +55,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\VScode\mtm\ex1\wet_exercise
+CMAKE_SOURCE_DIR = C:\VScode\mtm\mtm\ex1\wet_exercise
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
+CMAKE_BINARY_DIR = C:\VScode\mtm\mtm\ex1\wet_exercise\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -75,7 +75,7 @@ CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/VScode/mtm/ex1/wet_exercise/build/CPackSourceConfig.cmake
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/VScode/mtm/mtm/ex1/wet_exercise/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -86,7 +86,7 @@ package_source/fast: package_source
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackConfig.cmake
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cpack.exe" --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -97,7 +97,7 @@ package/fast: package
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -108,7 +108,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -118,9 +118,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\mtm\ex1\wet_exercise\build\CMakeFiles C:\VScode\mtm\mtm\ex1\wet_exercise\build\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\mtm\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -215,6 +215,33 @@ mtm_election/election.c.s:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election.c.s
 .PHONY : mtm_election/election.c.s
 
+mtm_election/election_utilities.obj: mtm_election/election_utilities.c.obj
+
+.PHONY : mtm_election/election_utilities.obj
+
+# target to build an object file
+mtm_election/election_utilities.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election_utilities.c.obj
+.PHONY : mtm_election/election_utilities.c.obj
+
+mtm_election/election_utilities.i: mtm_election/election_utilities.c.i
+
+.PHONY : mtm_election/election_utilities.i
+
+# target to preprocess a source file
+mtm_election/election_utilities.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election_utilities.c.i
+.PHONY : mtm_election/election_utilities.c.i
+
+mtm_election/election_utilities.s: mtm_election/election_utilities.c.s
+
+.PHONY : mtm_election/election_utilities.s
+
+# target to generate assembly for a file
+mtm_election/election_utilities.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_election/election_utilities.c.s
+.PHONY : mtm_election/election_utilities.c.s
+
 mtm_map/map.obj: mtm_map/map.c.obj
 
 .PHONY : mtm_map/map.obj
@@ -269,33 +296,6 @@ tests/shai_test_election.c.s:
 	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.s
 .PHONY : tests/shai_test_election.c.s
 
-utilities.obj: utilities.c.obj
-
-.PHONY : utilities.obj
-
-# target to build an object file
-utilities.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/utilities.c.obj
-.PHONY : utilities.c.obj
-
-utilities.i: utilities.c.i
-
-.PHONY : utilities.i
-
-# target to preprocess a source file
-utilities.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/utilities.c.i
-.PHONY : utilities.c.i
-
-utilities.s: utilities.c.s
-
-.PHONY : utilities.s
-
-# target to generate assembly for a file
-utilities.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/utilities.c.s
-.PHONY : utilities.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -313,15 +313,15 @@ help:
 	@echo ... mtm_election/election.obj
 	@echo ... mtm_election/election.i
 	@echo ... mtm_election/election.s
+	@echo ... mtm_election/election_utilities.obj
+	@echo ... mtm_election/election_utilities.i
+	@echo ... mtm_election/election_utilities.s
 	@echo ... mtm_map/map.obj
 	@echo ... mtm_map/map.i
 	@echo ... mtm_map/map.s
 	@echo ... tests/shai_test_election.obj
 	@echo ... tests/shai_test_election.i
 	@echo ... tests/shai_test_election.s
-	@echo ... utilities.obj
-	@echo ... utilities.i
-	@echo ... utilities.s
 .PHONY : help
 
 

@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj"
-  "C:/VScode/mtm/ex1/wet_exercise/mtm_election/election.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj"
-  "C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
-  "C:/VScode/mtm/ex1/wet_exercise/tests/shai_test_election.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj"
-  "C:/VScode/mtm/ex1/wet_exercise/utilities.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/utilities.c.obj"
+  "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/area.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj"
+  "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/election.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj"
+  "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/election_utilities.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/election_utilities.c.obj"
+  "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
+  "C:/VScode/mtm/mtm/ex1/wet_exercise/tests/shai_test_election.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
