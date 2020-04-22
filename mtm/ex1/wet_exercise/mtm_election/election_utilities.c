@@ -28,7 +28,7 @@ char *intToString(const int int_to_convert)
 {
     int num_of_digits = getNumOfDigits(int_to_convert); // check the log to se  how many chars we need for the itoa() function
 
-    char *string_of_int = xmalloc(sizeof(char) * num_of_digits + 1); // +1 for "/0"  
+    char *string_of_int = malloc(sizeof(char) * num_of_digits + 1); // +1 for "/0"  
     RETURN_ON_NULL(string_of_int, NULL);                 // check if allocation failed - if so returns NULL in string_of_int
  
     if(sprintf(string_of_int,"%d",int_to_convert)<0)
@@ -42,7 +42,7 @@ char *intToString(const int int_to_convert)
 char *getCopyOfString(const char* str)
 {
     RETURN_ON_NULL(str,NULL);
-    char * copy_of_str = xmalloc(sizeof(char)*strlen(str)+1);
+    char * copy_of_str = malloc(sizeof(char)*strlen(str)+1);
     RETURN_ON_NULL(copy_of_str,NULL);
     strcpy(copy_of_str,str);
     return copy_of_str;
@@ -56,29 +56,5 @@ static int getNumOfDigits(int number)
         number/=10;
     } while(number);
     return digits;
-}
-static int malloc_fail_after = 0; // Keep at zero to make malloc untouched
-static int malloc_num_allocs = 0;
-void *xmalloc(size_t size)
-{
-    if (malloc_fail_after > 0 && malloc_num_allocs++ >= malloc_fail_after)
-    {
-        malloc_num_allocs=0;
-        printf("Out of memory simulation\n");
-        return NULL;
-    }
-    return malloc(size);
-}
-static int realloc_fail_after = 0; // Keep at zero to make malloc untouched
-static int realloc_num_allocs = 0;
-void *xrealloc(void *start_ptr,size_t size)
-{
-    if (realloc_fail_after > 0 && realloc_num_allocs++ >= realloc_fail_after)
-    {
-        realloc_num_allocs=0;
-        printf("Out of memory simulation\n");
-        return NULL;
-    }
-    return realloc(start_ptr,size);
 }
 #endif
