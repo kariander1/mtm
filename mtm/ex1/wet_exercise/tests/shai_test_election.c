@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 #define OPTIONS 14
 #define MAX_ELECTIONS 1000
 
@@ -26,7 +25,11 @@ typedef enum Operation_t
     ELECTION_TESTS,
     QUIT
 } OperationType;
+<<<<<<< HEAD
 typedef struct node_t
+=======
+typedef struct node_tn
+>>>>>>> a60585111e66550769f408c2ef0a2c2058115319
 {
     char *key;
     char *value;
