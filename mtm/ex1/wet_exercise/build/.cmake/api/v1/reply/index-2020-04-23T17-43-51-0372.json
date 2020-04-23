@@ -26,11 +26,7 @@
 	"objects" : 
 	[
 		{
-<<<<<<< HEAD:mtm/ex1/wet_exercise/build/.cmake/api/v1/reply/index-2020-04-22T10-53-29-0248.json
-			"jsonFile" : "codemodel-v2-e3bda67969b601a66d52.json",
-=======
 			"jsonFile" : "codemodel-v2-7facd0cb4e19ba3f8f2f.json",
->>>>>>> a60585111e66550769f408c2ef0a2c2058115319:mtm/ex1/wet_exercise/build/.cmake/api/v1/reply/index-2020-04-20T13-24-18-0470.json
 			"kind" : "codemodel",
 			"version" : 
 			{
@@ -77,11 +73,7 @@
 						}
 					},
 					{
-<<<<<<< HEAD:mtm/ex1/wet_exercise/build/.cmake/api/v1/reply/index-2020-04-22T10-53-29-0248.json
-						"jsonFile" : "codemodel-v2-e3bda67969b601a66d52.json",
-=======
 						"jsonFile" : "codemodel-v2-7facd0cb4e19ba3f8f2f.json",
->>>>>>> a60585111e66550769f408c2ef0a2c2058115319:mtm/ex1/wet_exercise/build/.cmake/api/v1/reply/index-2020-04-20T13-24-18-0470.json
 						"kind" : "codemodel",
 						"version" : 
 						{

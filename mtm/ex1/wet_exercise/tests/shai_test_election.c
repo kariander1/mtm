@@ -25,11 +25,8 @@ typedef enum Operation_t
     ELECTION_TESTS,
     QUIT
 } OperationType;
-<<<<<<< HEAD
-typedef struct node_t
-=======
+
 typedef struct node_tn
->>>>>>> a60585111e66550769f408c2ef0a2c2058115319
 {
     char *key;
     char *value;
@@ -37,7 +34,6 @@ typedef struct node_tn
 } * node;
 
 Election elections[MAX_ELECTIONS];
-int inputs = 0;
 int area_id_for_func = 0;
 int area_lower_limit = 0;
 
