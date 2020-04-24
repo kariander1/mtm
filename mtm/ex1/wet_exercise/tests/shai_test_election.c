@@ -33,7 +33,6 @@ typedef struct node_t
 } * node;
 
 Election elections[MAX_ELECTIONS];
-int inputs = 0;
 int area_id_for_func = 0;
 int area_lower_limit = 0;
 
