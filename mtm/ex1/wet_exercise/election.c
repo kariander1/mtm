@@ -2,13 +2,13 @@
 #ifndef ELECTION_C_
 #define ELECTION_C_
 
-#include "../election.h"
-#include "../mtm_map/map.h"
+#include "election.h"
+#include "mtm_map/map.h"
 #include "area.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "../macro.h"
+#include "macro.h"
 #include "election_utilities.h"
 
 

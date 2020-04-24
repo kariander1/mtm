@@ -4,19 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-<<<<<<< HEAD
-  "C:/VScode/mtm/ex1/wet_exercise/mtm_election/area.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj"
-  "C:/VScode/mtm/ex1/wet_exercise/mtm_election/election.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj"
-  "C:/VScode/mtm/ex1/wet_exercise/mtm_election/election_utilities.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/election_utilities.c.obj"
+  "C:/VScode/mtm/ex1/wet_exercise/area.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/area.c.obj"
+  "C:/VScode/mtm/ex1/wet_exercise/election.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/election.c.obj"
+  "C:/VScode/mtm/ex1/wet_exercise/election_utilities.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/election_utilities.c.obj"
   "C:/VScode/mtm/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
   "C:/VScode/mtm/ex1/wet_exercise/tests/shai_test_election.c" "C:/VScode/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj"
-=======
-  "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/area.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/area.c.obj"
-  "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/election.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/election.c.obj"
-  "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_election/election_utilities.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_election/election_utilities.c.obj"
-  "C:/VScode/mtm/mtm/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj"
-  "C:/VScode/mtm/mtm/ex1/wet_exercise/tests/shai_test_election.c" "C:/VScode/mtm/mtm/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj"
->>>>>>> a60585111e66550769f408c2ef0a2c2058115319
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

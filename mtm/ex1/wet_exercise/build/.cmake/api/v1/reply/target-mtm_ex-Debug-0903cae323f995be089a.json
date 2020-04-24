@@ -98,13 +98,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "mtm_election/election.c",
+			"path" : "election.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "mtm_election/area.c",
+			"path" : "area.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -116,7 +116,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "mtm_election/election_utilities.c",
+			"path" : "election_utilities.c",
 			"sourceGroupIndex" : 0
 		},
 		{

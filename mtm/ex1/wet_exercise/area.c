@@ -2,9 +2,9 @@
 #define AREA_C_
 
 #include "area.h"
-#include "../mtm_map/map.h"
+#include "mtm_map/map.h"
 #include <stdlib.h>
-#include "../macro.h"
+#include "macro.h"
 #include "election_utilities.h"
 
 #define INITIAL_ZERO "0"
