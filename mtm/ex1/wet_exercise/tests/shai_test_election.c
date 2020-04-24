@@ -35,7 +35,7 @@ typedef struct node_t
 Election elections[MAX_ELECTIONS];
 int area_id_for_func = 0;
 int area_lower_limit = 0;
-
+int inputs = 0;
 static bool suppress_print = false;
 
 void printMapResult(MapResult result);
