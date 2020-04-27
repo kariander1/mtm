@@ -4,7 +4,7 @@
 #include <string.h>
 
 
-typedef struct node_t* Node;
+typedef struct node_t* NodeKeyValue;
 
 
 

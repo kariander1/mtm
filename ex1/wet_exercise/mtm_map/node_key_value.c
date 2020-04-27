@@ -14,12 +14,16 @@ struct node_t
     struct node_t *next;
 };
 
-Node NodeCreate()
+NodeKeyValue NodeCreate()
 {
-    Node new_node = xmalloc(sizeof(*new_node));
+    NodeKeyValue new_node = xmalloc(sizeof(*new_node));
     RETURN_ON_NULL(new_node,NULL);
 
     return new_node;
 }
+NodeKeyValue NodeDestroy(NodeKeyValue node);
+NodeKeyValue NodeGetKey (NodeKeyValue node);
+NodeKeyValue NodeGetValue(NodeKeyValue node);
+NodeKeyValue NodeGetNext(NodeKeyValue node);
 
 #endif
