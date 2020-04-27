@@ -10,9 +10,9 @@ C:/VScode/ex1/wet_exercise/election_utilities.h
 
 C:/VScode/ex1/wet_exercise/macro.h
 
-C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c
-node_key_value.h
-C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.h
+C:/VScode/ex1/wet_exercise/mtm_map/map.c
+map.h
+C:/VScode/ex1/wet_exercise/mtm_map/map.h
 stdlib.h
 -
 ../macro.h
@@ -21,6 +21,14 @@ string.h
 -
 ../election_utilities.h
 C:/VScode/ex1/wet_exercise/election_utilities.h
+node_key_value.h
+C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.h
+
+C:/VScode/ex1/wet_exercise/mtm_map/map.h
+stdbool.h
+-
+string.h
+-
 
 C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.h
 stdbool.h

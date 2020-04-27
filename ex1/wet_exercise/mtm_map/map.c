@@ -214,7 +214,7 @@ MapResult mapRemove(Map map, const char *key) //Done
     }
     else
     {
-        NodePutNext(map->map_head ,NodeGetNext(map->iterator_internal));
+        map->map_head  = NodeGetNext(map->iterator_internal);
     }
     if (!NodeGetNext(map->iterator_internal))
     { // if we want to remove the last element
@@ -267,7 +267,7 @@ static NodeKeyValue mapGetPrevious(Map map, const char *key)
     map->iterator = map->map_head;
     while (strcmp(NodeGetKey(NodeGetNext(map->iterator)), key) != 0)
     { //check if the next entry is with the entered key
-       NodePromoteToNext(map->iterator);
+       NodePromoteToNext(&(map->iterator));
     }
     return map->iterator;
 }
@@ -301,7 +301,7 @@ static NodeKeyValue mapEntryCreateOrPromote(NodeKeyValue *original_entry)
     {
         NodePutNext((*original_entry),NodeCreate());
          RETURN_ON_NULL(NodeGetNext((*original_entry)), NULL);
-         NodePromoteToNext((*original_entry));
+         NodePromoteToNext(original_entry); // Pointer to node
     }
     return (*original_entry);
 }
@@ -328,6 +328,7 @@ static void freeNode(NodeKeyValue entry)
     free(NodeGetKey(entry));   //free the key
     free(NodeGetValue(entry)); // free the value
     NodeDestroy(entry);        // free the current MapEntry
+    entry=NULL;
 }
 // HELPER FUNCTIONS END
 

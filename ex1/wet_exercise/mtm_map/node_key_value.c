@@ -71,10 +71,10 @@ void NodePutValue(NodeKeyValue node, char* new_value)
     return;
 }
 
-void NodePromoteToNext(NodeKeyValue node)
+void NodePromoteToNext(NodeKeyValue *node)
 {
-    RETURN_ON_CONDITION_NO_VALUE(node,NULL);
-    node = node->next;
+    RETURN_ON_CONDITION_NO_VALUE(*node,NULL);
+    (*node) = (*node)->next;
     return;
 }
 

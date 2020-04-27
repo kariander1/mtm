@@ -22,6 +22,6 @@ void NodePutkey(NodeKeyValue node, char* new_key);
 
 void NodePutValue(NodeKeyValue node, char* new_value);
 
-void NodePromoteToNext(NodeKeyValue node);
+void NodePromoteToNext(NodeKeyValue* node);
 
 #endif
