@@ -38,7 +38,7 @@ static void initializeAttributes(Map map);
 * 	char*  depicting The promoted entry's key.
 *   NULL if the promoted entry is NULL
 */
-static char *mapGetNextKeyAndPromote(MapEntry *original_entry, MapEntry *next_entry);
+static char *mapGetNextKeyAndPromote(NodeKeyValue *original_entry, NodeKeyValue *next_entry);
 /**
 * mapGetFirstInternal: Same as mapGetFirst, only for the internal_iterator
 *
@@ -66,7 +66,7 @@ static char *mapGetNextInternal(Map map);
 * 	returns NULL if we want to free the first element
 * 	pointer to the previous MapEntry.
 */
-static MapEntry mapGetPrevious(Map map, const char *key);
+static NodeKeyValue mapGetPrevious(Map map, const char *key);
 /**
 * mapEntryCreateOrPromote: if the original_entry is empty - allocates it and initialize with NULL values  
 *                          if the original_entry is not empty - goes to the next item allocates it and initialize with NULL values
@@ -75,7 +75,7 @@ static MapEntry mapGetPrevious(Map map, const char *key);
 * 	returns NULL if the allocation to new MapEntry failed
 * 	returns a pointer to the new MapEntry 
 */
-static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry);
+static NodeKeyValue mapEntryCreateOrPromote(NodeKeyValue *original_entry);
 /**
 * getCopyOfString: Copies a string to a new malloc'd area, kind of the same in election, made here  
 * so that there won't be inclusion to election files that have many unused functions for map.
@@ -87,7 +87,7 @@ static char *getCopyOfString(const char* str);
 *                          
 * @param entry - the entry to free. 
 */
-static void freeEntry(MapEntry entry);
+static void freeEntry(NodeKeyValue entry);
 
 // HELPER FUNCTIONS TOKENS END
 Map mapCreate()
@@ -197,7 +197,7 @@ MapResult mapRemove(Map map, const char *key) //Done
     RETURN_ON_NULL(map, MAP_NULL_ARGUMENT);
     RETURN_ON_NULL(key, MAP_NULL_ARGUMENT);
     RETURN_ON_NULL(mapContains(map, key), MAP_ITEM_DOES_NOT_EXIST);
-    MapEntry prevoius_entry = mapGetPrevious(map, key);
+    NodeKeyValue prevoius_entry = mapGetPrevious(map, key);
     if (prevoius_entry)
     {                                                        //if previous entry is not null
         prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
@@ -239,7 +239,7 @@ MapResult mapClear(Map map)
     while (map->iterator_internal)
     {
         //until the iterator_internal gets null addres (tails address +1)
-        MapEntry to_delete = map->iterator_internal;
+        NodeKeyValue to_delete = map->iterator_internal;
         mapGetNextInternal(map); //promote the iterator_internal
         freeEntry(to_delete);
     }
@@ -248,7 +248,7 @@ MapResult mapClear(Map map)
 }
 
 // HELPER FUNCTIONS
-static MapEntry mapGetPrevious(Map map, const char *key)
+static NodeKeyValue mapGetPrevious(Map map, const char *key)
 {
     if (strcmp(map->map_head->key, key) == 0)
     {
@@ -272,14 +272,14 @@ static char *mapGetNextInternal(Map map) //Similar to mapGetNext, only this time
     RETURN_ON_NULL(map->iterator_internal, NULL);
     return mapGetNextKeyAndPromote(&(map->iterator_internal), &(map->iterator_internal->next));
 }
-static char *mapGetNextKeyAndPromote(MapEntry *original_entry, MapEntry *next_entry)
+static char *mapGetNextKeyAndPromote(NodeKeyValue *original_entry, NodeKeyValue *next_entry)
 {
     RETURN_ON_NULL(original_entry, NULL);
     RETURN_ON_NULL(next_entry, NULL);
     *original_entry = *next_entry;
     return (*original_entry ? (*original_entry)->key : NULL);
 }
-static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry)
+static NodeKeyValue mapEntryCreateOrPromote(NodeKeyValue *original_entry)
 {
     if (!(*original_entry))
     {
@@ -314,7 +314,7 @@ static char *getCopyOfString(const char* str)
     strcpy(copy_of_str,str);
     return copy_of_str;
 }
-static void freeEntry(MapEntry entry)
+static void freeEntry(NodeKeyValue entry)
 {
     free(entry->key);   //free the key
     free(entry->value); // free the value
