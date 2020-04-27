@@ -37,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "mtm_ex::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-mtm_ex-Debug-0903cae323f995be089a.json",
-					"name" : "mtm_ex",
+					"id" : "mtm_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mtm_node-Debug-636c1089dcc78061ba3d.json",
+					"name" : "mtm_node",
 					"projectIndex" : 0
 				}
 			]

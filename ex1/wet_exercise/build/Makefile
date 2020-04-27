@@ -127,71 +127,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mtm_ex
+# Target rules for targets named mtm_node
 
 # Build rule for target.
-mtm_ex: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 mtm_ex
-.PHONY : mtm_ex
+mtm_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 mtm_node
+.PHONY : mtm_node
 
 # fast build rule for target.
-mtm_ex/fast:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
-.PHONY : mtm_ex/fast
-
-area.obj: area.c.obj
-
-.PHONY : area.obj
-
-# target to build an object file
-area.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/area.c.obj
-.PHONY : area.c.obj
-
-area.i: area.c.i
-
-.PHONY : area.i
-
-# target to preprocess a source file
-area.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/area.c.i
-.PHONY : area.c.i
-
-area.s: area.c.s
-
-.PHONY : area.s
-
-# target to generate assembly for a file
-area.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/area.c.s
-.PHONY : area.c.s
-
-election.obj: election.c.obj
-
-.PHONY : election.obj
-
-# target to build an object file
-election.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election.c.obj
-.PHONY : election.c.obj
-
-election.i: election.c.i
-
-.PHONY : election.i
-
-# target to preprocess a source file
-election.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election.c.i
-.PHONY : election.c.i
-
-election.s: election.c.s
-
-.PHONY : election.s
-
-# target to generate assembly for a file
-election.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election.c.s
-.PHONY : election.c.s
+mtm_node/fast:
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/build
+.PHONY : mtm_node/fast
 
 election_utilities.obj: election_utilities.c.obj
 
@@ -199,7 +145,7 @@ election_utilities.obj: election_utilities.c.obj
 
 # target to build an object file
 election_utilities.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.obj
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/election_utilities.c.obj
 .PHONY : election_utilities.c.obj
 
 election_utilities.i: election_utilities.c.i
@@ -208,7 +154,7 @@ election_utilities.i: election_utilities.c.i
 
 # target to preprocess a source file
 election_utilities.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.i
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/election_utilities.c.i
 .PHONY : election_utilities.c.i
 
 election_utilities.s: election_utilities.c.s
@@ -217,62 +163,35 @@ election_utilities.s: election_utilities.c.s
 
 # target to generate assembly for a file
 election_utilities.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.s
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/election_utilities.c.s
 .PHONY : election_utilities.c.s
 
-mtm_map/map.obj: mtm_map/map.c.obj
+mtm_map/node_key_value.obj: mtm_map/node_key_value.c.obj
 
-.PHONY : mtm_map/map.obj
-
-# target to build an object file
-mtm_map/map.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj
-.PHONY : mtm_map/map.c.obj
-
-mtm_map/map.i: mtm_map/map.c.i
-
-.PHONY : mtm_map/map.i
-
-# target to preprocess a source file
-mtm_map/map.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.i
-.PHONY : mtm_map/map.c.i
-
-mtm_map/map.s: mtm_map/map.c.s
-
-.PHONY : mtm_map/map.s
-
-# target to generate assembly for a file
-mtm_map/map.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.s
-.PHONY : mtm_map/map.c.s
-
-tests/shai_test_election.obj: tests/shai_test_election.c.obj
-
-.PHONY : tests/shai_test_election.obj
+.PHONY : mtm_map/node_key_value.obj
 
 # target to build an object file
-tests/shai_test_election.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.obj
-.PHONY : tests/shai_test_election.c.obj
+mtm_map/node_key_value.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/mtm_map/node_key_value.c.obj
+.PHONY : mtm_map/node_key_value.c.obj
 
-tests/shai_test_election.i: tests/shai_test_election.c.i
+mtm_map/node_key_value.i: mtm_map/node_key_value.c.i
 
-.PHONY : tests/shai_test_election.i
+.PHONY : mtm_map/node_key_value.i
 
 # target to preprocess a source file
-tests/shai_test_election.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.i
-.PHONY : tests/shai_test_election.c.i
+mtm_map/node_key_value.c.i:
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/mtm_map/node_key_value.c.i
+.PHONY : mtm_map/node_key_value.c.i
 
-tests/shai_test_election.s: tests/shai_test_election.c.s
+mtm_map/node_key_value.s: mtm_map/node_key_value.c.s
 
-.PHONY : tests/shai_test_election.s
+.PHONY : mtm_map/node_key_value.s
 
 # target to generate assembly for a file
-tests/shai_test_election.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test_election.c.s
-.PHONY : tests/shai_test_election.c.s
+mtm_map/node_key_value.c.s:
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/mtm_map/node_key_value.c.s
+.PHONY : mtm_map/node_key_value.c.s
 
 # Help Target
 help:
@@ -282,22 +201,13 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... mtm_ex
-	@echo ... area.obj
-	@echo ... area.i
-	@echo ... area.s
-	@echo ... election.obj
-	@echo ... election.i
-	@echo ... election.s
+	@echo ... mtm_node
 	@echo ... election_utilities.obj
 	@echo ... election_utilities.i
 	@echo ... election_utilities.s
-	@echo ... mtm_map/map.obj
-	@echo ... mtm_map/map.i
-	@echo ... mtm_map/map.s
-	@echo ... tests/shai_test_election.obj
-	@echo ... tests/shai_test_election.i
-	@echo ... tests/shai_test_election.s
+	@echo ... mtm_map/node_key_value.obj
+	@echo ... mtm_map/node_key_value.i
+	@echo ... mtm_map/node_key_value.s
 .PHONY : help
 
 

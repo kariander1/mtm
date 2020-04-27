@@ -27,26 +27,26 @@ NodeKeyValue NodeCreate()
 void NodeDestroy(NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
-    node->key = NULL;  // what do you say - just in case?
+    node->key = NULL;  // the free is done outside
     node->next = NULL;
     node->value = NULL;
     free(node);
     return;
 }
 
-NodeKeyValue NodeGetKey (NodeKeyValue node)
+char * NodeGetKey (NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
     return node->key;
 }
 
-NodeKeyValue NodeGetValue(NodeKeyValue node)
+char * NodeGetValue(NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
     return node->value;
 }
 
-NodeKeyValue NodeGetNext(NodeKeyValue node)
+char * NodeGetNext(NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
     return node->next;
@@ -71,10 +71,30 @@ void NodePutValue(NodeKeyValue node, NodeKeyValue new_value)
     return;
 }
 
-NodeKeyValue NodePromoteToNext(NodeKeyValue node)
+void NodePromoteToNext(NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
-    return node->next;
+    node = node->next;
+    return;
 }
 
 #endif
+
+
+
+int main(){
+    NodeKeyValue node1 =  NodeCreate();
+    NodePutNext(node1, NULL);
+    NodePutkey(node1, "Shelly");
+    NodePutValue(node1, "Francis");
+    NodeGetKey(node1);
+    NodeGetValue(node1);
+    NodeKeyValue node2 =  NodeCreate();
+    NodePutNext(node1, node2);
+    NodeGetNext(node1);
+    NodePutkey(node2, "Shai");
+    NodeDestroy(node1);
+    NodeDestroy(node2);
+    printf("finish ! \n");
+    return 0;
+}
