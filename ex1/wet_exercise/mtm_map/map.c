@@ -7,6 +7,7 @@
 #include "../macro.h"
 #include <string.h>
 #include "../election_utilities.h"
+#include "node_key_value.h"
 
 #define ZERO_ELEMENTS 0
 #define SIZE_OF_NULL_MAP -1
@@ -21,10 +22,10 @@ typedef struct node_t
 */
 struct Map_t
 {
-    MapEntry iterator;
-    MapEntry iterator_internal;
-    MapEntry map_head;
-    MapEntry map_tail;
+    NodeKeyValue iterator;
+    NodeKeyValue iterator_internal;
+    NodeKeyValue map_head;
+    NodeKeyValue map_tail;
     int number_of_entries;
 };
 // HELPER FUNCTIONS TOKENS
