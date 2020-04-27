@@ -6,17 +6,19 @@
 #include <stdlib.h>
 #include "../macro.h"
 #include <string.h>
+#include "../election_utilities.h"
 
 #define ZERO_ELEMENTS 0
 #define SIZE_OF_NULL_MAP -1
 
+/*
 typedef struct node_t
 {
     char *key;
     char *value;
     struct node_t *next;
 } * MapEntry;
-
+*/
 struct Map_t
 {
     MapEntry iterator;
@@ -83,7 +85,7 @@ static MapEntry mapGetPrevious(Map map, const char *key);
 */
 static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry);
 /**
-* getCopyOfString: Copies a string to a new malloc'd area, kind of the same in election, made here  
+* getCopyOfString: Copies a string to a new xmalloc'd area, kind of the same in election, made here  
 * so that there won't be inclusion to election files that have many unused functions for map.
 * @param str - the string to copy
 */
@@ -98,7 +100,7 @@ static void freeEntry(MapEntry entry);
 // HELPER FUNCTIONS TOKENS END
 Map mapCreate()
 {
-    Map new_map = malloc(sizeof(*new_map));
+    Map new_map = xmalloc(sizeof(*new_map));
 
     RETURN_ON_NULL(new_map, NULL);
 
@@ -289,12 +291,12 @@ static MapEntry mapEntryCreateOrPromote(MapEntry *original_entry)
 {
     if (!(*original_entry))
     {
-        (*original_entry) = malloc(sizeof(*(*original_entry)));
+        (*original_entry) = xmalloc(sizeof(*(*original_entry)));
         RETURN_ON_NULL((*original_entry), NULL);
     }
     else
     {
-        (*original_entry)->next = malloc(sizeof(*((*original_entry)->next)));
+        (*original_entry)->next = xmalloc(sizeof(*((*original_entry)->next)));
          RETURN_ON_NULL((*original_entry)->next, NULL);
         (*original_entry) = (*original_entry)->next;
     }
@@ -315,7 +317,7 @@ static void initializeAttributes(Map map)
 static char *getCopyOfString(const char* str)
 {
     RETURN_ON_NULL(str,NULL);
-    char * copy_of_str = malloc(sizeof(char)*strlen(str)+1);
+    char * copy_of_str = xmalloc(sizeof(char)*strlen(str)+1);
     RETURN_ON_NULL(copy_of_str,NULL);
     strcpy(copy_of_str,str);
     return copy_of_str;

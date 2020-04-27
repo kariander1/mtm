@@ -115,11 +115,11 @@ static MapResult initializeTribesToArea(Area area,Map tribes);
 
 Election electionCreate()
 {
-    Election new_election = malloc(sizeof(*new_election));
+    Election new_election = xmalloc(sizeof(*new_election));
     RETURN_ON_NULL(new_election, NULL); // check if new_election in NULL and return NULL if so
     new_election->tribes = mapCreate(); // create Map tribes
     EXECUTE_ON_CONDITION(new_election->tribes, NULL, electionDestroy(new_election), NULL);
-    new_election->areas = malloc(sizeof(*new_election->areas) * AREA_INITIAL_SIZE); // create an array of areas
+    new_election->areas = xmalloc(sizeof(*new_election->areas) * AREA_INITIAL_SIZE); // create an array of areas
     EXECUTE_ON_CONDITION(new_election->areas, NULL, electionDestroy(new_election), NULL);
     new_election->area_count = 0; // initial all attributes to be null or 0 accordingly
     new_election->allocated_size = AREA_INITIAL_SIZE;
@@ -199,7 +199,7 @@ char *electionGetTribeName(Election election, int tribe_id) // Shelly
     RETURN_ON_NULL(election, NULL);
     RETURN_ON_NULL(isLegalId(tribe_id), NULL);
 
-    char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id); // Malloc'd string or NULL
+    char* tribe_name = checkTribeExistsAndReturnName(election, tribe_id); // xmalloc'd string or NULL
     RETURN_ON_NULL(tribe_name, NULL);   
     return tribe_name;
 }
@@ -346,7 +346,7 @@ static int getAreaIndexById(Election election,int id)
 }
 static bool multiplyAreasSize(Election election)
 {
-    Area * new_areas = realloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
+    Area * new_areas = xrealloc(election->areas,(sizeof( election->areas))*(election->allocated_size*AREA_MULTIPLIER_SIZE));
     RETURN_ON_NULL(new_areas,false);
     election->areas= new_areas;
     election->allocated_size*=2;
@@ -397,7 +397,7 @@ static char *checkTribeExistsAndReturnName(Election election, int tribe_id)
     char *tribe_name =getCopyOfString(mapGet(election->tribes, string_of_tribe_id));     // check if tribe_id exsists
     free(string_of_tribe_id);
     
-    return tribe_name; // return Tribe name or NULL if the tribe doesnt exists or the Malloc for the copy string failed.
+    return tribe_name; // return Tribe name or NULL if the tribe doesnt exists or the xmalloc for the copy string failed.
 }
 static void shiftElementsLeft(Election election, int current_index)
 { // Decreases area index
