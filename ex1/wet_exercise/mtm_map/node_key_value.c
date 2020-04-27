@@ -17,5 +17,9 @@ NodeKeyValue NodeCreate(){
     NodeKeyValue new_node = malloc(sizeof(*new_node));
 }
 
+NodeKeyValue NodeDestroy(NodeKeyValue node);
+NodeKeyValue NodeGetKey (NodeKeyValue node);
+NodeKeyValue NodeGetValue(NodeKeyValue node);
+NodeKeyValue NodeGetNext(NodeKeyValue node);
 
 #endif
