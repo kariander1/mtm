@@ -34,13 +34,13 @@ void NodeDestroy(NodeKeyValue node)
     return;
 }
 
-NodeKeyValue NodeGetKey (NodeKeyValue node)
+char* NodeGetKey (NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
     return node->key;
 }
 
-NodeKeyValue NodeGetValue(NodeKeyValue node)
+char* NodeGetValue(NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
     return node->value;
