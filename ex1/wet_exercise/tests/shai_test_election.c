@@ -25,11 +25,11 @@ typedef enum Operation_t
     ELECTION_TESTS,
     QUIT
 } OperationType;
-typedef struct node_t
+typedef struct node_tt
 {
     char *key;
     char *value;
-    struct node_t *next;
+    struct node_tt *next;
 } * node;
 
 Election elections[MAX_ELECTIONS];
