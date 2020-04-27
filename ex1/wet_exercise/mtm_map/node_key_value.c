@@ -25,12 +25,22 @@ NodeKeyValue NodeCreate()
     return new_node;
 }
 NodeKeyValue NodeDestroy(NodeKeyValue node);
+
 NodeKeyValue NodeGetKey (NodeKeyValue node);
+
 NodeKeyValue NodeGetValue(NodeKeyValue node);
+
 NodeKeyValue NodeGetNext(NodeKeyValue node);
-void NodeSetValues(NodeKeyValue node, char * key, char* value, NodeKeyValue next);
-void NodeChangeNext (NodeKeyValue node, NodeKeyValue new_next){
+
+void NodePutNext(NodeKeyValue node, NodeKeyValue new_next){
     node->next = new_next;
+    return;
+}
+void NodePutkey(NodeKeyValue node, NodeKeyValue new_key){
+    return;
+}
+void NodePutValue(NodeKeyValue node, NodeKeyValue new_key){
+    return;
 }
 
 #endif
