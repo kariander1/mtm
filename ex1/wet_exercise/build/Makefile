@@ -55,19 +55,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\VScode\mtm\ex1\wet_exercise
+CMAKE_SOURCE_DIR = C:\VScode\ex1\wet_exercise
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
+CMAKE_BINARY_DIR = C:\VScode\ex1\wet_exercise\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -75,7 +75,7 @@ CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -86,7 +86,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files (x86)\cmake-3.17.0-win64-x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -96,9 +96,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles C:\VScode\ex1\wet_exercise\build\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -127,17 +127,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mtm_node
+# Target rules for targets named mtm_ex
 
 # Build rule for target.
-mtm_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 mtm_node
-.PHONY : mtm_node
+mtm_ex: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 mtm_ex
+.PHONY : mtm_ex
 
 # fast build rule for target.
-mtm_node/fast:
-	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/build
-.PHONY : mtm_node/fast
+mtm_ex/fast:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
+.PHONY : mtm_ex/fast
 
 election_utilities.obj: election_utilities.c.obj
 
@@ -145,7 +145,7 @@ election_utilities.obj: election_utilities.c.obj
 
 # target to build an object file
 election_utilities.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/election_utilities.c.obj
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.obj
 .PHONY : election_utilities.c.obj
 
 election_utilities.i: election_utilities.c.i
@@ -154,7 +154,7 @@ election_utilities.i: election_utilities.c.i
 
 # target to preprocess a source file
 election_utilities.c.i:
-	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/election_utilities.c.i
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.i
 .PHONY : election_utilities.c.i
 
 election_utilities.s: election_utilities.c.s
@@ -163,8 +163,35 @@ election_utilities.s: election_utilities.c.s
 
 # target to generate assembly for a file
 election_utilities.c.s:
-	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/election_utilities.c.s
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.s
 .PHONY : election_utilities.c.s
+
+mtm_map/map.obj: mtm_map/map.c.obj
+
+.PHONY : mtm_map/map.obj
+
+# target to build an object file
+mtm_map/map.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj
+.PHONY : mtm_map/map.c.obj
+
+mtm_map/map.i: mtm_map/map.c.i
+
+.PHONY : mtm_map/map.i
+
+# target to preprocess a source file
+mtm_map/map.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.i
+.PHONY : mtm_map/map.c.i
+
+mtm_map/map.s: mtm_map/map.c.s
+
+.PHONY : mtm_map/map.s
+
+# target to generate assembly for a file
+mtm_map/map.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.s
+.PHONY : mtm_map/map.c.s
 
 mtm_map/node_key_value.obj: mtm_map/node_key_value.c.obj
 
@@ -172,7 +199,7 @@ mtm_map/node_key_value.obj: mtm_map/node_key_value.c.obj
 
 # target to build an object file
 mtm_map/node_key_value.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/mtm_map/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/node_key_value.c.obj
 .PHONY : mtm_map/node_key_value.c.obj
 
 mtm_map/node_key_value.i: mtm_map/node_key_value.c.i
@@ -181,7 +208,7 @@ mtm_map/node_key_value.i: mtm_map/node_key_value.c.i
 
 # target to preprocess a source file
 mtm_map/node_key_value.c.i:
-	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/mtm_map/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/node_key_value.c.i
 .PHONY : mtm_map/node_key_value.c.i
 
 mtm_map/node_key_value.s: mtm_map/node_key_value.c.s
@@ -190,8 +217,35 @@ mtm_map/node_key_value.s: mtm_map/node_key_value.c.s
 
 # target to generate assembly for a file
 mtm_map/node_key_value.c.s:
-	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/mtm_map/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/node_key_value.c.s
 .PHONY : mtm_map/node_key_value.c.s
+
+tests/shai_test.obj: tests/shai_test.c.obj
+
+.PHONY : tests/shai_test.obj
+
+# target to build an object file
+tests/shai_test.c.obj:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj
+.PHONY : tests/shai_test.c.obj
+
+tests/shai_test.i: tests/shai_test.c.i
+
+.PHONY : tests/shai_test.i
+
+# target to preprocess a source file
+tests/shai_test.c.i:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.i
+.PHONY : tests/shai_test.c.i
+
+tests/shai_test.s: tests/shai_test.c.s
+
+.PHONY : tests/shai_test.s
+
+# target to generate assembly for a file
+tests/shai_test.c.s:
+	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.s
+.PHONY : tests/shai_test.c.s
 
 # Help Target
 help:
@@ -201,13 +255,19 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... mtm_node
+	@echo ... mtm_ex
 	@echo ... election_utilities.obj
 	@echo ... election_utilities.i
 	@echo ... election_utilities.s
+	@echo ... mtm_map/map.obj
+	@echo ... mtm_map/map.i
+	@echo ... mtm_map/map.s
 	@echo ... mtm_map/node_key_value.obj
 	@echo ... mtm_map/node_key_value.i
 	@echo ... mtm_map/node_key_value.s
+	@echo ... tests/shai_test.obj
+	@echo ... tests/shai_test.i
+	@echo ... tests/shai_test.s
 .PHONY : help
 
 

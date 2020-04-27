@@ -90,13 +90,13 @@ static NodeKeyValue mapEntryCreateOrPromote(NodeKeyValue *original_entry);
 * so that there won't be inclusion to election files that have many unused functions for map.
 * @param str - the string to copy
 */
-static char *getCopyOfString(const char* str);
+//static char *getCopyOfString(const char* str);
 /**
-* freeEntry: frees the key, value and MapEntry of the given MapEntry  
+* freeNode: frees the key, value and MapEntry of the given MapEntry  
 *                          
 * @param entry - the entry to free. 
 */
-static void freeEntry(NodeKeyValue entry);
+static void freeNode(NodeKeyValue entry);
 
 // HELPER FUNCTIONS TOKENS END
 Map mapCreate()
@@ -220,7 +220,7 @@ MapResult mapRemove(Map map, const char *key) //Done
     { // if we want to remove the last element
         map->map_tail = prevoius_entry;
     }
-    freeEntry(map->iterator_internal);
+    freeNode(map->iterator_internal);
 
     map->number_of_entries--; 
 
@@ -251,7 +251,7 @@ MapResult mapClear(Map map)
         //until the iterator_internal gets null addres (tails address +1)
         NodeKeyValue to_delete = map->iterator_internal;
         mapGetNextInternal(map); //promote the iterator_internal
-        freeEntry(to_delete);
+        freeNode(to_delete);
     }
     initializeAttributes(map);
     return MAP_SUCCESS;
@@ -267,7 +267,7 @@ static NodeKeyValue mapGetPrevious(Map map, const char *key)
     map->iterator = map->map_head;
     while (strcmp(NodeGetKey(NodeGetNext(map->iterator)), key) != 0)
     { //check if the next entry is with the entered key
-        map->iterator =  map->iterator->next;
+       NodePromoteToNext(map->iterator);
     }
     return map->iterator;
 }
@@ -301,7 +301,7 @@ static NodeKeyValue mapEntryCreateOrPromote(NodeKeyValue *original_entry)
     {
         NodePutNext((*original_entry),NodeCreate());
          RETURN_ON_NULL(NodeGetNext((*original_entry)), NULL);
-        (*original_entry) = (*original_entry)->next; // Change promote next
+         NodePromoteToNext((*original_entry));
     }
     return (*original_entry);
 }
@@ -313,6 +313,7 @@ static void initializeAttributes(Map map)
     map->map_head = NULL;
     map->map_tail = NULL;
 }
+/*
 static char *getCopyOfString(const char* str)
 {
     RETURN_ON_NULL(str,NULL);
@@ -321,6 +322,7 @@ static char *getCopyOfString(const char* str)
     strcpy(copy_of_str,str);
     return copy_of_str;
 }
+*/
 static void freeNode(NodeKeyValue entry)
 {
     free(NodeGetKey(entry));   //free the key

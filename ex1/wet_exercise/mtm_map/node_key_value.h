@@ -10,16 +10,18 @@ NodeKeyValue NodeCreate();
 
 void NodeDestroy(NodeKeyValue node);
 
-NodeKeyValue NodeGetKey (NodeKeyValue node);
+char* NodeGetKey (NodeKeyValue node);
 
-NodeKeyValue NodeGetValue(NodeKeyValue node);
+char* NodeGetValue(NodeKeyValue node);
 
 NodeKeyValue NodeGetNext(NodeKeyValue node);
 
 void NodePutNext(NodeKeyValue node, NodeKeyValue new_next);
 
-void NodePutkey(NodeKeyValue node, NodeKeyValue new_key);
+void NodePutkey(NodeKeyValue node, char* new_key);
 
-void NodePutValue(NodeKeyValue node, NodeKeyValue new_value);
+void NodePutValue(NodeKeyValue node, char* new_value);
+
+void NodePromoteToNext(NodeKeyValue node);
 
 #endif
