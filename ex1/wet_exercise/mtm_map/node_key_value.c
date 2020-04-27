@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "../macro.h"
 #include <string.h>
-#include <../election_utilities.h>
+#include "../election_utilities.h"
 
 struct node_t
 {
@@ -18,12 +18,19 @@ NodeKeyValue NodeCreate()
 {
     NodeKeyValue new_node = xmalloc(sizeof(*new_node));
     RETURN_ON_NULL(new_node,NULL);
-
+    // initialize node 
+    new_node->key = NULL;
+    new_node->next = NULL;
+    new_node->value = NULL;
     return new_node;
 }
 NodeKeyValue NodeDestroy(NodeKeyValue node);
 NodeKeyValue NodeGetKey (NodeKeyValue node);
 NodeKeyValue NodeGetValue(NodeKeyValue node);
 NodeKeyValue NodeGetNext(NodeKeyValue node);
+void NodeSetValues(NodeKeyValue node, char * key, char* value, NodeKeyValue next);
+void NodeChangeNext (NodeKeyValue node, NodeKeyValue new_next){
+    node->next = new_next;
+}
 
 #endif
