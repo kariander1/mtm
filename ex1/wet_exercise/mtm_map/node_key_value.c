@@ -1,7 +1,7 @@
 #ifndef NODEKEYVALUE_C_
 #define NODEKEYVALUE_C_
 
-#include "NodeKeyValue.h"
+#include "node_key_value.h"
 #include <stdlib.h>
 #include "../macro.h"
 #include <string.h>
