@@ -24,23 +24,57 @@ NodeKeyValue NodeCreate()
     new_node->value = NULL;
     return new_node;
 }
-NodeKeyValue NodeDestroy(NodeKeyValue node);
+void NodeDestroy(NodeKeyValue node)
+{
+    RETURN_ON_NULL(node,NULL);
+    node->key = NULL;  // what do you say - just in case?
+    node->next = NULL;
+    node->value = NULL;
+    free(node);
+    return;
+}
 
-NodeKeyValue NodeGetKey (NodeKeyValue node);
+NodeKeyValue NodeGetKey (NodeKeyValue node)
+{
+    RETURN_ON_NULL(node,NULL);
+    return node->key;
+}
 
-NodeKeyValue NodeGetValue(NodeKeyValue node);
+NodeKeyValue NodeGetValue(NodeKeyValue node)
+{
+    RETURN_ON_NULL(node,NULL);
+    return node->value;
+}
 
-NodeKeyValue NodeGetNext(NodeKeyValue node);
+NodeKeyValue NodeGetNext(NodeKeyValue node)
+{
+    RETURN_ON_NULL(node,NULL);
+    return node->next;
+}
 
-void NodePutNext(NodeKeyValue node, NodeKeyValue new_next){
+void NodePutNext(NodeKeyValue node, NodeKeyValue new_next)
+{
+    RETURN_ON_NULL(node,NULL);
     node->next = new_next;
     return;
 }
-void NodePutkey(NodeKeyValue node, NodeKeyValue new_key){
+void NodePutkey(NodeKeyValue node, NodeKeyValue new_key)
+{
+    RETURN_ON_NULL(node,NULL);
+    node->key = new_key;
     return;
 }
-void NodePutValue(NodeKeyValue node, NodeKeyValue new_key){
+void NodePutValue(NodeKeyValue node, NodeKeyValue new_value)
+{
+    RETURN_ON_NULL(node,NULL);
+    node->value = new_value;
     return;
+}
+
+NodeKeyValue NodePromoteToNext(NodeKeyValue node)
+{
+    RETURN_ON_NULL(node,NULL);
+    return node->next;
 }
 
 #endif
