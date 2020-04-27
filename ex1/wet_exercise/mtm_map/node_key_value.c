@@ -26,8 +26,8 @@ NodeKeyValue NodeCreate()
 }
 void NodeDestroy(NodeKeyValue node)
 {
-    RETURN_ON_NULL(node,NULL);
-    node->key = NULL;  // what do you say - just in case?
+    RETURN_ON_CONDITION_NO_VALUE(node,NULL);
+    node->key = NULL;  // the free is done outside
     node->next = NULL;
     node->value = NULL;
     free(node);
@@ -54,27 +54,30 @@ NodeKeyValue NodeGetNext(NodeKeyValue node)
 
 void NodePutNext(NodeKeyValue node, NodeKeyValue new_next)
 {
-    RETURN_ON_NULL(node,NULL);
+    RETURN_ON_CONDITION_NO_VALUE(node,NULL);
     node->next = new_next;
     return;
 }
-void NodePutkey(NodeKeyValue node, NodeKeyValue new_key)
+void NodePutkey(NodeKeyValue node, char* new_key)
 {
-    RETURN_ON_NULL(node,NULL);
+    RETURN_ON_CONDITION_NO_VALUE(node,NULL);
     node->key = new_key;
     return;
 }
-void NodePutValue(NodeKeyValue node, NodeKeyValue new_value)
+void NodePutValue(NodeKeyValue node, char* new_value)
 {
-    RETURN_ON_NULL(node,NULL);
+    RETURN_ON_CONDITION_NO_VALUE(node,NULL);
     node->value = new_value;
     return;
 }
 
-NodeKeyValue NodePromoteToNext(NodeKeyValue node)
+void NodePromoteToNext(NodeKeyValue node)
 {
-    RETURN_ON_NULL(node,NULL);
-    return node->next;
+    RETURN_ON_CONDITION_NO_VALUE(node,NULL);
+    node = node->next;
+    return;
 }
 
 #endif
+
+

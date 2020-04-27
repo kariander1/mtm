@@ -69,7 +69,7 @@ CMAKE_BINARY_DIR = C:\VScode\mtm\ex1\wet_exercise\build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/mtm_ex.dir/all
+all: CMakeFiles/mtm_node.dir/all
 
 .PHONY : all
 
@@ -79,36 +79,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/mtm_ex.dir/clean
+clean: CMakeFiles/mtm_node.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/mtm_ex.dir
+# Target rules for target CMakeFiles/mtm_node.dir
 
 # All Build rule for target.
-CMakeFiles/mtm_ex.dir/all:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/depend
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target mtm_ex"
-.PHONY : CMakeFiles/mtm_ex.dir/all
+CMakeFiles/mtm_node.dir/all:
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/depend
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles --progress-num=1,2,3 "Built target mtm_node"
+.PHONY : CMakeFiles/mtm_node.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/mtm_ex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles 6
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/mtm_ex.dir/all
+CMakeFiles/mtm_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles 3
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/mtm_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\mtm\ex1\wet_exercise\build\CMakeFiles 0
-.PHONY : CMakeFiles/mtm_ex.dir/rule
+.PHONY : CMakeFiles/mtm_node.dir/rule
 
 # Convenience name for target.
-mtm_ex: CMakeFiles/mtm_ex.dir/rule
+mtm_node: CMakeFiles/mtm_node.dir/rule
 
-.PHONY : mtm_ex
+.PHONY : mtm_node
 
 # clean rule for target.
-CMakeFiles/mtm_ex.dir/clean:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/clean
-.PHONY : CMakeFiles/mtm_ex.dir/clean
+CMakeFiles/mtm_node.dir/clean:
+	$(MAKE) -f CMakeFiles\mtm_node.dir\build.make CMakeFiles/mtm_node.dir/clean
+.PHONY : CMakeFiles/mtm_node.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
