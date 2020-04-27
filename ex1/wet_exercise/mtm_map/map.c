@@ -96,7 +96,7 @@ static char *getCopyOfString(const char* str);
 *                          
 * @param entry - the entry to free. 
 */
-//static void freeEntry(NodeKeyValue entry);
+static void freeEntry(NodeKeyValue entry);
 
 // HELPER FUNCTIONS TOKENS END
 Map mapCreate()
@@ -169,9 +169,9 @@ MapResult mapPut(Map map, const char *key, const char *data) //DONE
 
 
     if (mapContains(map, key))
-    {                                              // if  the dictionary contains the key -> puts the iterator on the place where a match was found
-        free(NodeGetValue(map->iterator_internal));     //free the previous value
-        map->iterator_internal->value = data_copy; // replace with new data
+    {                                               // if  the dictionary contains the key -> puts the iterator on the place where a match was found
+        free(NodeGetValue(map->iterator_internal)); //free the previous value
+        NodePutValue(map->iterator_internal, data_copy);  // replace with new data
         return MAP_SUCCESS;
     }
     // if the key does not exists in the dictionary
@@ -183,8 +183,8 @@ MapResult mapPut(Map map, const char *key, const char *data) //DONE
         return MAP_OUT_OF_MEMORY;
     }
 
-    map->map_tail->key = key_copy;
-    map->map_tail->value = data_copy;
+    NodePutkey(map->map_tail, key_copy);
+    NodePutValue(map->map_tail,data_copy);
     if (mapGetSize(map) == ZERO_ELEMENTS)
     {
         map->map_head = map->map_tail; // if this is the first element - get the head to point on it
@@ -196,7 +196,7 @@ char *mapGet(Map map, const char *key)
 {
     RETURN_ON_NULL(map, NULL);
     RETURN_ON_NULL(key, NULL);
-    return (mapContains(map, key) ? map->iterator_internal->value : NULL); // Map contains will set the internal_iterator on the found Entry
+    return (mapContains(map, key) ? NodeGetValue(map->iterator_internal) : NULL); // Map contains will set the internal_iterator on the found Entry
 }
 
 // internal iterator - where the current entry is
@@ -209,18 +209,18 @@ MapResult mapRemove(Map map, const char *key) //Done
     NodeKeyValue prevoius_entry = mapGetPrevious(map, key);
     if (prevoius_entry)
     {                                                        //if previous entry is not null
-        prevoius_entry->next = map->iterator_internal->next; //get the previous element to point to the next element after the current one
+        NodePutNext(prevoius_entry,NodeGetNext(map->iterator_internal));  //get the previous element to point to the next element after the current one
+        
     }
     else
     {
-
-        map->map_head = map->iterator_internal->next;
+        NodePutNext(map->map_head ,NodeGetNext(map->iterator_internal));
     }
-    if (!(map->iterator_internal->next))
+    if (!NodeGetNext(map->iterator_internal))
     { // if we want to remove the last element
         map->map_tail = prevoius_entry;
     }
-    NodeDestroy(map->iterator_internal);
+    freeEntry(map->iterator_internal);
 
     map->number_of_entries--; 
 
@@ -237,7 +237,8 @@ char *mapGetNext(Map map)
     RETURN_ON_NULL(map, NULL);
     RETURN_ON_NULL(map->iterator, NULL);
 
-    return mapGetNextKeyAndPromote(&(map->iterator), &(map->iterator->next));
+    NodeKeyValue next_iterator =NodeGetNext(map->iterator);
+    return mapGetNextKeyAndPromote(&(map->iterator), &(next_iterator));
 }
 
 MapResult mapClear(Map map)
@@ -250,7 +251,7 @@ MapResult mapClear(Map map)
         //until the iterator_internal gets null addres (tails address +1)
         NodeKeyValue to_delete = map->iterator_internal;
         mapGetNextInternal(map); //promote the iterator_internal
-        NodeDestroy(to_delete);
+        freeEntry(to_delete);
     }
     initializeAttributes(map);
     return MAP_SUCCESS;
@@ -259,14 +260,14 @@ MapResult mapClear(Map map)
 // HELPER FUNCTIONS
 static NodeKeyValue mapGetPrevious(Map map, const char *key)
 {
-    if (strcmp(map->map_head->key, key) == 0)
+    if (strcmp(NodeGetKey(map->map_head), key) == 0)
     {
         return NULL; // returns the null if we want to free the first element
     }
     map->iterator = map->map_head;
-    while (strcmp(map->iterator->next->key, key) != 0)
+    while (strcmp(NodeGetKey(NodeGetNext(map->iterator)), key) != 0)
     { //check if the next entry is with the entered key
-        map->iterator = map->iterator->next;
+        map->iterator =  map->iterator->next;
     }
     return map->iterator;
 }
@@ -279,14 +280,15 @@ static char *mapGetNextInternal(Map map) //Similar to mapGetNext, only this time
 {
     RETURN_ON_NULL(map, NULL);
     RETURN_ON_NULL(map->iterator_internal, NULL);
-    return mapGetNextKeyAndPromote(&(map->iterator_internal), &(map->iterator_internal->next));
+    NodeKeyValue next_iterator = NodeGetNext(map->iterator_internal);
+    return mapGetNextKeyAndPromote(&(map->iterator_internal), &(next_iterator));
 }
 static char *mapGetNextKeyAndPromote(NodeKeyValue *original_entry, NodeKeyValue *next_entry)
 {
     RETURN_ON_NULL(original_entry, NULL);
     RETURN_ON_NULL(next_entry, NULL);
     *original_entry = *next_entry;
-    return (*original_entry ? (*original_entry)->key : NULL);
+    return (*original_entry ? NodeGetKey((*original_entry)) : NULL);
 }
 static NodeKeyValue mapEntryCreateOrPromote(NodeKeyValue *original_entry)
 {
@@ -297,14 +299,10 @@ static NodeKeyValue mapEntryCreateOrPromote(NodeKeyValue *original_entry)
     }
     else
     {
-        (*original_entry)->next = xmalloc(sizeof(*((*original_entry)->next)));
-         RETURN_ON_NULL((*original_entry)->next, NULL);
-        (*original_entry) = (*original_entry)->next;
+        NodePutNext((*original_entry),NodeCreate());
+         RETURN_ON_NULL(NodeGetNext((*original_entry)), NULL);
+        (*original_entry) = (*original_entry)->next; // Change promote next
     }
-
-    (*original_entry)->key = NULL;
-    (*original_entry)->value = NULL;
-    (*original_entry)->next = NULL;
     return (*original_entry);
 }
 static void initializeAttributes(Map map)
@@ -323,14 +321,12 @@ static char *getCopyOfString(const char* str)
     strcpy(copy_of_str,str);
     return copy_of_str;
 }
-/*
-static void freeEntry(NodeKeyValue entry)
+static void freeNode(NodeKeyValue entry)
 {
-    free(entry->key);   //free the key
-    free(entry->value); // free the value
-    free(entry);        // free the current MapEntry
+    free(NodeGetKey(entry));   //free the key
+    free(NodeGetValue(entry)); // free the value
+    NodeDestroy(entry);        // free the current MapEntry
 }
-*/
 // HELPER FUNCTIONS END
 
 #endif //MAP_C
