@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "../macro.h"
 #include <string.h>
+#include <../election_utilities.h>
 
 struct node_t
 {
@@ -13,9 +14,12 @@ struct node_t
     struct node_t *next;
 };
 
-NodeKeyValue NodeCreate(){
-    NodeKeyValue new_node = malloc(sizeof(*new_node));
-}
+Node NodeCreate()
+{
+    Node new_node = xmalloc(sizeof(*new_node));
+    RETURN_ON_NULL(new_node,NULL);
 
+    return new_node;
+}
 
 #endif

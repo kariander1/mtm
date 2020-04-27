@@ -3,7 +3,8 @@
 #include <stdbool.h>
 #include <string.h>
 
-typedef struct note_t* NodeKeyValue;
+
+typedef struct node_t* Node;
 
 
 
