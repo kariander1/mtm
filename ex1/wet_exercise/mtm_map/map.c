@@ -96,7 +96,7 @@ static char *getCopyOfString(const char* str);
 *                          
 * @param entry - the entry to free. 
 */
-static void freeEntry(NodeKeyValue entry);
+//static void freeEntry(NodeKeyValue entry);
 
 // HELPER FUNCTIONS TOKENS END
 Map mapCreate()
@@ -170,7 +170,7 @@ MapResult mapPut(Map map, const char *key, const char *data) //DONE
 
     if (mapContains(map, key))
     {                                              // if  the dictionary contains the key -> puts the iterator on the place where a match was found
-        free((map->iterator_internal->value));     //free the previous value
+        free(NodeGetValue(map->iterator_internal));     //free the previous value
         map->iterator_internal->value = data_copy; // replace with new data
         return MAP_SUCCESS;
     }
@@ -220,7 +220,7 @@ MapResult mapRemove(Map map, const char *key) //Done
     { // if we want to remove the last element
         map->map_tail = prevoius_entry;
     }
-    freeEntry(map->iterator_internal);
+    NodeDestroy(map->iterator_internal);
 
     map->number_of_entries--; 
 
@@ -250,7 +250,7 @@ MapResult mapClear(Map map)
         //until the iterator_internal gets null addres (tails address +1)
         NodeKeyValue to_delete = map->iterator_internal;
         mapGetNextInternal(map); //promote the iterator_internal
-        freeEntry(to_delete);
+        NodeDestroy(to_delete);
     }
     initializeAttributes(map);
     return MAP_SUCCESS;
@@ -292,7 +292,7 @@ static NodeKeyValue mapEntryCreateOrPromote(NodeKeyValue *original_entry)
 {
     if (!(*original_entry))
     {
-        (*original_entry) = xmalloc(sizeof(*(*original_entry)));
+        (*original_entry) = NodeCreate();
         RETURN_ON_NULL((*original_entry), NULL);
     }
     else
@@ -323,12 +323,14 @@ static char *getCopyOfString(const char* str)
     strcpy(copy_of_str,str);
     return copy_of_str;
 }
+/*
 static void freeEntry(NodeKeyValue entry)
 {
     free(entry->key);   //free the key
     free(entry->value); // free the value
     free(entry);        // free the current MapEntry
 }
+*/
 // HELPER FUNCTIONS END
 
 #endif //MAP_C
