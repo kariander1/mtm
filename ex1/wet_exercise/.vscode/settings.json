@@ -3,7 +3,8 @@
         "electionutils.h": "c",
         "map.h": "c",
         "utilities.h": "c",
-        "macro.h": "c"
+        "macro.h": "c",
+        "stdlib.h": "c"
     },
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }
