@@ -1,12 +1,14 @@
 #ifndef NODEKEYVALUE_C_
 #define NODEKEYVALUE_C_
-// TEST
+
 #include "node_key_value.h"
 #include <stdlib.h>
 #include "../macro.h"
 #include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../election_utilities.c"
 #include "../election_utilities.h"
-
 struct node_t
 {
     char *key;
@@ -75,6 +77,10 @@ void NodePromoteToNext(NodeKeyValue *node)
     return;
 }
 
+int main(){
+    printf("test");
+    return 0;
+}
 #endif
 
 

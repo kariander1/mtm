@@ -20,16 +20,16 @@ Area areaCreate(int area_id, const char *area_name)
 {
     Area new_area = xmalloc(sizeof(*new_area));
     RETURN_ON_NULL(new_area, NULL);
+
+    new_area->area_identifiers = NULL;
+    new_area->votes = NULL;
+    
     NodeKeyValue new_node = NodeCreate();
     EXECUTE_ON_CONDITION(new_node, NULL, free(new_area), NULL);
     new_area->area_identifiers = new_node;
+
     char* area_id_str = intToString(area_id);
     EXECUTE_ON_CONDITION(area_id_str,NULL,areaDestroy(new_area),NULL);
-    //if (!area_id_str){
-    //    free(new_node);
-    //    free(new_area);
-    //    return NULL;
-    //}
     char* area_name_copy = getCopyOfString(area_name);
     EXECUTE_ON_CONDITION(area_name_copy,NULL,areaDestroy(new_area),NULL);
 

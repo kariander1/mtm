@@ -62,7 +62,6 @@ static int malloc_fail_after = 20; // Keep at zero to make malloc untouched
 static int malloc_num_allocs = 0;
 void *xmalloc(size_t size)
 {
-   
     if (malloc_fail_after > 0 && malloc_num_allocs++ >= malloc_fail_after)
     {
         malloc_num_allocs=0;

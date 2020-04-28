@@ -1,11 +1,3 @@
 {
-    "files.associations": {
-        "electionutils.h": "c",
-        "map.h": "c",
-        "utilities.h": "c",
-        "macro.h": "c",
-        "stdlib.h": "c",
-        "election_utilities.h": "c"
-    },
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }
