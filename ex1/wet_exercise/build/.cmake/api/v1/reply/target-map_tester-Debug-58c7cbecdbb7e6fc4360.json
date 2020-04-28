@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "mtm_ex.exe"
+			"path" : "map_tester.exe"
 		},
 		{
-			"path" : "mtm_ex.pdb"
+			"path" : "map_tester.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 17,
+				"line" : 28,
 				"parent" : 0
 			}
 		]
@@ -51,7 +51,7 @@
 			]
 		}
 	],
-	"id" : "mtm_ex::@6890427a1f51a3e7e1df",
+	"id" : "map_tester::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -71,8 +71,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "mtm_ex",
-	"nameOnDisk" : "mtm_ex.exe",
+	"name" : "map_tester",
+	"nameOnDisk" : "map_tester.exe",
 	"paths" : 
 	{
 		"build" : ".",

@@ -4,8 +4,8 @@
 #include <time.h>
 // MAKE SURE TO HAVE THESE FILES AS WELL AS map.c IN THE CURRENT FOLDER AND THAT YOUR COMPILE THE TESTER WITH YOUR map.c
 // THEN SIMPLY RUN THE EXECUTABLE
-#include "test_utilities.h"
-#include "map.h"
+#include "../test_utilities.h"
+#include "../mtm_map/map.h"
 
 bool testMapCreate() {
     printf("Testing mapCreate\n");
@@ -272,7 +272,7 @@ bool doomsDay() {
     Map map = mapCreate();
     const int repeat = 10000;
     const int length = 7;
-    char *arr[repeat];
+    char *arr[10000];
     static int my_seed = 25011984;
     srand(time(NULL) * length + ++my_seed);
     char *str;

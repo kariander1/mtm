@@ -72,17 +72,6 @@ CMAKE_BINARY_DIR = C:\VScode\ex1\wet_exercise\build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -93,6 +82,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -127,17 +127,135 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mtm_ex
+# Target rules for targets named map
 
 # Build rule for target.
-mtm_ex: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 mtm_ex
-.PHONY : mtm_ex
+map: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 map
+.PHONY : map
 
 # fast build rule for target.
-mtm_ex/fast:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/build
-.PHONY : mtm_ex/fast
+map/fast:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/build
+.PHONY : map/fast
+
+#=============================================================================
+# Target rules for targets named election_tester_libmap
+
+# Build rule for target.
+election_tester_libmap: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 election_tester_libmap
+.PHONY : election_tester_libmap
+
+# fast build rule for target.
+election_tester_libmap/fast:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/build
+.PHONY : election_tester_libmap/fast
+
+#=============================================================================
+# Target rules for targets named election
+
+# Build rule for target.
+election: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 election
+.PHONY : election
+
+# fast build rule for target.
+election/fast:
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/build
+.PHONY : election/fast
+
+#=============================================================================
+# Target rules for targets named map_tester
+
+# Build rule for target.
+map_tester: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 map_tester
+.PHONY : map_tester
+
+# fast build rule for target.
+map_tester/fast:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/build
+.PHONY : map_tester/fast
+
+#=============================================================================
+# Target rules for targets named election_tester
+
+# Build rule for target.
+election_tester: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 election_tester
+.PHONY : election_tester
+
+# fast build rule for target.
+election_tester/fast:
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/build
+.PHONY : election_tester/fast
+
+area.obj: area.c.obj
+
+.PHONY : area.obj
+
+# target to build an object file
+area.c.obj:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/area.c.obj
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/area.c.obj
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/area.c.obj
+.PHONY : area.c.obj
+
+area.i: area.c.i
+
+.PHONY : area.i
+
+# target to preprocess a source file
+area.c.i:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/area.c.i
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/area.c.i
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/area.c.i
+.PHONY : area.c.i
+
+area.s: area.c.s
+
+.PHONY : area.s
+
+# target to generate assembly for a file
+area.c.s:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/area.c.s
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/area.c.s
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/area.c.s
+.PHONY : area.c.s
+
+election.obj: election.c.obj
+
+.PHONY : election.obj
+
+# target to build an object file
+election.c.obj:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election.c.obj
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election.c.obj
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election.c.obj
+.PHONY : election.c.obj
+
+election.i: election.c.i
+
+.PHONY : election.i
+
+# target to preprocess a source file
+election.c.i:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election.c.i
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election.c.i
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election.c.i
+.PHONY : election.c.i
+
+election.s: election.c.s
+
+.PHONY : election.s
+
+# target to generate assembly for a file
+election.c.s:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election.c.s
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election.c.s
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election.c.s
+.PHONY : election.c.s
 
 election_utilities.obj: election_utilities.c.obj
 
@@ -145,7 +263,11 @@ election_utilities.obj: election_utilities.c.obj
 
 # target to build an object file
 election_utilities.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.obj
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.obj
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.obj
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election_utilities.c.obj
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.obj
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election_utilities.c.obj
 .PHONY : election_utilities.c.obj
 
 election_utilities.i: election_utilities.c.i
@@ -154,7 +276,11 @@ election_utilities.i: election_utilities.c.i
 
 # target to preprocess a source file
 election_utilities.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.i
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.i
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.i
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election_utilities.c.i
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.i
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election_utilities.c.i
 .PHONY : election_utilities.c.i
 
 election_utilities.s: election_utilities.c.s
@@ -163,7 +289,11 @@ election_utilities.s: election_utilities.c.s
 
 # target to generate assembly for a file
 election_utilities.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/election_utilities.c.s
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.s
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.s
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election_utilities.c.s
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.s
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election_utilities.c.s
 .PHONY : election_utilities.c.s
 
 mtm_map/map.obj: mtm_map/map.c.obj
@@ -172,7 +302,10 @@ mtm_map/map.obj: mtm_map/map.c.obj
 
 # target to build an object file
 mtm_map/map.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.obj
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/map.c.obj
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/map.c.obj
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/map.c.obj
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/map.c.obj
 .PHONY : mtm_map/map.c.obj
 
 mtm_map/map.i: mtm_map/map.c.i
@@ -181,7 +314,10 @@ mtm_map/map.i: mtm_map/map.c.i
 
 # target to preprocess a source file
 mtm_map/map.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.i
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/map.c.i
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/map.c.i
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/map.c.i
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/map.c.i
 .PHONY : mtm_map/map.c.i
 
 mtm_map/map.s: mtm_map/map.c.s
@@ -190,7 +326,10 @@ mtm_map/map.s: mtm_map/map.c.s
 
 # target to generate assembly for a file
 mtm_map/map.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/map.c.s
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/map.c.s
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/map.c.s
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/map.c.s
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/map.c.s
 .PHONY : mtm_map/map.c.s
 
 mtm_map/node_key_value.obj: mtm_map/node_key_value.c.obj
@@ -199,7 +338,11 @@ mtm_map/node_key_value.obj: mtm_map/node_key_value.c.obj
 
 # target to build an object file
 mtm_map/node_key_value.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/node_key_value.c.obj
 .PHONY : mtm_map/node_key_value.c.obj
 
 mtm_map/node_key_value.i: mtm_map/node_key_value.c.i
@@ -208,7 +351,11 @@ mtm_map/node_key_value.i: mtm_map/node_key_value.c.i
 
 # target to preprocess a source file
 mtm_map/node_key_value.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/node_key_value.c.i
 .PHONY : mtm_map/node_key_value.c.i
 
 mtm_map/node_key_value.s: mtm_map/node_key_value.c.s
@@ -217,8 +364,66 @@ mtm_map/node_key_value.s: mtm_map/node_key_value.c.s
 
 # target to generate assembly for a file
 mtm_map/node_key_value.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/mtm_map/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/node_key_value.c.s
 .PHONY : mtm_map/node_key_value.c.s
+
+tests/electionTestsExample.obj: tests/electionTestsExample.c.obj
+
+.PHONY : tests/electionTestsExample.obj
+
+# target to build an object file
+tests/electionTestsExample.c.obj:
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/tests/electionTestsExample.c.obj
+.PHONY : tests/electionTestsExample.c.obj
+
+tests/electionTestsExample.i: tests/electionTestsExample.c.i
+
+.PHONY : tests/electionTestsExample.i
+
+# target to preprocess a source file
+tests/electionTestsExample.c.i:
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/tests/electionTestsExample.c.i
+.PHONY : tests/electionTestsExample.c.i
+
+tests/electionTestsExample.s: tests/electionTestsExample.c.s
+
+.PHONY : tests/electionTestsExample.s
+
+# target to generate assembly for a file
+tests/electionTestsExample.c.s:
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/tests/electionTestsExample.c.s
+.PHONY : tests/electionTestsExample.c.s
+
+tests/map_example_test.obj: tests/map_example_test.c.obj
+
+.PHONY : tests/map_example_test.obj
+
+# target to build an object file
+tests/map_example_test.c.obj:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/tests/map_example_test.c.obj
+.PHONY : tests/map_example_test.c.obj
+
+tests/map_example_test.i: tests/map_example_test.c.i
+
+.PHONY : tests/map_example_test.i
+
+# target to preprocess a source file
+tests/map_example_test.c.i:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/tests/map_example_test.c.i
+.PHONY : tests/map_example_test.c.i
+
+tests/map_example_test.s: tests/map_example_test.c.s
+
+.PHONY : tests/map_example_test.s
+
+# target to generate assembly for a file
+tests/map_example_test.c.s:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/tests/map_example_test.c.s
+.PHONY : tests/map_example_test.c.s
 
 tests/shai_test.obj: tests/shai_test.c.obj
 
@@ -226,7 +431,7 @@ tests/shai_test.obj: tests/shai_test.c.obj
 
 # target to build an object file
 tests/shai_test.c.obj:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.obj
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/tests/shai_test.c.obj
 .PHONY : tests/shai_test.c.obj
 
 tests/shai_test.i: tests/shai_test.c.i
@@ -235,7 +440,7 @@ tests/shai_test.i: tests/shai_test.c.i
 
 # target to preprocess a source file
 tests/shai_test.c.i:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.i
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/tests/shai_test.c.i
 .PHONY : tests/shai_test.c.i
 
 tests/shai_test.s: tests/shai_test.c.s
@@ -244,8 +449,38 @@ tests/shai_test.s: tests/shai_test.c.s
 
 # target to generate assembly for a file
 tests/shai_test.c.s:
-	$(MAKE) -f CMakeFiles\mtm_ex.dir\build.make CMakeFiles/mtm_ex.dir/tests/shai_test.c.s
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/tests/shai_test.c.s
 .PHONY : tests/shai_test.c.s
+
+tests/shai_test_election.obj: tests/shai_test_election.c.obj
+
+.PHONY : tests/shai_test_election.obj
+
+# target to build an object file
+tests/shai_test_election.c.obj:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.obj
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/tests/shai_test_election.c.obj
+.PHONY : tests/shai_test_election.c.obj
+
+tests/shai_test_election.i: tests/shai_test_election.c.i
+
+.PHONY : tests/shai_test_election.i
+
+# target to preprocess a source file
+tests/shai_test_election.c.i:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.i
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/tests/shai_test_election.c.i
+.PHONY : tests/shai_test_election.c.i
+
+tests/shai_test_election.s: tests/shai_test_election.c.s
+
+.PHONY : tests/shai_test_election.s
+
+# target to generate assembly for a file
+tests/shai_test_election.c.s:
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.s
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/tests/shai_test_election.c.s
+.PHONY : tests/shai_test_election.c.s
 
 # Help Target
 help:
@@ -255,7 +490,17 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... mtm_ex
+	@echo ... election
+	@echo ... election_tester
+	@echo ... election_tester_libmap
+	@echo ... map
+	@echo ... map_tester
+	@echo ... area.obj
+	@echo ... area.i
+	@echo ... area.s
+	@echo ... election.obj
+	@echo ... election.i
+	@echo ... election.s
 	@echo ... election_utilities.obj
 	@echo ... election_utilities.i
 	@echo ... election_utilities.s
@@ -265,9 +510,18 @@ help:
 	@echo ... mtm_map/node_key_value.obj
 	@echo ... mtm_map/node_key_value.i
 	@echo ... mtm_map/node_key_value.s
+	@echo ... tests/electionTestsExample.obj
+	@echo ... tests/electionTestsExample.i
+	@echo ... tests/electionTestsExample.s
+	@echo ... tests/map_example_test.obj
+	@echo ... tests/map_example_test.i
+	@echo ... tests/map_example_test.s
 	@echo ... tests/shai_test.obj
 	@echo ... tests/shai_test.i
 	@echo ... tests/shai_test.s
+	@echo ... tests/shai_test_election.obj
+	@echo ... tests/shai_test_election.i
+	@echo ... tests/shai_test_election.s
 .PHONY : help
 
 

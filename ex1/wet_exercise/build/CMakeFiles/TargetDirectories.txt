@@ -1,3 +1,7 @@
-C:/VScode/ex1/wet_exercise/build/CMakeFiles/mtm_ex.dir
-C:/VScode/ex1/wet_exercise/build/CMakeFiles/edit_cache.dir
+C:/VScode/ex1/wet_exercise/build/CMakeFiles/map.dir
+C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester_libmap.dir
+C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir
 C:/VScode/ex1/wet_exercise/build/CMakeFiles/rebuild_cache.dir
+C:/VScode/ex1/wet_exercise/build/CMakeFiles/map_tester.dir
+C:/VScode/ex1/wet_exercise/build/CMakeFiles/edit_cache.dir
+C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir
