@@ -70,9 +70,10 @@ CMAKE_BINARY_DIR = C:\VScode\ex1\wet_exercise\build
 
 # The main recursive "all" target.
 all: CMakeFiles/map.dir/all
+all: CMakeFiles/map_tester.dir/all
+all: CMakeFiles/map_group.dir/all
 all: CMakeFiles/election_tester_libmap.dir/all
 all: CMakeFiles/election.dir/all
-all: CMakeFiles/map_tester.dir/all
 all: CMakeFiles/election_tester.dir/all
 
 .PHONY : all
@@ -84,9 +85,10 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/map.dir/clean
+clean: CMakeFiles/map_tester.dir/clean
+clean: CMakeFiles/map_group.dir/clean
 clean: CMakeFiles/election_tester_libmap.dir/clean
 clean: CMakeFiles/election.dir/clean
-clean: CMakeFiles/map_tester.dir/clean
 clean: CMakeFiles/election_tester.dir/clean
 
 .PHONY : clean
@@ -98,12 +100,12 @@ clean: CMakeFiles/election_tester.dir/clean
 CMakeFiles/map.dir/all:
 	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/depend
 	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=21,22,23,24,25 "Built target map"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=21,22,23,24 "Built target map"
 .PHONY : CMakeFiles/map.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/map.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 4
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/map.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/map.dir/rule
@@ -117,6 +119,60 @@ map: CMakeFiles/map.dir/rule
 CMakeFiles/map.dir/clean:
 	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/clean
 .PHONY : CMakeFiles/map.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/map_tester.dir
+
+# All Build rule for target.
+CMakeFiles/map_tester.dir/all:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/depend
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=30,31,32,33,34 "Built target map_tester"
+.PHONY : CMakeFiles/map_tester.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/map_tester.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 5
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/map_tester.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
+.PHONY : CMakeFiles/map_tester.dir/rule
+
+# Convenience name for target.
+map_tester: CMakeFiles/map_tester.dir/rule
+
+.PHONY : map_tester
+
+# clean rule for target.
+CMakeFiles/map_tester.dir/clean:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/clean
+.PHONY : CMakeFiles/map_tester.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/map_group.dir
+
+# All Build rule for target.
+CMakeFiles/map_group.dir/all:
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/depend
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=25,26,27,28,29 "Built target map_group"
+.PHONY : CMakeFiles/map_group.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/map_group.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 5
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/map_group.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
+.PHONY : CMakeFiles/map_group.dir/rule
+
+# Convenience name for target.
+map_group: CMakeFiles/map_group.dir/rule
+
+.PHONY : map_group
+
+# clean rule for target.
+CMakeFiles/map_group.dir/clean:
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/clean
+.PHONY : CMakeFiles/map_group.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/election_tester_libmap.dir
@@ -171,33 +227,6 @@ election: CMakeFiles/election.dir/rule
 CMakeFiles/election.dir/clean:
 	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/clean
 .PHONY : CMakeFiles/election.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/map_tester.dir
-
-# All Build rule for target.
-CMakeFiles/map_tester.dir/all:
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/depend
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=26,27,28,29,30 "Built target map_tester"
-.PHONY : CMakeFiles/map_tester.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/map_tester.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 5
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/map_tester.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
-.PHONY : CMakeFiles/map_tester.dir/rule
-
-# Convenience name for target.
-map_tester: CMakeFiles/map_tester.dir/rule
-
-.PHONY : map_tester
-
-# clean rule for target.
-CMakeFiles/map_tester.dir/clean:
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/clean
-.PHONY : CMakeFiles/map_tester.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/election_tester.dir

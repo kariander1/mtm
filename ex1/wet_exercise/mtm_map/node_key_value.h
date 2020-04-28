@@ -6,22 +6,22 @@
 
 typedef struct node_t* NodeKeyValue;
 
-NodeKeyValue NodeCreate();
+NodeKeyValue nodeCreate();
 
-void NodeDestroy(NodeKeyValue node);
+void nodeDestroy(NodeKeyValue node);
 
-char* NodeGetKey (NodeKeyValue node);
+char* nodeGetKey (NodeKeyValue node);
 
-char* NodeGetValue(NodeKeyValue node);
+char* nodeGetValue(NodeKeyValue node);
 
-NodeKeyValue NodeGetNext(NodeKeyValue node);
+NodeKeyValue nodeGetNext(NodeKeyValue node);
 
-void NodePutNext(NodeKeyValue node, NodeKeyValue new_next);
+void nodePutNext(NodeKeyValue node, NodeKeyValue new_next);
 
-void NodePutkey(NodeKeyValue node, char* new_key);
+bool nodePutkey(NodeKeyValue node,const char* new_key);
 
-void NodePutValue(NodeKeyValue node, char* new_value);
+bool nodePutValue(NodeKeyValue node,const char* new_value);
 
-void NodePromoteToNext(NodeKeyValue* node);
+void nodePromoteToNext(NodeKeyValue* node);
 
 #endif

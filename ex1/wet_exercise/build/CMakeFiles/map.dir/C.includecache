@@ -6,23 +6,3 @@
 
 #IncludeRegexTransform: 
 
-C:/VScode/ex1/wet_exercise/mtm_map/map.h
-stdbool.h
--
-string.h
--
-
-C:/VScode/ex1/wet_exercise/test_utilities.h
-stdbool.h
--
-stdio.h
--
-
-C:/VScode/ex1/wet_exercise/tests/map_example_test.c
-../test_utilities.h
-C:/VScode/ex1/wet_exercise/test_utilities.h
-../mtm_map/map.h
-C:/VScode/ex1/wet_exercise/mtm_map/map.h
-stdlib.h
--
-

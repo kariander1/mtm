@@ -1,10 +1,8 @@
-#ifndef NODEKEYVALUE_C_
-#define NODEKEYVALUE_C_
-// TEST
-#include "node_key_value.h"
 #include <stdlib.h>
-#include "../macro.h"
 #include <string.h>
+
+#include "node_key_value.h"
+#include "../macro.h"
 #include "../election_utilities.h"
 
 struct node_t
@@ -14,9 +12,11 @@ struct node_t
     struct node_t *next;
 };
 
-NodeKeyValue NodeCreate()
+static bool overrideInput(char** old_val,const char* new_val);
+
+NodeKeyValue nodeCreate()
 {
-    NodeKeyValue new_node = xmalloc(sizeof(*new_node));
+    NodeKeyValue new_node = malloc(sizeof(*new_node));
     RETURN_ON_NULL(new_node,NULL);
     // initialize node 
     new_node->key = NULL;
@@ -24,57 +24,64 @@ NodeKeyValue NodeCreate()
     new_node->value = NULL;
     return new_node;
 }
-void NodeDestroy(NodeKeyValue node)
+void nodeDestroy(NodeKeyValue node)
 {
     RETURN_ON_CONDITION_NO_VALUE(node,NULL);
+    free(node->key); // Worst case scenario it will free NULL
+    free(node->value);
     free(node);
     return;
 }
 
-char* NodeGetKey (NodeKeyValue node)
+char* nodeGetKey (NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
     return node->key;
 }
 
-char* NodeGetValue(NodeKeyValue node)
+char* nodeGetValue(NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
     return node->value;
 }
 
-NodeKeyValue NodeGetNext(NodeKeyValue node)
+NodeKeyValue nodeGetNext(NodeKeyValue node)
 {
     RETURN_ON_NULL(node,NULL);
     return node->next;
 }
 
-void NodePutNext(NodeKeyValue node, NodeKeyValue new_next)
+void nodePutNext(NodeKeyValue node, NodeKeyValue new_next)
 {
     RETURN_ON_CONDITION_NO_VALUE(node,NULL);
     node->next = new_next;
     return;
 }
-void NodePutkey(NodeKeyValue node, char* new_key)
+bool nodePutkey(NodeKeyValue node,const char* new_key)
 {
-    RETURN_ON_CONDITION_NO_VALUE(node,NULL);
-    node->key = new_key;
-    return;
+    RETURN_ON_NULL(node,false);
+    return overrideInput(&(node->key),(new_key));
 }
-void NodePutValue(NodeKeyValue node, char* new_value)
+bool nodePutValue(NodeKeyValue node,const char* new_value)
 {
-    RETURN_ON_CONDITION_NO_VALUE(node,NULL);
-    node->value = new_value;
-    return;
+    RETURN_ON_NULL(node,false);
+    return overrideInput(&(node->value),(new_value));
 }
 
-void NodePromoteToNext(NodeKeyValue *node)
+void nodePromoteToNext(NodeKeyValue *node)
 {
     RETURN_ON_CONDITION_NO_VALUE(*node,NULL);
     (*node) = (*node)->next;
     return;
 }
 
-#endif
+static bool overrideInput(char** old_val,const char* new_val)
+{
+    char* copy_of_new_val = getCopyOfString(new_val);
+    RETURN_ON_NULL(copy_of_new_val,false);
+    free(*old_val);
+    *old_val=copy_of_new_val;
+    return true;
+}
 
 

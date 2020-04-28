@@ -19,7 +19,7 @@ set(CMAKE_C_FLAGS ${MTM_FLAGS_DEBUG})
 add_executable(map tests/map_example_test.c mtm_map/map.c election_utilities.c mtm_map/node_key_value.c)
 
 # EXE for map with given tests from group
-#add_executable(map tests/test_map_from_group.c mtm_map/map.c election_utilities.c mtm_map/node_key_value.c)
+add_executable(map_group tests/test_map_from_group.c mtm_map/map.c election_utilities.c mtm_map/node_key_value.c)
 
 # EXE for election with given tests
 add_executable(election election.c area.c mtm_map/map.c mtm_map/node_key_value.c election_utilities.c tests/electionTestsExample.c)

@@ -28,28 +28,10 @@ int stringToInt(const char* str);
 * 	Copy of the string with malloc
 */
 char *getCopyOfString(const char* str);
-/**
-* xmalloc: Simulates malloc failures, otherwise mallocs the same amount given.
-*          xmalloc will fail every "fail_after" times variable at electionUtils.c
-*
-* @param size - The size o bytes to allocate
-* @return
-* 	Pointer to the first block allocated or NULL on a *SIMULATED* failure
-*/
-#define IS_LOWER(c) ((c) >= 'a' && (c) <= 'z') 
-
-void *xmalloc(size_t size);
-
-/**
-* xrealloc: Simulates realloc failures, otherwise mallocs the same amount given.
-*          xmalloc will fail every "fail_after" times variable at electionUtils.c
-*
-* @param size - The size o bytes to allocate
-* @return
-* 	Pointer to the first block allocated or NULL on a *SIMULATED* failure
-*/
-void *xrealloc(void *start_ptr,size_t size);
 /*!
 * Macro for returning whether a char is lower case
 */
+#define IS_LOWER(c) ((c) >= 'a' && (c) <= 'z') 
+
+
 #endif

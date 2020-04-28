@@ -11,12 +11,47 @@
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
+  "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
+},
+{
+  "directory": "C:/VScode/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\tests\\shai_test.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\tests\\shai_test.c",
+  "file": "C:/VScode/ex1/wet_exercise/tests/shai_test.c"
+},
+{
+  "directory": "C:/VScode/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\mtm_map\\map.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\map.c",
+  "file": "C:/VScode/ex1/wet_exercise/mtm_map/map.c"
+},
+{
+  "directory": "C:/VScode/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
   "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
+  "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
+},
+{
+  "directory": "C:/VScode/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_group.dir\\tests\\test_map_from_group.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\tests\\test_map_from_group.c",
+  "file": "C:/VScode/ex1/wet_exercise/tests/test_map_from_group.c"
+},
+{
+  "directory": "C:/VScode/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_group.dir\\mtm_map\\map.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\map.c",
+  "file": "C:/VScode/ex1/wet_exercise/mtm_map/map.c"
+},
+{
+  "directory": "C:/VScode/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_group.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
+  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
+},
+{
+  "directory": "C:/VScode/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_group.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
   "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
 },
 {
@@ -73,26 +108,6 @@
   "directory": "C:/VScode/ex1/wet_exercise/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election.dir\\tests\\electionTestsExample.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\tests\\electionTestsExample.c",
   "file": "C:/VScode/ex1/wet_exercise/tests/electionTestsExample.c"
-},
-{
-  "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\tests\\shai_test.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\tests\\shai_test.c",
-  "file": "C:/VScode/ex1/wet_exercise/tests/shai_test.c"
-},
-{
-  "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\mtm_map\\map.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\map.c",
-  "file": "C:/VScode/ex1/wet_exercise/mtm_map/map.c"
-},
-{
-  "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
-  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
-},
-{
-  "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
-  "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",

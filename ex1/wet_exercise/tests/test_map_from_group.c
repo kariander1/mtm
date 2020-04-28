@@ -269,6 +269,7 @@ char *randString(int length) {
 }
 
 bool doomsDay() {
+    printf("Running doomsday");
     Map map = mapCreate();
     const int repeat = 10000;
     const int length = 7;
