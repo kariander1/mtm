@@ -8,10 +8,10 @@
 		},
 		"paths" : 
 		{
-			"cmake" : "C:/Program Files/CMake/bin/cmake.exe",
-			"cpack" : "C:/Program Files/CMake/bin/cpack.exe",
-			"ctest" : "C:/Program Files/CMake/bin/ctest.exe",
-			"root" : "C:/Program Files/CMake/share/cmake-3.17"
+			"cmake" : "C:/Program Files (x86)/cmake-3.17.0-win64-x64/bin/cmake.exe",
+			"cpack" : "C:/Program Files (x86)/cmake-3.17.0-win64-x64/bin/cpack.exe",
+			"ctest" : "C:/Program Files (x86)/cmake-3.17.0-win64-x64/bin/ctest.exe",
+			"root" : "C:/Program Files (x86)/cmake-3.17.0-win64-x64/share/cmake-3.17"
 		},
 		"version" : 
 		{
@@ -35,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-31f358bcc6eb1d5d1ad2.json",
+			"jsonFile" : "cache-v2-d3b4d1673c59ec7ccce1.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -64,7 +64,7 @@
 				"responses" : 
 				[
 					{
-						"jsonFile" : "cache-v2-31f358bcc6eb1d5d1ad2.json",
+						"jsonFile" : "cache-v2-d3b4d1673c59ec7ccce1.json",
 						"kind" : "cache",
 						"version" : 
 						{
