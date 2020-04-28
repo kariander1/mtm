@@ -4,7 +4,6 @@
 #include "node_key_value.h"
 #include "../macro.h"
 #include "../election_utilities.h"
-
 struct node_t
 {
     char *key;

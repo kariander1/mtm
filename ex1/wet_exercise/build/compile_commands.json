@@ -11,6 +11,11 @@
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
+  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
+},
+{
+  "directory": "C:/VScode/ex1/wet_exercise/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
   "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
 },

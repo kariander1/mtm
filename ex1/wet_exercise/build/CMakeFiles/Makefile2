@@ -100,12 +100,12 @@ clean: CMakeFiles/election_tester.dir/clean
 CMakeFiles/map.dir/all:
 	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/depend
 	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=21,22,23,24 "Built target map"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=21,22,23,24,25 "Built target map"
 .PHONY : CMakeFiles/map.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/map.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 5
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/map.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/map.dir/rule
@@ -127,7 +127,7 @@ CMakeFiles/map.dir/clean:
 CMakeFiles/map_tester.dir/all:
 	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/depend
 	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=30,31,32,33,34 "Built target map_tester"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=31,32,33,34,35 "Built target map_tester"
 .PHONY : CMakeFiles/map_tester.dir/all
 
 # Build rule for subdir invocation for target.
@@ -154,7 +154,7 @@ CMakeFiles/map_tester.dir/clean:
 CMakeFiles/map_group.dir/all:
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/depend
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=25,26,27,28,29 "Built target map_group"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=26,27,28,29,30 "Built target map_group"
 .PHONY : CMakeFiles/map_group.dir/all
 
 # Build rule for subdir invocation for target.

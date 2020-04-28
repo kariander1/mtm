@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "C:/VScode/ex1/wet_exercise/election_utilities.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map.dir/election_utilities.c.obj"
   "C:/VScode/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map.dir/mtm_map/map.c.obj"
   "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map.dir/mtm_map/node_key_value.c.obj"
   "C:/VScode/ex1/wet_exercise/tests/map_example_test.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map.dir/tests/map_example_test.c.obj"

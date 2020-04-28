@@ -46,9 +46,33 @@ C:/VScode/ex1/wet_exercise/election.h
 mtm_map/map.h
 C:/VScode/ex1/wet_exercise/mtm_map/map.h
 
+C:/VScode/ex1/wet_exercise/election_utilities.c
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+election_utilities.h
+C:/VScode/ex1/wet_exercise/election_utilities.h
+macro.h
+C:/VScode/ex1/wet_exercise/macro.h
+
 C:/VScode/ex1/wet_exercise/election_utilities.h
 
 C:/VScode/ex1/wet_exercise/macro.h
+
+C:/VScode/ex1/wet_exercise/mtm_map/map.c
+stdlib.h
+-
+string.h
+-
+map.h
+C:/VScode/ex1/wet_exercise/mtm_map/map.h
+../macro.h
+C:/VScode/ex1/wet_exercise/macro.h
+node_key_value.h
+C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.h
 
 C:/VScode/ex1/wet_exercise/mtm_map/map.h
 stdbool.h
@@ -56,9 +80,35 @@ stdbool.h
 string.h
 -
 
+C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c
+stdlib.h
+-
+string.h
+-
+node_key_value.h
+C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.h
+../macro.h
+C:/VScode/ex1/wet_exercise/macro.h
+../election_utilities.h
+C:/VScode/ex1/wet_exercise/election_utilities.h
+
 C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.h
 stdbool.h
 -
 string.h
 -
+
+C:/VScode/ex1/wet_exercise/test_utilities.h
+stdbool.h
+-
+stdio.h
+-
+
+C:/VScode/ex1/wet_exercise/tests/electionTestsExample.c
+stdlib.h
+-
+../election.h
+C:/VScode/ex1/wet_exercise/election.h
+../test_utilities.h
+C:/VScode/ex1/wet_exercise/test_utilities.h
 

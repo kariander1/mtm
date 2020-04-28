@@ -276,6 +276,7 @@ election_utilities.obj: election_utilities.c.obj
 
 # target to build an object file
 election_utilities.c.obj:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.obj
 	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.obj
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/election_utilities.c.obj
 	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.obj
@@ -289,6 +290,7 @@ election_utilities.i: election_utilities.c.i
 
 # target to preprocess a source file
 election_utilities.c.i:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.i
 	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.i
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/election_utilities.c.i
 	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.i
@@ -302,6 +304,7 @@ election_utilities.s: election_utilities.c.s
 
 # target to generate assembly for a file
 election_utilities.c.s:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.s
 	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.s
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/election_utilities.c.s
 	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.s
