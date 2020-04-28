@@ -538,6 +538,12 @@ void printMapResult(MapResult result)
     case MAP_ERROR:
         status_string = "MAP_ERROR";
         break;
+    case MAP_OUT_OF_MEMORY:
+        status_string = "MAP_OUT_OF_MEMORY";
+        break;
+    case MAP_ITEM_ALREADY_EXISTS:
+        status_string="MAP_ITEM_ALREADY_EXISTS";
+        break;
     default:
         break;
     }

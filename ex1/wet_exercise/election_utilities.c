@@ -57,16 +57,14 @@ static int getNumOfDigits(int number)
     } while(number);
     return digits;
 }
-static int fail_after = 35; // Keep at zero to make malloc untouched
-static int num_allocs = 0;
-static int malloc_fail_after = 0; // Keep at zero to make malloc untouched
+
+static int malloc_fail_after = 20; // Keep at zero to make malloc untouched
 static int malloc_num_allocs = 0;
 void *xmalloc(size_t size)
 {
-    if (fail_after > 0 && num_allocs++ >= fail_after)
+   
     if (malloc_fail_after > 0 && malloc_num_allocs++ >= malloc_fail_after)
     {
-        num_allocs=0;
         malloc_num_allocs=0;
         printf("Out of memory simulation\n");
         return NULL;

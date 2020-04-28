@@ -27,9 +27,6 @@ NodeKeyValue NodeCreate()
 void NodeDestroy(NodeKeyValue node)
 {
     RETURN_ON_CONDITION_NO_VALUE(node,NULL);
-    node->key = NULL;  // the free is done outside
-    node->next = NULL;
-    node->value = NULL;
     free(node);
     return;
 }
