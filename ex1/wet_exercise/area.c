@@ -6,12 +6,12 @@
 #include <stdlib.h>
 #include "macro.h"
 #include "election_utilities.h"
+#include "mtm_map/node_key_value.h"
 
 #define INITIAL_ZERO "0"
 struct area_t
 {
-    int area_id;
-    const char *area_name;
+    NodeKeyValue area_identifiers;
     Map votes;
 };
 
@@ -20,9 +20,19 @@ Area areaCreate(int area_id, const char *area_name)
 {
     Area new_area = xmalloc(sizeof(*new_area));
     RETURN_ON_NULL(new_area, NULL);
+    NodeKeyValue new_node = NodeCreate();
+    EXECUTE_ON_CONDITION(new_node, NULL, free(new_area), NULL);
+    new_area->area_identifiers = new_node;
+    char* area_id_str = intToString(area_id);
+    EXECUTE_ON_CONDITION(area_id_str,NULL,areaDestroy(new_area),NULL);
+    //if (!area_id_str){
+    //    free(new_node);
+    //    free(new_area);
+    //    return NULL;
+    //}
 
-    new_area->area_id = area_id;
-    new_area->area_name = area_name;
+    NodePutkey(new_area->area_identifiers,area_id_str);
+    NodePutValue(new_area->area_identifiers, area_name);
 
     Map new_map = mapCreate();
     EXECUTE_ON_CONDITION(new_map,NULL,areaDestroy(new_area),NULL);
@@ -36,6 +46,8 @@ void areaDestroy(Area area)
         return;
     }
     mapDestroy(area->votes);
+    free(NodeGetKey(area->area_identifiers)); // frees the string_id that we allocated when creating the node
+    NodeDestroy(area->area_identifiers);
     free(area);
 }
 
@@ -48,11 +60,17 @@ void areaRemoveTribe(Area area, const char *tribe_id)
 
 bool areaEquals(Area area, int id)
 {
-    return area->area_id == id;
+    char * id_string = intToString(id);
+    if (NodeGetKey(area->area_identifiers) ==id_string){
+        free(id_string);
+        return true;
+    }
+    free(id_string);
+    return false;
 }
 int areaGetId(Area area)
 {
-    return area->area_id;
+    return NodeGetKey(area->area_identifiers);
 }
 char *areaGetMostVotesTribe(Area area)
 {
@@ -71,7 +89,7 @@ char *areaGetMostVotesTribe(Area area)
         }
         else if (num_of_votes == max_num_of_votes)
         {
-            max_votes_tribe = (stringToInt(max_votes_tribe) < stringToInt(current_tribe) ? max_votes_tribe : current_tribe); // get the tribe with the largest id // Should be lowest
+            max_votes_tribe = (stringToInt(max_votes_tribe) < stringToInt(current_tribe) ? max_votes_tribe : current_tribe); // get the tribe with the lowest id
         }
     }
     return max_votes_tribe;
