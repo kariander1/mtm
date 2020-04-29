@@ -58,28 +58,4 @@ static int getNumOfDigits(int number)
     return digits;
 }
 
-static int malloc_fail_after = 20; // Keep at zero to make malloc untouched
-static int malloc_num_allocs = 0;
-void *malloc(size_t size)
-{
-    if (malloc_fail_after > 0 && malloc_num_allocs++ >= malloc_fail_after)
-    {
-        malloc_num_allocs=0;
-        printf("Out of memory simulation\n");
-        return NULL;
-    }
-    return malloc(size);
-}
-static int realloc_fail_after = 0; // Keep at zero to make malloc untouched
-static int realloc_num_allocs = 0;
-void *realloc(void *start_ptr,size_t size)
-{
-    if (realloc_fail_after > 0 && realloc_num_allocs++ >= realloc_fail_after)
-    {
-        realloc_num_allocs=0;
-        printf("Out of memory simulation\n");
-        return NULL;
-    }
-    return realloc(start_ptr,size);
-}
 #endif
