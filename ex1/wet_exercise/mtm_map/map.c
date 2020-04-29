@@ -136,7 +136,7 @@ MapResult mapPut(Map map, const char *key, const char *data) //DONE
 
     if (mapContains(map, key))
     {  // if  the dictionary contains the key -> puts the iterator on the place where a match was found
-        RETURN_ON_NULL(nodePutValue(map->iterator_internal, data),MAP_OUT_OF_MEMORY); // Will free previous value
+        RETURN_ON_CONDITION(nodePutValue(map->iterator_internal, data),false,MAP_OUT_OF_MEMORY); // Will free previous value
         return MAP_SUCCESS;
     }
 
@@ -186,7 +186,7 @@ MapResult mapRemove(Map map, const char *key) //Done
     }
     else
     {
-        map->map_head  = next_entry;
+        map->map_head  = next_entry; //if first entry (no previus entry)
     }
     if (!next_entry)
     { // if we want to remove the last element. next entry is NULL
