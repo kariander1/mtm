@@ -35,7 +35,7 @@ Area areaCreate(int area_id, const char *area_name)
         areaDestroy(new_area);
         return NULL;
     }
-    free(area_id_str);
+    free(area_id_str); // the value is copied inside node and therefor can be freed
 
     // Initialize name
     EXECUTE_ON_CONDITION(nodePutValue(new_area->area_identifiers, area_name), false, areaDestroy(new_area), NULL);
