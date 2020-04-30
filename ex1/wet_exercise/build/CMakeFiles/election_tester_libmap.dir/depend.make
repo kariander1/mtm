@@ -3,28 +3,24 @@
 
 CMakeFiles/election_tester_libmap.dir/area.c.obj: ../area.c
 CMakeFiles/election_tester_libmap.dir/area.c.obj: ../area.h
-CMakeFiles/election_tester_libmap.dir/area.c.obj: ../election_utilities.h
-CMakeFiles/election_tester_libmap.dir/area.c.obj: ../macro.h
 CMakeFiles/election_tester_libmap.dir/area.c.obj: ../mtm_map/map.h
-CMakeFiles/election_tester_libmap.dir/area.c.obj: ../mtm_map/node_key_value.h
+CMakeFiles/election_tester_libmap.dir/area.c.obj: ../node_key_value.h
+CMakeFiles/election_tester_libmap.dir/area.c.obj: ../utilities.h
 
 CMakeFiles/election_tester_libmap.dir/election.c.obj: ../area.h
 CMakeFiles/election_tester_libmap.dir/election.c.obj: ../election.c
 CMakeFiles/election_tester_libmap.dir/election.c.obj: ../election.h
-CMakeFiles/election_tester_libmap.dir/election.c.obj: ../election_utilities.h
-CMakeFiles/election_tester_libmap.dir/election.c.obj: ../macro.h
 CMakeFiles/election_tester_libmap.dir/election.c.obj: ../mtm_map/map.h
+CMakeFiles/election_tester_libmap.dir/election.c.obj: ../utilities.h
 
-CMakeFiles/election_tester_libmap.dir/election_utilities.c.obj: ../election_utilities.c
-CMakeFiles/election_tester_libmap.dir/election_utilities.c.obj: ../election_utilities.h
-CMakeFiles/election_tester_libmap.dir/election_utilities.c.obj: ../macro.h
-
-CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.obj: ../election_utilities.h
-CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.obj: ../macro.h
-CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.obj: ../mtm_map/node_key_value.c
-CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.obj: ../mtm_map/node_key_value.h
+CMakeFiles/election_tester_libmap.dir/node_key_value.c.obj: ../node_key_value.c
+CMakeFiles/election_tester_libmap.dir/node_key_value.c.obj: ../node_key_value.h
+CMakeFiles/election_tester_libmap.dir/node_key_value.c.obj: ../utilities.h
 
 CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.obj: ../election.h
 CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.obj: ../mtm_map/map.h
 CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.obj: ../tests/shai_test_election.c
+
+CMakeFiles/election_tester_libmap.dir/utilities.c.obj: ../utilities.c
+CMakeFiles/election_tester_libmap.dir/utilities.c.obj: ../utilities.h
 

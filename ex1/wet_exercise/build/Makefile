@@ -270,48 +270,6 @@ election.c.s:
 	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election.c.s
 .PHONY : election.c.s
 
-election_utilities.obj: election_utilities.c.obj
-
-.PHONY : election_utilities.obj
-
-# target to build an object file
-election_utilities.c.obj:
-	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.obj
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.obj
-	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/election_utilities.c.obj
-	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.obj
-	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election_utilities.c.obj
-	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election_utilities.c.obj
-.PHONY : election_utilities.c.obj
-
-election_utilities.i: election_utilities.c.i
-
-.PHONY : election_utilities.i
-
-# target to preprocess a source file
-election_utilities.c.i:
-	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.i
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.i
-	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/election_utilities.c.i
-	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.i
-	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election_utilities.c.i
-	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election_utilities.c.i
-.PHONY : election_utilities.c.i
-
-election_utilities.s: election_utilities.c.s
-
-.PHONY : election_utilities.s
-
-# target to generate assembly for a file
-election_utilities.c.s:
-	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/election_utilities.c.s
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/election_utilities.c.s
-	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/election_utilities.c.s
-	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/election_utilities.c.s
-	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/election_utilities.c.s
-	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/election_utilities.c.s
-.PHONY : election_utilities.c.s
-
 mtm_map/map.obj: mtm_map/map.c.obj
 
 .PHONY : mtm_map/map.obj
@@ -358,11 +316,7 @@ mtm_map/node_key_value.obj: mtm_map/node_key_value.c.obj
 # target to build an object file
 mtm_map/node_key_value.c.obj:
 	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/node_key_value.c.obj
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.obj
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/mtm_map/node_key_value.c.obj
-	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.obj
-	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/node_key_value.c.obj
-	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/node_key_value.c.obj
 .PHONY : mtm_map/node_key_value.c.obj
 
 mtm_map/node_key_value.i: mtm_map/node_key_value.c.i
@@ -372,11 +326,7 @@ mtm_map/node_key_value.i: mtm_map/node_key_value.c.i
 # target to preprocess a source file
 mtm_map/node_key_value.c.i:
 	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/node_key_value.c.i
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.i
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/mtm_map/node_key_value.c.i
-	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.i
-	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/node_key_value.c.i
-	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/node_key_value.c.i
 .PHONY : mtm_map/node_key_value.c.i
 
 mtm_map/node_key_value.s: mtm_map/node_key_value.c.s
@@ -386,12 +336,74 @@ mtm_map/node_key_value.s: mtm_map/node_key_value.c.s
 # target to generate assembly for a file
 mtm_map/node_key_value.c.s:
 	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/node_key_value.c.s
-	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.s
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/mtm_map/node_key_value.c.s
-	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.s
-	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/mtm_map/node_key_value.c.s
-	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/mtm_map/node_key_value.c.s
 .PHONY : mtm_map/node_key_value.c.s
+
+mtm_map/utilities.obj: mtm_map/utilities.c.obj
+
+.PHONY : mtm_map/utilities.obj
+
+# target to build an object file
+mtm_map/utilities.c.obj:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/utilities.c.obj
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/mtm_map/utilities.c.obj
+.PHONY : mtm_map/utilities.c.obj
+
+mtm_map/utilities.i: mtm_map/utilities.c.i
+
+.PHONY : mtm_map/utilities.i
+
+# target to preprocess a source file
+mtm_map/utilities.c.i:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/utilities.c.i
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/mtm_map/utilities.c.i
+.PHONY : mtm_map/utilities.c.i
+
+mtm_map/utilities.s: mtm_map/utilities.c.s
+
+.PHONY : mtm_map/utilities.s
+
+# target to generate assembly for a file
+mtm_map/utilities.c.s:
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/mtm_map/utilities.c.s
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/mtm_map/utilities.c.s
+.PHONY : mtm_map/utilities.c.s
+
+node_key_value.obj: node_key_value.c.obj
+
+.PHONY : node_key_value.obj
+
+# target to build an object file
+node_key_value.c.obj:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/node_key_value.c.obj
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/node_key_value.c.obj
+.PHONY : node_key_value.c.obj
+
+node_key_value.i: node_key_value.c.i
+
+.PHONY : node_key_value.i
+
+# target to preprocess a source file
+node_key_value.c.i:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/node_key_value.c.i
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/node_key_value.c.i
+.PHONY : node_key_value.c.i
+
+node_key_value.s: node_key_value.c.s
+
+.PHONY : node_key_value.s
+
+# target to generate assembly for a file
+node_key_value.c.s:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/node_key_value.c.s
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/node_key_value.c.s
+.PHONY : node_key_value.c.s
 
 tests/electionTestsExample.obj: tests/electionTestsExample.c.obj
 
@@ -531,6 +543,42 @@ tests/test_map_from_group.c.s:
 	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/tests/test_map_from_group.c.s
 .PHONY : tests/test_map_from_group.c.s
 
+utilities.obj: utilities.c.obj
+
+.PHONY : utilities.obj
+
+# target to build an object file
+utilities.c.obj:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/utilities.c.obj
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/utilities.c.obj
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/utilities.c.obj
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/utilities.c.obj
+.PHONY : utilities.c.obj
+
+utilities.i: utilities.c.i
+
+.PHONY : utilities.i
+
+# target to preprocess a source file
+utilities.c.i:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/utilities.c.i
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/utilities.c.i
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/utilities.c.i
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/utilities.c.i
+.PHONY : utilities.c.i
+
+utilities.s: utilities.c.s
+
+.PHONY : utilities.s
+
+# target to generate assembly for a file
+utilities.c.s:
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/utilities.c.s
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/utilities.c.s
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/utilities.c.s
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/utilities.c.s
+.PHONY : utilities.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -551,15 +599,18 @@ help:
 	@echo ... election.obj
 	@echo ... election.i
 	@echo ... election.s
-	@echo ... election_utilities.obj
-	@echo ... election_utilities.i
-	@echo ... election_utilities.s
 	@echo ... mtm_map/map.obj
 	@echo ... mtm_map/map.i
 	@echo ... mtm_map/map.s
 	@echo ... mtm_map/node_key_value.obj
 	@echo ... mtm_map/node_key_value.i
 	@echo ... mtm_map/node_key_value.s
+	@echo ... mtm_map/utilities.obj
+	@echo ... mtm_map/utilities.i
+	@echo ... mtm_map/utilities.s
+	@echo ... node_key_value.obj
+	@echo ... node_key_value.i
+	@echo ... node_key_value.s
 	@echo ... tests/electionTestsExample.obj
 	@echo ... tests/electionTestsExample.i
 	@echo ... tests/electionTestsExample.s
@@ -575,6 +626,9 @@ help:
 	@echo ... tests/test_map_from_group.obj
 	@echo ... tests/test_map_from_group.i
 	@echo ... tests/test_map_from_group.s
+	@echo ... utilities.obj
+	@echo ... utilities.i
+	@echo ... utilities.s
 .PHONY : help
 
 

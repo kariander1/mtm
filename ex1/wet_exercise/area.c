@@ -2,9 +2,8 @@
 
 #include "area.h"
 #include "mtm_map/map.h"
-#include "macro.h"
-#include "election_utilities.h"
-#include "mtm_map/node_key_value.h"
+#include "utilities.h"
+#include "node_key_value.h"
 
 #define INITIAL_ZERO "0"
 struct area_t

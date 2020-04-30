@@ -99,46 +99,46 @@ CMakeFiles/map_tester.dir/mtm_map/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map_tester.dir/mtm_map/map.c.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\mtm_map\map.c -o CMakeFiles\map_tester.dir\mtm_map\map.c.s
 
-CMakeFiles/map_tester.dir/election_utilities.c.obj: CMakeFiles/map_tester.dir/flags.make
-CMakeFiles/map_tester.dir/election_utilities.c.obj: ../election_utilities.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/map_tester.dir/election_utilities.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\map_tester.dir\election_utilities.c.obj   -c C:\VScode\ex1\wet_exercise\election_utilities.c
+CMakeFiles/map_tester.dir/utilities.c.obj: CMakeFiles/map_tester.dir/flags.make
+CMakeFiles/map_tester.dir/utilities.c.obj: ../utilities.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/map_tester.dir/utilities.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\map_tester.dir\utilities.c.obj   -c C:\VScode\ex1\wet_exercise\utilities.c
 
-CMakeFiles/map_tester.dir/election_utilities.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/map_tester.dir/election_utilities.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\election_utilities.c > CMakeFiles\map_tester.dir\election_utilities.c.i
+CMakeFiles/map_tester.dir/utilities.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/map_tester.dir/utilities.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\utilities.c > CMakeFiles\map_tester.dir\utilities.c.i
 
-CMakeFiles/map_tester.dir/election_utilities.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map_tester.dir/election_utilities.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\election_utilities.c -o CMakeFiles\map_tester.dir\election_utilities.c.s
+CMakeFiles/map_tester.dir/utilities.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map_tester.dir/utilities.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\utilities.c -o CMakeFiles\map_tester.dir\utilities.c.s
 
-CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.obj: CMakeFiles/map_tester.dir/flags.make
-CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.obj: ../mtm_map/node_key_value.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\map_tester.dir\mtm_map\node_key_value.c.obj   -c C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c
+CMakeFiles/map_tester.dir/node_key_value.c.obj: CMakeFiles/map_tester.dir/flags.make
+CMakeFiles/map_tester.dir/node_key_value.c.obj: ../node_key_value.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/map_tester.dir/node_key_value.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\map_tester.dir\node_key_value.c.obj   -c C:\VScode\ex1\wet_exercise\node_key_value.c
 
-CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c > CMakeFiles\map_tester.dir\mtm_map\node_key_value.c.i
+CMakeFiles/map_tester.dir/node_key_value.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/map_tester.dir/node_key_value.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\node_key_value.c > CMakeFiles\map_tester.dir\node_key_value.c.i
 
-CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c -o CMakeFiles\map_tester.dir\mtm_map\node_key_value.c.s
+CMakeFiles/map_tester.dir/node_key_value.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map_tester.dir/node_key_value.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\node_key_value.c -o CMakeFiles\map_tester.dir\node_key_value.c.s
 
 # Object files for target map_tester
 map_tester_OBJECTS = \
 "CMakeFiles/map_tester.dir/tests/shai_test.c.obj" \
 "CMakeFiles/map_tester.dir/mtm_map/map.c.obj" \
-"CMakeFiles/map_tester.dir/election_utilities.c.obj" \
-"CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.obj"
+"CMakeFiles/map_tester.dir/utilities.c.obj" \
+"CMakeFiles/map_tester.dir/node_key_value.c.obj"
 
 # External object files for target map_tester
 map_tester_EXTERNAL_OBJECTS =
 
 map_tester.exe: CMakeFiles/map_tester.dir/tests/shai_test.c.obj
 map_tester.exe: CMakeFiles/map_tester.dir/mtm_map/map.c.obj
-map_tester.exe: CMakeFiles/map_tester.dir/election_utilities.c.obj
-map_tester.exe: CMakeFiles/map_tester.dir/mtm_map/node_key_value.c.obj
+map_tester.exe: CMakeFiles/map_tester.dir/utilities.c.obj
+map_tester.exe: CMakeFiles/map_tester.dir/node_key_value.c.obj
 map_tester.exe: CMakeFiles/map_tester.dir/build.make
 map_tester.exe: CMakeFiles/map_tester.dir/linklibs.rsp
 map_tester.exe: CMakeFiles/map_tester.dir/objects1.rsp

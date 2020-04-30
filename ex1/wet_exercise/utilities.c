@@ -5,8 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "election_utilities.h"
-#include "macro.h"
+#include "utilities.h"
 #define NUMBERING_BASE 10
 
 

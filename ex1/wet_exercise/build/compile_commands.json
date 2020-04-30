@@ -11,8 +11,8 @@
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
-  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map.dir\\mtm_map\\utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\utilities.c",
+  "file": "C:/VScode/ex1/wet_exercise/mtm_map/utilities.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
@@ -31,13 +31,13 @@
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
-  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\utilities.c",
+  "file": "C:/VScode/ex1/wet_exercise/utilities.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
-  "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_tester.dir\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\node_key_value.c",
+  "file": "C:/VScode/ex1/wet_exercise/node_key_value.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
@@ -51,8 +51,8 @@
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_group.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
-  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\map_group.dir\\mtm_map\\utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\utilities.c",
+  "file": "C:/VScode/ex1/wet_exercise/mtm_map/utilities.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
@@ -71,13 +71,13 @@
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election_tester_libmap.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
-  "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election_tester_libmap.dir\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\node_key_value.c",
+  "file": "C:/VScode/ex1/wet_exercise/node_key_value.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election_tester_libmap.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
-  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election_tester_libmap.dir\\utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\utilities.c",
+  "file": "C:/VScode/ex1/wet_exercise/utilities.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
@@ -101,13 +101,13 @@
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
-  "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election.dir\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\node_key_value.c",
+  "file": "C:/VScode/ex1/wet_exercise/node_key_value.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
-  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election.dir\\utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\utilities.c",
+  "file": "C:/VScode/ex1/wet_exercise/utilities.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
@@ -131,13 +131,13 @@
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election_tester.dir\\mtm_map\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\mtm_map\\node_key_value.c",
-  "file": "C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election_tester.dir\\node_key_value.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\node_key_value.c",
+  "file": "C:/VScode/ex1/wet_exercise/node_key_value.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election_tester.dir\\election_utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\election_utilities.c",
-  "file": "C:/VScode/ex1/wet_exercise/election_utilities.c"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -DNDEBUG=1 -g   -o CMakeFiles\\election_tester.dir\\utilities.c.obj   -c C:\\VScode\\ex1\\wet_exercise\\utilities.c",
+  "file": "C:/VScode/ex1/wet_exercise/utilities.c"
 },
 {
   "directory": "C:/VScode/ex1/wet_exercise/build",

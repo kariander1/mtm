@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/map.dir/election_utilities.c.obj"
   "CMakeFiles/map.dir/mtm_map/map.c.obj"
   "CMakeFiles/map.dir/mtm_map/node_key_value.c.obj"
+  "CMakeFiles/map.dir/mtm_map/utilities.c.obj"
   "CMakeFiles/map.dir/tests/map_example_test.c.obj"
   "libmap.dll.a"
   "map.exe"

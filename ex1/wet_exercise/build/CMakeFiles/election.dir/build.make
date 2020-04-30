@@ -112,31 +112,31 @@ CMakeFiles/election.dir/mtm_map/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election.dir/mtm_map/map.c.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\mtm_map\map.c -o CMakeFiles\election.dir\mtm_map\map.c.s
 
-CMakeFiles/election.dir/mtm_map/node_key_value.c.obj: CMakeFiles/election.dir/flags.make
-CMakeFiles/election.dir/mtm_map/node_key_value.c.obj: ../mtm_map/node_key_value.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/election.dir/mtm_map/node_key_value.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\election.dir\mtm_map\node_key_value.c.obj   -c C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c
+CMakeFiles/election.dir/node_key_value.c.obj: CMakeFiles/election.dir/flags.make
+CMakeFiles/election.dir/node_key_value.c.obj: ../node_key_value.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/election.dir/node_key_value.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\election.dir\node_key_value.c.obj   -c C:\VScode\ex1\wet_exercise\node_key_value.c
 
-CMakeFiles/election.dir/mtm_map/node_key_value.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/election.dir/mtm_map/node_key_value.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c > CMakeFiles\election.dir\mtm_map\node_key_value.c.i
+CMakeFiles/election.dir/node_key_value.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/election.dir/node_key_value.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\node_key_value.c > CMakeFiles\election.dir\node_key_value.c.i
 
-CMakeFiles/election.dir/mtm_map/node_key_value.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election.dir/mtm_map/node_key_value.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c -o CMakeFiles\election.dir\mtm_map\node_key_value.c.s
+CMakeFiles/election.dir/node_key_value.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election.dir/node_key_value.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\node_key_value.c -o CMakeFiles\election.dir\node_key_value.c.s
 
-CMakeFiles/election.dir/election_utilities.c.obj: CMakeFiles/election.dir/flags.make
-CMakeFiles/election.dir/election_utilities.c.obj: ../election_utilities.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/election.dir/election_utilities.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\election.dir\election_utilities.c.obj   -c C:\VScode\ex1\wet_exercise\election_utilities.c
+CMakeFiles/election.dir/utilities.c.obj: CMakeFiles/election.dir/flags.make
+CMakeFiles/election.dir/utilities.c.obj: ../utilities.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/election.dir/utilities.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\election.dir\utilities.c.obj   -c C:\VScode\ex1\wet_exercise\utilities.c
 
-CMakeFiles/election.dir/election_utilities.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/election.dir/election_utilities.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\election_utilities.c > CMakeFiles\election.dir\election_utilities.c.i
+CMakeFiles/election.dir/utilities.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/election.dir/utilities.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\utilities.c > CMakeFiles\election.dir\utilities.c.i
 
-CMakeFiles/election.dir/election_utilities.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election.dir/election_utilities.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\election_utilities.c -o CMakeFiles\election.dir\election_utilities.c.s
+CMakeFiles/election.dir/utilities.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election.dir/utilities.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\utilities.c -o CMakeFiles\election.dir\utilities.c.s
 
 CMakeFiles/election.dir/tests/electionTestsExample.c.obj: CMakeFiles/election.dir/flags.make
 CMakeFiles/election.dir/tests/electionTestsExample.c.obj: ../tests/electionTestsExample.c
@@ -156,8 +156,8 @@ election_OBJECTS = \
 "CMakeFiles/election.dir/election.c.obj" \
 "CMakeFiles/election.dir/area.c.obj" \
 "CMakeFiles/election.dir/mtm_map/map.c.obj" \
-"CMakeFiles/election.dir/mtm_map/node_key_value.c.obj" \
-"CMakeFiles/election.dir/election_utilities.c.obj" \
+"CMakeFiles/election.dir/node_key_value.c.obj" \
+"CMakeFiles/election.dir/utilities.c.obj" \
 "CMakeFiles/election.dir/tests/electionTestsExample.c.obj"
 
 # External object files for target election
@@ -166,8 +166,8 @@ election_EXTERNAL_OBJECTS =
 election.exe: CMakeFiles/election.dir/election.c.obj
 election.exe: CMakeFiles/election.dir/area.c.obj
 election.exe: CMakeFiles/election.dir/mtm_map/map.c.obj
-election.exe: CMakeFiles/election.dir/mtm_map/node_key_value.c.obj
-election.exe: CMakeFiles/election.dir/election_utilities.c.obj
+election.exe: CMakeFiles/election.dir/node_key_value.c.obj
+election.exe: CMakeFiles/election.dir/utilities.c.obj
 election.exe: CMakeFiles/election.dir/tests/electionTestsExample.c.obj
 election.exe: CMakeFiles/election.dir/build.make
 election.exe: CMakeFiles/election.dir/linklibs.rsp

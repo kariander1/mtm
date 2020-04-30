@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "election.exe"
+			"path" : "election_tester.exe"
 		},
 		{
-			"path" : "election.pdb"
+			"path" : "election_tester.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 25,
+				"line" : 31,
 				"parent" : 0
 			}
 		]
@@ -53,7 +53,7 @@
 			]
 		}
 	],
-	"id" : "election::@6890427a1f51a3e7e1df",
+	"id" : "election_tester::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -73,8 +73,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "election",
-	"nameOnDisk" : "election.exe",
+	"name" : "election_tester",
+	"nameOnDisk" : "election_tester.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -118,19 +118,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "mtm_map/node_key_value.c",
+			"path" : "node_key_value.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "election_utilities.c",
+			"path" : "utilities.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "tests/electionTestsExample.c",
+			"path" : "tests/shai_test_election.c",
 			"sourceGroupIndex" : 0
 		}
 	],

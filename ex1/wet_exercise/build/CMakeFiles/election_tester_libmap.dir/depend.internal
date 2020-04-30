@@ -4,27 +4,23 @@
 CMakeFiles/election_tester_libmap.dir/area.c.obj
  C:/VScode/ex1/wet_exercise/area.c
  C:/VScode/ex1/wet_exercise/area.h
- C:/VScode/ex1/wet_exercise/election_utilities.h
- C:/VScode/ex1/wet_exercise/macro.h
  C:/VScode/ex1/wet_exercise/mtm_map/map.h
- C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.h
+ C:/VScode/ex1/wet_exercise/node_key_value.h
+ C:/VScode/ex1/wet_exercise/utilities.h
 CMakeFiles/election_tester_libmap.dir/election.c.obj
  C:/VScode/ex1/wet_exercise/area.h
  C:/VScode/ex1/wet_exercise/election.c
  C:/VScode/ex1/wet_exercise/election.h
- C:/VScode/ex1/wet_exercise/election_utilities.h
- C:/VScode/ex1/wet_exercise/macro.h
  C:/VScode/ex1/wet_exercise/mtm_map/map.h
-CMakeFiles/election_tester_libmap.dir/election_utilities.c.obj
- C:/VScode/ex1/wet_exercise/election_utilities.c
- C:/VScode/ex1/wet_exercise/election_utilities.h
- C:/VScode/ex1/wet_exercise/macro.h
-CMakeFiles/election_tester_libmap.dir/mtm_map/node_key_value.c.obj
- C:/VScode/ex1/wet_exercise/election_utilities.h
- C:/VScode/ex1/wet_exercise/macro.h
- C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.c
- C:/VScode/ex1/wet_exercise/mtm_map/node_key_value.h
+ C:/VScode/ex1/wet_exercise/utilities.h
+CMakeFiles/election_tester_libmap.dir/node_key_value.c.obj
+ C:/VScode/ex1/wet_exercise/node_key_value.c
+ C:/VScode/ex1/wet_exercise/node_key_value.h
+ C:/VScode/ex1/wet_exercise/utilities.h
 CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.obj
  C:/VScode/ex1/wet_exercise/election.h
  C:/VScode/ex1/wet_exercise/mtm_map/map.h
  C:/VScode/ex1/wet_exercise/tests/shai_test_election.c
+CMakeFiles/election_tester_libmap.dir/utilities.c.obj
+ C:/VScode/ex1/wet_exercise/utilities.c
+ C:/VScode/ex1/wet_exercise/utilities.h
