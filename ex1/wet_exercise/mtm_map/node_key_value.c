@@ -3,7 +3,6 @@
 
 #include "node_key_value.h"
 #include "../macro.h"
-#include "../election_utilities.h"
 struct node_t
 {
     char *key;
@@ -12,6 +11,16 @@ struct node_t
 };
 
 static bool overrideInput(char** old_val,const char* new_val);
+/**
+* getCopyOfString: Return a copy of the string given. Exactly the same
+* as the function in election_utilities, however finalCheck did not allow
+* to compile election_utilities since it is not in the same dir as mtm_map
+*
+* @param str - The string desired to copy
+* @return
+* 	Copy of the string with malloc
+*/
+static char *getCopyOfString(const char* str);
 
 NodeKeyValue nodeCreate()
 {
@@ -82,5 +91,12 @@ static bool overrideInput(char** old_val,const char* new_val)
     *old_val=copy_of_new_val;
     return true;
 }
-
+static char *getCopyOfString(const char* str)
+{
+    RETURN_ON_NULL(str,NULL);
+    char * copy_of_str = malloc(sizeof(char)*strlen(str)+1);
+    RETURN_ON_NULL(copy_of_str,NULL);
+    strcpy(copy_of_str,str);
+    return copy_of_str;
+}
 
