@@ -7,7 +7,9 @@
         "stdlib.h": "c",
         "election_utilities.h": "c",
         "area.h": "c",
-        "node_key_value.h": "c"
+        "node_key_value.h": "c",
+        "exutilities.h": "c",
+        "nodekeyvalue.h": "c"
     },
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }
