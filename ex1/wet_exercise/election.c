@@ -224,7 +224,7 @@ ElectionResult electionAddVote(Election election, int area_id, int tribe_id, int
     EXECUTE_ON_CONDITION(change_result,AREA_SUCCESS,free(tribe_id_str),ELECTION_SUCCESS);
     EXECUTE_ON_CONDITION(change_result,AREA_OUT_OF_MEMORY,free(tribe_id_str),ELECTION_OUT_OF_MEMORY);
     free(tribe_id_str);
-    return ELECTION_SUCCESS;
+    return ELECTION_SUCCESS; /// return ERROR_ELECTION ?
 }
 ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, int num_of_votes) // Shelly
 {
@@ -243,7 +243,7 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
     RETURN_ON_NULL(string_tribe_id ,ELECTION_OUT_OF_MEMORY);
 
     AreaResult change_result =areaChangeVotesToTribe(election->areas[area_index], string_tribe_id, 0-num_of_votes);
-    EXECUTE_ON_NOT_CONDITION(change_result,AREA_SUCCESS,free(string_tribe_id),ELECTION_OUT_OF_MEMORY)
+    EXECUTE_ON_NOT_CONDITION(change_result,AREA_SUCCESS,free(string_tribe_id),ELECTION_OUT_OF_MEMORY) /// return ERROR_ELECTION ? insted of ELECTION_OUT_OF_MEMORY if arearesult is AREA_NULL_ARGUEMENT
  
     free(string_tribe_id);
     return ELECTION_SUCCESS;
@@ -263,7 +263,7 @@ ElectionResult electionSetTribeName(Election election, int tribe_id, const char 
     
 // Shouldn't reach here since mapPut gets non-NULL arguements, thus returns SUCCESS or OUT_OF_MEMORY
     free(tribe_id_str);
-    return ELECTION_OUT_OF_MEMORY;
+    return ELECTION_OUT_OF_MEMORY;  /// return ERROR_ELECTION ? insted of ELECTION_OUT_OF_MEMORY
 }
 ElectionResult electionRemoveTribe(Election election, int tribe_id) // Shai
 {
