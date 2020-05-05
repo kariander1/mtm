@@ -99,46 +99,46 @@ CMakeFiles/map.dir/mtm_map/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map.dir/mtm_map/map.c.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\mtm_map\map.c -o CMakeFiles\map.dir\mtm_map\map.c.s
 
-CMakeFiles/map.dir/mtm_map/utilities.c.obj: CMakeFiles/map.dir/flags.make
-CMakeFiles/map.dir/mtm_map/utilities.c.obj: ../mtm_map/utilities.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/map.dir/mtm_map/utilities.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\map.dir\mtm_map\utilities.c.obj   -c C:\VScode\ex1\wet_exercise\mtm_map\utilities.c
+CMakeFiles/map.dir/exUtilities.c.obj: CMakeFiles/map.dir/flags.make
+CMakeFiles/map.dir/exUtilities.c.obj: ../exUtilities.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/map.dir/exUtilities.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\map.dir\exUtilities.c.obj   -c C:\VScode\ex1\wet_exercise\exUtilities.c
 
-CMakeFiles/map.dir/mtm_map/utilities.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/map.dir/mtm_map/utilities.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\mtm_map\utilities.c > CMakeFiles\map.dir\mtm_map\utilities.c.i
+CMakeFiles/map.dir/exUtilities.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/map.dir/exUtilities.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\exUtilities.c > CMakeFiles\map.dir\exUtilities.c.i
 
-CMakeFiles/map.dir/mtm_map/utilities.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map.dir/mtm_map/utilities.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\mtm_map\utilities.c -o CMakeFiles\map.dir\mtm_map\utilities.c.s
+CMakeFiles/map.dir/exUtilities.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map.dir/exUtilities.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\exUtilities.c -o CMakeFiles\map.dir\exUtilities.c.s
 
-CMakeFiles/map.dir/mtm_map/node_key_value.c.obj: CMakeFiles/map.dir/flags.make
-CMakeFiles/map.dir/mtm_map/node_key_value.c.obj: ../mtm_map/node_key_value.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/map.dir/mtm_map/node_key_value.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\map.dir\mtm_map\node_key_value.c.obj   -c C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c
+CMakeFiles/map.dir/nodeKeyValue.c.obj: CMakeFiles/map.dir/flags.make
+CMakeFiles/map.dir/nodeKeyValue.c.obj: ../nodeKeyValue.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/map.dir/nodeKeyValue.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\map.dir\nodeKeyValue.c.obj   -c C:\VScode\ex1\wet_exercise\nodeKeyValue.c
 
-CMakeFiles/map.dir/mtm_map/node_key_value.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/map.dir/mtm_map/node_key_value.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c > CMakeFiles\map.dir\mtm_map\node_key_value.c.i
+CMakeFiles/map.dir/nodeKeyValue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/map.dir/nodeKeyValue.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\nodeKeyValue.c > CMakeFiles\map.dir\nodeKeyValue.c.i
 
-CMakeFiles/map.dir/mtm_map/node_key_value.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map.dir/mtm_map/node_key_value.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\mtm_map\node_key_value.c -o CMakeFiles\map.dir\mtm_map\node_key_value.c.s
+CMakeFiles/map.dir/nodeKeyValue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/map.dir/nodeKeyValue.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\nodeKeyValue.c -o CMakeFiles\map.dir\nodeKeyValue.c.s
 
 # Object files for target map
 map_OBJECTS = \
 "CMakeFiles/map.dir/tests/map_example_test.c.obj" \
 "CMakeFiles/map.dir/mtm_map/map.c.obj" \
-"CMakeFiles/map.dir/mtm_map/utilities.c.obj" \
-"CMakeFiles/map.dir/mtm_map/node_key_value.c.obj"
+"CMakeFiles/map.dir/exUtilities.c.obj" \
+"CMakeFiles/map.dir/nodeKeyValue.c.obj"
 
 # External object files for target map
 map_EXTERNAL_OBJECTS =
 
 map.exe: CMakeFiles/map.dir/tests/map_example_test.c.obj
 map.exe: CMakeFiles/map.dir/mtm_map/map.c.obj
-map.exe: CMakeFiles/map.dir/mtm_map/utilities.c.obj
-map.exe: CMakeFiles/map.dir/mtm_map/node_key_value.c.obj
+map.exe: CMakeFiles/map.dir/exUtilities.c.obj
+map.exe: CMakeFiles/map.dir/nodeKeyValue.c.obj
 map.exe: CMakeFiles/map.dir/build.make
 map.exe: CMakeFiles/map.dir/linklibs.rsp
 map.exe: CMakeFiles/map.dir/objects1.rsp

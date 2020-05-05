@@ -6,10 +6,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/VScode/ex1/wet_exercise/area.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir/area.c.obj"
   "C:/VScode/ex1/wet_exercise/election.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir/election.c.obj"
+  "C:/VScode/ex1/wet_exercise/exUtilities.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir/exUtilities.c.obj"
   "C:/VScode/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir/mtm_map/map.c.obj"
-  "C:/VScode/ex1/wet_exercise/node_key_value.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir/node_key_value.c.obj"
+  "C:/VScode/ex1/wet_exercise/nodeKeyValue.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir/nodeKeyValue.c.obj"
   "C:/VScode/ex1/wet_exercise/tests/shai_test_election.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir/tests/shai_test_election.c.obj"
-  "C:/VScode/ex1/wet_exercise/utilities.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election_tester.dir/utilities.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

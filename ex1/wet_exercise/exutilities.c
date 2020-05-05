@@ -5,9 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "exutilities.h"
+#include "exUtilities.h"
 #define NUMBERING_BASE 10
-
 
 /**
 * getNumOfDigits: Gets the number of digits of a non-negative number

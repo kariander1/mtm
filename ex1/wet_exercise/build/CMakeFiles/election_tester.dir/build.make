@@ -112,31 +112,31 @@ CMakeFiles/election_tester.dir/mtm_map/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election_tester.dir/mtm_map/map.c.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\mtm_map\map.c -o CMakeFiles\election_tester.dir\mtm_map\map.c.s
 
-CMakeFiles/election_tester.dir/node_key_value.c.obj: CMakeFiles/election_tester.dir/flags.make
-CMakeFiles/election_tester.dir/node_key_value.c.obj: ../node_key_value.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/election_tester.dir/node_key_value.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\election_tester.dir\node_key_value.c.obj   -c C:\VScode\ex1\wet_exercise\node_key_value.c
+CMakeFiles/election_tester.dir/nodeKeyValue.c.obj: CMakeFiles/election_tester.dir/flags.make
+CMakeFiles/election_tester.dir/nodeKeyValue.c.obj: ../nodeKeyValue.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/election_tester.dir/nodeKeyValue.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\election_tester.dir\nodeKeyValue.c.obj   -c C:\VScode\ex1\wet_exercise\nodeKeyValue.c
 
-CMakeFiles/election_tester.dir/node_key_value.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/election_tester.dir/node_key_value.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\node_key_value.c > CMakeFiles\election_tester.dir\node_key_value.c.i
+CMakeFiles/election_tester.dir/nodeKeyValue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/election_tester.dir/nodeKeyValue.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\nodeKeyValue.c > CMakeFiles\election_tester.dir\nodeKeyValue.c.i
 
-CMakeFiles/election_tester.dir/node_key_value.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election_tester.dir/node_key_value.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\node_key_value.c -o CMakeFiles\election_tester.dir\node_key_value.c.s
+CMakeFiles/election_tester.dir/nodeKeyValue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election_tester.dir/nodeKeyValue.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\nodeKeyValue.c -o CMakeFiles\election_tester.dir\nodeKeyValue.c.s
 
-CMakeFiles/election_tester.dir/utilities.c.obj: CMakeFiles/election_tester.dir/flags.make
-CMakeFiles/election_tester.dir/utilities.c.obj: ../utilities.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/election_tester.dir/utilities.c.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\election_tester.dir\utilities.c.obj   -c C:\VScode\ex1\wet_exercise\utilities.c
+CMakeFiles/election_tester.dir/exUtilities.c.obj: CMakeFiles/election_tester.dir/flags.make
+CMakeFiles/election_tester.dir/exUtilities.c.obj: ../exUtilities.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/election_tester.dir/exUtilities.c.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\election_tester.dir\exUtilities.c.obj   -c C:\VScode\ex1\wet_exercise\exUtilities.c
 
-CMakeFiles/election_tester.dir/utilities.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/election_tester.dir/utilities.c.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\utilities.c > CMakeFiles\election_tester.dir\utilities.c.i
+CMakeFiles/election_tester.dir/exUtilities.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/election_tester.dir/exUtilities.c.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\VScode\ex1\wet_exercise\exUtilities.c > CMakeFiles\election_tester.dir\exUtilities.c.i
 
-CMakeFiles/election_tester.dir/utilities.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election_tester.dir/utilities.c.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\utilities.c -o CMakeFiles\election_tester.dir\utilities.c.s
+CMakeFiles/election_tester.dir/exUtilities.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/election_tester.dir/exUtilities.c.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\VScode\ex1\wet_exercise\exUtilities.c -o CMakeFiles\election_tester.dir\exUtilities.c.s
 
 CMakeFiles/election_tester.dir/tests/shai_test_election.c.obj: CMakeFiles/election_tester.dir/flags.make
 CMakeFiles/election_tester.dir/tests/shai_test_election.c.obj: ../tests/shai_test_election.c
@@ -156,8 +156,8 @@ election_tester_OBJECTS = \
 "CMakeFiles/election_tester.dir/election.c.obj" \
 "CMakeFiles/election_tester.dir/area.c.obj" \
 "CMakeFiles/election_tester.dir/mtm_map/map.c.obj" \
-"CMakeFiles/election_tester.dir/node_key_value.c.obj" \
-"CMakeFiles/election_tester.dir/utilities.c.obj" \
+"CMakeFiles/election_tester.dir/nodeKeyValue.c.obj" \
+"CMakeFiles/election_tester.dir/exUtilities.c.obj" \
 "CMakeFiles/election_tester.dir/tests/shai_test_election.c.obj"
 
 # External object files for target election_tester
@@ -166,8 +166,8 @@ election_tester_EXTERNAL_OBJECTS =
 election_tester.exe: CMakeFiles/election_tester.dir/election.c.obj
 election_tester.exe: CMakeFiles/election_tester.dir/area.c.obj
 election_tester.exe: CMakeFiles/election_tester.dir/mtm_map/map.c.obj
-election_tester.exe: CMakeFiles/election_tester.dir/node_key_value.c.obj
-election_tester.exe: CMakeFiles/election_tester.dir/utilities.c.obj
+election_tester.exe: CMakeFiles/election_tester.dir/nodeKeyValue.c.obj
+election_tester.exe: CMakeFiles/election_tester.dir/exUtilities.c.obj
 election_tester.exe: CMakeFiles/election_tester.dir/tests/shai_test_election.c.obj
 election_tester.exe: CMakeFiles/election_tester.dir/build.make
 election_tester.exe: CMakeFiles/election_tester.dir/linklibs.rsp

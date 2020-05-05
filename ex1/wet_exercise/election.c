@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "exutilities.h"
+#include "exUtilities.h"
 
 
 #define AREA_INITIAL_SIZE 1
@@ -16,9 +16,33 @@
 #define EMPTY 0
 #define NULL_POINTER -1
 
-
+    /**                     --NOTE--         
+     * 
+     * First implemetntation approach was to use ONLY maps for representing tribes areas and votes.
+     * The idea was to store in the key of the map a concatination of a tribe & area ID deliminated
+     * By the UNDERSCORE '_' charcter, thus creating a unified identifier for a vote, and storing
+     * the number of votes in the value attribute of map.
+     * 
+     * Concluding this, the election struct would be:
+     * struct election_t
+     *   {
+     * 
+     *       Map tribes;  // key = tribe ID , name = tribe name
+     *       Map areas; // key = tribe ID , name = tribe name
+     *       Map votes; // key ="<area_ID><DELIMITER='_'><tribe_ID>"" , name = number of votes
+     *   };
+     * Following this approch we wanted to implement an ADT that will manipulate strings and handle
+     * all allocations invloved.
+     * 
+     * HOWEVER - Due to different interpretations of ADT requirements and definitions, our
+     * understanding from different forum answers it would be wrong to not implement another
+     * ADT for representing tribes or areas, and so the following implementation was conducted.
+     * 
+     *                    --END OF NOTE  
+   */
 struct election_t
 {
+
     Map tribes;  // key = tribe ID , name = tribe anem
     Area *areas; // Array of areas, avoid duplication of another map-like implementation of Area.
     int area_count; // Used internally for iterating on array of areas

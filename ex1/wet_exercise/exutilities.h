@@ -2,7 +2,6 @@
 #ifndef UTILS_h_
 #define UTILS_h_
 
-
 /**
 * intToString: Converts an int to an array of characters
 *

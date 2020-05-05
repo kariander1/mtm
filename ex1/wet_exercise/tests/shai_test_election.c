@@ -1034,6 +1034,9 @@ void printElectionResult(ElectionResult result)
     case ELECTION_INVALID_VOTES:
         status_string = "ELECTION_INVALID_VOTES";
         break;
+    case ELECTION_ERROR:
+        status_string = "ELECTION_ERROR";
+        break;
     default:
         break;
     }
