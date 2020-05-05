@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "exUtilities.h"
+#include "exutilities.h"
 
 #define AREA_INITIAL_SIZE 1
 #define AREA_MULTIPLIER_SIZE 2

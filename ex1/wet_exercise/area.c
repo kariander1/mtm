@@ -2,8 +2,8 @@
 
 #include "area.h"
 #include "mtm_map/map.h"
-#include "exUtilities.h"
-#include "nodeKeyValue.h"
+#include "exutilities.h"
+#include "nodekeyvalue.h"
 
 #define INITIAL_ZERO "0"
 struct area_t
