@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/election_tester_libmap.dir/area.c.obj"
   "CMakeFiles/election_tester_libmap.dir/election.c.obj"
-  "CMakeFiles/election_tester_libmap.dir/exUtilities.c.obj"
-  "CMakeFiles/election_tester_libmap.dir/nodeKeyValue.c.obj"
+  "CMakeFiles/election_tester_libmap.dir/exutilities.c.obj"
+  "CMakeFiles/election_tester_libmap.dir/nodekeyvalue.c.obj"
   "CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.obj"
   "election_tester_libmap.exe"
   "election_tester_libmap.exe.manifest"

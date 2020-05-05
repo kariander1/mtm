@@ -22,7 +22,7 @@ struct node_t
 * 	true - if allocation succeeded 
 *   false - ifallocation failed 
 */
-static bool overrideInput(char** old_val,const char* new_val);
+static NodeResult overrideInput(char** old_val,const char* new_val);
 
 NodeKeyValue nodeCreate()
 {
@@ -67,14 +67,14 @@ void nodePutNext(NodeKeyValue node, NodeKeyValue new_next)
     node->next = new_next;
     return;
 }
-bool nodePutkey(NodeKeyValue node,const char* new_key)
+NodeResult nodePutkey(NodeKeyValue node,const char* new_key)
 {
-    RETURN_ON_NULL(node,false);
+    RETURN_ON_NULL(node,NODE_NULL_ARGUEMENT);
     return overrideInput(&(node->key),(new_key));
 }
-bool nodePutValue(NodeKeyValue node,const char* new_value)
+NodeResult nodePutValue(NodeKeyValue node,const char* new_value)
 {
-    RETURN_ON_NULL(node,false);
+    RETURN_ON_NULL(node,NODE_NULL_ARGUEMENT);
     return overrideInput(&(node->value),(new_value));
 }
 
@@ -85,12 +85,12 @@ void nodePromoteToNext(NodeKeyValue *node)
     return;
 }
 
-static bool overrideInput(char** old_val,const char* new_val)
+static NodeResult overrideInput(char** old_val,const char* new_val)
 {
     char* copy_of_new_val = getCopyOfString(new_val);
-    RETURN_ON_NULL(copy_of_new_val,false);
+    RETURN_ON_NULL(copy_of_new_val,NODE_OUT_OF_MEMORY);
     free(*old_val);
     *old_val=copy_of_new_val;
-    return true;
+    return NODE_SUCCESS;
 }
 

@@ -5,6 +5,11 @@
 
 typedef struct node_t* NodeKeyValue;
 
+typedef enum nodeResult_t {
+    NODE_OUT_OF_MEMORY=1,
+    NODE_NULL_ARGUEMENT,
+    NODE_SUCCESS
+} NodeResult;
 /**
 * nodeCreate: creates a new node with key and value 
 * initial all nodeKeyValue attributes to NULL
@@ -75,7 +80,7 @@ void nodePutNext(NodeKeyValue node, NodeKeyValue new_next);
 * 	Boolean whether writing the new key was successfull.
 *   If false - then assumed there is a memory error.
 */
-bool nodePutkey(NodeKeyValue node,const char* new_key);
+NodeResult nodePutkey(NodeKeyValue node,const char* new_key);
 /**
 * 	nodePutValue: Set the current value of the node to be the given string.
 *   Allocates a new string, and releases the old one in case it existed 
@@ -86,7 +91,7 @@ bool nodePutkey(NodeKeyValue node,const char* new_key);
 * 	Boolean whether writing the new value was successfull.
 *   If false - then assumed there is a memory error.
 */
-bool nodePutValue(NodeKeyValue node,const char* new_value);
+NodeResult nodePutValue(NodeKeyValue node,const char* new_value);
 /**
 * 	nodePromoteToNext: Promotes the given node to the next node. Next node can be NULL
 *

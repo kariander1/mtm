@@ -254,7 +254,7 @@ ElectionResult electionSetTribeName(Election election, int tribe_id, const char 
 
     // Shouldn't reach here since mapPut gets non-NULL arguements, thus returns SUCCESS or OUT_OF_MEMORY
     free(tribe_id_str);
-    return ELECTION_OUT_OF_MEMORY; /// return ERROR_ELECTION ? insted of ELECTION_OUT_OF_MEMORY
+    return ELECTION_OUT_OF_MEMORY; 
 }
 ElectionResult electionRemoveTribe(Election election, int tribe_id) // Shai
 {

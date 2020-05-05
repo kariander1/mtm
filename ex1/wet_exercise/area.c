@@ -28,7 +28,7 @@ Area areaCreate(int area_id, const char *area_name)
     // Initialize area_id
     char *area_id_str = intToString(area_id);
     EXECUTE_ON_CONDITION(area_id_str, NULL, areaDestroy(new_area), NULL);
-    if (!nodePutkey(new_area->area_identifiers, area_id_str))
+    if (nodePutkey(new_area->area_identifiers, area_id_str) != NODE_SUCCESS)
     {
         free(area_id_str);
         areaDestroy(new_area);
@@ -37,7 +37,7 @@ Area areaCreate(int area_id, const char *area_name)
     free(area_id_str); // the value is copied inside node and therefore can be freed
 
     // Initialize name
-    EXECUTE_ON_CONDITION(nodePutValue(new_area->area_identifiers, area_name), false, areaDestroy(new_area), NULL);
+    EXECUTE_ON_NOT_CONDITION(nodePutValue(new_area->area_identifiers, area_name), NODE_SUCCESS, areaDestroy(new_area), NULL);
 
     // Initialize map
     Map new_map = mapCreate();
