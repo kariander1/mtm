@@ -5,8 +5,8 @@
 #include <string.h>
 
 #include "map.h"
-#include "../exUtilities.h"
-#include "../nodeKeyValue.h"
+#include "../exutilities.h"
+#include "../nodekeyvalue.h"
 
 #define ZERO_ELEMENTS 0
 #define SIZE_OF_NULL_MAP -1
