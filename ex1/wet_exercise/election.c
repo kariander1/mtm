@@ -392,7 +392,7 @@ static ElectionResult electionChangeVote(Election election, int area_id, int tri
     EXECUTE_ON_CONDITION(change_result, AREA_SUCCESS, free(tribe_id_str), ELECTION_SUCCESS);
     EXECUTE_ON_CONDITION(change_result, AREA_OUT_OF_MEMORY, free(tribe_id_str), ELECTION_OUT_OF_MEMORY);
     free(tribe_id_str);
-    return ELECTION_ERROR; // Shou;dn't reach here since results will be only SUCCESS or OUT_OF_MEMORY
+    return ELECTION_OUT_OF_MEMORY; // Shou;dn't reach here since results will be only SUCCESS or OUT_OF_MEMORY
 }
 static void areasDestroy(Election election)
 {
