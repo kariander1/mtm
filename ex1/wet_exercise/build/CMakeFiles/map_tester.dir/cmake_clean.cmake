@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/map_tester.dir/exutilities.c.obj"
+  "CMakeFiles/map_tester.dir/exUtilities.c.obj"
   "CMakeFiles/map_tester.dir/mtm_map/map.c.obj"
-  "CMakeFiles/map_tester.dir/nodekeyvalue.c.obj"
+  "CMakeFiles/map_tester.dir/nodeKeyValue.c.obj"
   "CMakeFiles/map_tester.dir/tests/shai_test.c.obj"
   "libmap_tester.dll.a"
   "map_tester.exe"

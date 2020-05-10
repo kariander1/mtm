@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "map_group.exe"
+			"path" : "election_tester.exe"
 		},
 		{
-			"path" : "map_group.pdb"
+			"path" : "election_tester.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 22,
+				"line" : 31,
 				"parent" : 0
 			}
 		]
@@ -47,11 +47,13 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4,
+				5
 			]
 		}
 	],
-	"id" : "map_group::@6890427a1f51a3e7e1df",
+	"id" : "election_tester::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -71,8 +73,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "map_group",
-	"nameOnDisk" : "map_group.exe",
+	"name" : "election_tester",
+	"nameOnDisk" : "election_tester.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -87,7 +89,9 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4,
+				5
 			]
 		}
 	],
@@ -96,7 +100,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "tests/test_map_from_group.c",
+			"path" : "election.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "area.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -108,13 +118,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "exutilities.c",
+			"path" : "nodeKeyValue.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "nodekeyvalue.c",
+			"path" : "exUtilities.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "tests/shai_test_election.c",
 			"sourceGroupIndex" : 0
 		}
 	],

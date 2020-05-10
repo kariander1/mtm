@@ -36,9 +36,6 @@ default_target: all
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
-# Command-line flag to silence nested $(MAKE).
-$(VERBOSE)MAKESILENT = -s
-
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -101,15 +98,15 @@ clean: CMakeFiles/election_tester.dir/clean
 
 # All Build rule for target.
 CMakeFiles/map.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/build
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/depend
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=21,22,23,24,25 "Built target map"
 .PHONY : CMakeFiles/map.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/map.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/map.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/map.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/map.dir/rule
 
@@ -120,7 +117,7 @@ map: CMakeFiles/map.dir/rule
 
 # clean rule for target.
 CMakeFiles/map.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/clean
+	$(MAKE) -f CMakeFiles\map.dir\build.make CMakeFiles/map.dir/clean
 .PHONY : CMakeFiles/map.dir/clean
 
 #=============================================================================
@@ -128,15 +125,15 @@ CMakeFiles/map.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/map_tester.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/build
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/depend
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=31,32,33,34,35 "Built target map_tester"
 .PHONY : CMakeFiles/map_tester.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/map_tester.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/map_tester.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/map_tester.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/map_tester.dir/rule
 
@@ -147,7 +144,7 @@ map_tester: CMakeFiles/map_tester.dir/rule
 
 # clean rule for target.
 CMakeFiles/map_tester.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/clean
+	$(MAKE) -f CMakeFiles\map_tester.dir\build.make CMakeFiles/map_tester.dir/clean
 .PHONY : CMakeFiles/map_tester.dir/clean
 
 #=============================================================================
@@ -155,15 +152,15 @@ CMakeFiles/map_tester.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/map_group.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/build
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/depend
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=26,27,28,29,30 "Built target map_group"
 .PHONY : CMakeFiles/map_group.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/map_group.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/map_group.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/map_group.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/map_group.dir/rule
 
@@ -174,7 +171,7 @@ map_group: CMakeFiles/map_group.dir/rule
 
 # clean rule for target.
 CMakeFiles/map_group.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/clean
+	$(MAKE) -f CMakeFiles\map_group.dir\build.make CMakeFiles/map_group.dir/clean
 .PHONY : CMakeFiles/map_group.dir/clean
 
 #=============================================================================
@@ -182,15 +179,15 @@ CMakeFiles/map_group.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/election_tester_libmap.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/build
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/depend
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=15,16,17,18,19,20 "Built target election_tester_libmap"
 .PHONY : CMakeFiles/election_tester_libmap.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/election_tester_libmap.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/election_tester_libmap.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/election_tester_libmap.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/election_tester_libmap.dir/rule
 
@@ -201,7 +198,7 @@ election_tester_libmap: CMakeFiles/election_tester_libmap.dir/rule
 
 # clean rule for target.
 CMakeFiles/election_tester_libmap.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/clean
+	$(MAKE) -f CMakeFiles\election_tester_libmap.dir\build.make CMakeFiles/election_tester_libmap.dir/clean
 .PHONY : CMakeFiles/election_tester_libmap.dir/clean
 
 #=============================================================================
@@ -209,15 +206,15 @@ CMakeFiles/election_tester_libmap.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/election.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/build
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/depend
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target election"
 .PHONY : CMakeFiles/election.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/election.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/election.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/election.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/election.dir/rule
 
@@ -228,7 +225,7 @@ election: CMakeFiles/election.dir/rule
 
 # clean rule for target.
 CMakeFiles/election.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/clean
+	$(MAKE) -f CMakeFiles\election.dir\build.make CMakeFiles/election.dir/clean
 .PHONY : CMakeFiles/election.dir/clean
 
 #=============================================================================
@@ -236,15 +233,15 @@ CMakeFiles/election.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/election_tester.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/build
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/depend
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex1\wet_exercise\build\CMakeFiles --progress-num=8,9,10,11,12,13,14 "Built target election_tester"
 .PHONY : CMakeFiles/election_tester.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/election_tester.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/election_tester.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/election_tester.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex1\wet_exercise\build\CMakeFiles 0
 .PHONY : CMakeFiles/election_tester.dir/rule
 
@@ -255,7 +252,7 @@ election_tester: CMakeFiles/election_tester.dir/rule
 
 # clean rule for target.
 CMakeFiles/election_tester.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/clean
+	$(MAKE) -f CMakeFiles\election_tester.dir\build.make CMakeFiles/election_tester.dir/clean
 .PHONY : CMakeFiles/election_tester.dir/clean
 
 #=============================================================================

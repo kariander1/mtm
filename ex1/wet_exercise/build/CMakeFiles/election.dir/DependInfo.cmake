@@ -6,9 +6,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/VScode/ex1/wet_exercise/area.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir/area.c.obj"
   "C:/VScode/ex1/wet_exercise/election.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir/election.c.obj"
-  "C:/VScode/ex1/wet_exercise/exutilities.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir/exutilities.c.obj"
+  "C:/VScode/ex1/wet_exercise/exUtilities.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir/exUtilities.c.obj"
   "C:/VScode/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir/mtm_map/map.c.obj"
-  "C:/VScode/ex1/wet_exercise/nodekeyvalue.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir/nodekeyvalue.c.obj"
+  "C:/VScode/ex1/wet_exercise/nodeKeyValue.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir/nodekeyvalue.c.obj"
   "C:/VScode/ex1/wet_exercise/tests/electionTestsExample.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/election.dir/tests/electionTestsExample.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
