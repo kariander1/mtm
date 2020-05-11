@@ -39,8 +39,16 @@ char *getCopyOfString(const char* str);
     {                                                \
         return (return_value);                       \
     }
-
-       
+ 
+/*!
+* Macro for shortening returning values for a certain condition of a object.
+*/
+#define RETURN_ON_NOT_CONDITION(object,comparator, return_value) \
+    if ((object) != (comparator))                                   \
+    {                                                \
+        return (return_value);                       \
+    }
+        
 /*!
 * Macro for shortening a return with a certain condition on the object.
 */

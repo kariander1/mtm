@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "nodeKeyValue.h"
-#include "exUtilities.h"
+#include "nodekeyvalue.h"
+#include "exutilities.h"
 
 
 struct node_t
