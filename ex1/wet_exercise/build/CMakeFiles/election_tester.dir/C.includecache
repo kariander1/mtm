@@ -6,33 +6,31 @@
 
 #IncludeRegexTransform: 
 
+C:/VScode/ex1/wet_exercise/area.c
+stdlib.h
+-
+area.h
+C:/VScode/ex1/wet_exercise/area.h
+mtm_map/map.h
+C:/VScode/ex1/wet_exercise/mtm_map/map.h
+exutilities.h
+C:/VScode/ex1/wet_exercise/exutilities.h
+nodekeyvalue.h
+C:/VScode/ex1/wet_exercise/nodekeyvalue.h
+
 C:/VScode/ex1/wet_exercise/area.h
 stdbool.h
 -
 
-C:/VScode/ex1/wet_exercise/election.c
-election.h
-C:/VScode/ex1/wet_exercise/election.h
-mtm_map/map.h
+C:/VScode/ex1/wet_exercise/exutilities.h
+
 C:/VScode/ex1/wet_exercise/mtm_map/map.h
-area.h
-C:/VScode/ex1/wet_exercise/area.h
-stdlib.h
+stdbool.h
 -
 string.h
 -
-stdio.h
--
-exUtilities.h
-C:/VScode/ex1/wet_exercise/exUtilities.h
 
-C:/VScode/ex1/wet_exercise/election.h
-mtm_map/map.h
-C:/VScode/ex1/wet_exercise/mtm_map/map.h
-
-C:/VScode/ex1/wet_exercise/exUtilities.h
-
-C:/VScode/ex1/wet_exercise/mtm_map/map.h
+C:/VScode/ex1/wet_exercise/nodekeyvalue.h
 stdbool.h
 -
 string.h

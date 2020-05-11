@@ -14,7 +14,6 @@
 #define LEGAL_DELIMITER ' '
 #define EMPTY 0
 #define NULL_POINTER -1
-#define DONT_CARE -1
 
 /**                     --NOTE--         
      * 
@@ -142,12 +141,13 @@ static MapResult initializeTribesToArea(Area area, Map tribes);
 * @param election - the election to check
 * @param id - the id to check
 * @param name - the name to check
+* @param name_dont_care - whether to discard name check or no. True will discard the check.
 * @return
 * 	ELECTION_NULL_ARGUMENT -  if election is NULL
 *   ELECTION_INVALID_ID - if ID is invalid
 *   ELECTION_SUCCESS - if all attributes are OK
 */
-static inline ElectionResult checkElectionInput(Election election,int id, const char *name );
+static inline ElectionResult checkElectionInput(Election election,int id, const char *name,bool name_dont_care);
 
 
 Election electionCreate()
@@ -183,7 +183,7 @@ void electionDestroy(Election election)
 }
 ElectionResult electionAddTribe(Election election, int tribe_id, const char *tribe_name)
 {
-    ElectionResult result = checkElectionInput(election,tribe_id, tribe_name);
+    ElectionResult result = checkElectionInput(election,tribe_id, tribe_name,false);
     RETURN_ON_NOT_CONDITION(result, ELECTION_SUCCESS, result);
 
     char *tribe_id_str = intToString(tribe_id); // create the char* for the mapGet function
@@ -208,7 +208,7 @@ ElectionResult electionAddTribe(Election election, int tribe_id, const char *tri
 
 ElectionResult electionAddArea(Election election, int area_id, const char *area_name)
 {
-    ElectionResult result = checkElectionInput(election,area_id, area_name);
+    ElectionResult result = checkElectionInput(election,area_id, area_name,false);
     RETURN_ON_NOT_CONDITION(result, ELECTION_SUCCESS, result);
 
     if (getAreaIndexById(election, area_id) != AREA_NOT_FOUND)
@@ -235,8 +235,8 @@ ElectionResult electionAddArea(Election election, int area_id, const char *area_
 
 char *electionGetTribeName(Election election, int tribe_id)
 {
-    ElectionResult result = checkElectionInput(election,tribe_id, DONT_CARE);
-    RETURN_ON_NOT_CONDITION(result, ELECTION_SUCCESS, result);
+    ElectionResult result = checkElectionInput(election,tribe_id, NULL,true);
+    RETURN_ON_NOT_CONDITION(result, ELECTION_SUCCESS, NULL);
 
     char *string_of_tribe_id = intToString(tribe_id);   // create the char* for the mapGet function
     RETURN_ON_NULL(string_of_tribe_id, NULL);           // check if allocation of string_of_int failed
@@ -255,7 +255,7 @@ ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, 
 }
 ElectionResult electionSetTribeName(Election election, int tribe_id, const char *tribe_name)
 {
-    ElectionResult result = checkElectionInput(election,tribe_id, tribe_name);
+    ElectionResult result = checkElectionInput(election,tribe_id, tribe_name,false);
     RETURN_ON_NOT_CONDITION(result, ELECTION_SUCCESS, result);
 
     char *tribe_id_str = intToString(tribe_id);
@@ -270,9 +270,9 @@ ElectionResult electionSetTribeName(Election election, int tribe_id, const char 
     free(tribe_id_str);
     return ELECTION_OUT_OF_MEMORY; 
 }
-ElectionResult electionRemoveTribe(Election election, int tribe_id) // Shai
+ElectionResult electionRemoveTribe(Election election, int tribe_id)
 {
-    ElectionResult result = checkElectionInput(election,tribe_id, DONT_CARE);
+    ElectionResult result = checkElectionInput(election,tribe_id, NULL,true);
     RETURN_ON_NOT_CONDITION(result, ELECTION_SUCCESS, result);
 
     char *tribe_id_str = intToString(tribe_id);
@@ -385,8 +385,9 @@ static bool isLegalName(const char *name)
 
 static ElectionResult electionChangeVote(Election election, int area_id, int tribe_id, int num_of_votes, bool add_operation)
 {
+    // Will not use checkElectionInput since it is to much handling for a single more arguement
     RETURN_ON_NULL(election, ELECTION_NULL_ARGUMENT);
-    RETURN_ON_NULL(isLegalId(area_id), ELECTION_INVALID_ID);
+    RETURN_ON_NULL(isLegalId(area_id), ELECTION_INVALID_ID); 
     RETURN_ON_NULL(isLegalId(tribe_id), ELECTION_INVALID_ID);
     RETURN_ON_NULL(isLegalVotes(num_of_votes), ELECTION_INVALID_VOTES);
     // Arguements are valid
@@ -407,11 +408,7 @@ static ElectionResult electionChangeVote(Election election, int area_id, int tri
     EXECUTE_ON_CONDITION(change_result, AREA_SUCCESS, free(tribe_id_str), ELECTION_SUCCESS);
     EXECUTE_ON_CONDITION(change_result, AREA_OUT_OF_MEMORY, free(tribe_id_str), ELECTION_OUT_OF_MEMORY);
     free(tribe_id_str);
-<<<<<<< HEAD
     return ELECTION_OUT_OF_MEMORY; // Shouldn't reach here since results will be only SUCCESS or OUT_OF_MEMORY
-=======
-    return ELECTION_OUT_OF_MEMORY; // Shou;dn't reach here since results will be only SUCCESS or OUT_OF_MEMORY
->>>>>>> 2070a3a95e48c2dfa50252acfb5320b7d26af4d2
 }
 static void areasDestroy(Election election)
 {
@@ -442,15 +439,14 @@ static MapResult initializeTribesToArea(Area area, Map tribes)
     }
     return MAP_SUCCESS;
 }
-static inline ElectionResult checkElectionInput(Election election,int id, const char *name )
+static inline ElectionResult checkElectionInput(Election election,int id, const char *name,bool name_dont_care)
 {
-    if (name != DONT_CARE){
+    if (!name_dont_care)
+    {
         RETURN_ON_NULL(name, ELECTION_NULL_ARGUMENT);
     }
-    if (id != DONT_CARE){
-        RETURN_ON_NULL(isLegalId(id), ELECTION_INVALID_ID);
-    }
+
     RETURN_ON_NULL(election, ELECTION_NULL_ARGUMENT);
-    
+    RETURN_ON_NULL(isLegalId(id), ELECTION_INVALID_ID);
     return ELECTION_SUCCESS;
 }

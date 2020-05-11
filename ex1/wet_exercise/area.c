@@ -90,7 +90,9 @@ char *areaGetMostVotesTribe(Area area)
         }
         else if (num_of_votes == max_num_of_votes)
         {
-            max_votes_tribe = (stringToInt(max_votes_tribe) < stringToInt(current_tribe) ? max_votes_tribe : current_tribe); // get the tribe with the lowest id
+            int current_tribe_votes = stringToInt(current_tribe);
+            int max_votes = stringToInt(max_votes_tribe);
+            max_votes_tribe = (max_votes < current_tribe_votes  ? max_votes_tribe : current_tribe);
         }
     }
     return max_votes_tribe;

@@ -16,25 +16,25 @@ set(CMAKE_C_FLAGS ${MTM_FLAGS_DEBUG})
 
 
 # EXE for map with given tests
-add_executable(map tests/map_example_test.c mtm_map/map.c exUtilities.c nodeKeyValue.c)
+add_executable(map tests/map_example_test.c mtm_map/map.c exutilities.c nodekeyvalue.c)
 
 # EXE for map with given tests from group
-add_executable(map_group tests/test_map_from_group.c mtm_map/map.c exUtilities.c nodeKeyValue.c)
+add_executable(map_group tests/test_map_from_group.c mtm_map/map.c exutilities.c nodekeyvalue.c)
 
 # EXE for election with given tests
-add_executable(election election.c area.c mtm_map/map.c nodeKeyValue.c exUtilities.c tests/electionTestsExample.c)
+add_executable(election election.c area.c mtm_map/map.c nodekeyvalue.c exutilities.c tests/electionTestsExample.c)
 
 # EXE for map_tester with our tester
-add_executable(map_tester tests/shai_test.c mtm_map/map.c exUtilities.c nodeKeyValue.c)
+add_executable(map_tester tests/shai_test.c mtm_map/map.c exutilities.c nodekeyvalue.c)
 
 # EXE for election_tester with our tester
-add_executable(election_tester election.c area.c mtm_map/map.c nodeKeyValue.c exUtilities.c tests/shai_test_election.c)
+add_executable(election_tester election.c area.c mtm_map/map.c nodekeyvalue.c exutilities.c tests/shai_test_election.c)
 
 # EXE for election_tester with our tester linked with given map
 link_directories(.)
-add_executable(election_tester_libmap election.c area.c nodeKeyValue.c exUtilities.c tests/shai_test_election.c)
+add_executable(election_tester_libmap election.c area.c nodekeyvalue.c exutilities.c tests/shai_test_election.c)
 target_link_libraries(election_tester_libmap libmap.a)
 
 
 
-#add_executable(mtm_node mtm_map/nodeKeyValue.c election_exUtilities.c)
+#add_executable(mtm_node mtm_map/nodekeyvalue.c election_exutilities.c)

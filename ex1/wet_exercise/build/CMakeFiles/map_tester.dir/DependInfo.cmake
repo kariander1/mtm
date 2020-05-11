@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/VScode/ex1/wet_exercise/exUtilities.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map_tester.dir/exUtilities.c.obj"
+  "C:/VScode/ex1/wet_exercise/exutilities.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map_tester.dir/exUtilities.c.obj"
   "C:/VScode/ex1/wet_exercise/mtm_map/map.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map_tester.dir/mtm_map/map.c.obj"
-  "C:/VScode/ex1/wet_exercise/nodeKeyValue.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map_tester.dir/nodekeyvalue.c.obj"
+  "C:/VScode/ex1/wet_exercise/nodekeyvalue.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map_tester.dir/nodekeyvalue.c.obj"
   "C:/VScode/ex1/wet_exercise/tests/shai_test.c" "C:/VScode/ex1/wet_exercise/build/CMakeFiles/map_tester.dir/tests/shai_test.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

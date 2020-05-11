@@ -6,7 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/VScode/ex1/wet_exercise/exUtilities.h
+C:/VScode/ex1/wet_exercise/exutilities.c
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+exutilities.h
+C:/VScode/ex1/wet_exercise/exutilities.h
+
+C:/VScode/ex1/wet_exercise/exutilities.h
 
 C:/VScode/ex1/wet_exercise/mtm_map/map.c
 stdlib.h
@@ -15,10 +25,10 @@ string.h
 -
 map.h
 C:/VScode/ex1/wet_exercise/mtm_map/map.h
-../exUtilities.h
-C:/VScode/ex1/wet_exercise/exUtilities.h
-../nodeKeyValue.h
-C:/VScode/ex1/wet_exercise/nodekeyvalue.h
+../exutilities.h
+C:/VScode/ex1/wet_exercise/exutilities.h
+../nodekeyvalue.h
+C:/VScode/ex1/wet_exercise/nodeKeyValue.h
 
 C:/VScode/ex1/wet_exercise/mtm_map/map.h
 stdbool.h
@@ -37,14 +47,8 @@ stdlib.h
 -
 string.h
 -
-nodeKeyValue.h
+nodekeyvalue.h
 C:/VScode/ex1/wet_exercise/nodeKeyValue.h
-exUtilities.h
-C:/VScode/ex1/wet_exercise/exUtilities.h
-
-C:/VScode/ex1/wet_exercise/nodekeyvalue.h
-stdbool.h
--
-string.h
--
+exutilities.h
+C:/VScode/ex1/wet_exercise/exutilities.h
 

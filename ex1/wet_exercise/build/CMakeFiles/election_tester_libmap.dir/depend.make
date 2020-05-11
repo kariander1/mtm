@@ -3,22 +3,22 @@
 
 CMakeFiles/election_tester_libmap.dir/area.c.obj: ../area.c
 CMakeFiles/election_tester_libmap.dir/area.c.obj: ../area.h
-CMakeFiles/election_tester_libmap.dir/area.c.obj: ../exUtilities.h
+CMakeFiles/election_tester_libmap.dir/area.c.obj: ../exutilities.h
 CMakeFiles/election_tester_libmap.dir/area.c.obj: ../mtm_map/map.h
 CMakeFiles/election_tester_libmap.dir/area.c.obj: ../nodekeyvalue.h
 
 CMakeFiles/election_tester_libmap.dir/election.c.obj: ../area.h
 CMakeFiles/election_tester_libmap.dir/election.c.obj: ../election.c
 CMakeFiles/election_tester_libmap.dir/election.c.obj: ../election.h
-CMakeFiles/election_tester_libmap.dir/election.c.obj: ../exUtilities.h
+CMakeFiles/election_tester_libmap.dir/election.c.obj: ../exutilities.h
 CMakeFiles/election_tester_libmap.dir/election.c.obj: ../mtm_map/map.h
 
-CMakeFiles/election_tester_libmap.dir/exUtilities.c.obj: ../exUtilities.c
-CMakeFiles/election_tester_libmap.dir/exUtilities.c.obj: ../exUtilities.h
+CMakeFiles/election_tester_libmap.dir/exUtilities.c.obj: ../exutilities.c
+CMakeFiles/election_tester_libmap.dir/exUtilities.c.obj: ../exutilities.h
 
-CMakeFiles/election_tester_libmap.dir/nodekeyvalue.c.obj: ../exUtilities.h
-CMakeFiles/election_tester_libmap.dir/nodekeyvalue.c.obj: ../nodeKeyValue.h
+CMakeFiles/election_tester_libmap.dir/nodekeyvalue.c.obj: ../exutilities.h
 CMakeFiles/election_tester_libmap.dir/nodekeyvalue.c.obj: ../nodekeyvalue.c
+CMakeFiles/election_tester_libmap.dir/nodekeyvalue.c.obj: ../nodekeyvalue.h
 
 CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.obj: ../election.h
 CMakeFiles/election_tester_libmap.dir/tests/shai_test_election.c.obj: ../mtm_map/map.h

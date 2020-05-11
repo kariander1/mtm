@@ -13,50 +13,22 @@ area.h
 C:/VScode/ex1/wet_exercise/area.h
 mtm_map/map.h
 C:/VScode/ex1/wet_exercise/mtm_map/map.h
-exUtilities.h
-C:/VScode/ex1/wet_exercise/exUtilities.h
-nodeKeyValue.h
+exutilities.h
+C:/VScode/ex1/wet_exercise/exutilities.h
+nodekeyvalue.h
 C:/VScode/ex1/wet_exercise/nodekeyvalue.h
 
 C:/VScode/ex1/wet_exercise/area.h
 stdbool.h
 -
 
-C:/VScode/ex1/wet_exercise/exUtilities.h
-
-C:/VScode/ex1/wet_exercise/mtm_map/map.c
-stdlib.h
--
-string.h
--
-map.h
-C:/VScode/ex1/wet_exercise/mtm_map/map.h
-../exUtilities.h
-C:/VScode/ex1/wet_exercise/exUtilities.h
-../nodeKeyValue.h
-C:/VScode/ex1/wet_exercise/nodeKeyValue.h
+C:/VScode/ex1/wet_exercise/exutilities.h
 
 C:/VScode/ex1/wet_exercise/mtm_map/map.h
 stdbool.h
 -
 string.h
 -
-
-C:/VScode/ex1/wet_exercise/nodeKeyValue.h
-stdbool.h
--
-string.h
--
-
-C:/VScode/ex1/wet_exercise/nodekeyvalue.c
-stdlib.h
--
-string.h
--
-nodeKeyValue.h
-C:/VScode/ex1/wet_exercise/nodeKeyValue.h
-exUtilities.h
-C:/VScode/ex1/wet_exercise/exUtilities.h
 
 C:/VScode/ex1/wet_exercise/nodekeyvalue.h
 stdbool.h
