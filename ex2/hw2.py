@@ -184,10 +184,12 @@ def calcCompetitionsResults(competitors_in_competitions):
         [competition_name, winning_gold_country, winning_silver_country, winning_bronze_country]
     '''
     competition_list = [] # list of all competition names
-    # competition_dictionary =  {competition_name:{type : "",
-    #                    participants : [list of participants], 
-    #                    countries : [list of countries by participants],
-    #                     results: [list of results by participants] }, next_competition .....
+    # competition_dictionary =  {competition_name:{
+    #                               type : "",
+    #                               participants : [list of participants], 
+    #                               countries : [list of countries by participants],
+    #                               results: [list of results by participants] }, 
+    #                            next_competition .....
     # }
     competition_dictionary = {} 
     forbidden_participants = {} # competition -> [ids]
@@ -219,8 +221,6 @@ def calcCompetitionsResults(competitors_in_competitions):
         appendCompetitorToCompetition(current_dictionary, parameter_id, parameter_country, parameter_result, competition_dictionary_keys )
         
     return getListOfWinners(competition_dictionary, competition_list, competition_dictionary_keys)
-
-
 
 
 def initializeParametersOfCompetition(current_competition_dictionary, parameters , competitors_keys, dictionary_keys):
