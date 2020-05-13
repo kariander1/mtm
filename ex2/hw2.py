@@ -183,11 +183,100 @@ def calcCompetitionsResults(competitors_in_competitions):
         Every record in the list contains the competition name and the champs, in the following format:
         [competition_name, winning_gold_country, winning_silver_country, winning_bronze_country]
     '''
+    competition_list = [] # list of all competition names
+    # competition_dictionary =  {competition_name:{type : "",
+    #                    participants : [list of participants], 
+    #                    countries : [list of countries by participants],
+    #                     results: [list of results by participants] }, next_competition .....
+    # }
+    competition_dictionary = {} 
+    forbidden_participants = {} # competition -> [ids]
+    competitors_keys = ['competition name', 'competition type','competitor id','competitor country', 'result']
+    competition_dictionary_keys = ['type','participants', 'countries', 'results' ]
+
+    for parameters in competitors_in_competitions:
+        parameter_name = parameters[competitors_keys[0]]
+        parameter_id = parameters[competitors_keys[2]]
+        parameter_country = parameters[competitors_keys[3]]
+        parameter_result = parameters[competitors_keys[4]]
+        
+        if (parameter_name not in  competition_list): # check if the competition exsists
+            competition_list.append(parameter_name)
+            initializeParametersOfCompetition (competition_dictionary, parameters, competitors_keys,competition_dictionary_keys )
+            initializeForbiddenParticipants(forbidden_participants, parameter_name)
+        
+        current_dictionary = competition_dictionary[parameter_name]
+
+        if (parameter_id in current_dictionary[competition_dictionary_keys[1]]): #if the participant is already in the competition
+            removeParticipent(current_dictionary, parameter_id, competition_dictionary_keys )
+            # add id to forbidden lists of this competition
+            forbidden_participants[parameter_name].append(parameter_id)
+            continue
+
+        if (parameter_id in forbidden_participants[parameter_name]):
+            continue
+
+        appendCompetitorToCompetition(current_dictionary, parameter_id, parameter_country, parameter_result, competition_dictionary_keys )
+        
+    return getListOfWinners(competition_dictionary, competition_list, competition_dictionary_keys)
+
+
+
+
+def initializeParametersOfCompetition(current_competition_dictionary, parameters , competitors_keys, dictionary_keys):
+    competition_name = parameters[competitors_keys[0]] 
+    competition_type = parameters[competitors_keys[1]]
+    current_competition_dictionary[competition_name] = {} 
+    current_competition_dictionary[competition_name][dictionary_keys[0]] = competition_type
+
+    for x in range(1,len(dictionary_keys)): #create a list of participants, countries, results
+        current_competition_dictionary[competition_name][dictionary_keys[x]] = []
+
+def initializeForbiddenParticipants(forbidden_list, competition_name):
+    forbidden_list[competition_name] = []
+
+
+def removeParticipent(current_competition_dictionary, competitor_id , dictionary_keys):
+    participant_index = current_competition_dictionary[dictionary_keys[1]].index(competitor_id)
+    for x in range(1,len(dictionary_keys)):
+        list_to_delete_value = current_competition_dictionary[dictionary_keys[x]]
+        del list_to_delete_value[participant_index]
+
+def appendCompetitorToCompetition(current_competition_dictionary, id, country, result, dictionary_keys ):
+    current_competition_dictionary[dictionary_keys[1]].append(id)
+    current_competition_dictionary[dictionary_keys[2]].append(country)
+    current_competition_dictionary[dictionary_keys[3]].append(result)
+
+def getListOfWinners(competition_dictionary, competition_list, dictionary_keys):
     competitions_champs = []
-    # TODO Part A, Task 3.5
-    
+    calculate_winner = {"untimed": getIndexOfMax, "timed": getIndexOfMin, "knockout": getIndexOfMin}
+
+    for competition in competition_list:
+        competition_winners_list = []
+        competition_winners_list.append(competition)
+        current_dictionary = competition_dictionary[competition]
+        participants_list = current_dictionary[dictionary_keys[1]]
+        results_list = current_dictionary[dictionary_keys[3]]
+
+        if (len(participants_list) == 0):
+            continue
+
+        for x in range(3):
+            if (len(participants_list) > 0):
+                winner_index = calculate_winner[current_dictionary[dictionary_keys[0]]](results_list) 
+                competition_winners_list.append(current_dictionary[dictionary_keys[2]][winner_index])
+                removeParticipent(current_dictionary, participants_list[winner_index], dictionary_keys ) #remove the winner index
+            else: 
+                competition_winners_list.append("undef_country")
+        competitions_champs.append(competition_winners_list)  
+    print(competitions_champs)  
     return competitions_champs
 
+def getIndexOfMax(results_list):
+    return results_list.index(max(results_list))
+
+def getIndexOfMin(results_list): # assuming the knockout results are by rank
+    return results_list.index(min(results_list))
 
 def partA(file_name = 'input.txt', allow_prints = True):
     # read and parse the input file
@@ -220,4 +309,4 @@ if __name__ == "__main__":
     file_name = 'input.txt'
 
     partA(file_name)
-    partB(file_name)
+    #partB(file_name)
