@@ -55,10 +55,115 @@ def readParseData(file_name):
     '''
     competitors_in_competitions = []
     # TODO Part A, Task 3.4
+    
 
+    competitors ={}  # ID -> Country
+    competitor_keyword = "competitor"
+    competitor_mapping={
+        1 : "competitor id",
+        2 : "competitor country"
+    }
 
+    competitions = [] # List of dicts of competitions
+    competition_keyword = "competition"
+    competition_mapping = {
+        1: "competition name",
+        2: "competitor id",
+        3: "competition type",
+        4: "result"
+    }
+
+    keyword_to_mapping = {
+
+        competitor_keyword : {  "mapping" : competitor_mapping,
+                                "collection" : competitors,
+                                "method" : addCompetitor},
+
+        competition_keyword : { "mapping" : competition_mapping,
+                                "collection" : competitions,
+                                "method" : addCompetition},
+    }
+    field_delimiter = ' '
+    new_line_char ='\n'
+    file_text = open(file_name, 'r').read()
+    lines = file_text.split(new_line_char)
+    for line in lines:
+        if(line ==''): #Empty line (like in EOF)
+            continue
+        segements = line.split(field_delimiter)
+        # Assuming we have no empty lines
+        keyword = segements[0]
+        mapping = keyword_to_mapping[keyword]["mapping"]
+        collection = keyword_to_mapping[keyword]["collection"]
+        add_method = keyword_to_mapping[keyword]["method"]
+
+        current_dict ={}
+        for index in mapping:
+            current_dict[mapping[index]] = segements[index]
+        add_method(current_dict,collection)
+   
+    competitors_in_competitions_keys = ["competition name","competition type","competitor id","competitor country","result"]
+    return mergeCompetitions(competitors,competitions,competitors_in_competitions_keys)
+
+def mergeCompetitions(competitors,competitions,competitors_in_competitions_keys):
+    '''
+    Given competitors and competitions, this method merges them to the desired 
+    competitors_in_competitions list. Instructions to fields of each dictionary
+    in the list are depicted in the competitors_in_competitions_keys arguement
+    Arguments:
+        competitions: a list of dictionaries that defines the competitions
+        competitors: dictionary of competitors
+        competitors_in_competitions_keys: keys for the new dictionary
+    Retuen value:
+        competitors_in_competitions list of dictionaries
+    '''
+
+    competitors_in_competitions=[]
+    for competition in competitions:
+        new_dict = {}
+        for i in range(len(competitors_in_competitions_keys)):
+            key = competitors_in_competitions_keys[i]
+            if(key == "competitor country"):
+                value = competitors[competition["competitor id"]]
+            else:
+                value = competition[key]
+            new_dict[key]=value
+        competitors_in_competitions.append(new_dict)
     return competitors_in_competitions
+def addCompetitor(competitor_dict,competitors):
+    '''
+    Given competitor dictionary and competioners collection, this method handles adding it to
+    the new competitiors dictionary.
+    This method creates the dictionary such that the key is the ID and value the country name
+    Arguments:
+        competitor_dict: a dictionary that defines the competitor
+        competitors: collections to add the competitor to
+    Retuen value:
+        NONE
+    '''
+    #Assumes competitor will always have 2 fields, while first is ID
+    id= None
+    country=None
+    i=0
+    for key in competitor_dict:
+        if(i == 0) :
+            id = competitor_dict[key]
+        else:
+            country = competitor_dict[key]
+        i+=1
+    competitors[id]=country
 
+def addCompetition(competition_dict,competitions):
+    '''
+    Given competition dictionary and competitions collection, this method handles adding it to
+    the new competitions list.
+    Arguments:
+        competition_dict: a dictionary that defines the competition
+        competitions: collections to add the competition to
+    Retuen value:
+        NONE
+    '''
+    competitions.append(competition_dict)
 
 def calcCompetitionsResults(competitors_in_competitions):
     '''
