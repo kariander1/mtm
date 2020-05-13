@@ -72,7 +72,13 @@ def readParseData(file_name):
         3: "competition type",
         4: "result"
     }
-
+    keys_types ={ # For parsing correct values
+        "competition name" : str,
+        "competition type" : str,
+        "competitor id" : int,
+        "competitor country" : str,
+        "result" : int
+    }
     keyword_to_mapping = {
 
         competitor_keyword : {  "mapping" : competitor_mapping,
@@ -99,7 +105,8 @@ def readParseData(file_name):
 
         current_dict ={}
         for index in mapping:
-            current_dict[mapping[index]] = segements[index]
+            current_key = mapping[index]
+            current_dict[current_key] = keys_types[current_key](segements[index])
         add_method(current_dict,collection)
    
     competitors_in_competitions_keys = ["competition name","competition type","competitor id","competitor country","result"]
