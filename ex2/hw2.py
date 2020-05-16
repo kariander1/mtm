@@ -57,7 +57,7 @@ def readParseData(file_name):
     # TODO Part A, Task 3.4
     
 
-    competitors ={}  # ID -> Country
+    competitors = {}  # ID -> Country
     competitor_keyword = "competitor"
     competitor_mapping={
         1 : "competitor id",
@@ -72,7 +72,7 @@ def readParseData(file_name):
         3: "competition type",
         4: "result"
     }
-    keys_types ={ # For parsing correct values
+    keys_types ={ # For parsing correct type of values. Will call the int() or str() function
         "competition name" : str,
         "competition type" : str,
         "competitor id" : int,
@@ -90,7 +90,7 @@ def readParseData(file_name):
                                 "method" : addCompetition},
     }
     field_delimiter = ' '
-    new_line_char ='\n'
+    new_line_char = '\n'
     file_text = open(file_name, 'r').read()
     lines = file_text.split(new_line_char)
     for line in lines:
