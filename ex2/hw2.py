@@ -54,9 +54,6 @@ def readParseData(file_name):
                 'result': result}
     '''
     competitors_in_competitions = []
-    # TODO Part A, Task 3.4
-    
-
     competitors = {}  # ID -> Country
     competitor_keyword = "competitor"
     competitor_mapping={
@@ -149,8 +146,6 @@ def addCompetitor(competitor_dict,competitors):
         NONE
     '''
     #Assumes competitor will always have 2 fields, while first is ID
-    id= None
-    country=None
     i=0
     for key in competitor_dict:
         if(i == 0) :
