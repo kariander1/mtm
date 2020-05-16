@@ -210,7 +210,7 @@ def calcCompetitionsResults(competitors_in_competitions):
         current_dictionary = competition_dictionary[parameter_name]
 
         if (parameter_id in current_dictionary[competition_dictionary_keys[1]]): #if the participant is already in the competition
-            removeParticipent(current_dictionary, parameter_id, competition_dictionary_keys )
+            removeParticipant(current_dictionary, parameter_id, competition_dictionary_keys )
             # add id to forbidden lists of this competition
             forbidden_participants[parameter_name].append(parameter_id)
             continue
@@ -254,8 +254,8 @@ def initializeForbiddenParticipants(forbidden_list, competition_name):
     forbidden_list[competition_name] = []
 
 
-def removeParticipent(current_competition_dictionary, competitor_id , dictionary_keys):
-     '''
+def removeParticipant(current_competition_dictionary, competitor_id , dictionary_keys):
+    '''
     Given the data of the current competition and the competitor id, the function removes the competitor id from the competition.
     Arguments:
         current_competition_dictionary: A  dictionary containing data about the current competition
@@ -315,7 +315,7 @@ def getListOfWinners(competition_dictionary, competition_list, dictionary_keys):
             if (len(participants_list) > 0):
                 winner_index = calculate_winner[current_dictionary[dictionary_keys[0]]](results_list) 
                 competition_winners_list.append(current_dictionary[dictionary_keys[2]][winner_index])
-                removeParticipent(current_dictionary, participants_list[winner_index], dictionary_keys ) #remove the winner index
+                removeParticipant(current_dictionary, participants_list[winner_index], dictionary_keys ) #remove the winner index
             else: 
                 competition_winners_list.append("undef_country")
         competitions_champs.append(competition_winners_list)  
