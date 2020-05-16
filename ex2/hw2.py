@@ -183,11 +183,164 @@ def calcCompetitionsResults(competitors_in_competitions):
         Every record in the list contains the competition name and the champs, in the following format:
         [competition_name, winning_gold_country, winning_silver_country, winning_bronze_country]
     '''
+    competition_list = [] # list of all competition names
+    # competition_dictionary =  {competition_name:{
+    #                               type : "",
+    #                               participants : [list of participants], 
+    #                               countries : [list of countries by participants],
+    #                               results: [list of results by participants] }, 
+    #                            next_competition .....
+    # }
+    competition_dictionary = {} 
+    forbidden_participants = {} # competition -> [ids]
+    competitors_keys = ['competition name', 'competition type','competitor id','competitor country', 'result']
+    competition_dictionary_keys = ['type','participants', 'countries', 'results' ]
+    # for dictionary in the competitors_in_competitions list
+    for parameters in competitors_in_competitions:
+        parameter_name = parameters[competitors_keys[0]]
+        parameter_id = parameters[competitors_keys[2]]
+        parameter_country = parameters[competitors_keys[3]]
+        parameter_result = parameters[competitors_keys[4]]
+        
+        if (parameter_name not in  competition_list): # check if the competition exsists
+            competition_list.append(parameter_name)
+            initializeParametersOfCompetition (competition_dictionary, parameters, competitors_keys,competition_dictionary_keys )
+            initializeForbiddenParticipants(forbidden_participants, parameter_name)
+        
+        current_dictionary = competition_dictionary[parameter_name]
+
+        if (parameter_id in current_dictionary[competition_dictionary_keys[1]]): #if the participant is already in the competition
+            removeParticipent(current_dictionary, parameter_id, competition_dictionary_keys )
+            # add id to forbidden lists of this competition
+            forbidden_participants[parameter_name].append(parameter_id)
+            continue
+
+        if (parameter_id in forbidden_participants[parameter_name]):
+            continue
+
+        appendCompetitorToCompetition(current_dictionary, parameter_id, parameter_country, parameter_result, competition_dictionary_keys )
+        
+    return getListOfWinners(competition_dictionary, competition_list, competition_dictionary_keys)
+
+
+def initializeParametersOfCompetition(current_competition_dictionary, parameters , competitors_keys, dictionary_keys):
+    '''
+    Given the data of the competitors and the competitions, the function initialize the competition dictionary.
+    Arguments:
+        current_competition_dictionary: A empty dictionary for the current competition
+        parameters: The current dictionary in the list of competitors_in_competitions
+        competitors_keys: The keys of the dictionaries in competitors_in_competitions
+        dictionary_keys: The keys of the new current_competition_dictionary
+    Retuen value:
+        NONE
+    '''
+    competition_name = parameters[competitors_keys[0]] 
+    competition_type = parameters[competitors_keys[1]]
+    current_competition_dictionary[competition_name] = {} 
+    current_competition_dictionary[competition_name][dictionary_keys[0]] = competition_type
+
+    for x in range(1,len(dictionary_keys)): #create a list of participants, countries, results
+        current_competition_dictionary[competition_name][dictionary_keys[x]] = []
+
+def initializeForbiddenParticipants(forbidden_list, competition_name):
+    '''
+    Given the forbidden competitors list, the function adds the new competition to the dictionary with an empty list.
+    Arguments:
+        forbidden_list: A  dictionary containing the forbidden compatitors for each competition
+        competition_name: The name of the current competition
+    Retuen value:
+        NONE
+    '''
+    forbidden_list[competition_name] = []
+
+
+def removeParticipent(current_competition_dictionary, competitor_id , dictionary_keys):
+     '''
+    Given the data of the current competition and the competitor id, the function removes the competitor id from the competition.
+    Arguments:
+        current_competition_dictionary: A  dictionary containing data about the current competition
+                                       (lists of compatitors, their counrty and results)
+        competitor_id: The compatitor id to remove from competition
+        dictionary_keys: The keys of the current_competition_dictionary
+    Retuen value:
+        NONE
+    '''
+    participant_index = current_competition_dictionary[dictionary_keys[1]].index(competitor_id)
+    for x in range(1,len(dictionary_keys)):
+        list_to_delete_value = current_competition_dictionary[dictionary_keys[x]]
+        del list_to_delete_value[participant_index]
+
+def appendCompetitorToCompetition(current_competition_dictionary, id, country, result, dictionary_keys ):
+    '''
+    Given the data of the current competition, the competitor id, country and result, 
+    the function appends the competitor to the competition.
+    Arguments:
+        current_competition_dictionary: A  dictionary containing data about the current competition
+                                       (lists of compatitors, their counrty and results)
+        competitor_id: The compatitor id to remove from competition
+        dictionary_keys: The keys of the current_competition_dictionary
+    Retuen value:
+        NONE
+    '''
+    current_competition_dictionary[dictionary_keys[1]].append(id)
+    current_competition_dictionary[dictionary_keys[2]].append(country)
+    current_competition_dictionary[dictionary_keys[3]].append(result)
+
+def getListOfWinners(competition_dictionary, competition_list, dictionary_keys):
+    '''
+    Given the data of all competitions and the competition list id,
+    the function returns the list of competitions_champs.
+    Arguments:
+        competition_dictionary: A  dictionary containing data about all competitions
+                                       (lists of compatitors, their counrty and results)
+        competition_list: A list of all competitions names
+        dictionary_keys: The keys of the competition_dictionary
+    Retuen value:
+        A list of competitions and their champs (for mor information see calcCompetitionsResults).
+    '''
     competitions_champs = []
-    # TODO Part A, Task 3.5
-    
+    calculate_winner = {"untimed": getIndexOfMax, "timed": getIndexOfMin, "knockout": getIndexOfMin}
+
+    for competition in competition_list:
+        competition_winners_list = []
+        competition_winners_list.append(competition)
+        current_dictionary = competition_dictionary[competition]
+        participants_list = current_dictionary[dictionary_keys[1]]
+        results_list = current_dictionary[dictionary_keys[3]]
+
+        if (len(participants_list) == 0):
+            continue
+
+        for x in range(3):
+            if (len(participants_list) > 0):
+                winner_index = calculate_winner[current_dictionary[dictionary_keys[0]]](results_list) 
+                competition_winners_list.append(current_dictionary[dictionary_keys[2]][winner_index])
+                removeParticipent(current_dictionary, participants_list[winner_index], dictionary_keys ) #remove the winner index
+            else: 
+                competition_winners_list.append("undef_country")
+        competitions_champs.append(competition_winners_list)  
+    print(competitions_champs)  
     return competitions_champs
 
+def getIndexOfMax(results_list):
+    '''
+    Given the results list of the competition returns the index of the maximal result.
+    Arguments:
+        results_list: A list with all the results of the compatitors in the current competition
+    Retuen value:
+        The index of the maximal result
+    '''
+    return results_list.index(max(results_list))
+
+def getIndexOfMin(results_list): # assuming the knockout results are by rank
+    '''
+    Given the results list of the competition returns the index of the minimal result.
+    Arguments:
+        results_list: A list with all the results of the compatitors in the current competition
+    Retuen value:
+        The index of the minimal result
+    '''
+    return results_list.index(min(results_list))
 
 def partA(file_name = 'input.txt', allow_prints = True):
     # read and parse the input file
@@ -220,4 +373,4 @@ if __name__ == "__main__":
     file_name = 'input.txt'
 
     partA(file_name)
-    partB(file_name)
+    #partB(file_name)
