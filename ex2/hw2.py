@@ -88,7 +88,8 @@ def readParseData(file_name):
     }
     field_delimiter = ' '
     new_line_char = '\n'
-    file_text = open(file_name, 'r').read()
+    file = open(file_name, 'r')
+    file_text = file.read()
     lines = file_text.split(new_line_char)
     for line in lines:
         if(line ==''): #Empty line (like in EOF)
@@ -105,7 +106,7 @@ def readParseData(file_name):
             current_key = mapping[index]
             current_dict[current_key] = keys_types[current_key](segements[index])
         add_method(current_dict,collection)
-   
+    file.close()
     competitors_in_competitions_keys = ["competition name","competition type","competitor id","competitor country","result"]
     return mergeCompetitions(competitors,competitions,competitors_in_competitions_keys)
 
