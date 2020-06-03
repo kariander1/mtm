@@ -315,7 +315,7 @@ def getListOfWinners(competition_dictionary, competition_list, dictionary_keys):
             else: 
                 competition_winners_list.append("undef_country")
         competitions_champs.append(competition_winners_list)  
-    print(competitions_champs)  
+    #print(competitions_champs)  
     return competitions_champs
 
 def getIndexOfMax(results_list):
@@ -355,9 +355,22 @@ def partA(file_name = 'input.txt', allow_prints = True):
 
 
 def partB(file_name = 'input.txt'):
+    import Olympics
     competitions_results = partA(file_name, allow_prints = False)
-    # TODO Part B
+    result_index={
+        "gold" : 1,
+        "silver" : 2,
+        "bronze" : 3
+    }
+    olympicsObject = Olympics.OlympicsCreate()
+    for competition_result in competitions_results:
+        gold_country = str(competition_result[result_index["gold"]])
+        silver_country = str(competition_result[result_index["silver"]])
+        bronze_country = str(competition_result[result_index["bronze"]])
+        Olympics.OlympicsUpdateCompetitionResults(olympicsObject,gold_country,silver_country,bronze_country)
 
+    Olympics.OlympicsWinningCountry(olympicsObject)
+    Olympics.OlympicsDestroy(olympicsObject)
 
 if __name__ == "__main__":
     '''
@@ -369,4 +382,4 @@ if __name__ == "__main__":
     file_name = 'input.txt'
 
     partA(file_name)
-    #partB(file_name)
+    partB(file_name)

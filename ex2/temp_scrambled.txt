@@ -1,0 +1,128 @@
+competition Manual_Array_Sorting 197 knockout 1
+competition High_Swimming 33 knockout 1
+competition Rythmic_Running 138 untimed 20
+competition Manual_Array_Sorting 854 knockout 6
+competition Rythmic_Running 1248 untimed 62
+competition Manual_Array_Sorting 221 knockout 14
+competitor 331 Camelot
+competition Wall_Climbing 846 timed 80
+competition Manual_Array_Sorting 752 knockout 2
+competitor 534 Camelot
+competitor 175 Nes_Tziona
+competition Wall_Climbing 640 timed 100
+competition Bartending 331 knockout 1
+competition Rythmic_Running 175 untimed 129
+competition Bartending 1212 knockout 14
+competition Rythmic_Running 1212 untimed 54
+competition Manual_Array_Sorting 534 knockout 5
+competition Bartending 534 knockout 26
+competitor 1248 Camelot
+competitor 1082 Camelot
+competition Bartending 378 knockout 4
+competitor 138 Magnolia
+competition Manual_Array_Sorting 1212 knockout 16
+competitor 243 Nes_Tziona
+competition Rythmic_Running 565 untimed 113
+competition Bartending 752 knockout 13
+competitor 854 Magnolia
+competitor 434 Camelot
+competition Bartending 243 knockout 16
+competition Bartending 175 knockout 3
+competition Bartending 33 knockout 15
+competitor 636 Nes_Tziona
+competition Manual_Array_Sorting 636 knockout 10
+competition Wall_Climbing 1082 timed 30
+competition Wall_Climbing 1014 timed 5
+competition Rythmic_Running 565 untimed 7
+competition Bartending 846 knockout 6
+competition Bartending 300 knockout 25
+competitor 714 Magnolia
+competition Rythmic_Running 1266 untimed 3
+competitor 1212 Nes_Tziona
+competition Wall_Climbing 1248 timed 50
+competition Bartending 854 knockout 7
+competitor 535 Magnolia
+competition Bartending 33 knockout 20
+competitor 1040 Magnolia
+competition Wall_Climbing 1017 timed 111
+competitor 207 Camelot
+competitor 197 Nes_Tziona
+competition Manual_Array_Sorting 1266 knockout 12
+competitor 565 Nes_Tziona
+competition Manual_Array_Sorting 1212 knockout 11
+competition Rythmic_Running 175 untimed 89
+competitor 221 Nes_Tziona
+competition Rythmic_Running 243 untimed 79
+competition Wall_Climbing 1017 timed 56
+competition Bartending 1109 knockout 12
+competition Rythmic_Running 434 untimed 37
+competition Wall_Climbing 535 timed 36
+competition Manual_Array_Sorting 535 knockout 4
+competition Wall_Climbing 243 timed 78
+competition Bartending 153 knockout 22
+competition Wall_Climbing 175 timed 71
+competitor 752 Nes_Tziona
+competitor 953 Camelot
+competition Bartending 378 knockout 29
+competition Manual_Array_Sorting 197 knockout 13
+competition Bartending 535 knockout 19
+competition Rythmic_Running 1082 untimed 12
+competition Wall_Climbing 535 timed 24
+competition Bartending 535 knockout 9
+competition High_Swimming 714 knockout 2
+competition Wall_Climbing 1017 timed 94
+competition Rythmic_Running 636 untimed 122
+competitor 1266 Nes_Tziona
+competition Wall_Climbing 98 timed 48
+competition Wall_Climbing 1014 timed 117
+competition Wall_Climbing 207 timed 90
+competition Bartending 98 knockout 24
+competitor 1017 Magnolia
+competition Rythmic_Running 33 untimed 46
+competition Rythmic_Running 953 untimed 65
+competition Manual_Array_Sorting 565 knockout 8
+competition Bartending 636 knockout 8
+competitor 1014 Nes_Tziona
+competition Rythmic_Running 640 untimed 75
+competition Wall_Climbing 434 timed 129
+competition Rythmic_Running 534 untimed 1
+competitor 1157 Camelot
+competition Manual_Array_Sorting 1248 knockout 15
+competition Manual_Array_Sorting 98 knockout 3
+competition Manual_Array_Sorting 175 knockout 7
+competition Bartending 1040 knockout 2
+competition Wall_Climbing 1082 timed 14
+competition Bartending 243 knockout 23
+competition Rythmic_Running 854 untimed 104
+competition Bartending 331 knockout 5
+competitor 98 Camelot
+competition Rythmic_Running 197 untimed 136
+competition Rythmic_Running 1157 untimed 59
+competition Wall_Climbing 1266 timed 61
+competition Wall_Climbing 1266 timed 121
+competitor 1109 Nes_Tziona
+competitor 33 Nes_Tziona
+competition Rythmic_Running 1040 untimed 81
+competition Bartending 1014 knockout 18
+competition Manual_Array_Sorting 1040 knockout 9
+competition Bartending 153 knockout 17
+competition Bartending 565 knockout 11
+competition Rythmic_Running 207 untimed 45
+competitor 300 Nes_Tziona
+competition Wall_Climbing 953 timed 101
+competition Rythmic_Running 33 untimed 33
+competitor 640 Magnolia
+competition Bartending 138 knockout 10
+competition Wall_Climbing 1082 timed 125
+competition Wall_Climbing 636 timed 46
+competition Bartending 1248 knockout 21
+competition Bartending 197 knockout 27
+competitor 378 Magnolia
+competition Wall_Climbing 175 timed 96
+competition Rythmic_Running 378 untimed 39
+competitor 153 Nes_Tziona
+competition Bartending 714 knockout 28
+competition Rythmic_Running 1266 untimed 27
+competition Rythmic_Running 153 untimed 90
+competition Rythmic_Running 534 untimed 100
+competitor 846 Camelot
