@@ -2,12 +2,9 @@
 #define INT_MATRIX_H
 #include <string>
 #include <iostream>
+#include "Auxiliaries.h"
+#include "IntMatrix.h"
 
-
-int main(int argc,char** argv)
-{
-    std::cout << "Hi";
-    return 0;
-}
+mtm::IntMatrix::IntMatrix(mtm::Dimensions dimensions ,int start_number): array(new int[dimensions.getRow()*dimensions.getCol()], dim(dimensions) ){}
 
 #endif //INT_MATRIX_H
