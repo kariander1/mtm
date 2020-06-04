@@ -3,17 +3,14 @@
 #include <string>
 #include <iostream>
 #include "Auxiliaries.h"
-
-class IntMatrix {
-
-private:    
-    int* array;
-    mtm::Dimensions dims;
-    int size;
-
-public:
-    IntMatrix(mtm::Dimensions dim,int init_number=0);
-    IntMatrix(const IntMatrix&);
-};
+namespace mtm {
+    class IntMatrix {
+        int* array;
+        mtm::Dimensions dim;
+    public:
+        IntMatrix(mtm::Dimensions dimensions,int init_number=0);
+        IntMatrix(const IntMatrix&);
+    };
+}
 
 #endif //INT_MATRIX_H
