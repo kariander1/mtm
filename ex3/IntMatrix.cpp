@@ -2,6 +2,7 @@
 #include <iostream>
 #include "IntMatrix.h"
 #include "Auxiliaries.h"
+#include "Auxiliaries.cpp"
 using mtm::Dimensions;
 using mtm::IntMatrix;
 
@@ -10,7 +11,7 @@ using mtm::IntMatrix;
    
 }*/
 
-IntMatrix::IntMatrix(Dimensions dimensions ,int init_number): array(new int[dimensions.getRow()*dimensions.getCol()]), dim(dimensions) {
+IntMatrix::IntMatrix(Dimensions dimensions ,int init_number): array(new int[(dimensions.getRow())*(dimensions.getCol())]), dim(dimensions) {
     
 }
 int main(int argc,char** argv)
