@@ -2,6 +2,18 @@
     "files.associations": {
         "iostream": "cpp",
         "tuple": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "xhash": "cpp",
+        "xutility": "cpp",
+        "exception": "cpp",
+        "memory": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "xmemory": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "vector": "cpp",
+        "xstring": "cpp",
+        "iosfwd": "cpp"
     }
 }
