@@ -3,14 +3,7 @@
 #include <string>
 #include <iostream>
 
-/*
-class IntMatrix {
-    private:
-    int* array;
-    int size;
-    public:
-    IntMatrix(int rows,int columns);
-}*/
+
 int main(int argc,char** argv)
 {
     std::cout << "Hi";
