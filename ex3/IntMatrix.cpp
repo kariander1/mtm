@@ -1,20 +1,16 @@
-#ifndef INT_MATRIX_H
-#define INT_MATRIX_H
 #include <string>
 #include <iostream>
+#include "IntMatrix.h"
+using mtm::Dimensions;
 
-/*
-class IntMatrix {
-    private:
-    int* array;
-    int size;
-    public:
-    IntMatrix(int rows,int columns);
-}*/
+IntMatrix::IntMatrix(const IntMatrix& matrix):
+    array(new int[size]),
+    dims(matrix.dims) // Should copy dims!
+{
+   
+}
 int main(int argc,char** argv)
 {
     std::cout << "Hi";
     return 0;
 }
-
-#endif //INT_MATRIX_H
