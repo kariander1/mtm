@@ -8,15 +8,11 @@ using mtm::IntMatrix;
 const int MIN_SIZE = 1;
 const int IDENTITIY = 1;
 
-IntMatrix::IntMatrix(Dimensions dimensions, int init_number) : array(new int[calcMatSize(dimensions)]),
-                                                               dim(dimensions)
+IntMatrix::IntMatrix(Dimensions dimensions, int init_number) : array(new int[calcMatSize(dimensions)]), dim(dimensions)
 {
-    // Should initialize all values?
-    // I added this:
+
     copyMatrixValues(init_number);
 
-    // This will be better :
-    //(*this)+=init_number // Will be okay when += operator will be implemented
 }
 
 IntMatrix IntMatrix::Identity(int size)
@@ -142,17 +138,17 @@ IntMatrix IntMatrix::transpose() const
 {  
     int row = height();
     int column = width();
-    Dimensions new_dim(column,row);
-    IntMatrix transpose_matrix(new_dim); //create new matrix for transposed values
+    Dimensions new_dim =(column,row);
+    IntMatrix transpose_matrix(new_dim, 0); //create new matrix for transposed values
 
     int old_size = size();
     for(int i = 0; i < old_size; i++){
         transpose_matrix.array[(i/column) +(i%column)*row] = array[i]; // calculate the new position
     }
     
-    for (int j = 0; j<old_size;j++ ){
-        std::cout << transpose_matrix.array[j];
-    }
+    //for (int j = 0; j<old_size;j++ ){ print the array
+    //    std::cout << transpose_matrix.array[j];
+    //}
     return transpose_matrix;
 }
 IntMatrix IntMatrix::operator-() const
@@ -184,7 +180,7 @@ int& IntMatrix::operator()(const int row, const int column)
  {
     int mat_columns = mat.width();
     int mat_rows = mat.height();
-    for (int row = 0, column = 0; row <mat_rows & column <mat_columns ;){ 
+    for (int row = 0, column = 0; row <mat_rows & column <mat_columns ;){ // don't really need column <mat_columns
         if(mat(row,column)== 0){
             return false;
         }
