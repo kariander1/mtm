@@ -37,27 +37,17 @@ namespace mtm {
         
 
         friend std::ostream &operator<<(std::ostream &, const IntMatrix &);
-        friend IntMatrix operator+(const IntMatrix & mat1, const int num);
+        IntMatrix operator+(const int num) const;
         static IntMatrix Identity(const int size);  
     };
 
+    IntMatrix operator+(const int num, const IntMatrix & mat1) ;
     IntMatrix operator+(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric +
-    IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric +   
+    IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric - 
     bool all(const IntMatrix & mat);
     bool any(const IntMatrix & mat); 
 
-    std::ostream &operator<<(std::ostream &os, const IntMatrix &mat) // Friend functions are in .h files? 
-    {
 
-        os << mtm::printMatrix(mat.array, mat.dim);
-        return os;
-    }
-
-    IntMatrix operator+(const IntMatrix & mat1, const int num) // Outside class to support symetric +
-    {
-        IntMatrix num_matrix(mat1.dim, num);
-        return mat1 + num_matrix;
-    }
 } // namespace mtm
 
 #endif //INT_MATRIX_H
