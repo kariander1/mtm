@@ -2,7 +2,7 @@
 #include <iostream>
 #include "IntMatrix.h"
 #include "Auxiliaries.h"
-#include "Auxiliaries.cpp" //REMOVE BEFORE FLIGHT!!!!!!!!!
+//#include "Auxiliaries.cpp" //REMOVE BEFORE FLIGHT!!!!!!!!!
 
 const int IDENTITIY = 1;
 namespace mtm
@@ -149,10 +149,7 @@ namespace mtm
             transpose_matrix.array[(i / column) + (i % column) * row] = array[i]; // calculate the new position
         }
 
-        //for (int j = 0; j<old_size;j++ ){ print the array
-        //    std::cout << transpose_matrix.array[j];
-        //}
-        return transpose_matrix;
+          return transpose_matrix;
     }
     IntMatrix IntMatrix::operator-() const
     {
@@ -185,7 +182,8 @@ namespace mtm
     {
         return array[row * width() + column];
     }
-    static MATRIX_STATUS checkMatrix(const IntMatrix& mat)
+    
+    MATRIX_STATUS checkMatrix(const IntMatrix& mat)
     {
         int number_of_ones = 0;
         for (int i = 0; i < mat.height(); i++){
@@ -202,55 +200,22 @@ namespace mtm
 
         return number_of_ones > 0 ? ONE_EXSISTS: ALL_ZEROS;
     }
+    
     bool all(const IntMatrix &mat)
     { 
         IntMatrix compare_matrix = mat != 0;
         if (checkMatrix(compare_matrix) == ALL_ONES){
             return true;
         }
-        return false;
-        /*
-        int mat_columns = mat.width();
-        int mat_rows = mat.height();
-        for (int row = 0, column = 0; row < mat_rows & column < mat_columns;)
-        { // don't really need column <mat_columns
-            if (mat(row, column) == 0)
-            {
-                return false;
-            }
-            column++;
-            if (column == mat_columns)
-            {
-                column = 0;
-                row += 1;
-            }
-        }
-        return true;*/
+        return false;     
     }
     bool any(const IntMatrix &mat)
-    { // Maybe use mat!=0  ?
+    {
         IntMatrix compare_matrix = mat != 0;
         if (checkMatrix(compare_matrix) != ALL_ZEROS){
             return true;
         }
-        return false;
-        /*
-        int mat_columns = mat.width();
-        int mat_rows = mat.height();
-        for (int row = 0, column = 0; row < mat_rows & column < mat_columns;)
-        {
-            if (mat(row, column) != 0)
-            {
-                return true;
-            }
-            column++;
-            if (column == mat_columns)
-            {
-                column = 0;
-                row += 1;
-            }
-        }
-        return false;*/
+        return false;      
     }
     std::ostream &operator<<(std::ostream &os, const IntMatrix &mat)
     {
