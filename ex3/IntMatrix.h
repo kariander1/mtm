@@ -39,6 +39,7 @@ namespace mtm {
         friend std::ostream &operator<<(std::ostream &, const IntMatrix &);
         IntMatrix operator+(const int num) const;
         static IntMatrix Identity(const int size);  
+        static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
     };
 
     IntMatrix operator+(const int num, const IntMatrix & mat1) ;
@@ -46,7 +47,7 @@ namespace mtm {
     IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric - 
     bool all(const IntMatrix & mat);
     bool any(const IntMatrix & mat); 
-    static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
+  
 
 } // namespace mtm
 

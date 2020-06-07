@@ -3,6 +3,7 @@
 #include "IntMatrix.h"
 #include "Auxiliaries.h"
 #include "Auxiliaries.cpp" //REMOVE BEFORE FLIGHT!!!!!!!!!
+
 const int IDENTITIY = 1;
 enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
 namespace mtm
