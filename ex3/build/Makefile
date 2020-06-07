@@ -139,6 +139,19 @@ intMatrix_Tester/fast:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/build
 .PHONY : intMatrix_Tester/fast
 
+#=============================================================================
+# Target rules for targets named intMatrix_TestPartA
+
+# Build rule for target.
+intMatrix_TestPartA: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 intMatrix_TestPartA
+.PHONY : intMatrix_TestPartA
+
+# fast build rule for target.
+intMatrix_TestPartA/fast:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/build
+.PHONY : intMatrix_TestPartA/fast
+
 Auxiliaries.obj: Auxiliaries.cpp.obj
 
 .PHONY : Auxiliaries.obj
@@ -146,6 +159,7 @@ Auxiliaries.obj: Auxiliaries.cpp.obj
 # target to build an object file
 Auxiliaries.cpp.obj:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.obj
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/Auxiliaries.cpp.obj
 .PHONY : Auxiliaries.cpp.obj
 
 Auxiliaries.i: Auxiliaries.cpp.i
@@ -155,6 +169,7 @@ Auxiliaries.i: Auxiliaries.cpp.i
 # target to preprocess a source file
 Auxiliaries.cpp.i:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.i
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/Auxiliaries.cpp.i
 .PHONY : Auxiliaries.cpp.i
 
 Auxiliaries.s: Auxiliaries.cpp.s
@@ -164,6 +179,7 @@ Auxiliaries.s: Auxiliaries.cpp.s
 # target to generate assembly for a file
 Auxiliaries.cpp.s:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.s
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/Auxiliaries.cpp.s
 .PHONY : Auxiliaries.cpp.s
 
 IntMatrix.obj: IntMatrix.cpp.obj
@@ -173,6 +189,7 @@ IntMatrix.obj: IntMatrix.cpp.obj
 # target to build an object file
 IntMatrix.cpp.obj:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.obj
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/IntMatrix.cpp.obj
 .PHONY : IntMatrix.cpp.obj
 
 IntMatrix.i: IntMatrix.cpp.i
@@ -182,6 +199,7 @@ IntMatrix.i: IntMatrix.cpp.i
 # target to preprocess a source file
 IntMatrix.cpp.i:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.i
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/IntMatrix.cpp.i
 .PHONY : IntMatrix.cpp.i
 
 IntMatrix.s: IntMatrix.cpp.s
@@ -191,7 +209,35 @@ IntMatrix.s: IntMatrix.cpp.s
 # target to generate assembly for a file
 IntMatrix.cpp.s:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.s
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/IntMatrix.cpp.s
 .PHONY : IntMatrix.cpp.s
+
+test_partA.obj: test_partA.cpp.obj
+
+.PHONY : test_partA.obj
+
+# target to build an object file
+test_partA.cpp.obj:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/test_partA.cpp.obj
+.PHONY : test_partA.cpp.obj
+
+test_partA.i: test_partA.cpp.i
+
+.PHONY : test_partA.i
+
+# target to preprocess a source file
+test_partA.cpp.i:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/test_partA.cpp.i
+.PHONY : test_partA.cpp.i
+
+test_partA.s: test_partA.cpp.s
+
+.PHONY : test_partA.s
+
+# target to generate assembly for a file
+test_partA.cpp.s:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/test_partA.cpp.s
+.PHONY : test_partA.cpp.s
 
 tester.obj: tester.cpp.obj
 
@@ -228,6 +274,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... intMatrix_TestPartA
 	@echo ... intMatrix_Tester
 	@echo ... Auxiliaries.obj
 	@echo ... Auxiliaries.i
@@ -235,6 +282,9 @@ help:
 	@echo ... IntMatrix.obj
 	@echo ... IntMatrix.i
 	@echo ... IntMatrix.s
+	@echo ... test_partA.obj
+	@echo ... test_partA.i
+	@echo ... test_partA.s
 	@echo ... tester.obj
 	@echo ... tester.i
 	@echo ... tester.s

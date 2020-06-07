@@ -46,21 +46,22 @@ namespace mtm {
         static IntMatrix Identity(const int size);
 
         class iterator;
-        iterator begin() const;
-        iterator end() const;
+        iterator begin();
+        iterator end();
 
         
         class const_iterator;
-       // const const_iterator begin() const;
-       // cosnt const_iterator end() const;
+        const_iterator begin() const;
+        const_iterator end() const;
 
         
     };
     class IntMatrix::iterator
     {
-        const IntMatrix *matrix;
+        IntMatrix *matrix;
         int index;
-        iterator(const IntMatrix *matrix, int index);
+        iterator(IntMatrix *matrix, int index);
+   
         friend class IntMatrix;
 
     public:
@@ -72,10 +73,29 @@ namespace mtm {
         iterator(const iterator & it) = default; // Copy constructor
         iterator& operator=(const iterator & it) = default; // Assingment operator
         ~iterator() = default; // D'tor
-        iterator end();
+       
         
     }; 
+    class IntMatrix::const_iterator
+    {
+        const IntMatrix *matrix;
+        int index;
+        const_iterator(const IntMatrix *matrix, int index);
+        explicit operator iterator() const;
+        friend class IntMatrix;
 
+    public:
+        const int &operator*() const;
+        const_iterator &operator++(); // Prefix
+        const_iterator operator++(int); // Postfix
+        bool operator==(const const_iterator &it) const;
+        bool operator!=(const const_iterator &it) const;
+        const_iterator(const const_iterator & it) = default; // Copy constructor
+        const_iterator& operator=(const const_iterator & it) = default; // Assingment operator
+        ~const_iterator() = default; // D'tor
+      
+        
+    }; 
     enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
     static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
 

@@ -13,5 +13,20 @@
   "directory": "C:/VScode/ex3/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_Tester.dir\\Auxiliaries.cpp.obj -c C:\\VScode\\ex3\\Auxiliaries.cpp",
   "file": "C:/VScode/ex3/Auxiliaries.cpp"
+},
+{
+  "directory": "C:/VScode/ex3/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_TestPartA.dir\\test_partA.cpp.obj -c C:\\VScode\\ex3\\test_partA.cpp",
+  "file": "C:/VScode/ex3/test_partA.cpp"
+},
+{
+  "directory": "C:/VScode/ex3/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_TestPartA.dir\\IntMatrix.cpp.obj -c C:\\VScode\\ex3\\IntMatrix.cpp",
+  "file": "C:/VScode/ex3/IntMatrix.cpp"
+},
+{
+  "directory": "C:/VScode/ex3/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_TestPartA.dir\\Auxiliaries.cpp.obj -c C:\\VScode\\ex3\\Auxiliaries.cpp",
+  "file": "C:/VScode/ex3/Auxiliaries.cpp"
 }
 ]

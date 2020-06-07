@@ -243,7 +243,7 @@ namespace mtm
         return mat1 + num;
     }
     // **************************************************** ITERATOR CLASS*********************************************************
-    IntMatrix::iterator::iterator(const IntMatrix *set, int index) : matrix(set),
+    IntMatrix::iterator::iterator(IntMatrix *mat, int index) : matrix(mat),
                                                                      index(index)
     {
     }
@@ -272,14 +272,62 @@ namespace mtm
         ++*this;
         return result;
     }
-    IntMatrix::iterator IntMatrix::begin() const
+    IntMatrix::iterator IntMatrix::begin()
     {
         return iterator(this, 0);
     }
-    IntMatrix::iterator IntMatrix::end() const 
+    IntMatrix::iterator IntMatrix::end() 
     {
         return iterator(this, this->size());
     } 
+ // **************************************************** ITERATOR CLASS*********************************************************
+ // **************************************************** CONST ITERATOR CLASS*********************************************************
+    IntMatrix::const_iterator::const_iterator(const IntMatrix *mat, int index) : matrix(mat),
+                                                                     index(index)
+    {
+        
+    }
+    IntMatrix::const_iterator::operator iterator() const
+    {
+        IntMatrix temp_mat =*matrix;
+        return iterator(&temp_mat,this->index);
+    }
+    bool IntMatrix::const_iterator::operator==(const const_iterator &it) const
+    {
+        //return iterator(*this)==iterator(it);
+        return index ==it.index;
+    }
+
+    bool IntMatrix::const_iterator::operator!=(const const_iterator &it) const
+    {
+        return !(*this == it);
+    }
+    const int &IntMatrix::const_iterator::operator*() const
+    {
+        //return *(iterator(*this));
+        return matrix->array[index];
+    }
+    IntMatrix::const_iterator &IntMatrix::const_iterator::operator++()
+    {        
+        ++index;
+        return *this;
+    }
+    IntMatrix::const_iterator IntMatrix::const_iterator::operator++(int)
+    {
+        const_iterator result = *this;
+        ++*this;
+        return result;
+    }
+    IntMatrix::const_iterator IntMatrix::begin() const
+    {
+        return const_iterator(this, 0);
+    }
+    IntMatrix::const_iterator IntMatrix::end() const 
+    {
+        return const_iterator(this, this->size());
+    } 
+// **************************************************** CONST ITERATOR CLASS*********************************************************
+  
 } // namespace mtm
 
 /*

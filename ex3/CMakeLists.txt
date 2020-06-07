@@ -28,4 +28,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(intMatrix_Tester tester.cpp intMatrix.cpp Auxiliaries.cpp)
 
 # EXE for test_partA.cpp
-#add_executable(intMatrix_TestPartA test_partA.cpp intMatrix.cpp Auxiliaries.cpp)
+add_executable(intMatrix_TestPartA test_partA.cpp intMatrix.cpp Auxiliaries.cpp)

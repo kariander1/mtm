@@ -51,4 +51,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/intMatrix_Tester.dir/DependInfo.cmake"
+  "CMakeFiles/intMatrix_TestPartA.dir/DependInfo.cmake"
   )
