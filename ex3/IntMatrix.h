@@ -46,7 +46,15 @@ namespace mtm {
         static IntMatrix Identity(const int size);
 
         class iterator;
+        iterator begin() const;
+        iterator end() const;
+
+        
         class const_iterator;
+       // const const_iterator begin() const;
+       // cosnt const_iterator end() const;
+
+        
     };
     class IntMatrix::iterator
     {
@@ -56,7 +64,7 @@ namespace mtm {
         friend class IntMatrix;
 
     public:
-        const int &operator*() const;
+        int &operator*() const;
         iterator &operator++(); // Prefix
         iterator operator++(int); // Postfix
         bool operator==(const iterator &it) const;

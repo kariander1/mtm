@@ -149,7 +149,7 @@ namespace mtm
             transpose_matrix.array[(i / column) + (i % column) * row] = array[i]; // calculate the new position
         }
 
-          return transpose_matrix;
+        return transpose_matrix;
     }
     IntMatrix IntMatrix::operator-() const
     {
@@ -182,40 +182,46 @@ namespace mtm
     {
         return array[row * width() + column];
     }
-    
-    MATRIX_STATUS checkMatrix(const IntMatrix& mat)
+
+    MATRIX_STATUS checkMatrix(const IntMatrix &mat)
     {
         int number_of_ones = 0;
-        for (int i = 0; i < mat.height(); i++){
-            for(int j =0; j < mat.width(); j++){
-                if (mat(i,j) == 1){
-                    number_of_ones+=1;
-                } 
+        for (int i = 0; i < mat.height(); i++)
+        {
+            for (int j = 0; j < mat.width(); j++)
+            {
+                if (mat(i, j) == 1)
+                {
+                    number_of_ones += 1;
+                }
             }
         }
 
-        if (number_of_ones == mat.size()){
+        if (number_of_ones == mat.size())
+        {
             return ALL_ONES;
         }
 
-        return number_of_ones > 0 ? ONE_EXSISTS: ALL_ZEROS;
+        return number_of_ones > 0 ? ONE_EXSISTS : ALL_ZEROS;
     }
-    
+
     bool all(const IntMatrix &mat)
-    { 
+    {
         IntMatrix compare_matrix = mat != 0;
-        if (checkMatrix(compare_matrix) == ALL_ONES){
+        if (checkMatrix(compare_matrix) == ALL_ONES)
+        {
             return true;
         }
-        return false;     
+        return false;
     }
     bool any(const IntMatrix &mat)
     {
         IntMatrix compare_matrix = mat != 0;
-        if (checkMatrix(compare_matrix) != ALL_ZEROS){
+        if (checkMatrix(compare_matrix) != ALL_ZEROS)
+        {
             return true;
         }
-        return false;      
+        return false;
     }
     std::ostream &operator<<(std::ostream &os, const IntMatrix &mat)
     {
@@ -227,24 +233,31 @@ namespace mtm
     IntMatrix IntMatrix::operator+(const int num) const
     {
         int mat_columns = width();
-        int mat_rows = height(); 
-        Dimensions d(mat_rows,mat_columns);
+        int mat_rows = height();
+        Dimensions d(mat_rows, mat_columns);
         IntMatrix num_matrix(d, num);
         return *this + num_matrix;
     }
-    IntMatrix operator+(const int num, const IntMatrix & mat1) 
+    IntMatrix operator+(const int num, const IntMatrix &mat1)
     {
         return mat1 + num;
     }
     // **************************************************** ITERATOR CLASS*********************************************************
-    bool IntMatrix::iterator::operator==(const iterator &it) const{
+    IntMatrix::iterator::iterator(const IntMatrix *set, int index) : matrix(set),
+                                                                     index(index)
+    {
+    }
+
+    bool IntMatrix::iterator::operator==(const iterator &it) const
+    {
         return index == it.index;
     }
 
-    bool IntMatrix::iterator::operator!=(const iterator &it) const{
+    bool IntMatrix::iterator::operator!=(const iterator &it) const
+    {
         return !(*this == it);
     }
-    const int &IntMatrix::iterator::operator*() const
+    int &IntMatrix::iterator::operator*() const
     {
         return matrix->array[index];
     }
@@ -258,6 +271,10 @@ namespace mtm
         iterator result = *this;
         ++*this;
         return result;
+    }
+    IntMatrix::iterator IntMatrix::begin() const
+    {
+        return iterator(this, 0);
     }
 } // namespace mtm
 
