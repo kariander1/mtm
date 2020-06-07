@@ -4,7 +4,6 @@
 #include "Auxiliaries.h"
 #include "Auxiliaries.cpp" //REMOVE BEFORE FLIGHT!!!!!!!!!
 const int IDENTITIY = 1;
-enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
 namespace mtm
 {
 
@@ -199,7 +198,7 @@ namespace mtm
         if (number_of_ones == mat.size()){
             return ALL_ONES;
         }
-        
+
         return number_of_ones > 0 ? ONE_EXSISTS: ALL_ZEROS;
     }
     bool all(const IntMatrix &mat)
