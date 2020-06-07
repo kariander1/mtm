@@ -236,6 +236,14 @@ namespace mtm
     {
         return mat1 + num;
     }
+    // **************************************************** ITERATOR CLASS*********************************************************
+    bool IntMatrix::Iterator::operator==(const Iterator &it) const{
+        return index == it.index;
+    }
+
+    bool IntMatrix::Iterator::operator!=(const Iterator &it) const{
+        return !(*this == it);  
+    }   
 } // namespace mtm
 
 /*

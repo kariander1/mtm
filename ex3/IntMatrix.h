@@ -49,19 +49,20 @@ namespace mtm {
     };
     class IntMatrix::Iterator // Copied
     {
-        const IntMatrix *set;
+        const IntMatrix *matrix;
         int index;
-        Iterator(const IntMatrix *set, int index);
+        Iterator(const IntMatrix *matrix, int index);
         friend class IntMatrix;
 
     public:
         const int &operator*() const;
-        Iterator &operator++();
-        Iterator operator++(int);
+        IntMatrix::Iterator &operator++();
+        IntMatrix::Iterator operator++(int);
         bool operator==(const Iterator &it) const;
         bool operator!=(const Iterator &it) const;
-        Iterator(const Iterator &) = default;
-        Iterator &operator=(const Iterator &) = default;
+        IntMatrix::Iterator(const Iterator & it) = default;
+        IntMatrix::Iterator& operator=(const Iterator & it) = default;
+        ~Iterator() = default;
     }; // Copied
 
     enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
