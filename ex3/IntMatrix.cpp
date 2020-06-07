@@ -259,6 +259,9 @@ namespace mtm
         ++*this;
         return result;
     }
+    IntMatrix::iterator IntMatrix::iterator::end(){
+        return iterator(this, this->matrix->size());
+    } 
 } // namespace mtm
 
 /*
