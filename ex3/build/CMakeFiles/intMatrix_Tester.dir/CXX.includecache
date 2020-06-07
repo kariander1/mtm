@@ -6,13 +6,39 @@
 
 #IncludeRegexTransform: 
 
-C:/VScode/ex3/Auxiliaries.cpp
-Auxiliaries.h
-C:/VScode/ex3/Auxiliaries.h
-
 C:/VScode/ex3/Auxiliaries.h
 string
 -
 iostream
 -
+
+C:/VScode/ex3/IntMatrix.cpp
+string
+-
+iostream
+-
+IntMatrix.h
+C:/VScode/ex3/IntMatrix.h
+Auxiliaries.h
+C:/VScode/ex3/Auxiliaries.h
+
+C:/VScode/ex3/IntMatrix.h
+string
+-
+iostream
+-
+Auxiliaries.h
+C:/VScode/ex3/Auxiliaries.h
+
+C:/VScode/ex3/tester.cpp
+string
+-
+iostream
+-
+vector
+-
+IntMatrix.h
+C:/VScode/ex3/IntMatrix.h
+Auxiliaries.h
+C:/VScode/ex3/Auxiliaries.h
 

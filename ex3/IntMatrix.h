@@ -45,25 +45,26 @@ namespace mtm {
 
         static IntMatrix Identity(const int size);
 
-        class Iterator;
+        class iterator;
+        class const_iterator;
     };
-    class IntMatrix::Iterator // Copied
+    class IntMatrix::iterator
     {
         const IntMatrix *matrix;
         int index;
-        Iterator(const IntMatrix *matrix, int index);
+        iterator(const IntMatrix *matrix, int index);
         friend class IntMatrix;
 
     public:
         const int &operator*() const;
-        IntMatrix::Iterator &operator++();
-        IntMatrix::Iterator operator++(int);
-        bool operator==(const Iterator &it) const;
-        bool operator!=(const Iterator &it) const;
-        IntMatrix::Iterator(const Iterator & it) = default;
-        IntMatrix::Iterator& operator=(const Iterator & it) = default;
-        ~Iterator() = default;
-    }; // Copied
+        iterator &operator++(); // Prefix
+        iterator operator++(int); // Postfix
+        bool operator==(const iterator &it) const;
+        bool operator!=(const iterator &it) const;
+        iterator(const iterator & it) = default; // Copy constructor
+        iterator& operator=(const iterator & it) = default; // Assingment operator
+        ~iterator() = default; // D'tor
+    }; 
 
     enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
     static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
