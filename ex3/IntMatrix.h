@@ -42,6 +42,8 @@ namespace mtm {
         static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
     };
 
+    enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
+    
     IntMatrix operator+(const int num, const IntMatrix & mat1) ;
     IntMatrix operator+(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric +
     IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric - 
