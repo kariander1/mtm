@@ -72,6 +72,8 @@ namespace mtm {
         iterator(const iterator & it) = default; // Copy constructor
         iterator& operator=(const iterator & it) = default; // Assingment operator
         ~iterator() = default; // D'tor
+        iterator end();
+        
     }; 
 
     enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
@@ -82,7 +84,7 @@ namespace mtm {
     IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric - 
     bool all(const IntMatrix & mat);
     bool any(const IntMatrix & mat); 
-  
+    
 
 } // namespace mtm
 

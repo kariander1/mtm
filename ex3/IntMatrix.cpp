@@ -276,6 +276,10 @@ namespace mtm
     {
         return iterator(this, 0);
     }
+    IntMatrix::iterator IntMatrix::end() const 
+    {
+        return iterator(this, this->size());
+    } 
 } // namespace mtm
 
 /*
