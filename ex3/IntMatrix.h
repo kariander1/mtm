@@ -6,6 +6,7 @@
 namespace mtm {
     class IntMatrix {
     private:
+        //Private fields
         int* array;
         mtm::Dimensions dim;
 
@@ -15,10 +16,14 @@ namespace mtm {
         void copyMatrixValues(const int& init_value);
 
     public:
+
+        // C'tor + D'tor
         IntMatrix(mtm::Dimensions dimensions,int init_number=0);
         IntMatrix(const IntMatrix &);                            // Copy constructor
         ~IntMatrix();                                            //Destructor
-        IntMatrix &operator=(const IntMatrix &matrix);
+
+        // Operators
+        IntMatrix &operator=(const IntMatrix &matrix); // Assignment operator
         IntMatrix operator<(const int &num) const;
         IntMatrix operator<=(const int &num) const;
         IntMatrix operator>(const int &num) const;
@@ -27,21 +32,38 @@ namespace mtm {
         IntMatrix operator!=(const int &num) const;
         IntMatrix operator-() const;
         IntMatrix& operator+=(const int num);
+        IntMatrix operator+(const int num) const;
         int& operator()(const int row, const int column);
         const int& operator()(const int row, const int column) const;
+        friend std::ostream &operator<<(std::ostream &, const IntMatrix &);
+
 
         int height() const;
         int width() const;
         int size() const;
-        IntMatrix transpose() const;
-        
+        IntMatrix transpose() const;     
 
-        friend std::ostream &operator<<(std::ostream &, const IntMatrix &);
-        IntMatrix operator+(const int num) const;
-        static IntMatrix Identity(const int size);  
-       
+        static IntMatrix Identity(const int size);
+
+        class Iterator;
     };
-   
+    class IntMatrix::Iterator // Copied
+    {
+        const IntMatrix *set;
+        int index;
+        Iterator(const IntMatrix *set, int index);
+        friend class IntMatrix;
+
+    public:
+        const int &operator*() const;
+        Iterator &operator++();
+        Iterator operator++(int);
+        bool operator==(const Iterator &it) const;
+        bool operator!=(const Iterator &it) const;
+        Iterator(const Iterator &) = default;
+        Iterator &operator=(const Iterator &) = default;
+    }; // Copied
+
     enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
     static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
 
