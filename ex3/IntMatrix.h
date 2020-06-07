@@ -46,7 +46,7 @@ namespace mtm {
     IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric - 
     bool all(const IntMatrix & mat);
     bool any(const IntMatrix & mat); 
-
+    static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
 
 } // namespace mtm
 

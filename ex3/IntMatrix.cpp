@@ -3,9 +3,8 @@
 #include "IntMatrix.h"
 #include "Auxiliaries.h"
 #include "Auxiliaries.cpp" //REMOVE BEFORE FLIGHT!!!!!!!!!
-const int MIN_SIZE = 1;
 const int IDENTITIY = 1;
-
+enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
 namespace mtm
 {
 
@@ -165,15 +164,15 @@ namespace mtm
         }
         return decrease_matrix;
     }
+
     IntMatrix &IntMatrix::operator+=(const int num)
     {
-        //int matrix_size = size();
-        /*
+        /*int matrix_size = size();
+        
         for (int i = 0; i < matrix_size; i++)
         {
             array[i] += num; // add the num to every element in the matrix
-        }
-        */
+        }*/
         //Maybe use:
         *this = *this + num;
         return *this;
@@ -186,8 +185,31 @@ namespace mtm
     {
         return array[row * width() + column];
     }
+    static MATRIX_STATUS checkMatrix(const IntMatrix& mat)
+    {
+        int number_of_ones = 0;
+        for (int i = 0; i < mat.height(); i++){
+            for(int j =0; j < mat.width(); j++){
+                if (mat(i,j) == 1){
+                    number_of_ones+=1;
+                } 
+            }
+        }
+
+        if (number_of_ones == mat.size()){
+            return ALL_ONES;
+        }
+        
+        return number_of_ones > 0 ? ONE_EXSISTS: ALL_ZEROS;
+    }
     bool all(const IntMatrix &mat)
-    { // Maybe use mat!=0  ?
+    { 
+        IntMatrix compare_matrix = mat != 0;
+        if (checkMatrix(compare_matrix) == ALL_ONES){
+            return true;
+        }
+        return false;
+        /*
         int mat_columns = mat.width();
         int mat_rows = mat.height();
         for (int row = 0, column = 0; row < mat_rows & column < mat_columns;)
@@ -203,10 +225,16 @@ namespace mtm
                 row += 1;
             }
         }
-        return true;
+        return true;*/
     }
     bool any(const IntMatrix &mat)
     { // Maybe use mat!=0  ?
+        IntMatrix compare_matrix = mat != 0;
+        if (checkMatrix(compare_matrix) != ALL_ZEROS){
+            return true;
+        }
+        return false;
+        /*
         int mat_columns = mat.width();
         int mat_rows = mat.height();
         for (int row = 0, column = 0; row < mat_rows & column < mat_columns;)
@@ -222,7 +250,7 @@ namespace mtm
                 row += 1;
             }
         }
-        return false;
+        return false;*/
     }
     std::ostream &operator<<(std::ostream &os, const IntMatrix &mat)
     {
@@ -231,10 +259,10 @@ namespace mtm
         return os;
     }
 
-    IntMatrix IntMatrix::operator+(const int num) const// Outside class to support symetric +
+    IntMatrix IntMatrix::operator+(const int num) const
     {
         int mat_columns = width();
-        int mat_rows = height();
+        int mat_rows = height(); 
         Dimensions d(mat_rows,mat_columns);
         IntMatrix num_matrix(d, num);
         return *this + num_matrix;
