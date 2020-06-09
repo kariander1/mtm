@@ -2,12 +2,19 @@
 #include <iostream>
 #include "IntMatrix.h"
 #include "Auxiliaries.h"
-//#include "Auxiliaries.cpp" //REMOVE BEFORE FLIGHT!!!!!!!!!
 
 const int IDENTITIY = 1;
 namespace mtm
 {
-    enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
+    enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXISTS, ALL_ZEROS};
+    /**
+    * checkMatrix: checks matrix with special properties for "any" and "all" functions
+    * 
+    *
+    * @param mat - The matrix to check the properites on
+    * @return
+    * 	enumerable value of MATRIX_STATUS, whether atrix contatins all ones, all zeroes, and if at least one.
+    */
     static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
 
     IntMatrix::IntMatrix(Dimensions dimensions, int init_number) : array(new int[calcMatSize(dimensions)]), dim(dimensions)
@@ -26,9 +33,6 @@ namespace mtm
         {
             new_identity.array[i] = IDENTITIY; //add "1" in the diagonal
         }
-        //for (int j = 0; j<matrix_size;j++ ){
-        //    std::cout << new_identity.array[j];
-        //}
         return new_identity;
     }
     IntMatrix::IntMatrix(const IntMatrix &matrix) : array(new int[calcMatSize(matrix.dim)]),
@@ -166,13 +170,6 @@ namespace mtm
 
     IntMatrix &IntMatrix::operator+=(const int num)
     {
-        /*int matrix_size = size();
-        
-        for (int i = 0; i < matrix_size; i++)
-        {
-            array[i] += num; // add the num to every element in the matrix
-        }*/
-        //Maybe use:
         *this = *this + num;
         return *this;
     }
@@ -204,7 +201,7 @@ namespace mtm
             return ALL_ONES;
         }
 
-        return number_of_ones > 0 ? ONE_EXSISTS : ALL_ZEROS;
+        return number_of_ones > 0 ? ONE_EXISTS : ALL_ZEROS;
     }
 
     bool all(const IntMatrix &mat)
@@ -326,25 +323,3 @@ namespace mtm
 // **************************************************** CONST ITERATOR CLASS*********************************************************
   
 } // namespace mtm
-
-/*
-int main(int argc, char **argv)
-{
-    using mtm::Dimensions;
-    using mtm::IntMatrix;
-    using std::cout;
-    using std::endl;
-    Dimensions d(2, 4);
-    IntMatrix identity_2 = IntMatrix::Identity(2);
-    IntMatrix a(d, 4);
-    IntMatrix newmatrix = -a;
-    cout << all(a) << endl;
-    IntMatrix c = a.transpose();
-    cout << c << endl<<a;
-    {
-        IntMatrix b(d, 6);
-        a = b;
-    }
-    return 0;
-}
-*/
