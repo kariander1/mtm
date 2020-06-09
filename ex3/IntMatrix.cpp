@@ -7,6 +7,8 @@
 const int IDENTITIY = 1;
 namespace mtm
 {
+    enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
+    static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
 
     IntMatrix::IntMatrix(Dimensions dimensions, int init_number) : array(new int[calcMatSize(dimensions)]), dim(dimensions)
     {
@@ -183,7 +185,7 @@ namespace mtm
         return array[row * width() + column];
     }
 
-    MATRIX_STATUS checkMatrix(const IntMatrix &mat)
+    MATRIX_STATUS checkMatrix(const IntMatrix& mat)
     {
         int number_of_ones = 0;
         for (int i = 0; i < mat.height(); i++)
@@ -286,11 +288,6 @@ namespace mtm
                                                                      index(index)
     {
         
-    }
-    IntMatrix::const_iterator::operator iterator() const
-    {
-        IntMatrix temp_mat =*matrix;
-        return iterator(&temp_mat,this->index);
     }
     bool IntMatrix::const_iterator::operator==(const const_iterator &it) const
     {

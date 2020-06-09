@@ -80,8 +80,7 @@ namespace mtm {
     {
         const IntMatrix *matrix;
         int index;
-        const_iterator(const IntMatrix *matrix, int index);
-        explicit operator iterator() const;
+        const_iterator(const IntMatrix *matrix, int index);      
         friend class IntMatrix;
 
     public:
@@ -96,15 +95,13 @@ namespace mtm {
       
         
     }; 
-    enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXSISTS, ALL_ZEROS};
-    static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
-
     IntMatrix operator+(const int num, const IntMatrix & mat1) ;
     IntMatrix operator+(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric +
     IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric - 
     bool all(const IntMatrix & mat);
     bool any(const IntMatrix & mat); 
-    
+
+   
 
 } // namespace mtm
 
