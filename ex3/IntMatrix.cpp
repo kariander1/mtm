@@ -3,9 +3,10 @@
 #include "IntMatrix.h"
 #include "Auxiliaries.h"
 
-const int IDENTITIY = 1;
+
 namespace mtm
 {
+    const int IDENTITIY = 1;
     enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXISTS, ALL_ZEROS};
     /**
     * checkMatrix: checks matrix with special properties for "any" and "all" functions
@@ -241,7 +242,7 @@ namespace mtm
     {
         return mat1 + num;
     }
-    // **************************************************** ITERATOR CLASS*********************************************************
+    // **************************************************** ITERATOR CLASS******************************************************
     IntMatrix::iterator::iterator(IntMatrix *mat, int index) : matrix(mat),
                                                                      index(index)
     {
@@ -280,7 +281,7 @@ namespace mtm
         return iterator(this, this->size());
     } 
  // **************************************************** ITERATOR CLASS*********************************************************
- // **************************************************** CONST ITERATOR CLASS*********************************************************
+ // **************************************************** CONST ITERATOR CLASS***************************************************
     IntMatrix::const_iterator::const_iterator(const IntMatrix *mat, int index) : matrix(mat),
                                                                      index(index)
     {
@@ -320,6 +321,6 @@ namespace mtm
     {
         return const_iterator(this, this->size());
     } 
-// **************************************************** CONST ITERATOR CLASS*********************************************************
+// **************************************************** CONST ITERATOR CLASS****************************************************
   
 } // namespace mtm
