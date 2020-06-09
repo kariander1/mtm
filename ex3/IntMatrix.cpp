@@ -3,11 +3,15 @@
 #include "IntMatrix.h"
 #include "Auxiliaries.h"
 
-
 namespace mtm
 {
     const int IDENTITIY = 1;
-    enum MATRIX_STATUS {ALL_ONES = -1, ONE_EXISTS, ALL_ZEROS};
+    enum MATRIX_STATUS
+    {
+        ALL_ONES = -1,
+        ONE_EXISTS,
+        ALL_ZEROS
+    };
     /**
     * checkMatrix: checks matrix with special properties for "any" and "all" functions
     * 
@@ -16,9 +20,10 @@ namespace mtm
     * @return
     * 	enumerable value of MATRIX_STATUS, whether atrix contatins all ones, all zeroes, and if at least one.
     */
-    static MATRIX_STATUS checkMatrix(const IntMatrix& matrix);
+    static MATRIX_STATUS checkMatrix(const IntMatrix &matrix);
 
-    IntMatrix::IntMatrix(Dimensions dimensions, int init_number) : array(new int[calcMatSize(dimensions)]), dim(dimensions)
+    IntMatrix::IntMatrix(Dimensions dimensions, int init_number) 
+        : array(new int[calcMatSize(dimensions)]), dim(dimensions)
     {
 
         copyMatrixValues(init_number);
@@ -183,7 +188,7 @@ namespace mtm
         return array[row * width() + column];
     }
 
-    MATRIX_STATUS checkMatrix(const IntMatrix& matrix)
+    MATRIX_STATUS checkMatrix(const IntMatrix &matrix)
     {
         int number_of_ones = 0;
         for (int i = 0; i < matrix.height(); i++)
@@ -242,9 +247,9 @@ namespace mtm
     {
         return matrix_a + num;
     }
-    // **************************************************** ITERATOR CLASS******************************************************
+    // **************************************************** ITERATOR CLASS************************
     IntMatrix::iterator::iterator(IntMatrix *matrix_a, int index) : matrix(matrix_a),
-                                                                     index(index)
+                                                                    index(index)
     {
     }
 
@@ -276,21 +281,20 @@ namespace mtm
     {
         return iterator(this, 0);
     }
-    IntMatrix::iterator IntMatrix::end() 
+    IntMatrix::iterator IntMatrix::end()
     {
         return iterator(this, this->size());
-    } 
- // **************************************************** ITERATOR CLASS*********************************************************
- // **************************************************** CONST ITERATOR CLASS***************************************************
+    }
+    // **************************************************** ITERATOR CLASS*************************
+    // **************************************************** CONST ITERATOR CLASS*******************
     IntMatrix::const_iterator::const_iterator(const IntMatrix *matrix_a, int index) : matrix(matrix_a),
-                                                                     index(index)
+                                                                                      index(index)
     {
-        
     }
     bool IntMatrix::const_iterator::operator==(const const_iterator &it) const
     {
         //return iterator(*this)==iterator(it);
-        return index ==it.index;
+        return index == it.index;
     }
 
     bool IntMatrix::const_iterator::operator!=(const const_iterator &it) const
@@ -303,7 +307,7 @@ namespace mtm
         return matrix->array[index];
     }
     IntMatrix::const_iterator &IntMatrix::const_iterator::operator++()
-    {        
+    {
         ++index;
         return *this;
     }
@@ -317,10 +321,10 @@ namespace mtm
     {
         return const_iterator(this, 0);
     }
-    IntMatrix::const_iterator IntMatrix::end() const 
+    IntMatrix::const_iterator IntMatrix::end() const
     {
         return const_iterator(this, this->size());
-    } 
-// **************************************************** CONST ITERATOR CLASS****************************************************
-  
+    }
+    // **************************************************** CONST ITERATOR CLASS*******************
+
 } // namespace mtm

@@ -55,8 +55,9 @@ namespace mtm {
         */
         IntMatrix &operator=(const IntMatrix &matrix); // Assignment operator
         /**
-        * IntMatrix::&operator__(): execute the logical operation for every element in the matrix and creates a new matrix
-        * in the same size. if the logical operation of the element was true then the element in the new_matrix is 1, otherwise the element is 0.
+        * IntMatrix::&operator__(): execute the logical operation for every element in the matrix and creates 
+        * a new matrix in the same size. if the logical operation of the element was true then the element in
+        * the new_matrix is 1, otherwise the element is 0.
         *
         * @param num - The number to compare to
         * @return
@@ -147,7 +148,8 @@ namespace mtm {
 
         class iterator;
         /**
-        * IntMatrix::begin/end(): creates an iterator for the given matrix and retets it to be the begin/end of the matrix
+        * IntMatrix::begin/end(): creates an iterator for the given matrix and retets it 
+        * to be the begin/end of the matrix
         *
         * @return
         * 	returns the new iterator
@@ -156,7 +158,8 @@ namespace mtm {
         iterator end();
 
         /**
-         * same as the end and begin, the difference is that the return iterator is constant and the matrix is constant
+         * same as the end and begin, the difference is that the return iterator 
+         * is constant and the matrix is constant
          */
         class const_iterator;
         const_iterator begin() const;
@@ -255,7 +258,8 @@ namespace mtm {
     IntMatrix operator+(const int num, const IntMatrix & matrix_a) ;
     
     /**
-    * operator+(): creates a new matrix with the current element value of matrix_a plus the current element value of matrix_b.
+    * operator+(): creates a new matrix with the current element value of matrix_a plus
+    * the current element value of matrix_b.
     *
     * @param matrix_a - The matrix to take the values from
     * @param matrix_b - The matrix to take the values from
@@ -265,7 +269,8 @@ namespace mtm {
     IntMatrix operator+(const IntMatrix & matrix_a, const IntMatrix & matrix_b); // Outside class to support symetric +
     
     /**
-    * operator-(): creates a new matrix with the current element value of matrix_a minus the current element value of matrix_b.
+    * operator-(): creates a new matrix with the current element value of matrix_a
+    * minus the current element value of matrix_b.
     *
     * @param matrix_a - The matrix to take the values from
     * @param matrix_b - The matrix to take the values from
