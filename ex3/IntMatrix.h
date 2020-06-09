@@ -16,8 +16,16 @@ namespace mtm {
         void copyMatrixValues(const int& init_value);
 
     public:
-
-        // C'tor + D'tor
+        /**
+        * IntMatrix: creates a copy of the given new value - in order to save inside the node
+        *    and replace the old value for the new value (frees the old value)
+        *
+        * @param old_val - The old value addres - if we want to replace an exsisting value , if this is a new value then old val is null
+        * @param new_val - the address of the new value to put inside the node (value od key)
+        * @return
+        * 	true - if allocation succeeded 
+        *   false - ifallocation failed 
+        */
         IntMatrix(mtm::Dimensions dimensions,int init_number=0);
         IntMatrix(const IntMatrix &);                            // Copy constructor
         ~IntMatrix();                                            //Destructor
