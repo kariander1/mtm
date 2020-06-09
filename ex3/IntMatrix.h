@@ -46,15 +46,52 @@ namespace mtm {
         ~IntMatrix();                                            //Destructor
 
         // Operators
+        /**
+        * IntMatrix::&operator=(): assignment operator, assigns the given matrix to this
+        *
+        * @param matrix - The matrix to copy to this
+        * @return
+        * 	returns reference to the new copied matrix
+        */
         IntMatrix &operator=(const IntMatrix &matrix); // Assignment operator
+        /**
+        * IntMatrix::&operator__(): execute the logical operation for every element in the matrix and creates a new matrix
+        * in the same size. if the logical operation of the element was true then the element in the new_matrix is 1, otherwise the element is 0.
+        *
+        * @param num - The number to compare to
+        * @return
+        * 	returns the new matrix with zeros and ones according to the output of the logic operation.
+        */
         IntMatrix operator<(const int &num) const;
         IntMatrix operator<=(const int &num) const;
         IntMatrix operator>(const int &num) const;
         IntMatrix operator>=(const int &num) const;
         IntMatrix operator==(const int &num) const;
         IntMatrix operator!=(const int &num) const;
+        /**
+        * IntMatrix::&operator-(): creates a new matrix where each value is the negative of the current value.
+        *
+        * @return
+        * 	returns the new matrix with negative values.
+        */
         IntMatrix operator-() const;
+        /**
+        * IntMatrix::&operator+=(): adds to each element in the exsisting matrix the num specified.
+      
+        *
+        * @param num - The number to add to the exsisting value
+        * @return
+        * 	returns a reference to the modified matrix
+        */
         IntMatrix& operator+=(const int num);
+        /**
+        * IntMatrix::&operator+(): creates a new matrix with the current element value plus the num specified.
+      
+        *
+        * @param num - The number to add to the exsisting value
+        * @return
+        * 	returns a copy of the new matrix
+        */
         IntMatrix operator+(const int num) const;
          /**
         *   "operator()" operators
@@ -69,10 +106,19 @@ namespace mtm {
         */
         int& operator()(const int row, const int column);
         const int& operator()(const int row, const int column) const;
-
+        /**
+        * IntMatrix::&operator<<(): Prints the given matrix.
+        * @return
+        * 	None
+        */
         friend std::ostream &operator<<(std::ostream &, const IntMatrix &);
 
-
+        /**
+        * IntMatrix::height/width/size(): calculates the height/width/size of the given matrix
+        *
+        * @return
+        * 	returns the height/width/size of the given matrix
+        */
         int height() const;
         int width() const;
         int size() const;
@@ -100,10 +146,18 @@ namespace mtm {
         static IntMatrix Identity(const int size);
 
         class iterator;
+        /**
+        * IntMatrix::begin/end(): creates an iterator for the given matrix and retets it to be the begin/end of the matrix
+        *
+        * @return
+        * 	returns the new iterator
+        */
         iterator begin();
         iterator end();
 
-        
+        /**
+         * same as the end and begin, the difference is that the return iterator is constant and the matrix is constant
+         */
         class const_iterator;
         const_iterator begin() const;
         const_iterator end() const;
@@ -140,6 +194,13 @@ namespace mtm {
         * 	Reference the value at the current index
         */
         int &operator*() const;
+        /**
+        * iretaror::operator++(): promotes the iterator index by 1. 
+        *
+        * @return
+        *  --The prefix increment returns the value of a variable after it has been incremented.
+        *  --The postfix increment returns the value of a variable before it has been incremented. 
+        */
         iterator &operator++(); // Prefix
         iterator operator++(int); // Postfix
         /**
@@ -181,12 +242,51 @@ namespace mtm {
         const_iterator& operator=(const const_iterator & it) = default; // Assingment operator
         ~const_iterator() = default; // D'tor
       
-        
     }; 
+    
+    /**
+    * operator+(): creates a new matrix with the current element value plus the num specified.
+    *
+    * @param num - The number to add to the exsisting value
+    * @param mat1 - The matrix to take the values from
+    * @return
+    * 	returns a copy of the new matrix
+    */
     IntMatrix operator+(const int num, const IntMatrix & mat1) ;
+    
+    /**
+    * operator+(): creates a new matrix with the current element value of mat1 plus the current element value of mat2.
+    *
+    * @param mat1 - The matrix to take the values from
+    * @param mat2 - The matrix to take the values from
+    * @return
+    * 	returns a copy of the new matrix
+    */
     IntMatrix operator+(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric +
+    
+    /**
+    * operator-(): creates a new matrix with the current element value of mat1 minus the current element value of mat2.
+    *
+    * @param mat1 - The matrix to take the values from
+    * @param mat2 - The matrix to take the values from
+    * @return
+    * 	returns a copy of the new matrix
+    */
     IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric - 
+    
+    /**
+    * all: checks if all the the matrix's values are different from 0
+    * @return
+    * 	True if all the the matrix's values are different from 0.
+    *   False otherwise
+    */
     bool all(const IntMatrix & mat);
+    /**
+    * any: checks if at least one of the matrix's values are different from 0.
+    * @return
+    * 	True if at least one of the matrix's values are different from 0.
+    *   False otherwise
+    */
     bool any(const IntMatrix & mat); 
 
    
