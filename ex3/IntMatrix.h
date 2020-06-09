@@ -248,31 +248,31 @@ namespace mtm {
     * operator+(): creates a new matrix with the current element value plus the num specified.
     *
     * @param num - The number to add to the exsisting value
-    * @param mat1 - The matrix to take the values from
+    * @param matrix_a - The matrix to take the values from
     * @return
     * 	returns a copy of the new matrix
     */
-    IntMatrix operator+(const int num, const IntMatrix & mat1) ;
+    IntMatrix operator+(const int num, const IntMatrix & matrix_a) ;
     
     /**
-    * operator+(): creates a new matrix with the current element value of mat1 plus the current element value of mat2.
+    * operator+(): creates a new matrix with the current element value of matrix_a plus the current element value of matrix_b.
     *
-    * @param mat1 - The matrix to take the values from
-    * @param mat2 - The matrix to take the values from
+    * @param matrix_a - The matrix to take the values from
+    * @param matrix_b - The matrix to take the values from
     * @return
     * 	returns a copy of the new matrix
     */
-    IntMatrix operator+(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric +
+    IntMatrix operator+(const IntMatrix & matrix_a, const IntMatrix & matrix_b); // Outside class to support symetric +
     
     /**
-    * operator-(): creates a new matrix with the current element value of mat1 minus the current element value of mat2.
+    * operator-(): creates a new matrix with the current element value of matrix_a minus the current element value of matrix_b.
     *
-    * @param mat1 - The matrix to take the values from
-    * @param mat2 - The matrix to take the values from
+    * @param matrix_a - The matrix to take the values from
+    * @param matrix_b - The matrix to take the values from
     * @return
     * 	returns a copy of the new matrix
     */
-    IntMatrix operator-(const IntMatrix & mat1, const IntMatrix & mat2); // Outside class to support symetric - 
+    IntMatrix operator-(const IntMatrix & matrix_a, const IntMatrix & matrix_b); // Outside class to support symetric - 
     
     /**
     * all: checks if all the the matrix's values are different from 0
@@ -280,14 +280,14 @@ namespace mtm {
     * 	True if all the the matrix's values are different from 0.
     *   False otherwise
     */
-    bool all(const IntMatrix & mat);
+    bool all(const IntMatrix & matrix);
     /**
     * any: checks if at least one of the matrix's values are different from 0.
     * @return
     * 	True if at least one of the matrix's values are different from 0.
     *   False otherwise
     */
-    bool any(const IntMatrix & mat); 
+    bool any(const IntMatrix & matrix); 
 
    
 

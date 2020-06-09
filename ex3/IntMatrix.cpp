@@ -12,11 +12,11 @@ namespace mtm
     * checkMatrix: checks matrix with special properties for "any" and "all" functions
     * 
     *
-    * @param mat - The matrix to check the properites on
+    * @param matrix - The matrix to check the properites on
     * @return
     * 	enumerable value of MATRIX_STATUS, whether atrix contatins all ones, all zeroes, and if at least one.
     */
-    static MATRIX_STATUS checkMatrix(const IntMatrix& mat);
+    static MATRIX_STATUS checkMatrix(const IntMatrix& matrix);
 
     IntMatrix::IntMatrix(Dimensions dimensions, int init_number) : array(new int[calcMatSize(dimensions)]), dim(dimensions)
     {
@@ -46,23 +46,23 @@ namespace mtm
     {
         delete[] array;
     }
-    IntMatrix operator+(const IntMatrix &mat1, const IntMatrix &mat2)
+    IntMatrix operator+(const IntMatrix &matrix_a, const IntMatrix &matrix_b)
     {
-        IntMatrix new_mat(mat1);
-        for (int i = 0; i < mat1.height(); i++)
+        IntMatrix new_matrix(matrix_a);
+        for (int i = 0; i < matrix_a.height(); i++)
         {
-            for (int j = 0; j < mat1.width(); j++)
+            for (int j = 0; j < matrix_a.width(); j++)
             {
-                new_mat(i, j) += mat2(i, j);
+                new_matrix(i, j) += matrix_b(i, j);
             }
         }
-        return new_mat;
+        return new_matrix;
     }
-    IntMatrix operator-(const IntMatrix &mat1, const IntMatrix &mat2)
+    IntMatrix operator-(const IntMatrix &matrix_a, const IntMatrix &matrix_b)
     {
-        IntMatrix new_mat(mat1);
-        new_mat = new_mat + (-mat2); // Will be ok with unary operator
-        return new_mat;
+        IntMatrix new_matrix(matrix_a);
+        new_matrix = new_matrix + (-matrix_b); // Will be ok with unary operator
+        return new_matrix;
     }
     IntMatrix &IntMatrix::operator=(const IntMatrix &matrix)
     {
@@ -82,12 +82,12 @@ namespace mtm
 
     IntMatrix IntMatrix::operator<(const int &num) const
     {
-        IntMatrix new_mat(dim, 0);
+        IntMatrix new_matrix(dim, 0);
         for (int i = 0; i < size(); i++)
         {
-            (new_mat.array[i] = array[i] < num ? 1 : 0);
+            (new_matrix.array[i] = array[i] < num ? 1 : 0);
         }
-        return new_mat;
+        return new_matrix;
     }
     IntMatrix IntMatrix::operator>(const int &num) const
     {
@@ -108,8 +108,8 @@ namespace mtm
 
     IntMatrix IntMatrix::operator!=(const int &num) const
     {
-        IntMatrix all_diff_mat(dim, 1);
-        return (all_diff_mat - ((*this) == num));
+        IntMatrix all_diff_matrix(dim, 1);
+        return (all_diff_matrix - ((*this) == num));
     }
 
     void IntMatrix::copyMatrixValues(const IntMatrix &matrix)
@@ -183,21 +183,21 @@ namespace mtm
         return array[row * width() + column];
     }
 
-    MATRIX_STATUS checkMatrix(const IntMatrix& mat)
+    MATRIX_STATUS checkMatrix(const IntMatrix& matrix)
     {
         int number_of_ones = 0;
-        for (int i = 0; i < mat.height(); i++)
+        for (int i = 0; i < matrix.height(); i++)
         {
-            for (int j = 0; j < mat.width(); j++)
+            for (int j = 0; j < matrix.width(); j++)
             {
-                if (mat(i, j) == 1)
+                if (matrix(i, j) == 1)
                 {
                     number_of_ones += 1;
                 }
             }
         }
 
-        if (number_of_ones == mat.size())
+        if (number_of_ones == matrix.size())
         {
             return ALL_ONES;
         }
@@ -205,45 +205,45 @@ namespace mtm
         return number_of_ones > 0 ? ONE_EXISTS : ALL_ZEROS;
     }
 
-    bool all(const IntMatrix &mat)
+    bool all(const IntMatrix &matrix)
     {
-        IntMatrix compare_matrix = mat != 0;
+        IntMatrix compare_matrix = matrix != 0;
         if (checkMatrix(compare_matrix) == ALL_ONES)
         {
             return true;
         }
         return false;
     }
-    bool any(const IntMatrix &mat)
+    bool any(const IntMatrix &matrix)
     {
-        IntMatrix compare_matrix = mat != 0;
+        IntMatrix compare_matrix = matrix != 0;
         if (checkMatrix(compare_matrix) != ALL_ZEROS)
         {
             return true;
         }
         return false;
     }
-    std::ostream &operator<<(std::ostream &os, const IntMatrix &mat)
+    std::ostream &operator<<(std::ostream &os, const IntMatrix &matrix)
     {
 
-        os << mtm::printMatrix(mat.array, mat.dim);
+        os << mtm::printMatrix(matrix.array, matrix.dim);
         return os;
     }
 
     IntMatrix IntMatrix::operator+(const int num) const
     {
-        int mat_columns = width();
-        int mat_rows = height();
-        Dimensions d(mat_rows, mat_columns);
+        int matrix_columns = width();
+        int matrix_rows = height();
+        Dimensions d(matrix_rows, matrix_columns);
         IntMatrix num_matrix(d, num);
         return *this + num_matrix;
     }
-    IntMatrix operator+(const int num, const IntMatrix &mat1)
+    IntMatrix operator+(const int num, const IntMatrix &matrix_a)
     {
-        return mat1 + num;
+        return matrix_a + num;
     }
     // **************************************************** ITERATOR CLASS******************************************************
-    IntMatrix::iterator::iterator(IntMatrix *mat, int index) : matrix(mat),
+    IntMatrix::iterator::iterator(IntMatrix *matrix_a, int index) : matrix(matrix_a),
                                                                      index(index)
     {
     }
@@ -282,7 +282,7 @@ namespace mtm
     } 
  // **************************************************** ITERATOR CLASS*********************************************************
  // **************************************************** CONST ITERATOR CLASS***************************************************
-    IntMatrix::const_iterator::const_iterator(const IntMatrix *mat, int index) : matrix(mat),
+    IntMatrix::const_iterator::const_iterator(const IntMatrix *matrix_a, int index) : matrix(matrix_a),
                                                                      index(index)
     {
         
