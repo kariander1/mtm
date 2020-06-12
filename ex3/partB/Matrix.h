@@ -36,7 +36,7 @@ namespace mtm
                 array[i] = init_value; //Or maybe should use iterator?
             }
         }
-        class MatrixError;
+      //  class MatrixError;
 
     public:
         /**
@@ -242,43 +242,34 @@ namespace mtm
         class DimensionsMismatch;
     };
     template <class T>
-    class Matrix<T>::MatrixError
-    {
-    protected:
-        const std::string error_prefix = "Mtm matrix error: ";
-
-    public:
-        virtual const std::string what() const = 0;
-    };
-    template <class T>
-    class Matrix<T>::AccessIllegalElement : public Matrix<T>::MatrixError
+    class Matrix<T>::AccessIllegalElement
     {
     private:
-        const std::string description = "An attempt to access an illegal element";
+        const std::string description = "Mtm matrix error: An attempt to access an illegal element";
 
     public:
         const std::string what() const
         {
-            return error_prefix + description;
+            return description;
         }
     };
     template <class T>
-    class Matrix<T>::IllegalInitialization : public Matrix<T>::MatrixError
+    class Matrix<T>::IllegalInitialization
     {
     private:
-        const std::string description = "Illegal initialization values";
+        const std::string description = "Mtm matrix error: Illegal initialization values";
 
     public:
         const std::string what() const
         {
-            return error_prefix + description;
+            return  description;
         }
     };
     template <class T>
-    class Matrix<T>::DimensionsMismatch : public Matrix<T>::MatrixError
+    class Matrix<T>::DimensionsMismatch
     {
     private:
-        const std::string description = "Dimensions mismatch: ";
+        const std::string description = "Mtm matrix error: Dimensions mismatch: ";
         const Dimensions dim_a;
         const Dimensions dim_b;
 
@@ -291,7 +282,7 @@ namespace mtm
 
         const std::string what() const
         {
-            return error_prefix + description + dim_a.toString() + " " + dim_b.toString();
+            return description + dim_a.toString() + " " + dim_b.toString();
         }
     };
     class Matrix::iterator
