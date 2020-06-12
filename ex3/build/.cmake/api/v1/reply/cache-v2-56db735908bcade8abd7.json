@@ -194,6 +194,18 @@
 			"value" : "C:/TDM-GCC-64/bin/gcc-ranlib.exe"
 		},
 		{
+			"name" : "CMAKE_CXX_COMPILE_FEATURES",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "PATH",
+			"value" : "/usr/bin/g++"
+		},
+		{
 			"name" : "CMAKE_CXX_FLAGS",
 			"properties" : 
 			[

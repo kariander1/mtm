@@ -13,12 +13,12 @@ iostream
 -
 
 C:/VScode/ex3/IntMatrix.h
+Auxiliaries.h
+C:/VScode/ex3/Auxiliaries.h
 string
 -
 iostream
 -
-Auxiliaries.h
-C:/VScode/ex3/Auxiliaries.h
 
 C:/VScode/ex3/test_partA.cpp
 functional

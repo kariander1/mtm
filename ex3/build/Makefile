@@ -72,17 +72,6 @@ CMAKE_BINARY_DIR = C:\VScode\ex3\build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -93,6 +82,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -125,6 +125,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named dry_partA
+
+# Build rule for target.
+dry_partA: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 dry_partA
+.PHONY : dry_partA
+
+# fast build rule for target.
+dry_partA/fast:
+	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/build
+.PHONY : dry_partA/fast
 
 #=============================================================================
 # Target rules for targets named intMatrix_Tester
@@ -212,6 +225,33 @@ IntMatrix.cpp.s:
 	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/IntMatrix.cpp.s
 .PHONY : IntMatrix.cpp.s
 
+temp.obj: temp.cpp.obj
+
+.PHONY : temp.obj
+
+# target to build an object file
+temp.cpp.obj:
+	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/temp.cpp.obj
+.PHONY : temp.cpp.obj
+
+temp.i: temp.cpp.i
+
+.PHONY : temp.i
+
+# target to preprocess a source file
+temp.cpp.i:
+	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/temp.cpp.i
+.PHONY : temp.cpp.i
+
+temp.s: temp.cpp.s
+
+.PHONY : temp.s
+
+# target to generate assembly for a file
+temp.cpp.s:
+	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/temp.cpp.s
+.PHONY : temp.cpp.s
+
 test_partA.obj: test_partA.cpp.obj
 
 .PHONY : test_partA.obj
@@ -274,6 +314,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... dry_partA
 	@echo ... intMatrix_TestPartA
 	@echo ... intMatrix_Tester
 	@echo ... Auxiliaries.obj
@@ -282,6 +323,9 @@ help:
 	@echo ... IntMatrix.obj
 	@echo ... IntMatrix.i
 	@echo ... IntMatrix.s
+	@echo ... temp.obj
+	@echo ... temp.i
+	@echo ... temp.s
 	@echo ... test_partA.obj
 	@echo ... test_partA.i
 	@echo ... test_partA.s

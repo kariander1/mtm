@@ -1,6 +1,11 @@
 [
 {
   "directory": "C:/VScode/ex3/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\dry_partA.dir\\temp.cpp.obj -c C:\\VScode\\ex3\\temp.cpp",
+  "file": "C:/VScode/ex3/temp.cpp"
+},
+{
+  "directory": "C:/VScode/ex3/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_Tester.dir\\tester.cpp.obj -c C:\\VScode\\ex3\\tester.cpp",
   "file": "C:/VScode/ex3/tester.cpp"
 },
