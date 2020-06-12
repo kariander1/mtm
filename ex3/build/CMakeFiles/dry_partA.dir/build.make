@@ -73,27 +73,27 @@ include CMakeFiles/dry_partA.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/dry_partA.dir/flags.make
 
-CMakeFiles/dry_partA.dir/temp.cpp.obj: CMakeFiles/dry_partA.dir/flags.make
-CMakeFiles/dry_partA.dir/temp.cpp.obj: ../temp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/dry_partA.dir/temp.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\dry_partA.dir\temp.cpp.obj -c C:\VScode\ex3\temp.cpp
+CMakeFiles/dry_partA.dir/partA/temp.cpp.obj: CMakeFiles/dry_partA.dir/flags.make
+CMakeFiles/dry_partA.dir/partA/temp.cpp.obj: ../partA/temp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/dry_partA.dir/partA/temp.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\dry_partA.dir\partA\temp.cpp.obj -c C:\VScode\ex3\partA\temp.cpp
 
-CMakeFiles/dry_partA.dir/temp.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dry_partA.dir/temp.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\temp.cpp > CMakeFiles\dry_partA.dir\temp.cpp.i
+CMakeFiles/dry_partA.dir/partA/temp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dry_partA.dir/partA/temp.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\partA\temp.cpp > CMakeFiles\dry_partA.dir\partA\temp.cpp.i
 
-CMakeFiles/dry_partA.dir/temp.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dry_partA.dir/temp.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\temp.cpp -o CMakeFiles\dry_partA.dir\temp.cpp.s
+CMakeFiles/dry_partA.dir/partA/temp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dry_partA.dir/partA/temp.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partA\temp.cpp -o CMakeFiles\dry_partA.dir\partA\temp.cpp.s
 
 # Object files for target dry_partA
 dry_partA_OBJECTS = \
-"CMakeFiles/dry_partA.dir/temp.cpp.obj"
+"CMakeFiles/dry_partA.dir/partA/temp.cpp.obj"
 
 # External object files for target dry_partA
 dry_partA_EXTERNAL_OBJECTS =
 
-dry_partA.exe: CMakeFiles/dry_partA.dir/temp.cpp.obj
+dry_partA.exe: CMakeFiles/dry_partA.dir/partA/temp.cpp.obj
 dry_partA.exe: CMakeFiles/dry_partA.dir/build.make
 dry_partA.exe: CMakeFiles/dry_partA.dir/linklibs.rsp
 dry_partA.exe: CMakeFiles/dry_partA.dir/objects1.rsp

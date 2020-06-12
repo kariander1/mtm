@@ -73,57 +73,57 @@ include CMakeFiles/intMatrix_Tester.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/intMatrix_Tester.dir/flags.make
 
-CMakeFiles/intMatrix_Tester.dir/tester.cpp.obj: CMakeFiles/intMatrix_Tester.dir/flags.make
-CMakeFiles/intMatrix_Tester.dir/tester.cpp.obj: ../tester.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/intMatrix_Tester.dir/tester.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\intMatrix_Tester.dir\tester.cpp.obj -c C:\VScode\ex3\tester.cpp
+CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj: CMakeFiles/intMatrix_Tester.dir/flags.make
+CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj: ../partA/tester.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\intMatrix_Tester.dir\partA\tester.cpp.obj -c C:\VScode\ex3\partA\tester.cpp
 
-CMakeFiles/intMatrix_Tester.dir/tester.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/intMatrix_Tester.dir/tester.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\tester.cpp > CMakeFiles\intMatrix_Tester.dir\tester.cpp.i
+CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\partA\tester.cpp > CMakeFiles\intMatrix_Tester.dir\partA\tester.cpp.i
 
-CMakeFiles/intMatrix_Tester.dir/tester.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/intMatrix_Tester.dir/tester.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\tester.cpp -o CMakeFiles\intMatrix_Tester.dir\tester.cpp.s
+CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partA\tester.cpp -o CMakeFiles\intMatrix_Tester.dir\partA\tester.cpp.s
 
-CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.obj: CMakeFiles/intMatrix_Tester.dir/flags.make
-CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.obj: ../IntMatrix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\intMatrix_Tester.dir\IntMatrix.cpp.obj -c C:\VScode\ex3\IntMatrix.cpp
+CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj: CMakeFiles/intMatrix_Tester.dir/flags.make
+CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj: ../partA/IntMatrix.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\intMatrix_Tester.dir\partA\IntMatrix.cpp.obj -c C:\VScode\ex3\partA\IntMatrix.cpp
 
-CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\IntMatrix.cpp > CMakeFiles\intMatrix_Tester.dir\IntMatrix.cpp.i
+CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\partA\IntMatrix.cpp > CMakeFiles\intMatrix_Tester.dir\partA\IntMatrix.cpp.i
 
-CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\IntMatrix.cpp -o CMakeFiles\intMatrix_Tester.dir\IntMatrix.cpp.s
+CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partA\IntMatrix.cpp -o CMakeFiles\intMatrix_Tester.dir\partA\IntMatrix.cpp.s
 
-CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.obj: CMakeFiles/intMatrix_Tester.dir/flags.make
-CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.obj: ../Auxiliaries.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\intMatrix_Tester.dir\Auxiliaries.cpp.obj -c C:\VScode\ex3\Auxiliaries.cpp
+CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj: CMakeFiles/intMatrix_Tester.dir/flags.make
+CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj: ../partA/Auxiliaries.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\intMatrix_Tester.dir\partA\Auxiliaries.cpp.obj -c C:\VScode\ex3\partA\Auxiliaries.cpp
 
-CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\Auxiliaries.cpp > CMakeFiles\intMatrix_Tester.dir\Auxiliaries.cpp.i
+CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\partA\Auxiliaries.cpp > CMakeFiles\intMatrix_Tester.dir\partA\Auxiliaries.cpp.i
 
-CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\Auxiliaries.cpp -o CMakeFiles\intMatrix_Tester.dir\Auxiliaries.cpp.s
+CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partA\Auxiliaries.cpp -o CMakeFiles\intMatrix_Tester.dir\partA\Auxiliaries.cpp.s
 
 # Object files for target intMatrix_Tester
 intMatrix_Tester_OBJECTS = \
-"CMakeFiles/intMatrix_Tester.dir/tester.cpp.obj" \
-"CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.obj" \
-"CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.obj"
+"CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj" \
+"CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj" \
+"CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj"
 
 # External object files for target intMatrix_Tester
 intMatrix_Tester_EXTERNAL_OBJECTS =
 
-intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/tester.cpp.obj
-intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.obj
-intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.obj
+intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj
+intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj
+intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj
 intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/build.make
 intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/linklibs.rsp
 intMatrix_Tester.exe: CMakeFiles/intMatrix_Tester.dir/objects1.rsp

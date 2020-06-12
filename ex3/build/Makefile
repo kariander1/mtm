@@ -127,6 +127,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named intMatrix_TestPartB
+
+# Build rule for target.
+intMatrix_TestPartB: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 intMatrix_TestPartB
+.PHONY : intMatrix_TestPartB
+
+# fast build rule for target.
+intMatrix_TestPartB/fast:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/build
+.PHONY : intMatrix_TestPartB/fast
+
+#=============================================================================
 # Target rules for targets named dry_partA
 
 # Build rule for target.
@@ -165,146 +178,227 @@ intMatrix_TestPartA/fast:
 	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/build
 .PHONY : intMatrix_TestPartA/fast
 
-Auxiliaries.obj: Auxiliaries.cpp.obj
+partA/Auxiliaries.obj: partA/Auxiliaries.cpp.obj
 
-.PHONY : Auxiliaries.obj
-
-# target to build an object file
-Auxiliaries.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.obj
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/Auxiliaries.cpp.obj
-.PHONY : Auxiliaries.cpp.obj
-
-Auxiliaries.i: Auxiliaries.cpp.i
-
-.PHONY : Auxiliaries.i
-
-# target to preprocess a source file
-Auxiliaries.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.i
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/Auxiliaries.cpp.i
-.PHONY : Auxiliaries.cpp.i
-
-Auxiliaries.s: Auxiliaries.cpp.s
-
-.PHONY : Auxiliaries.s
-
-# target to generate assembly for a file
-Auxiliaries.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/Auxiliaries.cpp.s
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/Auxiliaries.cpp.s
-.PHONY : Auxiliaries.cpp.s
-
-IntMatrix.obj: IntMatrix.cpp.obj
-
-.PHONY : IntMatrix.obj
+.PHONY : partA/Auxiliaries.obj
 
 # target to build an object file
-IntMatrix.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.obj
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/IntMatrix.cpp.obj
-.PHONY : IntMatrix.cpp.obj
+partA/Auxiliaries.cpp.obj:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.obj
+.PHONY : partA/Auxiliaries.cpp.obj
 
-IntMatrix.i: IntMatrix.cpp.i
+partA/Auxiliaries.i: partA/Auxiliaries.cpp.i
 
-.PHONY : IntMatrix.i
+.PHONY : partA/Auxiliaries.i
 
 # target to preprocess a source file
-IntMatrix.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.i
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/IntMatrix.cpp.i
-.PHONY : IntMatrix.cpp.i
+partA/Auxiliaries.cpp.i:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.i
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.i
+.PHONY : partA/Auxiliaries.cpp.i
 
-IntMatrix.s: IntMatrix.cpp.s
+partA/Auxiliaries.s: partA/Auxiliaries.cpp.s
 
-.PHONY : IntMatrix.s
+.PHONY : partA/Auxiliaries.s
 
 # target to generate assembly for a file
-IntMatrix.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/IntMatrix.cpp.s
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/IntMatrix.cpp.s
-.PHONY : IntMatrix.cpp.s
+partA/Auxiliaries.cpp.s:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.s
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.s
+.PHONY : partA/Auxiliaries.cpp.s
 
-temp.obj: temp.cpp.obj
+partA/IntMatrix.obj: partA/IntMatrix.cpp.obj
 
-.PHONY : temp.obj
+.PHONY : partA/IntMatrix.obj
 
 # target to build an object file
-temp.cpp.obj:
-	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/temp.cpp.obj
-.PHONY : temp.cpp.obj
+partA/IntMatrix.cpp.obj:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.obj
+.PHONY : partA/IntMatrix.cpp.obj
 
-temp.i: temp.cpp.i
+partA/IntMatrix.i: partA/IntMatrix.cpp.i
 
-.PHONY : temp.i
+.PHONY : partA/IntMatrix.i
 
 # target to preprocess a source file
-temp.cpp.i:
-	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/temp.cpp.i
-.PHONY : temp.cpp.i
+partA/IntMatrix.cpp.i:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.i
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.i
+.PHONY : partA/IntMatrix.cpp.i
 
-temp.s: temp.cpp.s
+partA/IntMatrix.s: partA/IntMatrix.cpp.s
 
-.PHONY : temp.s
+.PHONY : partA/IntMatrix.s
 
 # target to generate assembly for a file
-temp.cpp.s:
-	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/temp.cpp.s
-.PHONY : temp.cpp.s
+partA/IntMatrix.cpp.s:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.s
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.s
+.PHONY : partA/IntMatrix.cpp.s
 
-test_partA.obj: test_partA.cpp.obj
+partA/temp.obj: partA/temp.cpp.obj
 
-.PHONY : test_partA.obj
+.PHONY : partA/temp.obj
 
 # target to build an object file
-test_partA.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/test_partA.cpp.obj
-.PHONY : test_partA.cpp.obj
+partA/temp.cpp.obj:
+	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/partA/temp.cpp.obj
+.PHONY : partA/temp.cpp.obj
 
-test_partA.i: test_partA.cpp.i
+partA/temp.i: partA/temp.cpp.i
 
-.PHONY : test_partA.i
+.PHONY : partA/temp.i
 
 # target to preprocess a source file
-test_partA.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/test_partA.cpp.i
-.PHONY : test_partA.cpp.i
+partA/temp.cpp.i:
+	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/partA/temp.cpp.i
+.PHONY : partA/temp.cpp.i
 
-test_partA.s: test_partA.cpp.s
+partA/temp.s: partA/temp.cpp.s
 
-.PHONY : test_partA.s
+.PHONY : partA/temp.s
 
 # target to generate assembly for a file
-test_partA.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/test_partA.cpp.s
-.PHONY : test_partA.cpp.s
+partA/temp.cpp.s:
+	$(MAKE) -f CMakeFiles\dry_partA.dir\build.make CMakeFiles/dry_partA.dir/partA/temp.cpp.s
+.PHONY : partA/temp.cpp.s
 
-tester.obj: tester.cpp.obj
+partA/test_partA.obj: partA/test_partA.cpp.obj
 
-.PHONY : tester.obj
+.PHONY : partA/test_partA.obj
 
 # target to build an object file
-tester.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/tester.cpp.obj
-.PHONY : tester.cpp.obj
+partA/test_partA.cpp.obj:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.obj
+.PHONY : partA/test_partA.cpp.obj
 
-tester.i: tester.cpp.i
+partA/test_partA.i: partA/test_partA.cpp.i
 
-.PHONY : tester.i
+.PHONY : partA/test_partA.i
 
 # target to preprocess a source file
-tester.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/tester.cpp.i
-.PHONY : tester.cpp.i
+partA/test_partA.cpp.i:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.i
+.PHONY : partA/test_partA.cpp.i
 
-tester.s: tester.cpp.s
+partA/test_partA.s: partA/test_partA.cpp.s
 
-.PHONY : tester.s
+.PHONY : partA/test_partA.s
 
 # target to generate assembly for a file
-tester.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/tester.cpp.s
-.PHONY : tester.cpp.s
+partA/test_partA.cpp.s:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.s
+.PHONY : partA/test_partA.cpp.s
+
+partA/tester.obj: partA/tester.cpp.obj
+
+.PHONY : partA/tester.obj
+
+# target to build an object file
+partA/tester.cpp.obj:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj
+.PHONY : partA/tester.cpp.obj
+
+partA/tester.i: partA/tester.cpp.i
+
+.PHONY : partA/tester.i
+
+# target to preprocess a source file
+partA/tester.cpp.i:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.i
+.PHONY : partA/tester.cpp.i
+
+partA/tester.s: partA/tester.cpp.s
+
+.PHONY : partA/tester.s
+
+# target to generate assembly for a file
+partA/tester.cpp.s:
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.s
+.PHONY : partA/tester.cpp.s
+
+partB/Auxiliaries.obj: partB/Auxiliaries.cpp.obj
+
+.PHONY : partB/Auxiliaries.obj
+
+# target to build an object file
+partB/Auxiliaries.cpp.obj:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Auxiliaries.cpp.obj
+.PHONY : partB/Auxiliaries.cpp.obj
+
+partB/Auxiliaries.i: partB/Auxiliaries.cpp.i
+
+.PHONY : partB/Auxiliaries.i
+
+# target to preprocess a source file
+partB/Auxiliaries.cpp.i:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Auxiliaries.cpp.i
+.PHONY : partB/Auxiliaries.cpp.i
+
+partB/Auxiliaries.s: partB/Auxiliaries.cpp.s
+
+.PHONY : partB/Auxiliaries.s
+
+# target to generate assembly for a file
+partB/Auxiliaries.cpp.s:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Auxiliaries.cpp.s
+.PHONY : partB/Auxiliaries.cpp.s
+
+partB/Matrix.obj: partB/Matrix.cpp.obj
+
+.PHONY : partB/Matrix.obj
+
+# target to build an object file
+partB/Matrix.cpp.obj:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Matrix.cpp.obj
+.PHONY : partB/Matrix.cpp.obj
+
+partB/Matrix.i: partB/Matrix.cpp.i
+
+.PHONY : partB/Matrix.i
+
+# target to preprocess a source file
+partB/Matrix.cpp.i:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Matrix.cpp.i
+.PHONY : partB/Matrix.cpp.i
+
+partB/Matrix.s: partB/Matrix.cpp.s
+
+.PHONY : partB/Matrix.s
+
+# target to generate assembly for a file
+partB/Matrix.cpp.s:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Matrix.cpp.s
+.PHONY : partB/Matrix.cpp.s
+
+partB/test_partB.obj: partB/test_partB.cpp.obj
+
+.PHONY : partB/test_partB.obj
+
+# target to build an object file
+partB/test_partB.cpp.obj:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/test_partB.cpp.obj
+.PHONY : partB/test_partB.cpp.obj
+
+partB/test_partB.i: partB/test_partB.cpp.i
+
+.PHONY : partB/test_partB.i
+
+# target to preprocess a source file
+partB/test_partB.cpp.i:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/test_partB.cpp.i
+.PHONY : partB/test_partB.cpp.i
+
+partB/test_partB.s: partB/test_partB.cpp.s
+
+.PHONY : partB/test_partB.s
+
+# target to generate assembly for a file
+partB/test_partB.cpp.s:
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/test_partB.cpp.s
+.PHONY : partB/test_partB.cpp.s
 
 # Help Target
 help:
@@ -316,22 +410,32 @@ help:
 	@echo ... rebuild_cache
 	@echo ... dry_partA
 	@echo ... intMatrix_TestPartA
+	@echo ... intMatrix_TestPartB
 	@echo ... intMatrix_Tester
-	@echo ... Auxiliaries.obj
-	@echo ... Auxiliaries.i
-	@echo ... Auxiliaries.s
-	@echo ... IntMatrix.obj
-	@echo ... IntMatrix.i
-	@echo ... IntMatrix.s
-	@echo ... temp.obj
-	@echo ... temp.i
-	@echo ... temp.s
-	@echo ... test_partA.obj
-	@echo ... test_partA.i
-	@echo ... test_partA.s
-	@echo ... tester.obj
-	@echo ... tester.i
-	@echo ... tester.s
+	@echo ... partA/Auxiliaries.obj
+	@echo ... partA/Auxiliaries.i
+	@echo ... partA/Auxiliaries.s
+	@echo ... partA/IntMatrix.obj
+	@echo ... partA/IntMatrix.i
+	@echo ... partA/IntMatrix.s
+	@echo ... partA/temp.obj
+	@echo ... partA/temp.i
+	@echo ... partA/temp.s
+	@echo ... partA/test_partA.obj
+	@echo ... partA/test_partA.i
+	@echo ... partA/test_partA.s
+	@echo ... partA/tester.obj
+	@echo ... partA/tester.i
+	@echo ... partA/tester.s
+	@echo ... partB/Auxiliaries.obj
+	@echo ... partB/Auxiliaries.i
+	@echo ... partB/Auxiliaries.s
+	@echo ... partB/Matrix.obj
+	@echo ... partB/Matrix.i
+	@echo ... partB/Matrix.s
+	@echo ... partB/test_partB.obj
+	@echo ... partB/test_partB.i
+	@echo ... partB/test_partB.s
 .PHONY : help
 
 

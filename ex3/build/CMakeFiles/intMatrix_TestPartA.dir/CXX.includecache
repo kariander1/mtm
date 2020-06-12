@@ -6,27 +6,27 @@
 
 #IncludeRegexTransform: 
 
-C:/VScode/ex3/Auxiliaries.h
+C:/VScode/ex3/partA/Auxiliaries.h
 string
 -
 iostream
 -
 
-C:/VScode/ex3/IntMatrix.h
-string
--
-iostream
--
-Auxiliaries.h
-C:/VScode/ex3/Auxiliaries.h
-
-C:/VScode/ex3/test_partA.cpp
-functional
--
+C:/VScode/ex3/partA/IntMatrix.cpp
 string
 -
 iostream
 -
 IntMatrix.h
-C:/VScode/ex3/IntMatrix.h
+C:/VScode/ex3/partA/IntMatrix.h
+Auxiliaries.h
+C:/VScode/ex3/partA/Auxiliaries.h
+
+C:/VScode/ex3/partA/IntMatrix.h
+string
+-
+iostream
+-
+Auxiliaries.h
+C:/VScode/ex3/partA/Auxiliaries.h
 

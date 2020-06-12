@@ -185,7 +185,8 @@ namespace mtm
     }
     const int &IntMatrix::operator()(const int row, const int column) const
     {
-        return array[row * width() + column];
+        IntMatrix temp = *this;
+        return temp(row,column);
     }
 
     MATRIX_STATUS checkMatrix(const IntMatrix &matrix)
@@ -213,20 +214,13 @@ namespace mtm
     bool all(const IntMatrix &matrix)
     {
         IntMatrix compare_matrix = matrix != 0;
-        if (checkMatrix(compare_matrix) == ALL_ONES)
-        {
-            return true;
-        }
-        return false;
+        return checkMatrix(compare_matrix) == ALL_ONES ? true : false;
+
     }
     bool any(const IntMatrix &matrix)
     {
         IntMatrix compare_matrix = matrix != 0;
-        if (checkMatrix(compare_matrix) != ALL_ZEROS)
-        {
-            return true;
-        }
-        return false;
+        return checkMatrix(compare_matrix) == ONE_EXISTS ? true : false;
     }
     std::ostream &operator<<(std::ostream &os, const IntMatrix &matrix)
     {

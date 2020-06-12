@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\intMatrix_TestPartB.dir/objects.a
+C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\intMatrix_TestPartB.dir/objects.a @CMakeFiles\intMatrix_TestPartB.dir\objects1.rsp
+C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe -g   -Wl,--whole-archive CMakeFiles\intMatrix_TestPartB.dir/objects.a -Wl,--no-whole-archive  -o intMatrix_TestPartB.exe -Wl,--out-implib,libintMatrix_TestPartB.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\intMatrix_TestPartB.dir\linklibs.rsp
