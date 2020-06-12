@@ -7,6 +7,13 @@
 
 namespace mtm
 {
+    enum MATRIX_BOOLEAN_STATUS
+    {
+        ALL_TRUE = -1,
+        TRUE_EXISTS,
+        ALL_FALSE
+    };
+
     template <class T>
     class Matrix
     {
@@ -412,21 +419,50 @@ namespace mtm
         new_matrix = new_matrix + (-matrix_b); // Ok when operator + will be implemented
         return new_matrix;
     }
+    template<class T> 
+    MATRIX_BOOLEAN_STATUS checkBooleanMatrix(const Matrix<T> &matrix)
+    {
+        int number_of_trues = 0;
+        for (int i = 0; i < matrix.height(); i++)
+        {
+            for (int j = 0; j < matrix.width(); j++)
+            {
+                if (bool(matrix(i, j))) // Assumed there is a conversion of T to bool
+                {
+                    number_of_trues += 1;
+                }
+            }
+        }
 
+        if (number_of_trues == matrix.size())
+        {
+            return ALL_TRUE;
+        }
+
+        return number_of_trues > 0 ? TRUE_EXISTS : ALL_FALSE;
+    }
     /**
     * all: checks if all the the matrix's values are different from 0
     * @return
     * 	True if all the the matrix's values are different from 0.
     *   False otherwise
     */
-    bool all(const Matrix &matrix);
+   template<class T>
+    bool all(const Matrix<T> &matrix)
+    {        
+        return checkBooleanMatrix(matrix) == ALL_TRUE ? true : false;
+    }
     /**
     * any: checks if at least one of the matrix's values are different from 0.
     * @return
     * 	True if at least one of the matrix's values are different from 0.
     *   False otherwise
     */
-    bool any(const Matrix &matrix);
+    template<class T>
+    bool any(const Matrix<T> &matrix)
+    {
+         return checkBooleanMatrix(matrix) == TRUE_EXISTS ? true : false;
+    }
 
 } // namespace mtm
 
