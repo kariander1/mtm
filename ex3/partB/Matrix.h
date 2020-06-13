@@ -96,7 +96,7 @@ namespace mtm
         * @return
         * 	returns the new matrix with zeros and ones according to the output of the logic operation.
         */
-     Matrix<bool> operator!()
+        Matrix<bool> operator!()
         {
             for (int i = 0; i < size(); i++)
             {
@@ -113,7 +113,7 @@ namespace mtm
             }
             return new_matrix;
         }
-        Matrix<bool> operator<=(const t &value) const
+        Matrix<bool> operator<=(const T &value) const
         {
             Matrix<bool> new_matrix(dim, value);
             for (int i = 0; i < size(); i++)
@@ -121,7 +121,6 @@ namespace mtm
                 (new_matrix.array[i] = array[i] <= value ? true : false);
             }
             return new_matrix;
-        }
         }
         Matrix<bool> operator>(const T &value) const
         {
@@ -216,7 +215,7 @@ namespace mtm
         * @return
         * 	None
         */
-        std::ostream &operator<<(std::ostream & os, const Matrix & matrix){ // should we add const th the declerastion?
+        std::ostream& operator<<(std::ostream & os, const Matrix<T>& matrix){ // should we add const th the declerastion?
             Matrix::iterator begin = matrix.begin();
             Matrix::iterator end = matrix.end();
             int width = matrix.width();
@@ -353,7 +352,8 @@ namespace mtm
             return description + dim_a.toString() + " " + dim_b.toString();// to_string works?
         }
     };
-    class Matrix::iterator
+    template<class T>
+    class Matrix<T>::iterator
     {
 
         Matrix *matrix; // pointer to matrix
@@ -411,7 +411,8 @@ namespace mtm
     *   const_iterator(const Matrix *matrix, int index);     
     *   const int &operator*() const;
     */
-    class Matrix::const_iterator
+   template<class T>
+    class Matrix<T>::const_iterator
     {
         const Matrix *matrix; // Const version of int matrix
         int index;
@@ -448,7 +449,8 @@ namespace mtm
     * @return
     * 	returns a copy of the new matrix
     */
-    Matrix operator+(const int num, const Matrix &matrix_a);
+    template<class T>
+    mtm::Matrix<T> operator+(const int num, const Matrix<T> &matrix_a);
 
     /**
     * operator+(): creates a new matrix with the current element value of matrix_a plus
@@ -459,7 +461,8 @@ namespace mtm
     * @return
     * 	returns a copy of the new matrix
     */
-    Matrix operator+(const Matrix &matrix_a, const Matrix &matrix_b); // Outside class to support symetric +
+    template<class T>
+    Matrix<T> operator+(const Matrix<T> &matrix_a, const Matrix<T> &matrix_b); // Outside class to support symetric +
 
     /**
     * operator-(): creates a new matrix with the current element value of matrix_a
