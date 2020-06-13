@@ -36,6 +36,7 @@ namespace mtm
                 array[i] = init_value; //Or maybe should use iterator?
             }
         }
+        Matrix<bool> operator!();
       //  class MatrixError;
 
     public:
