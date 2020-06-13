@@ -72,7 +72,7 @@ namespace mtm
                 throw IllegalInitialization();
             copyMatrixValues(init_value);
         }
-        Matrix(const Matrix & matrix): : array(new T[calcMatSize(matrix.dim)]),
+        Matrix(const Matrix & matrix): array(new T[calcMatSize(matrix.dim)]),
                                                     dim(matrix.dim){}  // Copy constructor 
         ~Matrix(){//Destructor
             delete[] array;
@@ -100,16 +100,16 @@ namespace mtm
         {
             for (int i = 0; i < size(); i++)
             {
-                (array[i] = (array[i] == false ? true : false);
+                (array[i] = (array[i] == false ? true : false));
             }
             return *this;
         }
         Matrix<bool> operator<(const T &value) const
         {
-            Matrix<bool> new_matrix(dim, value);
+            Matrix<bool> new_matrix(dim);
             for (int i = 0; i < size(); i++)
-            {
-                (new_matrix.array[i] = array[i] < value ? true : false);
+            {           
+                (new_matrix.array[i] = (array[i] < value ? true : false));
             }
             return new_matrix;
         }
@@ -215,11 +215,11 @@ namespace mtm
         * @return
         * 	None
         */
-        std::ostream& operator<<(std::ostream & os, const Matrix<T>& matrix){ // should we add const th the declerastion?
+        friend std::ostream& operator<<(std::ostream & os, const Matrix<T>& matrix){ // should we add const th the declerastion?
             Matrix::iterator begin = matrix.begin();
             Matrix::iterator end = matrix.end();
             int width = matrix.width();
-            os << mtm::printMatrix(os, begin, end, width);
+            mtm::printMatrix(os, begin, end, width);
             return os;
         }
 
@@ -341,7 +341,6 @@ namespace mtm
         const Dimensions dim_b;
 
     public:
-        DimensionsMismatch() = delete; // dont need?
         DimensionsMismatch(const Dimensions dim_a, const Dimensions dim_b)
             : dim_a(dim_a), dim_b(dim_b)
         {
@@ -356,7 +355,8 @@ namespace mtm
     class Matrix<T>::iterator
     {
 
-        Matrix *matrix; // pointer to matrix
+        Matrix<T> *matrix; // pointer to matrix
+        int max_index;
         int index;      // index indicating postion in matrix
         /**
         *    Default constructor
@@ -366,9 +366,9 @@ namespace mtm
         *   @return
         * 	Reference the value at the current index
         */
-        iterator(Matrix *matrix, int index);
+        iterator(Matrix<T> *matrix, int index);
 
-        friend class Matrix; // For enabling accessing private fields of Matrix
+        friend class Matrix<T>; // For enabling accessing private fields of Matrix
 
     public:
         iterator(const iterator &it) = default;            // Copy constructor
@@ -402,6 +402,11 @@ namespace mtm
         bool operator==(const iterator &it) const;
         bool operator!=(const iterator &it) const;
     };
+    template<class T>
+    Matrix<T>::iterator<T>(Matrix<T> *matrix, int index): matrix(matrix), index(index),max_index(matrix->size())
+        {
+
+        }
     /**
     *    Class const_iterator
     *   same as iterator, inly differences is in handling a const matrix.
@@ -414,10 +419,10 @@ namespace mtm
    template<class T>
     class Matrix<T>::const_iterator
     {
-        const Matrix *matrix; // Const version of int matrix
+        const Matrix<T> *matrix; // Const version of int matrix
         int index;
-        const_iterator(const Matrix *matrix, int index); // Arguement is const for intMatrix
-        friend class Matrix;
+        const_iterator(const Matrix<T> *matrix, int index); // Arguement is const for intMatrix
+        friend class Matrix<T>;
 
     public:
         const int &operator*() const;   // Returns a const int

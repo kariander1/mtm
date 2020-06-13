@@ -6,11 +6,6 @@
 },
 {
   "directory": "C:/VScode/ex3/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_TestPartB.dir\\partB\\Matrix.cpp.obj -c C:\\VScode\\ex3\\partB\\Matrix.cpp",
-  "file": "C:/VScode/ex3/partB/Matrix.cpp"
-},
-{
-  "directory": "C:/VScode/ex3/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_TestPartB.dir\\partB\\Auxiliaries.cpp.obj -c C:\\VScode\\ex3\\partB\\Auxiliaries.cpp",
   "file": "C:/VScode/ex3/partB/Auxiliaries.cpp"
 },
