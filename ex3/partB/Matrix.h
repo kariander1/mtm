@@ -381,7 +381,10 @@ namespace mtm
         *   @return
         * 	Reference the value at the current index
         */
-        iterator(Matrix<T> *matrix, int index);
+        iterator(Matrix* matrix, int index): matrix(matrix), index(index), max_index(matrix->size())
+        {
+
+        }
 
         friend class Matrix<T>; // For enabling accessing private fields of Matrix
 
@@ -397,7 +400,13 @@ namespace mtm
         *   @return
         * 	Reference the value at the current index
         */
-        int &operator*() const;
+        T &operator*() const
+        {
+            if (this->index >= this->max_index){
+                throw Matrix::AccessIllegalElement();
+            }
+            return matrix->array[index];
+        }
         /**
         * iretaror::operator++(): promotes the iterator index by 1. 
         *
@@ -414,29 +423,20 @@ namespace mtm
         * 	Returns a boolean of whether the pointer points to the same value or not
         *   In the same matrix.
         */
-        bool operator==(const iterator &it) const;
-        bool operator!=(const iterator &it) const;
-        
-        iterator(Matrix* matrix, int index): matrix(matrix), index(index)
-        {
-
-        }
-        bool Matrix::iterator::operator==(const iterator &it) const
+        bool operator==(const iterator &it) const
         {
             return index == it.index;
         }
-
-        bool Matrix::iterator::operator!=(const iterator &it) const
+        bool operator!=(const iterator &it) const
         {
             return !(*this == it);
         }
-        int &Matrix::iterator::operator*() const
-        {
-            if (*this->index >= *this->max_index){
-                throw Matrix::AccessIllegalElement();
-            }
-            return matrix->array[index];
-        }
+        
+        
+
+
+
+
         Matrix::iterator &Matrix::iterator::operator++()
         {
             ++index;
@@ -471,8 +471,13 @@ namespace mtm
     class Matrix<T>::const_iterator
     {
         const Matrix<T> *matrix; // Const version of int matrix
+        int max_index;
         int index;
-        const_iterator(const Matrix<T> *matrix, int index); // Arguement is const for intMatrix
+        
+        const_iterator(const Matrix<T> *matrix, int index): matrix(matrix), index(index)
+        {
+
+        }
         friend class Matrix<T>;
 
     public:
