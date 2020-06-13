@@ -346,33 +346,6 @@ partB/Auxiliaries.cpp.s:
 	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Auxiliaries.cpp.s
 .PHONY : partB/Auxiliaries.cpp.s
 
-partB/Matrix.obj: partB/Matrix.cpp.obj
-
-.PHONY : partB/Matrix.obj
-
-# target to build an object file
-partB/Matrix.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Matrix.cpp.obj
-.PHONY : partB/Matrix.cpp.obj
-
-partB/Matrix.i: partB/Matrix.cpp.i
-
-.PHONY : partB/Matrix.i
-
-# target to preprocess a source file
-partB/Matrix.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Matrix.cpp.i
-.PHONY : partB/Matrix.cpp.i
-
-partB/Matrix.s: partB/Matrix.cpp.s
-
-.PHONY : partB/Matrix.s
-
-# target to generate assembly for a file
-partB/Matrix.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/partB/Matrix.cpp.s
-.PHONY : partB/Matrix.cpp.s
-
 partB/test_partB.obj: partB/test_partB.cpp.obj
 
 .PHONY : partB/test_partB.obj
@@ -430,9 +403,6 @@ help:
 	@echo ... partB/Auxiliaries.obj
 	@echo ... partB/Auxiliaries.i
 	@echo ... partB/Auxiliaries.s
-	@echo ... partB/Matrix.obj
-	@echo ... partB/Matrix.i
-	@echo ... partB/Matrix.s
 	@echo ... partB/test_partB.obj
 	@echo ... partB/test_partB.i
 	@echo ... partB/test_partB.s

@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/intMatrix_TestPartB.dir/partB/Auxiliaries.cpp.obj"
-  "CMakeFiles/intMatrix_TestPartB.dir/partB/Matrix.cpp.obj"
   "CMakeFiles/intMatrix_TestPartB.dir/partB/test_partB.cpp.obj"
   "intMatrix_TestPartB.exe"
   "intMatrix_TestPartB.exe.manifest"

@@ -96,12 +96,12 @@ clean: CMakeFiles/intMatrix_TestPartA.dir/clean
 CMakeFiles/intMatrix_TestPartB.dir/all:
 	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/depend
 	$(MAKE) -f CMakeFiles\intMatrix_TestPartB.dir\build.make CMakeFiles/intMatrix_TestPartB.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=7,8,9,10 "Built target intMatrix_TestPartB"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=7,8,9 "Built target intMatrix_TestPartB"
 .PHONY : CMakeFiles/intMatrix_TestPartB.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/intMatrix_TestPartB.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 3
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/intMatrix_TestPartB.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
 .PHONY : CMakeFiles/intMatrix_TestPartB.dir/rule
@@ -150,7 +150,7 @@ CMakeFiles/dry_partA.dir/clean:
 CMakeFiles/intMatrix_Tester.dir/all:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/depend
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=11,12,13,14 "Built target intMatrix_Tester"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=10,11,12,13 "Built target intMatrix_Tester"
 .PHONY : CMakeFiles/intMatrix_Tester.dir/all
 
 # Build rule for subdir invocation for target.

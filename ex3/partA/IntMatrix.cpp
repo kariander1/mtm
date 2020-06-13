@@ -245,6 +245,7 @@ namespace mtm
     IntMatrix::iterator::iterator(IntMatrix *matrix_a, int index) : matrix(matrix_a),
                                                                     index(index)
     {
+        
     }
 
     bool IntMatrix::iterator::operator==(const iterator &it) const
