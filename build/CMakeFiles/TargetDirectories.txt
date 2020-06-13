@@ -1,5 +1,0 @@
-C:/VScode/mtm/build/CMakeFiles/package_source.dir
-C:/VScode/mtm/build/CMakeFiles/mtm_ex.dir
-C:/VScode/mtm/build/CMakeFiles/package.dir
-C:/VScode/mtm/build/CMakeFiles/edit_cache.dir
-C:/VScode/mtm/build/CMakeFiles/rebuild_cache.dir
