@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\ex3partB.dir/objects.a
+C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\ex3partB.dir/objects.a @CMakeFiles\ex3partB.dir\objects1.rsp
+C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe -g   -Wl,--whole-archive CMakeFiles\ex3partB.dir/objects.a -Wl,--no-whole-archive  -o ex3partB.exe -Wl,--out-implib,libex3partB.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ex3partB.dir\linklibs.rsp
