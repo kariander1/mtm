@@ -72,8 +72,11 @@ namespace mtm
                 throw IllegalInitialization();
             copyMatrixValues(init_value);
         }
-        Matrix(const Matrix &); // Copy constructor
-        ~Matrix();              //Destructor
+        Matrix(const Matrix & matrix): : array(new T[calcMatSize(matrix.dim)]),
+                                                    dim(matrix.dim){}  // Copy constructor 
+        ~Matrix(){//Destructor
+            delete[] array;
+        }           
 
         // Operators
         /**
@@ -93,12 +96,54 @@ namespace mtm
         * @return
         * 	returns the new matrix with zeros and ones according to the output of the logic operation.
         */
-        Matrix operator<(const int &num) const;
-        Matrix operator<=(const int &num) const;
-        Matrix operator>(const int &num) const;
-        Matrix operator>=(const int &num) const;
-        Matrix operator==(const int &num) const;
-        Matrix operator!=(const int &num) const;
+     Matrix<bool> operator!()
+        {
+            for (int i = 0; i < size(); i++)
+            {
+                (array[i] = (array[i] == false ? true : false);
+            }
+            return *this;
+        }
+        Matrix<bool> operator<(const T &value) const
+        {
+            Matrix<bool> new_matrix(dim, value);
+            for (int i = 0; i < size(); i++)
+            {
+                (new_matrix.array[i] = array[i] < value ? true : false);
+            }
+            return new_matrix;
+        }
+        Matrix<bool> operator<=(const t &value) const
+        {
+            Matrix<bool> new_matrix(dim, value);
+            for (int i = 0; i < size(); i++)
+            {
+                (new_matrix.array[i] = array[i] <= value ? true : false);
+            }
+            return new_matrix;
+        }
+        }
+        Matrix<bool> operator>(const T &value) const
+        {
+            return !(*(this)<= value);
+        }
+        Matrix<bool> operator>=(const T &value) const
+        {
+            return !(*(this) < value);
+        }   
+        Matrix<bool> operator==(const T &value) const
+        {
+            Matrix<bool> new_matrix(dim, value);
+            for (int i = 0; i < size(); i++)
+            {
+                (new_matrix.array[i] = array[i] == value ? true : false);
+            }
+            return new_matrix; 
+        }
+        Matrix<bool> operator!=(const T &value) const
+        {
+            return !(*(this) == value);
+        }
         /**
         * Matrix::&operator-(): creates a new matrix where each value is the negative of the current value.
         *
@@ -123,7 +168,11 @@ namespace mtm
         * @return
         * 	returns a reference to the modified matrix
         */
-        Matrix &operator+=(const int num);
+        Matrix &operator+=(const T init_value){
+            *this = *this + init_value;
+            return *this;
+
+        }
         /**
         * Matrix::&operator+(): creates a new matrix with the current element value plus the num specified.
       
@@ -132,7 +181,13 @@ namespace mtm
         * @return
         * 	returns a copy of the new matrix
         */
-        Matrix operator+(const int num) const;
+      Matrix operator+(const T init_value) const{
+            int matrix_columns = width();
+            int matrix_rows = height();
+            Dimensions d(matrix_rows, matrix_columns);
+            Matrix init_matrix(d, init_value);
+            return *this + init_matrix;
+        }
         /**
         *   "operator()" operators
         * 
@@ -161,7 +216,14 @@ namespace mtm
         * @return
         * 	None
         */
-        friend std::ostream &operator<<(std::ostream &, const Matrix &);
+        std::ostream &operator<<(std::ostream & os, const Matrix & matrix){ // should we add const th the declerastion?
+            Matrix::iterator begin = matrix.begin();
+            Matrix::iterator end = matrix.end();
+            int width = matrix.width();
+            os << mtm::printMatrix(os, begin, end, width);
+            return os;
+        }
+
 
         /**
         * Matrix::height/width/size(): calculates the height/width/size of the given matrix
@@ -169,9 +231,15 @@ namespace mtm
         * @return
         * 	returns the height/width/size of the given matrix
         */
-        int height() const;
-        int width() const;
-        int size() const;
+        int height() const{
+            return dim.getRow();
+        }
+        int width() const{
+            return dim.getCol();
+        }
+        int size() const{
+            return dim.getCol() * dim.getRow();
+        }
 
         /**
         *   Matrix transpose()
@@ -274,7 +342,7 @@ namespace mtm
         const Dimensions dim_b;
 
     public:
-        DimensionsMismatch() = delete;
+        DimensionsMismatch() = delete; // dont need?
         DimensionsMismatch(const Dimensions dim_a, const Dimensions dim_b)
             : dim_a(dim_a), dim_b(dim_b)
         {
@@ -282,7 +350,7 @@ namespace mtm
 
         const std::string what() const
         {
-            return description + dim_a.toString() + " " + dim_b.toString();
+            return description + dim_a.toString() + " " + dim_b.toString();// to_string works?
         }
     };
     class Matrix::iterator
