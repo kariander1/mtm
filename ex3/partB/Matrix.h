@@ -381,7 +381,10 @@ namespace mtm
         *   @return
         * 	Reference the value at the current index
         */
-        iterator(Matrix<T> *matrix, int index);
+        iterator(Matrix* matrix, int index): matrix(matrix), index(index)
+        {
+
+        }
 
         friend class Matrix<T>; // For enabling accessing private fields of Matrix
 
@@ -397,7 +400,13 @@ namespace mtm
         *   @return
         * 	Reference the value at the current index
         */
-        int &operator*() const;
+        int &Matrix::iterator::operator*() const
+        {
+            if (*this->index >= *this->max_index){
+                throw Matrix::AccessIllegalElement();
+            }
+            return matrix->array[index];
+        }
         /**
         * iretaror::operator++(): promotes the iterator index by 1. 
         *
@@ -405,22 +414,25 @@ namespace mtm
         *  --The prefix increment returns the value of a variable after it has been incremented.
         *  --The postfix increment returns the value of a variable before it has been incremented. 
         */
-        iterator &operator++();   // Prefix
-        iterator operator++(int); // Postfix
+        Matrix::iterator &Matrix::iterator::operator++()// Prefix
+        {
+            ++index;
+            return *this;
+        }
+        Matrix::iterator Matrix::iterator::operator++(int)// Postfix
+        {
+            iterator result = *this;
+            ++*this;
+            return result;
+        }
         /**
         *    operator==, operator!=
         *   @param it - An iterator to make comparison with
         *   @return
         * 	Returns a boolean of whether the pointer points to the same value or not
         *   In the same matrix.
-        */
-        bool operator==(const iterator &it) const;
-        bool operator!=(const iterator &it) const;
+        */        
         
-        iterator(Matrix* matrix, int index): matrix(matrix), index(index)
-        {
-
-        }
         bool Matrix::iterator::operator==(const iterator &it) const
         {
             return index == it.index;
@@ -430,24 +442,8 @@ namespace mtm
         {
             return !(*this == it);
         }
-        int &Matrix::iterator::operator*() const
-        {
-            if (*this->index >= *this->max_index){
-                throw Matrix::AccessIllegalElement();
-            }
-            return matrix->array[index];
-        }
-        Matrix::iterator &Matrix::iterator::operator++()
-        {
-            ++index;
-            return *this;
-        }
-        Matrix::iterator Matrix::iterator::operator++(int)
-        {
-            iterator result = *this;
-            ++*this;
-            return result;
-        }
+        
+        
         Matrix::iterator Matrix::begin()
         {
             return iterator(this, 0);
@@ -459,7 +455,7 @@ namespace mtm
     };
 
     /**
-    *    Class const_iterator
+    *   Class const_iterator
     *   same as iterator, inly differences is in handling a const matrix.
     *   Differences in decalrations are in:
     * 
