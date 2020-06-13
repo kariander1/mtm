@@ -4,7 +4,6 @@
 #include <iostream>
 #include <ostream>
 
-// test
 namespace mtm { 
     class Dimensions {
         int row, col;

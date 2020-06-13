@@ -285,7 +285,20 @@ namespace mtm
                 }
                 return new_diagonal;
         }
+        /*
+        Matrix apply(T (*f)(T)){
+            int row = height();
+            int column = width();
+            Dimensions new_dim(row, column);
+            Matrix function_matrix(new_dim); 
+            int matrix_size = function_matrix.size();
+            for (int i = 0; i < matrix_size; i += size + 1)
+            {
+                function_matrix.array[i] = (*f)(function_matrix.array[i]);
+            }
+            return function_matrix;
 
+        }*/
         class iterator;
         /**
         * Matrix::begin/end(): creates an iterator for the given matrix and retets it 
@@ -309,6 +322,7 @@ namespace mtm
         class IllegalInitialization;
         class DimensionsMismatch;
     };
+    
     template <class T>
     class Matrix<T>::AccessIllegalElement
     {
@@ -402,12 +416,48 @@ namespace mtm
         */
         bool operator==(const iterator &it) const;
         bool operator!=(const iterator &it) const;
-    };
-    template<class T>
-    Matrix<T>::iterator<T>(Matrix<T> *matrix, int index): matrix(matrix), index(index),max_index(matrix->size())
+        
+        iterator(Matrix* matrix, int index): matrix(matrix), index(index)
         {
 
         }
+        bool Matrix::iterator::operator==(const iterator &it) const
+        {
+            return index == it.index;
+        }
+
+        bool Matrix::iterator::operator!=(const iterator &it) const
+        {
+            return !(*this == it);
+        }
+        int &Matrix::iterator::operator*() const
+        {
+            if (*this->index >= *this->max_index){
+                throw Matrix::AccessIllegalElement();
+            }
+            return matrix->array[index];
+        }
+        Matrix::iterator &Matrix::iterator::operator++()
+        {
+            ++index;
+            return *this;
+        }
+        Matrix::iterator Matrix::iterator::operator++(int)
+        {
+            iterator result = *this;
+            ++*this;
+            return result;
+        }
+        Matrix::iterator Matrix::begin()
+        {
+            return iterator(this, 0);
+        }
+        Matrix::iterator Matrix::end()
+        {
+            return iterator(this, this->size());
+        }
+    };
+
     /**
     *    Class const_iterator
     *   same as iterator, inly differences is in handling a const matrix.
