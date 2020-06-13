@@ -7,6 +7,7 @@
 
 namespace mtm
 {
+    const int MIN_ITERATOR_INDEX = 0;
     enum MATRIX_BOOLEAN_STATUS
     {
         ALL_TRUE = -1,
@@ -36,8 +37,16 @@ namespace mtm
                 array[i] = init_value; //Or maybe should use iterator?
             }
         }
-        Matrix<bool> operator!();
-      //  class MatrixError;
+        Matrix<bool> operator!() const
+        {
+            Matrix<bool> new_matrix(dim);
+            for (int i = 0; i < size(); i++)
+            {
+                (new_matrix.array[i] = !array[i] );
+            }
+            return new_matrix;
+        }
+        //  class MatrixError;
 
     public:
         /**
@@ -65,19 +74,19 @@ namespace mtm
         * 
         *   Destructor. Deletes allocated area.
         */
-        Matrix(mtm::Dimensions dimensions, T init_value = T()) :
-        array(new T[calcMatSize(dimensions)]), // New will throw bad_alloc if allocation failed
-        dim(dimensions)
+        Matrix(mtm::Dimensions dimensions, T init_value = T()) : array(new T[calcMatSize(dimensions)]), // New will throw bad_alloc if allocation failed
+                                                                 dim(dimensions)
         {
-            if(dim.getCol()<0 || dim.getRow()<0)
+            if (dim.getCol() < 0 || dim.getRow() < 0)
                 throw IllegalInitialization();
             copyMatrixValues(init_value);
         }
-        Matrix(const Matrix & matrix): array(new T[calcMatSize(matrix.dim)]),
-                                                    dim(matrix.dim){}  // Copy constructor 
-        ~Matrix(){//Destructor
+        Matrix(const Matrix &matrix) : array(new T[calcMatSize(matrix.dim)]),
+                                       dim(matrix.dim) {} // Copy constructor
+        ~Matrix()
+        { //Destructor
             delete[] array;
-        }           
+        }
 
         // Operators
         /**
@@ -97,20 +106,13 @@ namespace mtm
         * @return
         * 	returns the new matrix with zeros and ones according to the output of the logic operation.
         */
-        Matrix<bool> operator!()
-        {
-            for (int i = 0; i < size(); i++)
-            {
-                (array[i] = (array[i] == false ? true : false));
-            }
-            return *this;
-        }
+
         Matrix<bool> operator<(const T &value) const
         {
             Matrix<bool> new_matrix(dim);
             for (int i = 0; i < size(); i++)
-            {           
-                (new_matrix.array[i] = (array[i] < value ? true : false));
+            {
+                (new_matrix.array[i] = (array[i] < value ));
             }
             return new_matrix;
         }
@@ -119,18 +121,18 @@ namespace mtm
             Matrix<bool> new_matrix(dim, value);
             for (int i = 0; i < size(); i++)
             {
-                (new_matrix.array[i] = array[i] <= value ? true : false);
+                (new_matrix.array[i] = (array[i] <= value));
             }
             return new_matrix;
         }
         Matrix<bool> operator>(const T &value) const
         {
-            return !(*(this)<= value);
+            return !(*(this) <= value);
         }
         Matrix<bool> operator>=(const T &value) const
-        {
+        {            
             return !(*(this) < value);
-        }   
+        }
         Matrix<bool> operator==(const T &value) const
         {
             Matrix<bool> new_matrix(dim, value);
@@ -138,7 +140,7 @@ namespace mtm
             {
                 (new_matrix.array[i] = array[i] == value ? true : false);
             }
-            return new_matrix; 
+            return new_matrix;
         }
         Matrix<bool> operator!=(const T &value) const
         {
@@ -168,10 +170,10 @@ namespace mtm
         * @return
         * 	returns a reference to the modified matrix
         */
-        Matrix &operator+=(const T init_value){
+        Matrix &operator+=(const T init_value)
+        {
             *this = *this + init_value;
             return *this;
-
         }
         /**
         * Matrix::&operator+(): creates a new matrix with the current element value plus the num specified.
@@ -181,7 +183,8 @@ namespace mtm
         * @return
         * 	returns a copy of the new matrix
         */
-      Matrix operator+(const T init_value) const{
+        Matrix operator+(const T init_value) const
+        {
             int matrix_columns = width();
             int matrix_rows = height();
             Dimensions d(matrix_rows, matrix_columns);
@@ -216,14 +219,14 @@ namespace mtm
         * @return
         * 	None
         */
-        friend std::ostream& operator<<(std::ostream & os, const Matrix<T>& matrix){ // should we add const th the declerastion?
-            Matrix::iterator begin = matrix.begin();
-            Matrix::iterator end = matrix.end();
+        friend std::ostream &operator<<(std::ostream &os, const Matrix<T> &matrix)
+        { // should we add const th the declerastion?
+            const_iterator begin = matrix.begin();
+            const_iterator end = matrix.end();
             int width = matrix.width();
             mtm::printMatrix(os, begin, end, width);
             return os;
         }
-
 
         /**
         * Matrix::height/width/size(): calculates the height/width/size of the given matrix
@@ -231,13 +234,16 @@ namespace mtm
         * @return
         * 	returns the height/width/size of the given matrix
         */
-        int height() const{
+        int height() const
+        {
             return dim.getRow();
         }
-        int width() const{
+        int width() const
+        {
             return dim.getCol();
         }
-        int size() const{
+        int size() const
+        {
             return dim.getCol() * dim.getRow();
         }
 
@@ -273,17 +279,17 @@ namespace mtm
         *   @return
         * 	Returns a COPY of the transposed matrix. does not change original matrix.
         */
-        static Matrix Diagonal(const int size,const T init_value)
+        static Matrix Diagonal(const int size, const T init_value)
         {
-                Dimensions dims(size, size);
-                Matrix new_diagonal(dims); // initiate the matrix to T() values. Will throw illegal init/bad alloc from constructor
-                int matrix_size = new_diagonal.size();
+            Dimensions dims(size, size);
+            Matrix new_diagonal(dims); // initiate the matrix to T() values. Will throw illegal init/bad alloc from constructor
+            int matrix_size = new_diagonal.size();
 
-                for (int i = 0; i < matrix_size; i += size + 1)
-                {
-                    new_diagonal.array[i] = init_value;
-                }
-                return new_diagonal;
+            for (int i = 0; i < matrix_size; i += size + 1)
+            {
+                new_diagonal.array[i] = init_value;
+            }
+            return new_diagonal;
         }
         /*
         Matrix apply(T (*f)(T)){
@@ -322,7 +328,7 @@ namespace mtm
         class IllegalInitialization;
         class DimensionsMismatch;
     };
-    
+
     template <class T>
     class Matrix<T>::AccessIllegalElement
     {
@@ -344,7 +350,7 @@ namespace mtm
     public:
         const std::string what() const
         {
-            return  description;
+            return description;
         }
     };
     template <class T>
@@ -363,16 +369,16 @@ namespace mtm
 
         const std::string what() const
         {
-            return description + dim_a.toString() + " " + dim_b.toString();// to_string works?
+            return description + dim_a.toString() + " " + dim_b.toString(); // to_string works?
         }
     };
-    template<class T>
+    template <class T>
     class Matrix<T>::iterator
     {
 
         Matrix<T> *matrix; // pointer to matrix
         int max_index;
-        int index;      // index indicating postion in matrix
+        int index; // index indicating postion in matrix
         /**
         *    Default constructor
         * 
@@ -381,9 +387,8 @@ namespace mtm
         *   @return
         * 	Reference the value at the current index
         */
-        iterator(Matrix* matrix, int index): matrix(matrix), index(index), max_index(matrix->size())
+        iterator(Matrix *matrix, int index) : matrix(matrix), index(index), max_index(matrix->size())
         {
-
         }
 
         friend class Matrix<T>; // For enabling accessing private fields of Matrix
@@ -402,7 +407,8 @@ namespace mtm
         */
         T &operator*() const
         {
-            if (this->index >= this->max_index){
+            if (index >= max_index || index < MIN_ITERATOR_INDEX)
+            {
                 throw Matrix::AccessIllegalElement();
             }
             return matrix->array[index];
@@ -414,8 +420,17 @@ namespace mtm
         *  --The prefix increment returns the value of a variable after it has been incremented.
         *  --The postfix increment returns the value of a variable before it has been incremented. 
         */
-        iterator &operator++();   // Prefix
-        iterator operator++(int); // Postfix
+        iterator &operator++() // Prefix
+        {
+            ++index;
+            return *this;
+        }
+        iterator operator++(int) // Postfix
+        {
+            iterator result = *this;
+            ++*this;
+            return result;
+        }
         /**
         *    operator==, operator!=
         *   @param it - An iterator to make comparison with
@@ -423,6 +438,7 @@ namespace mtm
         * 	Returns a boolean of whether the pointer points to the same value or not
         *   In the same matrix.
         */
+
         bool operator==(const iterator &it) const
         {
             return index == it.index;
@@ -431,35 +447,19 @@ namespace mtm
         {
             return !(*this == it);
         }
-        
-        
 
-
-
-
-        Matrix::iterator &Matrix::iterator::operator++()
-        {
-            ++index;
-            return *this;
-        }
-        Matrix::iterator Matrix::iterator::operator++(int)
-        {
-            iterator result = *this;
-            ++*this;
-            return result;
-        }
-        Matrix::iterator Matrix::begin()
+        iterator begin()
         {
             return iterator(this, 0);
         }
-        Matrix::iterator Matrix::end()
+        iterator end()
         {
             return iterator(this, this->size());
         }
     };
 
     /**
-    *    Class const_iterator
+    *   Class const_iterator
     *   same as iterator, inly differences is in handling a const matrix.
     *   Differences in decalrations are in:
     * 
@@ -467,28 +467,50 @@ namespace mtm
     *   const_iterator(const Matrix *matrix, int index);     
     *   const int &operator*() const;
     */
-   template<class T>
+    template <class T>
     class Matrix<T>::const_iterator
     {
         const Matrix<T> *matrix; // Const version of int matrix
         int max_index;
         int index;
-        
-        const_iterator(const Matrix<T> *matrix, int index): matrix(matrix), index(index)
-        {
 
+        const_iterator(const Matrix<T> *matrix, int index) : matrix(matrix), index(index), max_index(matrix->size())
+        {
         }
         friend class Matrix<T>;
 
     public:
-        const int &operator*() const;   // Returns a const int
-        const_iterator &operator++();   // Prefix
-        const_iterator operator++(int); // Postfix
-        bool operator==(const const_iterator &it) const;
-        bool operator!=(const const_iterator &it) const;
         const_iterator(const const_iterator &it) = default;            // Copy constructor
         const_iterator &operator=(const const_iterator &it) = default; // Assingment operator
-        ~const_iterator() = default;                                   // D'tor
+        ~const_iterator() = default;// D'tor
+        const T &operator*() const // Returns a const int
+        {
+            if (index >= max_index || index < MIN_ITERATOR_INDEX)
+            {
+                throw Matrix::AccessIllegalElement();
+            }
+            return matrix->array[index];
+        }
+        const_iterator &operator++() // Prefix
+        {
+            ++index;
+            return *this;
+        }
+        const_iterator operator++(int) // Postfix
+        {
+            iterator result = *this;
+            ++*this;
+            return result;
+        }
+        bool operator==(const const_iterator &it) const
+        {
+            return index == it.index;
+        }
+        bool operator!=(const const_iterator &it) const
+        {
+            return !(*this == it);
+        }
+        
     };
     template <class T>
     void checkDimensions(const Matrix<T> matrix_a, const Matrix<T> matrix_b)
@@ -499,7 +521,7 @@ namespace mtm
         int matrix_b_columns = matrix_b.width();
         if (matrix_a_rows != matrix_b_rows || matrix_a_columns != matrix_b_columns)
         {
-            throw typename Matrix<T>::DimensionsMismatch(Dimensions(matrix_a_rows,matrix_a_columns),Dimensions(matrix_b_rows,matrix_b_columns));
+            throw typename Matrix<T>::DimensionsMismatch(Dimensions(matrix_a_rows, matrix_a_columns), Dimensions(matrix_b_rows, matrix_b_columns));
         }
     }
     /**
@@ -510,7 +532,7 @@ namespace mtm
     * @return
     * 	returns a copy of the new matrix
     */
-    template<class T>
+    template <class T>
     mtm::Matrix<T> operator+(const int num, const Matrix<T> &matrix_a);
 
     /**
@@ -522,7 +544,7 @@ namespace mtm
     * @return
     * 	returns a copy of the new matrix
     */
-    template<class T>
+    template <class T>
     Matrix<T> operator+(const Matrix<T> &matrix_a, const Matrix<T> &matrix_b); // Outside class to support symetric +
 
     /**
@@ -537,12 +559,12 @@ namespace mtm
     template <class T>
     Matrix<T> operator-(const Matrix<T> &matrix_a, const Matrix<T> &matrix_b) // Outside class to support symetric -
     {
-        checkDimensions(matrix_a,matrix_b);
+        checkDimensions(matrix_a, matrix_b);
         Matrix<T> new_matrix(matrix_a);
         new_matrix = new_matrix + (-matrix_b); // Ok when operator + will be implemented
         return new_matrix;
     }
-    template<class T> 
+    template <class T>
     MATRIX_BOOLEAN_STATUS checkBooleanMatrix(const Matrix<T> &matrix)
     {
         int number_of_trues = 0;
@@ -570,9 +592,9 @@ namespace mtm
     * 	True if all the the matrix's values are different from 0.
     *   False otherwise
     */
-   template<class T>
+    template <class T>
     bool all(const Matrix<T> &matrix)
-    {        
+    {
         return checkBooleanMatrix(matrix) == ALL_TRUE ? true : false;
     }
     /**
@@ -581,10 +603,10 @@ namespace mtm
     * 	True if at least one of the matrix's values are different from 0.
     *   False otherwise
     */
-    template<class T>
+    template <class T>
     bool any(const Matrix<T> &matrix)
     {
-         return checkBooleanMatrix(matrix) == TRUE_EXISTS ? true : false;
+        return checkBooleanMatrix(matrix) == TRUE_EXISTS ? true : false;
     }
 
 } // namespace mtm
