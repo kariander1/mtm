@@ -138,7 +138,7 @@ namespace mtm
             Matrix<bool> new_matrix(dim, value);
             for (int i = 0; i < size(); i++)
             {
-                (new_matrix.array[i] = array[i] == value ? true : false);
+                (new_matrix.array[i] = (array[i] == value));
             }
             return new_matrix;
         }
@@ -595,7 +595,7 @@ namespace mtm
     template <class T>
     bool all(const Matrix<T> &matrix)
     {
-        return checkBooleanMatrix(matrix) == ALL_TRUE ? true : false;
+        return checkBooleanMatrix(matrix) == ALL_TRUE;
     }
     /**
     * any: checks if at least one of the matrix's values are different from 0.
@@ -606,7 +606,7 @@ namespace mtm
     template <class T>
     bool any(const Matrix<T> &matrix)
     {
-        return checkBooleanMatrix(matrix) == TRUE_EXISTS ? true : false;
+        return checkBooleanMatrix(matrix) == TRUE_EXISTS;
     }
 
 } // namespace mtm
