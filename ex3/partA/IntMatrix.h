@@ -105,8 +105,8 @@ namespace mtm {
         *   @return
         * 	int value of value stored in matrix in defined position
         */
-        int& operator()(const int row, const int column);
-        const int& operator()(const int row, const int column) const;
+        int& operator()(const int& row, const int& column);
+        const int operator()(const int& row, const int& column) const;
         /**
         * IntMatrix::&operator<<(): Prints the given matrix.
         * @return

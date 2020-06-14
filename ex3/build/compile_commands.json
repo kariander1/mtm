@@ -1,21 +1,6 @@
 [
 {
   "directory": "C:/VScode/ex3/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_TestPartB.dir\\partB\\test_partB.cpp.obj -c C:\\VScode\\ex3\\partB\\test_partB.cpp",
-  "file": "C:/VScode/ex3/partB/test_partB.cpp"
-},
-{
-  "directory": "C:/VScode/ex3/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_TestPartB.dir\\partB\\Auxiliaries.cpp.obj -c C:\\VScode\\ex3\\partB\\Auxiliaries.cpp",
-  "file": "C:/VScode/ex3/partB/Auxiliaries.cpp"
-},
-{
-  "directory": "C:/VScode/ex3/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\dry_partA.dir\\partA\\temp.cpp.obj -c C:\\VScode\\ex3\\partA\\temp.cpp",
-  "file": "C:/VScode/ex3/partA/temp.cpp"
-},
-{
-  "directory": "C:/VScode/ex3/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_Tester.dir\\partA\\tester.cpp.obj -c C:\\VScode\\ex3\\partA\\tester.cpp",
   "file": "C:/VScode/ex3/partA/tester.cpp"
 },
@@ -43,5 +28,15 @@
   "directory": "C:/VScode/ex3/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\intMatrix_TestPartA.dir\\partA\\Auxiliaries.cpp.obj -c C:\\VScode\\ex3\\partA\\Auxiliaries.cpp",
   "file": "C:/VScode/ex3/partA/Auxiliaries.cpp"
+},
+{
+  "directory": "C:/VScode/ex3/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\Matrix_TestPartB.dir\\partB\\test_partB.cpp.obj -c C:\\VScode\\ex3\\partB\\test_partB.cpp",
+  "file": "C:/VScode/ex3/partB/test_partB.cpp"
+},
+{
+  "directory": "C:/VScode/ex3/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++11 -o CMakeFiles\\Matrix_TestPartB.dir\\partB\\Auxiliaries.cpp.obj -c C:\\VScode\\ex3\\partB\\Auxiliaries.cpp",
+  "file": "C:/VScode/ex3/partB/Auxiliaries.cpp"
 }
 ]

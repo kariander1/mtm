@@ -22,14 +22,21 @@ namespace mtm
         //Private fields
         T *array;
         Dimensions dim;
-
+    
         // Helper Functions
-
         int calcMatSize(const mtm::Dimensions &dim) const
         {
+            if (dim.getCol() < 0 || dim.getRow() < 0)
+                throw IllegalInitialization();
             return dim.getCol() * dim.getRow();
         }
-        void copyMatrixValues(const Matrix &matrix);
+        void copyMatrixValues(const Matrix &matrix)
+        {
+            for (int i = 0; i < size(); i++) //size is the amount of elements in *this
+            {
+                array[i] = matrix.array[i]; //Or maybe should use iterator?
+            }
+        }
         void copyMatrixValues(const T &init_value)
         {
             for (int i = 0; i < size(); i++) //size is the amount of elements in *this
@@ -37,15 +44,21 @@ namespace mtm
                 array[i] = init_value; //Or maybe should use iterator?
             }
         }
-        Matrix<bool> operator!() const
+        /*
+        Matrix operator!() const
         {
             Matrix<bool> new_matrix(dim);
-            for (int i = 0; i < size(); i++)
+            for (int i = 0; i < height(); i++)
             {
-                (new_matrix.array[i] = !array[i] );
+                for (int j = 0; j < width(); j++)
+                {
+                    (new_matrix(i,j)) =  !(*this)(i,j) ;
+                }
+                
             }
             return new_matrix;
-        }
+        }*/
+
         //  class MatrixError;
 
     public:
@@ -77,12 +90,14 @@ namespace mtm
         Matrix(mtm::Dimensions dimensions, T init_value = T()) : array(new T[calcMatSize(dimensions)]), // New will throw bad_alloc if allocation failed
                                                                  dim(dimensions)
         {
-            if (dim.getCol() < 0 || dim.getRow() < 0)
-                throw IllegalInitialization();
+
             copyMatrixValues(init_value);
         }
-        Matrix(const Matrix &matrix) : array(new T[calcMatSize(matrix.dim)]),
-                                       dim(matrix.dim) {} // Copy constructor
+        Matrix(const Matrix &matrix) : array(new T[calcMatSize(matrix.dim)]), // Copy constructor
+                                       dim(matrix.dim)
+        {
+             copyMatrixValues(matrix);
+        }
         ~Matrix()
         { //Destructor
             delete[] array;
@@ -96,7 +111,19 @@ namespace mtm
         * @return
         * 	returns reference to the new copied matrix
         */
-        Matrix &operator=(const Matrix &matrix); // Assignment operator
+        Matrix &operator=(const Matrix &matrix) // Assignment operator
+        {
+            dim = matrix.dim;
+            T* temp_array =new int[size()]; // Will throw bad_alloc if allocation failed.
+
+            delete[] array; // If reached here, then allocation was successful
+            array=temp_array;
+         
+
+            copyMatrixValues(matrix);
+
+            return *this;
+        }
         /**
         * Matrix::&operator__(): execute the logical operation for every element in the matrix and creates 
         * a new matrix in the same size. if the logical operation of the element was true then the element in
@@ -110,41 +137,89 @@ namespace mtm
         Matrix<bool> operator<(const T &value) const
         {
             Matrix<bool> new_matrix(dim);
-            for (int i = 0; i < size(); i++)
+            for (int i = 0; i < height(); i++)
             {
-                (new_matrix.array[i] = (array[i] < value ));
+                for (int j = 0; j < width(); j++)
+                {
+                    (new_matrix(i,j)) = ((*this)(i,j) < value) ;
+                }
+                
             }
             return new_matrix;
         }
         Matrix<bool> operator<=(const T &value) const
         {
+            /*
             Matrix<bool> new_matrix(dim, value);
-            for (int i = 0; i < size(); i++)
+            for (int i = 0; i < height(); i++)
             {
-                (new_matrix.array[i] = (array[i] <= value));
+                for (int j = 0; j < width(); j++)
+                {
+                    (new_matrix(i,j)) = ((*this)(i,j) <= value) ;
+                }
+                
             }
-            return new_matrix;
+            */
+            return (((*this) ==value)+ ((*this)<value));
         }
         Matrix<bool> operator>(const T &value) const
         {
-            return !(*(this) <= value);
+            /*
+            Matrix<bool> new_matrix(dim, value);
+            for (int i = 0; i < height(); i++)
+            {
+                for (int j = 0; j < width(); j++)
+                {
+                    (new_matrix(i,j)) = ((*this)(i,j) > value) ;
+                }
+                
+            }
+            */
+            return -((*this)<value);
         }
         Matrix<bool> operator>=(const T &value) const
-        {            
-            return !(*(this) < value);
+        {           
+            /*
+             Matrix<bool> new_matrix(dim, value);
+            for (int i = 0; i < height(); i++)
+            {
+                for (int j = 0; j < width(); j++)
+                {
+                    (new_matrix(i,j)) = ((*this)(i,j) >= value) ;
+                }
+                
+            }
+            */
+              return ((*this)>value) + ((*this) ==value);
         }
         Matrix<bool> operator==(const T &value) const
         {
+            
             Matrix<bool> new_matrix(dim, value);
-            for (int i = 0; i < size(); i++)
+            for (int i = 0; i < height(); i++)
             {
-                (new_matrix.array[i] = (array[i] == value));
+                for (int j = 0; j < width(); j++)
+                {
+                    (new_matrix(i,j)) = ((*this)(i,j) == value) ;
+                }
+                
             }
             return new_matrix;
         }
         Matrix<bool> operator!=(const T &value) const
         {
-            return !(*(this) == value);
+            /*
+            Matrix<bool> new_matrix(dim, value);
+            for (int i = 0; i < height(); i++)
+            {
+                for (int j = 0; j < width(); j++)
+                {
+                    (new_matrix(i,j)) = ((*this)(i,j) != value) ;
+                }
+                
+            }
+            */
+            return -((*this)==value);
         }
         /**
         * Matrix::&operator-(): creates a new matrix where each value is the negative of the current value.
@@ -202,14 +277,15 @@ namespace mtm
         *   @return
         * 	int value of value stored in matrix in defined position
         */
-        int &operator()(const int row, const int column)
+        T &operator()(const int& row, const int& column)
         {
-            int shifted_index = row * width() + column;
+            const int shifted_index = row * width() + column;
             if (row < 0 || column < 0 || shifted_index >= size())
                 throw AccessIllegalElement();
+            
             return array[shifted_index];
         }
-        const int &operator()(const int row, const int column) const
+        const T operator()(const int& row, const int& column) const
         {
             Matrix temp = *this;
             return temp(row, column);
@@ -291,20 +367,20 @@ namespace mtm
             }
             return new_diagonal;
         }
-        /*
-        Matrix apply(T (*f)(T)){
+        template<class ApplyFunctor> 
+        Matrix apply(ApplyFunctor functor) const
+        {
             int row = height();
             int column = width();
             Dimensions new_dim(row, column);
-            Matrix function_matrix(new_dim); 
+            Matrix function_matrix(new_dim);
             int matrix_size = function_matrix.size();
-            for (int i = 0; i < matrix_size; i += size + 1)
+            for (int i = 0; i < matrix_size; i ++)
             {
-                function_matrix.array[i] = (*f)(function_matrix.array[i]);
+                function_matrix.array[i] = functor(function_matrix.array[i]);
             }
             return function_matrix;
-
-        }*/
+        }
         class iterator;
         /**
         * Matrix::begin/end(): creates an iterator for the given matrix and retets it 
@@ -313,16 +389,31 @@ namespace mtm
         * @return
         * 	returns the new iterator
         */
-        iterator begin();
-        iterator end();
+        iterator begin()
+        {
+            return iterator(this, 0);
+        }
+        iterator end()
+        {
+            return iterator(this, this->size());
+        }
+
+             
+        
 
         /**
          * same as the end and begin, the difference is that the return iterator 
          * is constant and the matrix is constant
          */
         class const_iterator;
-        const_iterator begin() const;
-        const_iterator end() const;
+        const_iterator begin() const
+        {
+            return const_iterator(this, 0);
+        }
+        const_iterator end() const
+        {
+            return const_iterator(this, this->size());
+        }
 
         class AccessIllegalElement;
         class IllegalInitialization;
@@ -448,14 +539,7 @@ namespace mtm
             return !(*this == it);
         }
 
-        iterator begin()
-        {
-            return iterator(this, 0);
-        }
-        iterator end()
-        {
-            return iterator(this, this->size());
-        }
+
     };
 
     /**
@@ -533,8 +617,10 @@ namespace mtm
     * 	returns a copy of the new matrix
     */
     template <class T>
-    mtm::Matrix<T> operator+(const int num, const Matrix<T> &matrix_a);
-
+    mtm::Matrix<T> operator+(const int num, const Matrix<T> &matrix_a)
+    {
+        return matrix_a+num;
+    }
     /**
     * operator+(): creates a new matrix with the current element value of matrix_a plus
     * the current element value of matrix_b.
@@ -545,8 +631,19 @@ namespace mtm
     * 	returns a copy of the new matrix
     */
     template <class T>
-    Matrix<T> operator+(const Matrix<T> &matrix_a, const Matrix<T> &matrix_b); // Outside class to support symetric +
-
+    Matrix<T> operator+(const Matrix<T> &matrix_a, const Matrix<T> &matrix_b) // Outside class to support symetric +
+    {
+         checkDimensions(matrix_a, matrix_b);
+        Matrix<T> new_matrix(matrix_a);
+        for (int i = 0; i < matrix_a.height(); i++)
+        {
+            for (int j = 0; j < matrix_a.width(); j++)
+            {
+                new_matrix(i, j) += matrix_b(i, j); // assuming += operator exists
+            }
+        }
+        return new_matrix;
+    }
     /**
     * operator-(): creates a new matrix with the current element value of matrix_a
     * minus the current element value of matrix_b.
@@ -559,7 +656,7 @@ namespace mtm
     template <class T>
     Matrix<T> operator-(const Matrix<T> &matrix_a, const Matrix<T> &matrix_b) // Outside class to support symetric -
     {
-        checkDimensions(matrix_a, matrix_b);
+       
         Matrix<T> new_matrix(matrix_a);
         new_matrix = new_matrix + (-matrix_b); // Ok when operator + will be implemented
         return new_matrix;

@@ -179,11 +179,11 @@ namespace mtm
         *this = *this + num;
         return *this;
     }
-    int &IntMatrix::operator()(const int row, const int column)
+    int &IntMatrix::operator()(const int& row, const int& column)
     {
         return array[row * width() + column];
     }
-    const int &IntMatrix::operator()(const int row, const int column) const
+    const int IntMatrix::operator()(const int& row, const int& column) const
     {
         IntMatrix temp = *this;
         return temp(row,column);

@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "intMatrix_TestPartB.exe"
+			"path" : "intMatrix_TestPartA.exe"
 		},
 		{
-			"path" : "intMatrix_TestPartB.pdb"
+			"path" : "intMatrix_TestPartA.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 36,
+				"line" : 31,
 				"parent" : 0
 			}
 		]
@@ -48,11 +48,12 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2
 			]
 		}
 	],
-	"id" : "intMatrix_TestPartB::@6890427a1f51a3e7e1df",
+	"id" : "intMatrix_TestPartA::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -72,8 +73,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "intMatrix_TestPartB",
-	"nameOnDisk" : "intMatrix_TestPartB.exe",
+	"name" : "intMatrix_TestPartA",
+	"nameOnDisk" : "intMatrix_TestPartA.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -86,7 +87,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2
 			]
 		}
 	],
@@ -95,13 +97,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "partB/test_partB.cpp",
+			"path" : "partA/test_partA.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "partB/Auxiliaries.cpp",
+			"path" : "partA/IntMatrix.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "partA/Auxiliaries.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

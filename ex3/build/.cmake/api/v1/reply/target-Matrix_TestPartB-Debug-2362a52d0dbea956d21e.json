@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "dry_partA.exe"
+			"path" : "Matrix_TestPartB.exe"
 		},
 		{
-			"path" : "dry_partA.pdb"
+			"path" : "Matrix_TestPartB.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 27,
+				"line" : 34,
 				"parent" : 0
 			}
 		]
@@ -47,11 +47,12 @@
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		}
 	],
-	"id" : "dry_partA::@6890427a1f51a3e7e1df",
+	"id" : "Matrix_TestPartB::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -71,8 +72,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "dry_partA",
-	"nameOnDisk" : "dry_partA.exe",
+	"name" : "Matrix_TestPartB",
+	"nameOnDisk" : "Matrix_TestPartB.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -84,7 +85,8 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		}
 	],
@@ -93,7 +95,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "partA/temp.cpp",
+			"path" : "partB/test_partB.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "partB/Auxiliaries.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

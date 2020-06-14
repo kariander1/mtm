@@ -23,8 +23,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
-# dry part A
-add_executable(dry_partA ./partA/temp.cpp)
 
 # EXE for tester
 add_executable(intMatrix_Tester ./partA/tester.cpp ./partA/intMatrix.cpp ./partA/Auxiliaries.cpp)
@@ -33,4 +31,7 @@ add_executable(intMatrix_Tester ./partA/tester.cpp ./partA/intMatrix.cpp ./partA
 add_executable(intMatrix_TestPartA ./partA/test_partA.cpp ./partA/intMatrix.cpp ./partA/Auxiliaries.cpp)
 
 # EXE for test_partB.cpp
-add_executable(intMatrix_TestPartB ./partB/test_partB.cpp ./partB/Auxiliaries.cpp)
+add_executable(Matrix_TestPartB ./partB/test_partB.cpp ./partB/Auxiliaries.cpp)
+
+# EXE for matrix tester
+#add_executable(MatrixTester ./partB/MatrixTester.cpp ./partB/Auxiliaries.cpp)
