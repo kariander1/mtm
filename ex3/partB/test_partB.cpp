@@ -25,7 +25,7 @@ int main(){
         std::cout<<mat_2;
         mtm::Matrix<std::string> mat_4=mat_1+mat_3;
 
-    } catch(mtm::Matrix<std::string>::DimensionsMismatch& e){
+    } catch(mtm::Matrix<std::string>::DimensionMismatch& e){
         std::cout<<e.what()<<std::endl;
     }
     try{

@@ -326,7 +326,7 @@ namespace mtm
 
         class AccessIllegalElement;
         class IllegalInitialization;
-        class DimensionsMismatch;
+        class DimensionMismatch;
     };
 
     template <class T>
@@ -354,7 +354,7 @@ namespace mtm
         }
     };
     template <class T>
-    class Matrix<T>::DimensionsMismatch
+    class Matrix<T>::DimensionMismatch
     {
     private:
         const std::string description = "Mtm matrix error: Dimensions mismatch: ";
@@ -362,7 +362,7 @@ namespace mtm
         const Dimensions dim_b;
 
     public:
-        DimensionsMismatch(const Dimensions dim_a, const Dimensions dim_b)
+        DimensionMismatch(const Dimensions dim_a, const Dimensions dim_b)
             : dim_a(dim_a), dim_b(dim_b)
         {
         }
@@ -521,7 +521,7 @@ namespace mtm
         int matrix_b_columns = matrix_b.width();
         if (matrix_a_rows != matrix_b_rows || matrix_a_columns != matrix_b_columns)
         {
-            throw typename Matrix<T>::DimensionsMismatch(Dimensions(matrix_a_rows, matrix_a_columns), Dimensions(matrix_b_rows, matrix_b_columns));
+            throw typename Matrix<T>::DimensionMismatch(Dimensions(matrix_a_rows, matrix_a_columns), Dimensions(matrix_b_rows, matrix_b_columns));
         }
     }
     /**
