@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include "Auxiliaries.h"
-//test
+
 namespace mtm
 {
     const int MIN_ITERATOR_INDEX = 0;
