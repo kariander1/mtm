@@ -112,7 +112,7 @@ namespace mtm
         class AccessIllegalElement;
 
         class IllegalInitialization;
-        
+
         class DimensionMismatch;
     };
     // ********* Helper functions **********
@@ -295,7 +295,6 @@ namespace mtm
     
     //*********** class functions **************
     
-
     template<class T>
     Matrix<T> Matrix<T>::Diagonal(const int size, const T init_value)
         {
