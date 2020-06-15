@@ -66,8 +66,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/VScode/ex3/build",
-		"source" : "C:/VScode/ex3"
+		"build" : "C:/VScode/mtm/ex3/build",
+		"source" : "C:/VScode/mtm/ex3"
 	},
 	"version" : 
 	{

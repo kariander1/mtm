@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/VScode/ex3/partA/Auxiliaries.cpp" "C:/VScode/ex3/build/CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj"
-  "C:/VScode/ex3/partA/IntMatrix.cpp" "C:/VScode/ex3/build/CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj"
-  "C:/VScode/ex3/partA/tester.cpp" "C:/VScode/ex3/build/CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj"
+  "C:/VScode/mtm/ex3/partA/Auxiliaries.cpp" "C:/VScode/mtm/ex3/build/CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj"
+  "C:/VScode/mtm/ex3/partA/IntMatrix.cpp" "C:/VScode/mtm/ex3/build/CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj"
+  "C:/VScode/mtm/ex3/partA/tester.cpp" "C:/VScode/mtm/ex3/build/CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

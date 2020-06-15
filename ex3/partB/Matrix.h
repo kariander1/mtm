@@ -114,7 +114,7 @@ namespace mtm
         Matrix &operator=(const Matrix &matrix) // Assignment operator
         {
             dim = matrix.dim;
-            T* temp_array =new int[size()]; // Will throw bad_alloc if allocation failed.
+            T* temp_array =new T[size()]; // Will throw bad_alloc if allocation failed.
 
             delete[] array; // If reached here, then allocation was successful
             array=temp_array;
@@ -617,9 +617,9 @@ namespace mtm
     * 	returns a copy of the new matrix
     */
     template <class T>
-    mtm::Matrix<T> operator+(const int num, const Matrix<T> &matrix_a)
+    mtm::Matrix<T> operator+(const T value, const Matrix<T> &matrix_a)
     {
-        return matrix_a+num;
+        return matrix_a + value;
     }
     /**
     * operator+(): creates a new matrix with the current element value of matrix_a plus
@@ -633,7 +633,7 @@ namespace mtm
     template <class T>
     Matrix<T> operator+(const Matrix<T> &matrix_a, const Matrix<T> &matrix_b) // Outside class to support symetric +
     {
-         checkDimensions(matrix_a, matrix_b);
+        checkDimensions(matrix_a, matrix_b);
         Matrix<T> new_matrix(matrix_a);
         for (int i = 0; i < matrix_a.height(); i++)
         {

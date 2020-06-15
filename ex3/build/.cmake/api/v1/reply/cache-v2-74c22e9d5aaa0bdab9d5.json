@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/VScode/ex3/build"
+			"value" : "c:/VScode/mtm/ex3/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "0"
+			"value" : "1"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -192,18 +192,6 @@
 			],
 			"type" : "FILEPATH",
 			"value" : "C:/TDM-GCC-64/bin/gcc-ranlib.exe"
-		},
-		{
-			"name" : "CMAKE_CXX_COMPILE_FEATURES",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "PATH",
-			"value" : "/usr/bin/g++"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -659,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/VScode/ex3"
+			"value" : "C:/VScode/mtm/ex3"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -671,7 +659,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/hw1"
+			"value" : "C:/Program Files (x86)/IntMatrix"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1339,7 +1327,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/VScode/ex3/build"
+			"value" : "C:/VScode/mtm/ex3/build"
 		},
 		{
 			"name" : "IntMatrix_SOURCE_DIR",
@@ -1351,79 +1339,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/VScode/ex3"
-		},
-		{
-			"name" : "Tutorial_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/VScode/ex3/build"
-		},
-		{
-			"name" : "Tutorial_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/VScode/ex3"
-		},
-		{
-			"name" : "hw1_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/VScode/ex3/build"
-		},
-		{
-			"name" : "hw1_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/VScode/ex3"
-		},
-		{
-			"name" : "hw3_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/VScode/ex3/build"
-		},
-		{
-			"name" : "hw3_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/VScode/ex3"
+			"value" : "C:/VScode/mtm/ex3"
 		}
 	],
 	"kind" : "cache",
