@@ -29,22 +29,10 @@ namespace mtm
         void copyMatrixValues(const T &init_value);
 
         // For negating all boolean values
-        class BooleanNot
-        {
-        public:
-            bool operator()(bool val)
-            {
-                return !val;
-            }
-        };
-        class Negative
-        {
-        public:
-            T operator()(T val)
-            {
-                return -val;
-            }
-        };
+        class BooleanNot;
+        
+        class Negative;
+        
 
     public:
         Matrix(mtm::Dimensions dimensions, T init_value = T()) : array(new T[calcMatSize(dimensions)]), // New will throw bad_alloc if allocation failed
@@ -63,116 +51,38 @@ namespace mtm
             delete[] array;
         }
 
-        Matrix &operator=(const Matrix &matrix) // Assignment operator
-        {
-            dim = matrix.dim;
-            T *temp_array = new T[size()]; // Will throw bad_alloc if allocation failed.
+        Matrix& operator=(const Matrix &matrix);
 
-            delete[] array; // If reached here, then allocation was successful
-            array = temp_array;
+        Matrix<bool> operator<(const T &value) const;
+        
+        Matrix<bool> operator<=(const T &value) const;
+        
+        Matrix<bool> operator>(const T &value) const;
+        
+        Matrix<bool> operator>=(const T &value) const;
+        
+        Matrix<bool> operator==(const T &value) const;
+        
+        Matrix<bool> operator!=(const T &value) const;
+        
+        Matrix operator-() const;
+        
+        Matrix &operator+=(const T init_value);
+        
+        Matrix operator+(const T init_value) const;
+        
+        T &operator()(const int &row, const int &column);
+        
+        const T operator()(const int &row, const int &column) const;
+        
+        friend std::ostream &operator<<(std::ostream &os, const Matrix<T> &matrix);
+        
+        int height() const;
 
-            copyMatrixValues(matrix);
+        int width() const;
+        
+        int size() const;
 
-            return *this;
-        }
-
-        Matrix<bool> operator<(const T &value) const
-        {
-            Matrix<bool> new_matrix(dim);
-            int max_height = height();
-            int max_width = width();
-            for (int i = 0; i < max_height; i++)
-            {
-                for (int j = 0; j < max_width; j++)
-                {
-                    (new_matrix(i, j)) = ((*this)(i, j) < value);
-                }
-            }
-            return new_matrix;
-        }
-        Matrix<bool> operator<=(const T &value) const
-        {
-            return (((*this) == value) + ((*this) < value));
-        }
-        Matrix<bool> operator>(const T &value) const
-        {
-            return ((*this) < value).apply(BooleanNot());
-        }
-        Matrix<bool> operator>=(const T &value) const
-        {
-
-            return ((*this) > value) + ((*this) == value);
-        }
-        Matrix<bool> operator==(const T &value) const
-        {
-
-            Matrix<bool> new_matrix(dim, value);
-            int max_height = height();
-            int max_width = width();
-            for (int i = 0; i < max_height; i++)
-            {
-                for (int j = 0; j < max_width; j++)
-                {
-                    (new_matrix(i, j)) = ((*this)(i, j) == value);
-                }
-            }
-            return new_matrix;
-        }
-        Matrix<bool> operator!=(const T &value) const
-        {
-            return ((*this) == value).apply(BooleanNot());
-        }
-        Matrix operator-() const
-        {
-
-            return apply(Negative());
-        }
-        Matrix &operator+=(const T init_value)
-        {
-            *this = *this + init_value;
-            return *this;
-        }
-        Matrix operator+(const T init_value) const
-        {
-            int matrix_columns = width();
-            int matrix_rows = height();
-            Dimensions d(matrix_rows, matrix_columns);
-            Matrix init_matrix(d, init_value);
-            return *this + init_matrix;
-        }
-        T &operator()(const int &row, const int &column)
-        {
-            const int shifted_index = row * width() + column;
-            if (row < 0 || column < 0 || shifted_index >= size())
-                throw AccessIllegalElement();
-
-            return array[shifted_index];
-        }
-        const T operator()(const int &row, const int &column) const
-        {
-            Matrix temp = *this;
-            return temp(row, column);
-        }
-        friend std::ostream &operator<<(std::ostream &os, const Matrix<T> &matrix)
-        { // should we add const th the declerastion?
-            const_iterator begin = matrix.begin();
-            const_iterator end = matrix.end();
-            int width = matrix.width();
-            return mtm::printMatrix(os, begin, end, width);
-        }
-
-        int height() const
-        {
-            return dim.getRow();
-        }
-        int width() const
-        {
-            return dim.getCol();
-        }
-        int size() const
-        {
-            return dim.getCol() * dim.getRow();
-        }
         Matrix transpose() const
         {
             int row = height();
@@ -267,6 +177,163 @@ namespace mtm
         }
     }
 
+    //*************** helper classes ************
+    class BooleanNot
+        {
+        public:
+            bool operator()(bool val)
+            {
+                return !val;
+            }
+        };
+    template<class T>
+    class Matrix<T>::Negative
+        {
+        public:
+            T operator()(T val)
+            {
+                return -val;
+            }
+        };
+    // *********** Matrix operators*************
+    template<class T>
+    const T Matrix<T>::operator()(const int &row, const int &column) const
+        {
+            Matrix temp = *this;
+            return temp(row, column);
+        }
+
+    template<class T>
+    T& Matrix<T>::operator()(const int &row, const int &column)
+        {
+            const int shifted_index = row * width() + column;
+            if (row < 0 || column < 0 || shifted_index >= size())
+                throw AccessIllegalElement();
+
+            return array[shifted_index];
+        }
+
+    template<class T>
+    Matrix<T> Matrix<T>::operator+(const T init_value) const
+        {
+            int matrix_columns = width();
+            int matrix_rows = height();
+            Dimensions d(matrix_rows, matrix_columns);
+            Matrix init_matrix(d, init_value);
+            return *this + init_matrix;
+        }
+
+    template<class T>
+    Matrix<T>& Matrix<T>::operator+=(const T init_value)
+        {
+            *this = *this + init_value;
+            return *this;
+        }
+
+    template<class T>
+    Matrix<T> Matrix<T>::operator-() const
+        {
+
+            return apply(Negative());
+        }
+
+    template<class T>
+    Matrix<bool> Matrix<T>::operator!=(const T &value) const
+        {
+            return ((*this) == value).apply(BooleanNot());
+        }
+
+    template<class T>
+    Matrix<T>& Matrix<T>::operator=(const Matrix<T> &matrix) // Assignment operator
+        {
+            dim = matrix.dim;
+            T *temp_array = new T[size()]; // Will throw bad_alloc if allocation failed.
+
+            delete[] array; // If reached here, then allocation was successful
+            array = temp_array;
+
+            copyMatrixValues(matrix);
+
+            return *this;
+        }
+
+    template<class T>
+    Matrix<bool> Matrix<T>::operator<(const T &value) const
+        {
+            Matrix<bool> new_matrix(dim);
+            int max_height = height();
+            int max_width = width();
+            for (int i = 0; i < max_height; i++)
+            {
+                for (int j = 0; j < max_width; j++)
+                {
+                    (new_matrix(i, j)) = ((*this)(i, j) < value);
+                }
+            }
+            return new_matrix;
+        }
+
+    template<class T>
+    Matrix<bool> Matrix<T>::operator<=(const T &value) const
+        {
+            return (((*this) == value) + ((*this) < value));
+        }
+
+    template<class T>
+    Matrix<bool> Matrix<T>::operator>(const T &value) const
+        {
+            return ((*this) < value).apply(BooleanNot());
+        }
+
+    template<class T>
+    Matrix<bool> Matrix<T>::operator>=(const T &value) const
+        {
+
+            return ((*this) > value) + ((*this) == value);
+        }
+
+    template<class T>
+    Matrix<bool> Matrix<T>::operator==(const T &value) const
+        {
+
+            Matrix<bool> new_matrix(dim, value);
+            int max_height = height();
+            int max_width = width();
+            for (int i = 0; i < max_height; i++)
+            {
+                for (int j = 0; j < max_width; j++)
+                {
+                    (new_matrix(i, j)) = ((*this)(i, j) == value);
+                }
+            }
+            return new_matrix;
+        }
+    //*********** class functions
+    template<class T>
+    std::ostream& operator<<(std::ostream &os, const Matrix<T> &matrix)
+        { // should we add const th the declerastion?
+            const_iterator begin = matrix.begin();
+            const_iterator end = matrix.end();
+            int width = matrix.width();
+            return mtm::printMatrix(os, begin, end, width);
+        }
+    
+    template<class T>
+    int Matrix<T>::height() const
+        {
+            return dim.getRow();
+        }
+    template<class T>    
+    int Matrix<T>::width() const
+        {
+            return dim.getCol();
+        }
+    template<class T>    
+    int Matrix<T>::size() const
+        {
+            return dim.getCol() * dim.getRow();
+        }
+    
     template <class T>
     class Matrix<T>::MatrixError
     {
