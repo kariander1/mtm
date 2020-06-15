@@ -33,7 +33,6 @@ namespace mtm
         
         class Negative;
         
-
     public:
         Matrix(mtm::Dimensions dimensions, T init_value = T()) : array(new T[calcMatSize(dimensions)]), // New will throw bad_alloc if allocation failed
                                                                  dim(dimensions)
@@ -80,50 +79,16 @@ namespace mtm
         int height() const;
 
         int width() const;
-        
+
         int size() const;
 
-        Matrix transpose() const
-        {
-            int row = height();
-            int column = width();
-            Dimensions new_dim(column, row);
-            Matrix transpose_matrix(new_dim); //create new matrix for transposed values
-
-            int old_size = size();
-            for (int i = 0; i < old_size; i++)
-            {
-                transpose_matrix.array[(i / column) + (i % column) * row] = array[i]; // calculate the new position
-            }
-
-            return transpose_matrix;
-        }
-        static Matrix Diagonal(const int size, const T init_value)
-        {
-            Dimensions dims(size, size);
-            Matrix new_diagonal(dims); // initiate the matrix to T() values. Will throw illegal init/bad alloc from constructor
-            int matrix_size = new_diagonal.size();
-
-            for (int i = 0; i < matrix_size; i += size + 1)
-            {
-                new_diagonal.array[i] = init_value;
-            }
-            return new_diagonal;
-        }
+        Matrix transpose() const;
+        
+        static Matrix Diagonal(const int size, const T init_value);
+        
         template <class ApplyFunctor>
-        Matrix apply(ApplyFunctor functor) const
-        {
-            int row = height();
-            int column = width();
-            Dimensions new_dim(row, column);
-            Matrix function_matrix(new_dim);
-            int matrix_size = function_matrix.size();
-            for (int i = 0; i < matrix_size; i++)
-            {
-                function_matrix.array[i] = functor(array[i]);
-            }
-            return function_matrix;
-        }
+        Matrix apply(ApplyFunctor functor) const;
+
         class iterator;
         iterator begin()
         {
@@ -145,7 +110,9 @@ namespace mtm
         }
 
         class AccessIllegalElement;
+
         class IllegalInitialization;
+        
         class DimensionMismatch;
     };
     // ********* Helper functions **********
@@ -195,6 +162,23 @@ namespace mtm
                 return -val;
             }
         };
+    
+    template<class T>
+    template <class ApplyFunctor>
+    Matrix<T> Matrix<T>::apply(ApplyFunctor functor) const
+        {
+            int row = height();
+            int column = width();
+            Dimensions new_dim(row, column);
+            Matrix function_matrix(new_dim);
+            int matrix_size = function_matrix.size();
+            for (int i = 0; i < matrix_size; i++)
+            {
+                function_matrix.array[i] = functor(array[i]);
+            }
+            return function_matrix;
+        }
+    
     // *********** Matrix operators*************
     template<class T>
     const T Matrix<T>::operator()(const int &row, const int &column) const
@@ -308,7 +292,41 @@ namespace mtm
             }
             return new_matrix;
         }
-    //*********** class functions
+    
+    //*********** class functions **************
+    
+
+    template<class T>
+    Matrix<T> Matrix<T>::Diagonal(const int size, const T init_value)
+        {
+            Dimensions dims(size, size);
+            Matrix new_diagonal(dims); // initiate the matrix to T() values. Will throw illegal init/bad alloc from constructor
+            int matrix_size = new_diagonal.size();
+
+            for (int i = 0; i < matrix_size; i += size + 1)
+            {
+                new_diagonal.array[i] = init_value;
+            }
+            return new_diagonal;
+        }
+
+    template<class T>
+    Matrix<T> Matrix<T>::transpose() const
+        {
+            int row = height();
+            int column = width();
+            Dimensions new_dim(column, row);
+            Matrix transpose_matrix(new_dim); //create new matrix for transposed values
+
+            int old_size = size();
+            for (int i = 0; i < old_size; i++)
+            {
+                transpose_matrix.array[(i / column) + (i % column) * row] = array[i]; // calculate the new position
+            }
+
+            return transpose_matrix;
+        }
+
     template<class T>
     std::ostream& operator<<(std::ostream &os, const Matrix<T> &matrix)
         { // should we add const th the declerastion?
@@ -323,11 +341,13 @@ namespace mtm
         {
             return dim.getRow();
         }
+
     template<class T>    
     int Matrix<T>::width() const
         {
             return dim.getCol();
         }
+
     template<class T>    
     int Matrix<T>::size() const
         {
