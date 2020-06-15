@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/VScode/ex3/partB/Auxiliaries.h
+string
+-
+iostream
+-
+ostream
+-
+
+C:/VScode/ex3/partB/Matrix.h
+string
+-
+iostream
+-
+Auxiliaries.h
+C:/VScode/ex3/partB/Auxiliaries.h
+
+C:/VScode/ex3/partB/test_partB.cpp
+iostream
+-
+string
+-
+Matrix.h
+C:/VScode/ex3/partB/Matrix.h
+

@@ -54,9 +54,11 @@ namespace mtm
     IntMatrix operator+(const IntMatrix &matrix_a, const IntMatrix &matrix_b)
     {
         IntMatrix new_matrix(matrix_a);
-        for (int i = 0; i < matrix_a.height(); i++)
+        int max_height = matrix_a.height();
+        int max_width = matrix_a.width();
+        for (int i = 0; i < max_height; i++)
         {
-            for (int j = 0; j < matrix_a.width(); j++)
+            for (int j = 0; j < max_width; j++)
             {
                 new_matrix(i, j) += matrix_b(i, j);
             }
@@ -88,7 +90,8 @@ namespace mtm
     IntMatrix IntMatrix::operator<(const int &num) const
     {
         IntMatrix new_matrix(dim, 0);
-        for (int i = 0; i < size(); i++)
+        int max_size =size();
+        for (int i = 0; i < max_size; i++)
         {
             (new_matrix.array[i] = array[i] < num ? 1 : 0);
         }
@@ -119,14 +122,16 @@ namespace mtm
 
     void IntMatrix::copyMatrixValues(const IntMatrix &matrix)
     {
-        for (int i = 0; i < size(); i++) //size is the amount of elements in *this
+        int max_size = size();
+        for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
         {
             array[i] = matrix.array[i]; //Or maybe should use iterator?
         }
     }
     void IntMatrix::copyMatrixValues(const int &init_value)
     {
-        for (int i = 0; i < size(); i++) //size is the amount of elements in *this
+        int max_size = size();
+        for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
         {
             array[i] = init_value; //Or maybe should use iterator?
         }
@@ -192,9 +197,11 @@ namespace mtm
     MATRIX_STATUS checkMatrix(const IntMatrix &matrix)
     {
         int number_of_ones = 0;
-        for (int i = 0; i < matrix.height(); i++)
+        int max_height = matrix.height();
+        int max_width = matrix.width();
+        for (int i = 0; i < max_height; i++)
         {
-            for (int j = 0; j < matrix.width(); j++)
+            for (int j = 0; j <max_width; j++)
             {
                 if (matrix(i, j) == 1)
                 {

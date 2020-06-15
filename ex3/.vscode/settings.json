@@ -50,7 +50,9 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "xtr1common": "cpp"
+        "xtr1common": "cpp",
+        "xiosbase": "cpp",
+        "xlocnum": "cpp"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }

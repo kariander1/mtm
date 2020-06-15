@@ -23,6 +23,7 @@ namespace mtm
         T *array;
         Dimensions dim;
     
+         class MatrixError;
         // Helper Functions
         int calcMatSize(const mtm::Dimensions &dim) const
         {
@@ -32,18 +33,30 @@ namespace mtm
         }
         void copyMatrixValues(const Matrix &matrix)
         {
-            for (int i = 0; i < size(); i++) //size is the amount of elements in *this
+            int max_size = size();
+            for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
             {
                 array[i] = matrix.array[i]; //Or maybe should use iterator?
             }
         }
         void copyMatrixValues(const T &init_value)
         {
-            for (int i = 0; i < size(); i++) //size is the amount of elements in *this
+             int max_size = size();
+            for (int i = 0; i <max_size; i++) //size is the amount of elements in *this
             {
                 array[i] = init_value; //Or maybe should use iterator?
             }
         }
+        // For negating all boolean values
+        class Negative
+        {
+        public:
+            bool operator()(bool val)
+            {
+                return !val;
+            }
+        };
+        
         /*
         Matrix operator!() const
         {
@@ -137,9 +150,11 @@ namespace mtm
         Matrix<bool> operator<(const T &value) const
         {
             Matrix<bool> new_matrix(dim);
-            for (int i = 0; i < height(); i++)
+            int max_height =height();
+            int max_width = width();
+            for (int i = 0; i <max_height; i++)
             {
-                for (int j = 0; j < width(); j++)
+                for (int j = 0; j <max_width ; j++)
                 {
                     (new_matrix(i,j)) = ((*this)(i,j) < value) ;
                 }
@@ -175,7 +190,7 @@ namespace mtm
                 
             }
             */
-            return -((*this)<value);
+            return ((*this)<value).apply(Negative());
         }
         Matrix<bool> operator>=(const T &value) const
         {           
@@ -196,9 +211,11 @@ namespace mtm
         {
             
             Matrix<bool> new_matrix(dim, value);
-            for (int i = 0; i < height(); i++)
+            int max_height = height();
+             int max_width = width();
+            for (int i = 0; i <max_height; i++)
             {
-                for (int j = 0; j < width(); j++)
+                for (int j = 0; j < max_width; j++)
                 {
                     (new_matrix(i,j)) = ((*this)(i,j) == value) ;
                 }
@@ -219,7 +236,7 @@ namespace mtm
                 
             }
             */
-            return -((*this)==value);
+            return ((*this)==value).apply(Negative());
         }
         /**
         * Matrix::&operator-(): creates a new matrix where each value is the negative of the current value.
@@ -300,8 +317,8 @@ namespace mtm
             const_iterator begin = matrix.begin();
             const_iterator end = matrix.end();
             int width = matrix.width();
-            mtm::printMatrix(os, begin, end, width);
-            return os;
+            return mtm::printMatrix(os, begin, end, width);
+  
         }
 
         /**
@@ -377,7 +394,7 @@ namespace mtm
             int matrix_size = function_matrix.size();
             for (int i = 0; i < matrix_size; i ++)
             {
-                function_matrix.array[i] = functor(function_matrix.array[i]);
+                function_matrix.array[i] = functor(array[i]);
             }
             return function_matrix;
         }
@@ -414,41 +431,52 @@ namespace mtm
         {
             return const_iterator(this, this->size());
         }
-
+       
         class AccessIllegalElement;
         class IllegalInitialization;
         class DimensionMismatch;
     };
 
+
+    template <class T>
+    class Matrix<T>::MatrixError
+    {
+        protected:
+            const std::string error_prefix;
+        public:
+         MatrixError(std::string des ="Mtm matrix error: ") : error_prefix(des)
+        {
+
+        }
+    };
     template <class T>
     class Matrix<T>::AccessIllegalElement
     {
     private:
-        const std::string description = "Mtm matrix error: An attempt to access an illegal element";
+        const std::string description;
 
     public:
         const std::string what() const
-        {
-            return description;
+        {                    
+            return "Mtm matrix error: An attempt to access an illegal element";
         }
     };
     template <class T>
     class Matrix<T>::IllegalInitialization
     {
     private:
-        const std::string description = "Mtm matrix error: Illegal initialization values";
 
     public:
         const std::string what() const
         {
-            return description;
+            return "Mtm matrix error: Illegal initialization values";
         }
     };
     template <class T>
     class Matrix<T>::DimensionMismatch
     {
     private:
-        const std::string description = "Mtm matrix error: Dimensions mismatch: ";
+        
         const Dimensions dim_a;
         const Dimensions dim_b;
 
@@ -460,7 +488,7 @@ namespace mtm
 
         const std::string what() const
         {
-            return description + dim_a.toString() + " " + dim_b.toString(); // to_string works?
+            return "Mtm matrix error: Dimensions mismatch: " + dim_a.toString() + " " + dim_b.toString(); // to_string works?
         }
     };
     template <class T>
@@ -617,9 +645,9 @@ namespace mtm
     * 	returns a copy of the new matrix
     */
     template <class T>
-    mtm::Matrix<T> operator+(const T value, const Matrix<T> &matrix_a)
+    mtm::Matrix<T> operator+(const int num, const Matrix<T> &matrix_a)
     {
-        return matrix_a + value;
+        return matrix_a+num;
     }
     /**
     * operator+(): creates a new matrix with the current element value of matrix_a plus
@@ -633,11 +661,14 @@ namespace mtm
     template <class T>
     Matrix<T> operator+(const Matrix<T> &matrix_a, const Matrix<T> &matrix_b) // Outside class to support symetric +
     {
-        checkDimensions(matrix_a, matrix_b);
+         checkDimensions(matrix_a, matrix_b);
         Matrix<T> new_matrix(matrix_a);
-        for (int i = 0; i < matrix_a.height(); i++)
+
+         int max_height =matrix_a.height();
+             int max_width =matrix_a.width();
+        for (int i = 0; i <max_height; i++)
         {
-            for (int j = 0; j < matrix_a.width(); j++)
+            for (int j = 0; j <max_width; j++)
             {
                 new_matrix(i, j) += matrix_b(i, j); // assuming += operator exists
             }
@@ -665,9 +696,11 @@ namespace mtm
     MATRIX_BOOLEAN_STATUS checkBooleanMatrix(const Matrix<T> &matrix)
     {
         int number_of_trues = 0;
-        for (int i = 0; i < matrix.height(); i++)
+            int max_height =matrix.height();
+             int max_width =matrix.width();
+        for (int i = 0; i <max_height; i++)
         {
-            for (int j = 0; j < matrix.width(); j++)
+            for (int j = 0; j < max_width; j++)
             {
                 if (bool(matrix(i, j))) // Assumed there is a conversion of T to bool
                 {
