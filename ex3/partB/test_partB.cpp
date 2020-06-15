@@ -8,11 +8,6 @@ class Square {
           return val*val; 
     } 
 }; 
-
-int some(int n)
-{
-    return n;
-}
 int main(){
     mtm::Dimensions dim_1(2,3);
     mtm::Dimensions dim_2(-2,3);
