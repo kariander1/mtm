@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include "Matrix.h"
-
+#include "Auxiliaries.h"
+#include "Auxiliaries.cpp"
 class Square { 
     public: 
         int operator()(int val){ 
@@ -44,6 +45,12 @@ int main(){
         std::cout<<(mat_1>=3);
         it++;
         std::cout<<(mat_1==3);
+        std::cout << "______________ shelly tests ______________" << std::endl;
+        std::cout<<(mat_1) <<std::endl;
+        std::cout<<(mat_1!=3) <<std::endl;
+        std::cout<<(mat_1<3) <<std::endl;
+        std::cout<<(mat_1>3) <<std::endl;
+        std::cout<<(mat_1<=3) <<std::endl;
         *it;
     } catch(mtm::Matrix<int>::AccessIllegalElement& e){
         std::cout<<e.what()<<std::endl;

@@ -40,6 +40,9 @@ default_target: all
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
+# Command-line flag to silence nested $(MAKE).
+$(VERBOSE)MAKESILENT = -s
+
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -97,13 +100,13 @@ rebuild_cache/fast: rebuild_cache
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles C:\VScode\ex3\build\CMakeFiles\progress.marks
-	$(MAKE) -f CMakeFiles\Makefile2 all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles\Makefile2 clean
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 clean
 .PHONY : clean
 
 # The main clean target
@@ -113,12 +116,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles\Makefile2 preinstall
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles\Makefile2 preinstall
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -131,12 +134,12 @@ depend:
 
 # Build rule for target.
 intMatrix_Tester: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 intMatrix_Tester
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 intMatrix_Tester
 .PHONY : intMatrix_Tester
 
 # fast build rule for target.
 intMatrix_Tester/fast:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/build
 .PHONY : intMatrix_Tester/fast
 
 #=============================================================================
@@ -144,12 +147,12 @@ intMatrix_Tester/fast:
 
 # Build rule for target.
 intMatrix_TestPartA: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 intMatrix_TestPartA
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 intMatrix_TestPartA
 .PHONY : intMatrix_TestPartA
 
 # fast build rule for target.
 intMatrix_TestPartA/fast:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/build
 .PHONY : intMatrix_TestPartA/fast
 
 #=============================================================================
@@ -157,12 +160,12 @@ intMatrix_TestPartA/fast:
 
 # Build rule for target.
 Matrix_TestPartB: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 Matrix_TestPartB
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Matrix_TestPartB
 .PHONY : Matrix_TestPartB
 
 # fast build rule for target.
 Matrix_TestPartB/fast:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/build
 .PHONY : Matrix_TestPartB/fast
 
 partA/Auxiliaries.obj: partA/Auxiliaries.cpp.obj
@@ -171,8 +174,8 @@ partA/Auxiliaries.obj: partA/Auxiliaries.cpp.obj
 
 # target to build an object file
 partA/Auxiliaries.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.obj
 .PHONY : partA/Auxiliaries.cpp.obj
 
 partA/Auxiliaries.i: partA/Auxiliaries.cpp.i
@@ -181,8 +184,8 @@ partA/Auxiliaries.i: partA/Auxiliaries.cpp.i
 
 # target to preprocess a source file
 partA/Auxiliaries.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.i
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.i
 .PHONY : partA/Auxiliaries.cpp.i
 
 partA/Auxiliaries.s: partA/Auxiliaries.cpp.s
@@ -191,8 +194,8 @@ partA/Auxiliaries.s: partA/Auxiliaries.cpp.s
 
 # target to generate assembly for a file
 partA/Auxiliaries.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.s
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/Auxiliaries.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/Auxiliaries.cpp.s
 .PHONY : partA/Auxiliaries.cpp.s
 
 partA/IntMatrix.obj: partA/IntMatrix.cpp.obj
@@ -201,8 +204,8 @@ partA/IntMatrix.obj: partA/IntMatrix.cpp.obj
 
 # target to build an object file
 partA/IntMatrix.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.obj
 .PHONY : partA/IntMatrix.cpp.obj
 
 partA/IntMatrix.i: partA/IntMatrix.cpp.i
@@ -211,8 +214,8 @@ partA/IntMatrix.i: partA/IntMatrix.cpp.i
 
 # target to preprocess a source file
 partA/IntMatrix.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.i
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.i
 .PHONY : partA/IntMatrix.cpp.i
 
 partA/IntMatrix.s: partA/IntMatrix.cpp.s
@@ -221,8 +224,8 @@ partA/IntMatrix.s: partA/IntMatrix.cpp.s
 
 # target to generate assembly for a file
 partA/IntMatrix.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.s
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/IntMatrix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/IntMatrix.cpp.s
 .PHONY : partA/IntMatrix.cpp.s
 
 partA/test_partA.obj: partA/test_partA.cpp.obj
@@ -231,7 +234,7 @@ partA/test_partA.obj: partA/test_partA.cpp.obj
 
 # target to build an object file
 partA/test_partA.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.obj
 .PHONY : partA/test_partA.cpp.obj
 
 partA/test_partA.i: partA/test_partA.cpp.i
@@ -240,7 +243,7 @@ partA/test_partA.i: partA/test_partA.cpp.i
 
 # target to preprocess a source file
 partA/test_partA.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.i
 .PHONY : partA/test_partA.cpp.i
 
 partA/test_partA.s: partA/test_partA.cpp.s
@@ -249,7 +252,7 @@ partA/test_partA.s: partA/test_partA.cpp.s
 
 # target to generate assembly for a file
 partA/test_partA.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/partA/test_partA.cpp.s
 .PHONY : partA/test_partA.cpp.s
 
 partA/tester.obj: partA/tester.cpp.obj
@@ -258,7 +261,7 @@ partA/tester.obj: partA/tester.cpp.obj
 
 # target to build an object file
 partA/tester.cpp.obj:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.obj
 .PHONY : partA/tester.cpp.obj
 
 partA/tester.i: partA/tester.cpp.i
@@ -267,7 +270,7 @@ partA/tester.i: partA/tester.cpp.i
 
 # target to preprocess a source file
 partA/tester.cpp.i:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.i
 .PHONY : partA/tester.cpp.i
 
 partA/tester.s: partA/tester.cpp.s
@@ -276,7 +279,7 @@ partA/tester.s: partA/tester.cpp.s
 
 # target to generate assembly for a file
 partA/tester.cpp.s:
-	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/partA/tester.cpp.s
 .PHONY : partA/tester.cpp.s
 
 partB/Auxiliaries.obj: partB/Auxiliaries.cpp.obj
@@ -285,7 +288,7 @@ partB/Auxiliaries.obj: partB/Auxiliaries.cpp.obj
 
 # target to build an object file
 partB/Auxiliaries.cpp.obj:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj
 .PHONY : partB/Auxiliaries.cpp.obj
 
 partB/Auxiliaries.i: partB/Auxiliaries.cpp.i
@@ -294,7 +297,7 @@ partB/Auxiliaries.i: partB/Auxiliaries.cpp.i
 
 # target to preprocess a source file
 partB/Auxiliaries.cpp.i:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.i
 .PHONY : partB/Auxiliaries.cpp.i
 
 partB/Auxiliaries.s: partB/Auxiliaries.cpp.s
@@ -303,7 +306,7 @@ partB/Auxiliaries.s: partB/Auxiliaries.cpp.s
 
 # target to generate assembly for a file
 partB/Auxiliaries.cpp.s:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.s
 .PHONY : partB/Auxiliaries.cpp.s
 
 partB/Matrix.obj: partB/Matrix.cpp.obj
@@ -312,7 +315,7 @@ partB/Matrix.obj: partB/Matrix.cpp.obj
 
 # target to build an object file
 partB/Matrix.cpp.obj:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj
 .PHONY : partB/Matrix.cpp.obj
 
 partB/Matrix.i: partB/Matrix.cpp.i
@@ -321,7 +324,7 @@ partB/Matrix.i: partB/Matrix.cpp.i
 
 # target to preprocess a source file
 partB/Matrix.cpp.i:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.i
 .PHONY : partB/Matrix.cpp.i
 
 partB/Matrix.s: partB/Matrix.cpp.s
@@ -330,7 +333,7 @@ partB/Matrix.s: partB/Matrix.cpp.s
 
 # target to generate assembly for a file
 partB/Matrix.cpp.s:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.s
 .PHONY : partB/Matrix.cpp.s
 
 partB/test_partB.obj: partB/test_partB.cpp.obj
@@ -339,7 +342,7 @@ partB/test_partB.obj: partB/test_partB.cpp.obj
 
 # target to build an object file
 partB/test_partB.cpp.obj:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj
 .PHONY : partB/test_partB.cpp.obj
 
 partB/test_partB.i: partB/test_partB.cpp.i
@@ -348,7 +351,7 @@ partB/test_partB.i: partB/test_partB.cpp.i
 
 # target to preprocess a source file
 partB/test_partB.cpp.i:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.i
 .PHONY : partB/test_partB.cpp.i
 
 partB/test_partB.s: partB/test_partB.cpp.s
@@ -357,7 +360,7 @@ partB/test_partB.s: partB/test_partB.cpp.s
 
 # target to generate assembly for a file
 partB/test_partB.cpp.s:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.s
 .PHONY : partB/test_partB.cpp.s
 
 # Help Target

@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Auxiliaries.h"
 
+
 namespace mtm
 {
     enum MATRIX_BOOLEAN_STATUS
@@ -74,7 +75,6 @@ namespace mtm
         
         const T operator()(const int &row, const int &column) const;
         
-        friend std::ostream &operator<<(std::ostream &os, const Matrix<T> &matrix);
         
         int height() const;
 
@@ -107,6 +107,14 @@ namespace mtm
         const_iterator end() const
         {
             return const_iterator(this, this->size());
+        }
+
+        friend std::ostream& operator<<(std::ostream &os, const Matrix<T> &matrix)
+        { // should we add const th the declerastion?
+            Matrix<T>::const_iterator begin = matrix.begin();
+            Matrix<T>::const_iterator end = matrix.end();
+            int width = matrix.width();
+            return mtm::printMatrix(os, begin, end, width);
         }
 
         class AccessIllegalElement;
@@ -145,7 +153,8 @@ namespace mtm
     }
 
     //*************** helper classes ************
-    class BooleanNot
+    template<class T>
+    class Matrix<T>::BooleanNot
         {
         public:
             bool operator()(bool val)
@@ -326,14 +335,6 @@ namespace mtm
             return transpose_matrix;
         }
 
-    template<class T>
-    std::ostream& operator<<(std::ostream &os, const Matrix<T> &matrix)
-        { // should we add const th the declerastion?
-            const_iterator begin = matrix.begin();
-            const_iterator end = matrix.end();
-            int width = matrix.width();
-            return mtm::printMatrix(os, begin, end, width);
-        }
     
     template<class T>
     int Matrix<T>::height() const
