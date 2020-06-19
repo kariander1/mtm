@@ -143,7 +143,7 @@ namespace mtm {
         * 
         *   @param size - size for dimensions of matrix. [ size X size ]
         *   @return
-        * 	Returns a COPY of the transposed matrix. does not change original matrix.
+        * 	Returns a new matrix with diagonal values
         */
         static IntMatrix Identity(const int size);
 
@@ -177,9 +177,6 @@ namespace mtm {
         *    Default constructor
         * 
         *   Default constructor, initializing iterator attributes.
-        * 
-        *   @return
-        * 	Reference the value at the current index
         */
         iterator(IntMatrix *matrix, int index);
    

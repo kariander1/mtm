@@ -84,7 +84,7 @@ public:
     }
 int main()
 {
-
+    Negative n();
     cout << "Matrix Tester V1.0 C Shelly Francis & Shai Yehezkel" << endl;
 
     Dimensions dim(2, 3);
