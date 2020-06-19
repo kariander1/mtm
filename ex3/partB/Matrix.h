@@ -32,7 +32,7 @@ namespace mtm
         // Helper Functions, see implementation
         int calcMatSize(const mtm::Dimensions &dim) const;
         void copyMatrixValues(const Matrix &matrix);
-        void copyMatrixValues(const T &init_value);
+        void copyMatrixValues(const T &initial_value);
 
         //-------------------------------------------------------------
         // Helper class BooleanNot for boolean matrices in operators
@@ -48,11 +48,11 @@ namespace mtm
         // Matrix C'tor
         // ASSUMPTIONS: T has a default constructor.
         //-------------------------------------------------------------
-        Matrix(mtm::Dimensions dimensions, T init_value = T()) : array(new T[calcMatSize(dimensions)]), // New will throw bad_alloc if allocation failed
+        Matrix(mtm::Dimensions dimensions, T initial_value = T()) : array(new T[calcMatSize(dimensions)]), // New will throw bad_alloc if allocation failed
                                                                  dim(dimensions)
         {
 
-            copyMatrixValues(init_value);
+            copyMatrixValues(initial_value);
         }
         //-------------------------------------------------------------
         // Matrix Copy constructor
@@ -92,9 +92,9 @@ namespace mtm
 
         Matrix operator-() const;
 
-        Matrix &operator+=(const T init_value);
+        Matrix &operator+=(const T initial_value);
 
-        Matrix operator+(const T init_value) const;
+        Matrix operator+(const T initial_value) const;
 
         T &operator()(const int &row, const int &column);
 
@@ -108,7 +108,7 @@ namespace mtm
 
         Matrix transpose() const;
 
-        static Matrix Diagonal(const int size, const T init_value);
+        static Matrix Diagonal(const int size, const T initial_value);
 
         template <class ApplyFunctor>
         Matrix apply(ApplyFunctor functor) const;
@@ -184,17 +184,17 @@ namespace mtm
     /**
     * Matrix::copyMatrixValues: sets all the values of the given matrix 
     * to the init_number.
-    * @param init_value - The value to initiate the matrix with
+    * @param initial_value - The value to initiate the matrix with
     * @return
     * 	Nothing.
     */
     template <class T>
-    void Matrix<T>::copyMatrixValues(const T &init_value)
+    void Matrix<T>::copyMatrixValues(const T &initial_value)
     {
         int max_size = size();
         for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
         {
-            array[i] = init_value; //Or maybe should use iterator?
+            array[i] = initial_value; //Or maybe should use iterator?
         }
     }
 
@@ -277,31 +277,31 @@ namespace mtm
     * Matrix::&operator+(): creates a new matrix with the current element value plus the value specified.
     * ASSUMPTIONS: T has + operator
     *
-    * @param init_value - The value to add to the exsisting value
+    * @param initial_value - The value to add to the exsisting value
     * @return
     * 	returns a copy of the new matrix
     */
     template <class T>
-    Matrix<T> Matrix<T>::operator+(const T init_value) const
+    Matrix<T> Matrix<T>::operator+(const T initial_value) const
     {
         int matrix_columns = width();
         int matrix_rows = height();
         Dimensions d(matrix_rows, matrix_columns);
-        Matrix init_matrix(d, init_value);
-        return *this + init_matrix;
+        Matrix initial_matrix(d, initial_value);
+        return *this + initial_matrix;
     }
     /**
     * Matrix::&operator+=(): adds to each element in the exsisting matrix the value specified.  
     * ASSUMPTIONS: T has + operator
     * 
-    * @param init_value - The value to add to the exsisting value
+    * @param initial_value - The value to add to the exsisting value
     * @return
     * 	returns a reference to the modified matrix
     */
     template <class T>
-    Matrix<T> &Matrix<T>::operator+=(const T init_value)
+    Matrix<T> &Matrix<T>::operator+=(const T initial_value)
     {
-        *this = *this + init_value;
+        *this = *this + initial_value;
         return *this;
     }
 
@@ -431,13 +431,13 @@ namespace mtm
     *   Returns a diagonal cubic marix with T values initiated on the matrix's daigonal
     * 
     *   @param size - size for dimensions of matrix. [ size X size ]
-    *   @param init_value - the T value for initializing.
+    *   @param initial_value - the T value for initializing.
     *   @return
     * 	Returns a new diagonal matrix.
     *   ASSUMPTIONS: T has a default constructor as used by new_diagonal(dims);
     */
     template <class T>
-    Matrix<T> Matrix<T>::Diagonal(const int size, const T init_value)
+    Matrix<T> Matrix<T>::Diagonal(const int size, const T initial_value)
     {
         Dimensions dims(size, size);
         Matrix new_diagonal(dims); // initiate the matrix to T() values. Will throw illegal init/bad alloc from constructor
@@ -445,7 +445,7 @@ namespace mtm
 
         for (int i = 0; i < matrix_size; i += size + 1)
         {
-            new_diagonal.array[i] = init_value;
+            new_diagonal.array[i] = initial_value;
         }
         return new_diagonal;
     }
@@ -517,7 +517,6 @@ namespace mtm
         *   A generic expection in mtm namespace providing a mother class to be inherited.
         *   The class inherits the std exception
         */
-    class Exception : public std::exception{};
         /**
         *   AccessIllegalElement Class
         * 
