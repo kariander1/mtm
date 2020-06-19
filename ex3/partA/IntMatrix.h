@@ -41,6 +41,7 @@ namespace mtm {
         * 
         *   Destructor. Deletes allocated area.
         */
+        IntMatrix();
         IntMatrix(mtm::Dimensions dimensions,int init_number=0);
         IntMatrix(const IntMatrix &);                            // Copy constructor
         ~IntMatrix();                                            //Destructor

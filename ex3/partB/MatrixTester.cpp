@@ -2,99 +2,226 @@
 #include <iostream>
 #include <vector>
 #include "Matrix.h"
+#include "../partA/IntMatrix.h"
 #include "Auxiliaries.h"
 using mtm::Dimensions;
+using mtm::IntMatrix;
 using mtm::Matrix;
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
-
-
-std::vector<Matrix> matrices;
-//Matrix[] matrices = new Matrix[MAX_MATRICES];
-
-int current_matrix_num =0;
-
-void prMatrixIterator(Matrix mat)
+class Square
 {
-    /*
-    Matrix::iterator it_begin = mat.begin(); // it_begin is a new iterator pointing to first element
-    // (mat_3[0][0], which is equal to 1)
-    Matrix::iterator it_end = mat.end(); 
-    int width = mat.width();
-    int count=0;
-    while (it_begin!=it_end)
+public:
+    int operator()(int val)
     {
-        cout << *it_begin << " ";
-        it_begin++;
-        count++;
-        if(count == width)
+        return val * val;
+    }
+};
+template <class T>
+class Non
+{
+public:
+    T operator()(T val)
+    {
+        return -val;
+    }
+};
+
+template <class T>
+class NullFunctor
+{
+public:
+    T operator()(T val)
+    {
+        return val;
+    }
+};
+
+        IntMatrix::IntMatrix() :array(new int[1]), dim(Dimensions(1,1))
         {
-            count << std::endl;
-        }
-    }
-    count << std::endl;
-    */
-}
-void RemoveMatrix()
-{
-     cout << "Which matrix would you like to remove? [" <<0<<"-"<<current_matrix_num<<"] " ;
-    int matrix_num =0;
-    cin >> matrix_num;
-    matrices.erase(matrices.begin() +current_matrix_num);
-    current_matrix_num--;
-    
-}
 
-void CreateMatrix()
+        } 
+class NullClass
 {
-    cout << "How many matrices would you like to create? " ;
-    int num_of_matrices =0;
-    cin >> num_of_matrices;
-    for (int i = 0; i < num_of_matrices; i++)
+
+private:
+    int val=0;
+public:
+    NullClass(/* args */) = default;
+    ~NullClass() = default;
+    NullClass &operator=(const NullClass &it) = default;
+    NullClass &operator=(NullClass &it) = default;
+    NullClass(const NullClass &matrix) = default;
+    NullClass(NullClass &matrix) = default;
+    bool operator<(const NullClass &value) const
     {
-        int rows=0,columns=0, def_val=0;
-         cout << "Enter matrix N."  << i <<" rows: ";
-         cin >> rows;
-         cout << "Enter matrix N."  << i <<" columns: ";
-         cin >> columns;
-         cout << "Enter initial values: "  << i;
-        cin >> def_val;
-         Dimensions d(rows,columns);
-         Matrix mat1(d); // No usage
-
-         Matrix mat(d,def_val);
-        matrices.push_back(mat);
-        //matrices[current_matrix_num] = mat;
-        current_matrix_num++;
-        cout << "Created matrix "  << i;
+       return val<value.val;
     }
-    
-}
-void RunTestCases()
-{
-    for (int i = 0; i < 10; i++)
+        NullClass operator+=(const NullClass &value) const
     {
-        for (int j = 0; j < 10; j++)
-        {
-                Dimensions d(0,0);
-    Matrix mat1(d);
-    Matrix mat(d,1);
-    mat = mat+mat;
-    mat = mat-mat;
-    mat = mat + 0;
-    mat = mat += 0;
-    mat = 0 + mat;
-    mat.transpose();
-        }
-        
+        return NullClass();
     }
-    
+    bool operator==(const NullClass &value) const
+    {
+        return val==value.val;
+    }
+    NullClass operator-() const{
+        return NullClass();
+    }
+    operator bool() const
+    {
+        return true;
+    }
+};
+   NullClass operator+(const NullClass &matrix_a, const NullClass &matrix_b)
+   {
+       return NullClass();
+   }
+       std::ostream &operator<<(std::ostream &os, const NullClass &matrix)
+    {
+        return os;
+    }
+int main()
+{
+
+    cout << "Matrix Tester V1.0 C Shelly Francis & Shai Yehezkel" << endl;
+
+    Dimensions dim(2, 3);
+    Matrix<IntMatrix> mat_of_mats(dim);
+
+    dim = Dimensions(2, 2);
+    Matrix<IntMatrix>::iterator it = mat_of_mats.begin();
+    int count = 0;
+    for (; it != mat_of_mats.end(); ++it, ++count)
+    {
+        *it = IntMatrix(dim, count);
+    }
+    cout << mat_of_mats;
+    mat_of_mats(1, 2) = 1 + mat_of_mats(1, 2) + 1 + (-IntMatrix(dim, 8));
+    cout << mat_of_mats(1, 2);
+
+    Matrix<IntMatrix> neg_mats = mat_of_mats.apply(Non<IntMatrix>());
+    cout << neg_mats;
+    mat_of_mats = neg_mats;
+
+    Matrix<bool> new_matrix(dim, 5);
+    Matrix<NullClass> nulls_matrix(dim);
+    Matrix<NullClass> nulls_matrix_copy = nulls_matrix;
+    nulls_matrix = nulls_matrix_copy;
+    nulls_matrix_copy < NullClass();
+    nulls_matrix_copy > NullClass();
+    nulls_matrix_copy <= NullClass();
+    nulls_matrix_copy == NullClass();
+    nulls_matrix_copy != NullClass();
+    nulls_matrix_copy >= NullClass();
+    nulls_matrix_copy + nulls_matrix_copy;
+    -nulls_matrix_copy;
+    nulls_matrix_copy+NullClass();
+    nulls_matrix_copy+=NullClass();
+    nulls_matrix_copy(0,0);
+    nulls_matrix_copy.height();
+    nulls_matrix_copy.size();
+    nulls_matrix_copy.width();
+    nulls_matrix_copy.transpose();
+     //Matrix<int> mat_2 = Matrix<int>::Diagonal(2,-1);
+    nulls_matrix_copy = Matrix<NullClass>::Diagonal(2,NullClass());
+    nulls_matrix_copy.apply(NullFunctor<NullClass>());
+    Matrix<NullClass>::iterator null_class_it = nulls_matrix_copy.begin();
+    for (; null_class_it != nulls_matrix_copy.end(); ++null_class_it)
+    {
+        *null_class_it = NullClass();
+    }
+    const  Matrix<NullClass> null_mat =nulls_matrix_copy;
+    Matrix<NullClass>::const_iterator null_class_it_con = null_mat.begin();
+    for (; null_class_it_con != null_mat.end(); ++null_class_it_con)
+    {
+        cout << *null_class_it_con;
+    }
+    cout << nulls_matrix_copy;
+
+     (nulls_matrix_copy+=NullClass())+=NullClass();
 
 
-}
-int main(){
-    cout << "Int Matrix Tester V1.0 C Shai Yehezkel" << endl;
-    cout << "What woud you like to do?" << endl;
-    
+    const Matrix<NullClass> const_mats(dim);
+    Matrix<NullClass> const_mats_copy = const_mats;
+    const_mats_copy = nulls_matrix_copy;
+    const_mats_copy < NullClass();
+    const_mats_copy > NullClass();
+    const_mats_copy <= NullClass();
+    const_mats_copy == NullClass();
+    const_mats_copy != NullClass();
+    const_mats_copy >= NullClass();
+    -const_mats_copy;
+    const_mats_copy+const_mats_copy;
+    const_mats_copy+NullClass();
+    const_mats_copy+=NullClass();
+    const_mats_copy(0,0);
+    const_mats_copy.height();
+    const_mats_copy.size();
+    const_mats_copy.width();
+    const_mats_copy.transpose();
+     //Matrix<int> mat_2 = Matrix<int>::Diagonal(2,-1);
+    const_mats_copy = Matrix<NullClass>::Diagonal(2,NullClass());
+    const_mats_copy.apply(NullFunctor<NullClass>());
+
+    cout << const_mats_copy;
+
+
+
+    Dimensions dim_1(2,3);
+    Dimensions dim_2(-2,3);
+    Dimensions dim_3(3,2);
+    NullClass placeholder = NullClass();
+    try{
+        const Matrix<NullClass> mat_1(dim_2,placeholder);
+    } catch(Matrix<NullClass>::IllegalInitialization& e){
+        std::cout<<e.what()<<std::endl;
+    }
+    try{
+        Matrix<NullClass> mat_1(dim_1,placeholder);
+        const Matrix<NullClass> mat_2((mat_1+NullClass()+mat_1));
+        const Matrix<NullClass> mat_3(mat_1.transpose());
+        std::cout<<mat_2;
+        Matrix<NullClass> mat_4=mat_1+mat_3;
+    } catch(Matrix<NullClass>::DimensionMismatch& e){
+        std::cout<<e.what()<<std::endl;
+    }
+    try{
+        const Matrix<NullClass> mat_1 = Matrix<NullClass>::Diagonal(2,placeholder);
+        Matrix<NullClass> mat_2 = Matrix<NullClass>::Diagonal(2,placeholder);
+        std::cout<<any(mat_1)<<" "<<any(mat_1-mat_2)<<" "<<all(mat_1+mat_2+placeholder)<<std::endl;
+        std::cout<<(-mat_2)(1,1)<<(-mat_2)(2,2)<<std::endl;
+    } catch(Matrix<NullClass>::AccessIllegalElement& e){
+        std::cout<<e.what()<<std::endl;
+    }
+    try{
+        Matrix<NullClass> mat_1(dim_1);
+        Matrix<NullClass>::iterator it=mat_1.begin();
+        for(;it!=mat_1.end();++it){
+            *it=placeholder;
+        }
+        std::cout<<(mat_1>=placeholder);
+        it++;
+        std::cout<<(mat_1==placeholder);
+        std::cout << "______________ shelly tests ______________" << std::endl;
+        std::cout<<(mat_1) <<std::endl;
+        std::cout<<(mat_1!=placeholder) <<std::endl;
+        std::cout<<(mat_1<placeholder) <<std::endl;
+        std::cout<<(mat_1>placeholder) <<std::endl;
+        std::cout<<(mat_1<=placeholder) <<std::endl;
+        *it;
+    } catch(Matrix<NullClass>::AccessIllegalElement& e){
+        std::cout<<e.what()<<std::endl;
+    }
+    try{
+        const Matrix<NullClass> mat_1(dim_1,placeholder);
+        const Matrix<NullClass> mat_2=mat_1.apply(NullFunctor<NullClass>());
+        std::cout<<mat_1;
+        std::cout<<mat_2(1,2)<<std::endl;
+        Matrix<NullClass>::const_iterator it = mat_2.end();
+        std::cout<<*it;
+    } catch(Matrix<NullClass>::AccessIllegalElement& e){
+        std::cout<<e.what()<<std::endl;
+    }
 }

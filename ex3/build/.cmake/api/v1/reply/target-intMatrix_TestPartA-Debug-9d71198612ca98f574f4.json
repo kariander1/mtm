@@ -13,7 +13,8 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"add_compile_options"
 		],
 		"files" : 
 		[
@@ -29,6 +30,12 @@
 				"file" : 0,
 				"line" : 31,
 				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
 			}
 		]
 	},
@@ -39,6 +46,26 @@
 			[
 				{
 					"fragment" : "-g  "
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-std=c++11"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Werror"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-pedantic-errors"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-DNDEBUG"
 				},
 				{
 					"fragment" : "-std=gnu++11"

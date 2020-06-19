@@ -21,7 +21,7 @@ project(IntMatrix VERSION 1.0)
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
+add_compile_options(-std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG)
 
 
 # EXE for tester
@@ -34,4 +34,4 @@ add_executable(intMatrix_TestPartA ./partA/test_partA.cpp ./partA/intMatrix.cpp 
 add_executable(Matrix_TestPartB ./partB/test_partB.cpp ./partB/Matrix.cpp  ./partB/Auxiliaries.cpp)
 
 # EXE for matrix tester
-#add_executable(MatrixTester ./partB/MatrixTester.cpp ./partB/Auxiliaries.cpp)
+add_executable(MatrixTester ./partB/MatrixTester.cpp ./partB/Auxiliaries.cpp  ./partA/IntMatrix.cpp)

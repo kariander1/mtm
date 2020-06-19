@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include "Matrix.h"
-#include "Auxiliaries.h"
-#include "Auxiliaries.cpp"
 class Square { 
     public: 
         int operator()(int val){ 

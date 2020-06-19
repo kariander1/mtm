@@ -52,7 +52,13 @@
         "streambuf": "cpp",
         "xtr1common": "cpp",
         "xiosbase": "cpp",
-        "xlocnum": "cpp"
+        "xlocnum": "cpp",
+        "xlocale": "cpp",
+        "xlocinfo": "cpp",
+        "concepts": "cpp",
+        "ios": "cpp",
+        "xfacet": "cpp",
+        "xstddef": "cpp"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
