@@ -2,6 +2,15 @@
 #include <math.h>       
 namespace mtm
 {
+    Soldier::Soldier(units_t health, units_t ammo, units_t range, units_t power, Team team):
+            Character(health, ammo,range, power, team )        
+    {
+        
+    }
+    Character* Soldier::clone() const{
+        return new Soldier(*this);
+    }
+
     bool Soldier::outOfBounds(const GridPoint &location, const Matrix<Character *> &game_grid)
     {
         if (location.col < 0 || location.row < 0 || location.col >= game_grid.width() || location.row >= game_grid.height())
@@ -45,7 +54,7 @@ namespace mtm
             adjacent_cell=true;
             damage=ceil(damage/2);
         }
-        ApplyDamage(damage,distance,GridPoint(location.row-1,location.col),affected_cells,game_grid,adjacent_cell);
+        ApplyDamage(damage,distance,GridPoint(location.row-1,location.col),affected_cells,game_grid,adjacent_cell); //dont you should send distance -1? (for all the below functions)
         ApplyDamage(damage,distance,GridPoint(location.row,location.col-1),affected_cells,game_grid,adjacent_cell);
         ApplyDamage(damage,distance,GridPoint(location.row+1,location.col),affected_cells,game_grid,adjacent_cell);
         ApplyDamage(damage,distance,GridPoint(location.row,location.col+1),affected_cells,game_grid,adjacent_cell);

@@ -526,7 +526,7 @@ namespace mtm
     class Matrix<T>::AccessIllegalElement : public Exception
     {
     private:
-        const std::string description;
+        // const std::string description; // dont need ???????????????????
 
     public:
         std::string what() noexcept

@@ -6,8 +6,8 @@
 namespace mtm
 {
 
-    Character::Character(const int &health_initial, const int &ammo_initial,
-                         const int &range_initial, const int &power_initial, const Team &team)
+    Character::Character(const units_t &health_initial, const units_t &ammo_initial,
+                  const units_t &range_initial, const units_t &power_initial,const Team &team)
                          : health(health_initial),
                         ammo(ammo_initial), range(range_initial), power(power_initial), team(team)
     {
@@ -20,6 +20,10 @@ namespace mtm
     {
         health -= damage;
         return health <= 0;
+    }
+    int Character::getRange() const
+    {
+        return this->range;
     }
 
 } // namespace mtm
