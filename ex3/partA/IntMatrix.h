@@ -11,8 +11,28 @@ namespace mtm {
         mtm::Dimensions dim;
 
         // Helper Functions
+        /**
+        * IntMatrix::calcMatSize: gets the size of the matrix (rows*columns). 
+        * @param dim - The dimentions of the matrix
+        * @return
+        * 	returns the size of the matrix (rows*columns) .
+        */
         int calcMatSize(const mtm::Dimensions& dim) const;
+        /**
+        * IntMatrix::copyMatrixValues: copys all the values from the given matrix
+        * to the "this" matrix. 
+        * @param matrix - The matrix to copy its values
+        * @return
+        * 	Nothing.
+        */
         void copyMatrixValues(const IntMatrix& matrix);
+        /**
+        * IntMatrix::copyMatrixValues: sets all the values of the given matrix 
+        * to the init_number.
+        * @param init_value - The value to initiate the matrix with
+        * @return
+        * 	Nothing.
+        */
         void copyMatrixValues(const int& init_value);
 
     public:
@@ -95,7 +115,7 @@ namespace mtm {
         * 	returns a copy of the new matrix
         */
         IntMatrix operator+(const int num) const;
-         /**
+        /**
         *   "operator()" operators
         * 
         *   Operator with parenthesis to handle indices indicating exact position in matrix.
@@ -158,7 +178,7 @@ namespace mtm {
         iterator begin();
         iterator end();
 
-        /**
+        /*
          * same as the end and begin, the difference is that the return iterator 
          * is constant and the matrix is constant
          */

@@ -107,6 +107,13 @@ namespace mtm
         Matrix apply(ApplyFunctor functor) const;
 
         class iterator;
+        /**
+        * IntMatrix::begin/end(): creates an iterator for the given matrix and retets it 
+        * to be the begin/end of the matrix
+        *
+        * @return
+        * 	returns the new iterator
+        */
         iterator begin()
         {
             return iterator(this, 0);
@@ -117,6 +124,10 @@ namespace mtm
         }
 
         class const_iterator;
+        /*
+         * same as the end and begin, the difference is that the return iterator 
+         * is constant and the matrix is constant
+         */
         const_iterator begin() const
         {
             return const_iterator(this, 0);
@@ -134,6 +145,12 @@ namespace mtm
         class DimensionMismatch;
     };
     // ********* Helper functions **********
+    /**
+    * Matrix::calcMatSize: gets the size of the matrix (rows*columns). 
+    * @param dim - The dimentions of the matrix
+    * @return
+    * 	returns the size of the matrix (rows*columns) .
+    */
     template <class T>
     int Matrix<T>::calcMatSize(const mtm::Dimensions &dim) const
     {
@@ -141,7 +158,13 @@ namespace mtm
             throw IllegalInitialization();
         return dim.getCol() * dim.getRow();
     }
-
+    /**
+    * Matrix::copyMatrixValues: copys all the values from the given matrix
+    * to the "this" matrix. 
+    * @param matrix - The matrix to copy its values
+    * @return
+    * 	Nothing.
+    */
     template <class T>
     void Matrix<T>::copyMatrixValues(const Matrix &matrix)
     {
@@ -151,7 +174,13 @@ namespace mtm
             array[i] = matrix.array[i]; //Or maybe should use iterator?
         }
     }
-
+    /**
+    * Matrix::copyMatrixValues: sets all the values of the given matrix 
+    * to the init_number.
+    * @param init_value - The value to initiate the matrix with
+    * @return
+    * 	Nothing.
+    */
     template <class T>
     void Matrix<T>::copyMatrixValues(const T &init_value)
     {
@@ -167,6 +196,7 @@ namespace mtm
     class Matrix<T>::BooleanNot
     {
     public:
+    
         bool operator()(bool val)
         {
             return !val;
@@ -185,7 +215,13 @@ namespace mtm
             return -val;
         }
     };
-
+    /**
+    * Matrix::apply: creates a new matrix containing the given matrix elements 
+    * after applying the given function on them. 
+    * @param functor - function to apply on each the matrix's elements.
+    * @return
+    * 	a new matrix with the values after applying the functor.
+    */
     template <class T>
     template <class ApplyFunctor>
     Matrix<T> Matrix<T>::apply(ApplyFunctor functor) const
@@ -203,13 +239,24 @@ namespace mtm
     }
 
     // *********** Matrix operators*************
+    /**
+    *   "operator()" operators
+    * 
+    *   Operator with parenthesis to handle indices indicating exact position in matrix.
+    *   T& operator() for enabling lvalue assignment, and const T& operator() for handling const values.
+    * 
+    *   @param row - Row index
+    *   @param column - Column Index
+    *   @return
+    * 	T value of value stored in matrix in defined position
+    */
     template <class T>
     const T Matrix<T>::operator()(const int &row, const int &column) const
     {
         Matrix temp = *this;
         return temp(row, column);
     }
-
+    // written before the operator()
     template <class T>
     T &Matrix<T>::operator()(const int &row, const int &column)
     {
@@ -219,7 +266,14 @@ namespace mtm
 
         return array[shifted_index];
     }
-
+/**
+    * Matrix::&operator+(): creates a new matrix with the current element value plus the value specified.
+    * ASSUMPTIONS: T has + operator
+    *
+    * @param init_value - The value to add to the exsisting value
+    * @return
+    * 	returns a copy of the new matrix
+    */
     template <class T>
     Matrix<T> Matrix<T>::operator+(const T init_value) const
     {
@@ -229,17 +283,27 @@ namespace mtm
         Matrix init_matrix(d, init_value);
         return *this + init_matrix;
     }
-
+    /**
+    * Matrix::&operator+=(): adds to each element in the exsisting matrix the value specified.  
+    * ASSUMPTIONS: T has + operator
+    * 
+    * @param init_value - The value to add to the exsisting value
+    * @return
+    * 	returns a reference to the modified matrix
+    */
     template <class T>
     Matrix<T> &Matrix<T>::operator+=(const T init_value)
     {
         *this = *this + init_value;
         return *this;
     }
-    //-------------------------------------------------------------
-    // Negative
-    // ASSUMPTIONS: T has unary operator-
-    //-------------------------------------------------------------
+
+    /**
+    * Matrix::&operator-(): creates a new matrix where each value is the negative of the current value.
+    *
+    * @return
+    * 	returns the new matrix with negative values.
+    */
     template <class T>
     Matrix<T> Matrix<T>::operator-() const
     {
@@ -247,16 +311,15 @@ namespace mtm
         return apply(Negative());
     }
 
-    template <class T>
-    Matrix<bool> Matrix<T>::operator!=(const T &value) const
-    {
-        return ((*this) == value).apply(BooleanNot());
-    }
 
-    //-------------------------------------------------------------
-    // Assignment operator
-    // ASSUMPTIONS: T has default c'tor and destructor
-    //-------------------------------------------------------------
+    /**
+    * Matrix::&operator=(): assignment operator, assigns the given matrix to this
+    *
+    * ASSUMPTIONS: T has destructor and default c'tor
+    * @param matrix - The matrix to copy to this
+    * @return
+    * 	returns reference to the new copied matrix
+    */
     template <class T>
     Matrix<T> &Matrix<T>::operator=(const Matrix<T> &matrix)
     {
@@ -269,6 +332,21 @@ namespace mtm
         copyMatrixValues(matrix);
 
         return *this;
+    }
+
+    /**
+    * Matrix::&operator__(): execute the logical operation for every element in the matrix and creates 
+    * a new matrix in the same size. if the logical operation of the element was true then the element in
+    * the new_matrix is true, otherwise the element is false.
+    *
+    * @param value - The value to compare to
+    * @return
+    * 	returns the new matrix with true and false according to the output of the logic operation.
+    */
+    template <class T>
+    Matrix<bool> Matrix<T>::operator!=(const T &value) const
+    {
+        return ((*this) == value).apply(BooleanNot());
     }
     //-------------------------------------------------------------
     // operator<
@@ -288,20 +366,29 @@ namespace mtm
             }
         }
         return new_matrix;
-    }
-
+    }    
+    //-------------------------------------------------------------
+    // operator<=
+    // ASSUMPTIONS: T has an operator== and operator< definition
+    //-------------------------------------------------------------
     template <class T>
     Matrix<bool> Matrix<T>::operator<=(const T &value) const
     {
         return (((*this) == value) + ((*this) < value));
     }
-
+    //-------------------------------------------------------------
+    // operator>
+    // ASSUMPTIONS: T has an operator< definition
+    //-------------------------------------------------------------
     template <class T>
     Matrix<bool> Matrix<T>::operator>(const T &value) const
     {
         return ((*this) < value).apply(BooleanNot());
     }
-
+    //-------------------------------------------------------------
+    // operator>=
+    // ASSUMPTIONS: T has an operator== and operator< definition
+    //-------------------------------------------------------------
     template <class T>
     Matrix<bool> Matrix<T>::operator>=(const T &value) const
     {
