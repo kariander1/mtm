@@ -17,8 +17,10 @@ namespace mtm
     public:       
         Character(const int &health_initial, const int &ammo_initial, const int &range_initial, const int &power_initial);
         virtual ~Character();
-        virtual void character_attack(const GridPoint &location) const = 0;
-        virtual void move(); // add arguments and return type
+        virtual void characterAttack(const GridPoint &location) const = 0;
+        virtual void reload() = 0;
+        virtual void move() =0; // add arguments and return type
+        virtual bool isEmpty() const; // add arguments and return type
     };
 
 } // namespace mtm

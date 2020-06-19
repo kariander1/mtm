@@ -8,6 +8,7 @@
 #include "Soldier.h"
 #include "Medic.h"
 #include "Sniper.h"
+#include "EmptyCell.h"
 using namespace mtm;
 
 int main()

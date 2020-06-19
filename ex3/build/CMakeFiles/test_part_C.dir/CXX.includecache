@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+C:/VScode/ex3/partB/Matrix.h
+string
+-
+iostream
+-
+Auxiliaries.h
+C:/VScode/ex3/partB/Auxiliaries.h
+
 C:/VScode/ex3/partC/Auxiliaries.h
 iostream
 -
@@ -22,7 +30,27 @@ iostream
 Auxiliaries.h
 C:/VScode/ex3/partC/Auxiliaries.h
 
+C:/VScode/ex3/partC/EmptyCell.h
+string
+-
+iostream
+-
+Auxiliaries.h
+C:/VScode/ex3/partC/Auxiliaries.h
+Character.h
+C:/VScode/ex3/partC/Character.h
+
 C:/VScode/ex3/partC/Game.h
+iostream
+-
+memory
+-
+../partB/Matrix.h
+C:/VScode/ex3/partB/Matrix.h
+Auxiliaries.h
+C:/VScode/ex3/partC/Auxiliaries.h
+Character.h
+C:/VScode/ex3/partC/Character.h
 
 C:/VScode/ex3/partC/GameTest.cpp
 iostream
@@ -39,6 +67,8 @@ Medic.h
 C:/VScode/ex3/partC/Medic.h
 Sniper.h
 C:/VScode/ex3/partC/Sniper.h
+EmptyCell.h
+C:/VScode/ex3/partC/EmptyCell.h
 
 C:/VScode/ex3/partC/Medic.h
 string

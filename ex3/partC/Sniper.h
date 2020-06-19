@@ -13,7 +13,7 @@ namespace mtm
         int attack_count;
 
     public:
-        void character_attack(const GridPoint &location) const override;
+        void characterAttack(const GridPoint &location) const override;
         void move() override; // add arguments and return type
     };
 } // namespace mtm
