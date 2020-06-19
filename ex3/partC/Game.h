@@ -12,11 +12,11 @@ namespace mtm
     class Game
     {
     private:
-        Matrix<Character> game_grid;
-
+        Matrix<Character*> game_grid;
+        void checkBounds(const GridPoint& coordinates) const;
     public:
         Game(int height, int width);        // C'tor
-        ~Game();                            // D'tor
+        ~Game() =delete;                    // D'tor
         Game(const Game &other);            // Copt c'tor
         Game &operator=(const Game &other); // Assignment operator
         void addCharacter(const GridPoint &coordinates, std::shared_ptr<Character> character);
@@ -33,6 +33,10 @@ namespace mtm
         class IllegalArgument;
         class IllegalCell;
         class CellEmpty;
+        class CellOccupied;
+        class OutOfRange;
+        class OutOfAmmo;
+        class IllegalTarget;
     };
    
 } // namespace mtm

@@ -5,16 +5,18 @@
 #include "Auxiliaries.h"
 #include "Character.h"
 
-namespace mtm{
-    
-    class Soldier : public Character {
-    private:
-        int attack_count;
-    public:
-        void characterAttack(const GridPoint& location) const override;
-        void move()override; // add arguments and return type
-    }; 
-}
+namespace mtm
+{
 
+    class Soldier : public Character
+    {
+    private:
+        static bool outOfBounds(const GridPoint &location, const Matrix<Character *> &game_grid);
+        static bool checkStopCondition(int distance, const GridPoint &location, const Matrix<Character *> &game_grid);
+        void ApplyDamage(int damage, int distance, GridPoint location, Matrix<bool> &affected_cells, Matrix<Character *> &game_grid, bool adjacent_cell = false) const;
+        void characterAttack(const GridPoint &location, Matrix<Character *> &game_grid) const override;
+        void move() override; // add arguments and return type
+    };
+} // namespace mtm
 
 #endif

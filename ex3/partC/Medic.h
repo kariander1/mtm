@@ -9,7 +9,7 @@ namespace mtm{
     class Medic : public Character {
 
     public:
-        void characterAttack(const GridPoint& location) const override;
+        void characterAttack(const GridPoint &location, Matrix<Character *> &game_grid) const override;
         void move()override; // add arguments and return type
     }; 
 }

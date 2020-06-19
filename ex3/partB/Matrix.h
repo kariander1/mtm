@@ -33,7 +33,7 @@ namespace mtm
         int calcMatSize(const mtm::Dimensions &dim) const;
         void copyMatrixValues(const Matrix &matrix);
         void copyMatrixValues(const T &initial_value);
-
+        static void checkDimensions(const Matrix<T> matrix_a, const Matrix<T> matrix_b);
         //-------------------------------------------------------------
         // Helper class BooleanNot for boolean matrices in operators
         //-------------------------------------------------------------

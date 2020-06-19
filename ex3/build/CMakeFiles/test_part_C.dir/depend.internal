@@ -5,11 +5,16 @@ CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj
  C:/VScode/ex3/partC/Auxiliaries.cpp
  C:/VScode/ex3/partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/Character.cpp.obj
+ C:/VScode/ex3/partB/Matrix.h
  C:/VScode/ex3/partC/Auxiliaries.h
  C:/VScode/ex3/partC/Character.cpp
  C:/VScode/ex3/partC/Character.h
 CMakeFiles/test_part_C.dir/partC/Game.cpp.obj
+ C:/VScode/ex3/partB/Matrix.h
+ C:/VScode/ex3/partC/Auxiliaries.h
+ C:/VScode/ex3/partC/Character.h
  C:/VScode/ex3/partC/Game.cpp
+ C:/VScode/ex3/partC/Game.h
 CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj
  C:/VScode/ex3/partB/Matrix.h
  C:/VScode/ex3/partC/Auxiliaries.h
@@ -25,4 +30,8 @@ CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj
 CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj
  C:/VScode/ex3/partC/Sniper.cpp
 CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj
+ C:/VScode/ex3/partB/Matrix.h
+ C:/VScode/ex3/partC/Auxiliaries.h
+ C:/VScode/ex3/partC/Character.h
  C:/VScode/ex3/partC/Soldier.cpp
+ C:/VScode/ex3/partC/Soldier.h
