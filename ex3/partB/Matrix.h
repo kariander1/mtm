@@ -125,7 +125,8 @@ namespace mtm
         {
             return const_iterator(this, this->size());
         }
-
+        
+       
         class AccessIllegalElement;
 
         class IllegalInitialization;
@@ -390,31 +391,31 @@ namespace mtm
         int width = matrix.width();
         return mtm::printMatrix(os, begin, end, width);
     }
-
+    class Exception : public std::exception{};
     template <class T>
-    class Matrix<T>::AccessIllegalElement
+    class Matrix<T>::AccessIllegalElement : public Exception
     {
     private:
         const std::string description;
 
     public:
-        const std::string what() const
+        std::string what()
         {
             return ILLEGAL_ACCESS;
         }
     };
     template <class T>
-    class Matrix<T>::IllegalInitialization
+    class Matrix<T>::IllegalInitialization : public Exception
     {
     private:
     public:
-        const std::string what() const
+        std::string what()
         {
             return ILLEGAL_INITIAL;
         }
     };
     template <class T>
-    class Matrix<T>::DimensionMismatch
+    class Matrix<T>::DimensionMismatch : public Exception
     {
     private:
         const Dimensions dim_a;
@@ -426,7 +427,7 @@ namespace mtm
         {
         }
 
-        const std::string what() const
+        std::string what()
         {
             return MISMATCH+ dim_a.toString() + " " + dim_b.toString(); // to_string works?
         }
