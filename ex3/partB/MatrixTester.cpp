@@ -84,12 +84,13 @@ public:
     }
 int main()
 {
-    Negative n();
+    
     cout << "Matrix Tester V1.0 C Shelly Francis & Shai Yehezkel" << endl;
+
 
     Dimensions dim(2, 3);
     Matrix<IntMatrix> mat_of_mats(dim);
-
+    
     dim = Dimensions(2, 2);
     Matrix<IntMatrix>::iterator it = mat_of_mats.begin();
     int count = 0;

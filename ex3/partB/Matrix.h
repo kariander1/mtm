@@ -11,6 +11,9 @@ namespace mtm
     const std::string ILLEGAL_ACCESS=ERROR_PREFIX+"An attempt to access an illegal element";
     const std::string ILLEGAL_INITIAL = ERROR_PREFIX+"Illegal initialization values";
     const std::string MISMATCH=ERROR_PREFIX+"Dimension mismatch: ";
+    //-------------------------------------------------------------
+    // Enum values for checking all/any functions implemented later in file
+    //-------------------------------------------------------------
     enum MATRIX_BOOLEAN_STATUS
     {
         ALL_TRUE = -1,
@@ -527,7 +530,7 @@ namespace mtm
         const std::string description;
 
     public:
-        std::string what()
+        std::string what() noexcept
         {
             return ILLEGAL_ACCESS;
         }
@@ -542,7 +545,7 @@ namespace mtm
     {
     private:
     public:
-        std::string what()
+        std::string what() noexcept
         {
             return ILLEGAL_INITIAL;
         }
@@ -570,7 +573,7 @@ namespace mtm
         {
         }
 
-        std::string what()
+        std::string what() noexcept
         {
             return MISMATCH+ dim_a.toString() + " " + dim_b.toString();
         }
@@ -607,7 +610,7 @@ namespace mtm
         */
         T &operator*() const
         {
-            if (index >= max_index) // Index cannot go negative
+            if (index >= max_index || index<0) // Index cannot go negative
             {
                 throw Matrix::AccessIllegalElement();
             }
@@ -675,7 +678,7 @@ namespace mtm
         ~const_iterator() = default;                                   // D'tor
         const T &operator*() const                                     // Returns a const int
         {
-            if (index >= max_index)
+            if (index >= max_index || index<0)
             {
                 throw Matrix::AccessIllegalElement();
             }
