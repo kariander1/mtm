@@ -178,6 +178,19 @@ Matrix_TestPartB/fast:
 	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/build
 .PHONY : Matrix_TestPartB/fast
 
+#=============================================================================
+# Target rules for targets named test_part_C
+
+# Build rule for target.
+test_part_C: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 test_part_C
+.PHONY : test_part_C
+
+# fast build rule for target.
+test_part_C/fast:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/build
+.PHONY : test_part_C/fast
+
 partA/Auxiliaries.obj: partA/Auxiliaries.cpp.obj
 
 .PHONY : partA/Auxiliaries.obj
@@ -406,6 +419,195 @@ partB/test_partB.cpp.s:
 	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.s
 .PHONY : partB/test_partB.cpp.s
 
+partC/Auxiliaries.obj: partC/Auxiliaries.cpp.obj
+
+.PHONY : partC/Auxiliaries.obj
+
+# target to build an object file
+partC/Auxiliaries.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj
+.PHONY : partC/Auxiliaries.cpp.obj
+
+partC/Auxiliaries.i: partC/Auxiliaries.cpp.i
+
+.PHONY : partC/Auxiliaries.i
+
+# target to preprocess a source file
+partC/Auxiliaries.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.i
+.PHONY : partC/Auxiliaries.cpp.i
+
+partC/Auxiliaries.s: partC/Auxiliaries.cpp.s
+
+.PHONY : partC/Auxiliaries.s
+
+# target to generate assembly for a file
+partC/Auxiliaries.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.s
+.PHONY : partC/Auxiliaries.cpp.s
+
+partC/Character.obj: partC/Character.cpp.obj
+
+.PHONY : partC/Character.obj
+
+# target to build an object file
+partC/Character.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Character.cpp.obj
+.PHONY : partC/Character.cpp.obj
+
+partC/Character.i: partC/Character.cpp.i
+
+.PHONY : partC/Character.i
+
+# target to preprocess a source file
+partC/Character.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Character.cpp.i
+.PHONY : partC/Character.cpp.i
+
+partC/Character.s: partC/Character.cpp.s
+
+.PHONY : partC/Character.s
+
+# target to generate assembly for a file
+partC/Character.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Character.cpp.s
+.PHONY : partC/Character.cpp.s
+
+partC/Game.obj: partC/Game.cpp.obj
+
+.PHONY : partC/Game.obj
+
+# target to build an object file
+partC/Game.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Game.cpp.obj
+.PHONY : partC/Game.cpp.obj
+
+partC/Game.i: partC/Game.cpp.i
+
+.PHONY : partC/Game.i
+
+# target to preprocess a source file
+partC/Game.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Game.cpp.i
+.PHONY : partC/Game.cpp.i
+
+partC/Game.s: partC/Game.cpp.s
+
+.PHONY : partC/Game.s
+
+# target to generate assembly for a file
+partC/Game.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Game.cpp.s
+.PHONY : partC/Game.cpp.s
+
+partC/GameTest.obj: partC/GameTest.cpp.obj
+
+.PHONY : partC/GameTest.obj
+
+# target to build an object file
+partC/GameTest.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj
+.PHONY : partC/GameTest.cpp.obj
+
+partC/GameTest.i: partC/GameTest.cpp.i
+
+.PHONY : partC/GameTest.i
+
+# target to preprocess a source file
+partC/GameTest.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/GameTest.cpp.i
+.PHONY : partC/GameTest.cpp.i
+
+partC/GameTest.s: partC/GameTest.cpp.s
+
+.PHONY : partC/GameTest.s
+
+# target to generate assembly for a file
+partC/GameTest.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/GameTest.cpp.s
+.PHONY : partC/GameTest.cpp.s
+
+partC/Medic.obj: partC/Medic.cpp.obj
+
+.PHONY : partC/Medic.obj
+
+# target to build an object file
+partC/Medic.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj
+.PHONY : partC/Medic.cpp.obj
+
+partC/Medic.i: partC/Medic.cpp.i
+
+.PHONY : partC/Medic.i
+
+# target to preprocess a source file
+partC/Medic.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Medic.cpp.i
+.PHONY : partC/Medic.cpp.i
+
+partC/Medic.s: partC/Medic.cpp.s
+
+.PHONY : partC/Medic.s
+
+# target to generate assembly for a file
+partC/Medic.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Medic.cpp.s
+.PHONY : partC/Medic.cpp.s
+
+partC/Sniper.obj: partC/Sniper.cpp.obj
+
+.PHONY : partC/Sniper.obj
+
+# target to build an object file
+partC/Sniper.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj
+.PHONY : partC/Sniper.cpp.obj
+
+partC/Sniper.i: partC/Sniper.cpp.i
+
+.PHONY : partC/Sniper.i
+
+# target to preprocess a source file
+partC/Sniper.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Sniper.cpp.i
+.PHONY : partC/Sniper.cpp.i
+
+partC/Sniper.s: partC/Sniper.cpp.s
+
+.PHONY : partC/Sniper.s
+
+# target to generate assembly for a file
+partC/Sniper.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Sniper.cpp.s
+.PHONY : partC/Sniper.cpp.s
+
+partC/Soldier.obj: partC/Soldier.cpp.obj
+
+.PHONY : partC/Soldier.obj
+
+# target to build an object file
+partC/Soldier.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj
+.PHONY : partC/Soldier.cpp.obj
+
+partC/Soldier.i: partC/Soldier.cpp.i
+
+.PHONY : partC/Soldier.i
+
+# target to preprocess a source file
+partC/Soldier.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Soldier.cpp.i
+.PHONY : partC/Soldier.cpp.i
+
+partC/Soldier.s: partC/Soldier.cpp.s
+
+.PHONY : partC/Soldier.s
+
+# target to generate assembly for a file
+partC/Soldier.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Soldier.cpp.s
+.PHONY : partC/Soldier.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -418,6 +620,7 @@ help:
 	@echo ... Matrix_TestPartB
 	@echo ... intMatrix_TestPartA
 	@echo ... intMatrix_Tester
+	@echo ... test_part_C
 	@echo ... partA/Auxiliaries.obj
 	@echo ... partA/Auxiliaries.i
 	@echo ... partA/Auxiliaries.s
@@ -442,6 +645,27 @@ help:
 	@echo ... partB/test_partB.obj
 	@echo ... partB/test_partB.i
 	@echo ... partB/test_partB.s
+	@echo ... partC/Auxiliaries.obj
+	@echo ... partC/Auxiliaries.i
+	@echo ... partC/Auxiliaries.s
+	@echo ... partC/Character.obj
+	@echo ... partC/Character.i
+	@echo ... partC/Character.s
+	@echo ... partC/Game.obj
+	@echo ... partC/Game.i
+	@echo ... partC/Game.s
+	@echo ... partC/GameTest.obj
+	@echo ... partC/GameTest.i
+	@echo ... partC/GameTest.s
+	@echo ... partC/Medic.obj
+	@echo ... partC/Medic.i
+	@echo ... partC/Medic.s
+	@echo ... partC/Sniper.obj
+	@echo ... partC/Sniper.i
+	@echo ... partC/Sniper.s
+	@echo ... partC/Soldier.obj
+	@echo ... partC/Soldier.i
+	@echo ... partC/Soldier.s
 .PHONY : help
 
 

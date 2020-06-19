@@ -6,12 +6,16 @@
 
 #IncludeRegexTransform: 
 
+C:/VScode/ex3/partB/Auxiliaries.cpp
+Auxiliaries.h
 C:/VScode/ex3/partB/Auxiliaries.h
-string
--
+
+C:/VScode/ex3/partB/Auxiliaries.h
 iostream
 -
-ostream
+string
+-
+cmath
 -
 
 C:/VScode/ex3/partB/Matrix.cpp

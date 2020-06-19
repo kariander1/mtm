@@ -73,6 +73,7 @@ all: CMakeFiles/MatrixTester.dir/all
 all: CMakeFiles/intMatrix_Tester.dir/all
 all: CMakeFiles/intMatrix_TestPartA.dir/all
 all: CMakeFiles/Matrix_TestPartB.dir/all
+all: CMakeFiles/test_part_C.dir/all
 
 .PHONY : all
 
@@ -86,6 +87,7 @@ clean: CMakeFiles/MatrixTester.dir/clean
 clean: CMakeFiles/intMatrix_Tester.dir/clean
 clean: CMakeFiles/intMatrix_TestPartA.dir/clean
 clean: CMakeFiles/Matrix_TestPartB.dir/clean
+clean: CMakeFiles/test_part_C.dir/clean
 
 .PHONY : clean
 
@@ -196,6 +198,33 @@ Matrix_TestPartB: CMakeFiles/Matrix_TestPartB.dir/rule
 CMakeFiles/Matrix_TestPartB.dir/clean:
 	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/clean
 .PHONY : CMakeFiles/Matrix_TestPartB.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_part_C.dir
+
+# All Build rule for target.
+CMakeFiles/test_part_C.dir/all:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/depend
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=17,18,19,20,21,22,23,24 "Built target test_part_C"
+.PHONY : CMakeFiles/test_part_C.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_part_C.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 8
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/test_part_C.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
+.PHONY : CMakeFiles/test_part_C.dir/rule
+
+# Convenience name for target.
+test_part_C: CMakeFiles/test_part_C.dir/rule
+
+.PHONY : test_part_C
+
+# clean rule for target.
+CMakeFiles/test_part_C.dir/clean:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/clean
+.PHONY : CMakeFiles/test_part_C.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

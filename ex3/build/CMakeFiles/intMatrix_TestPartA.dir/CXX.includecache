@@ -7,9 +7,11 @@
 #IncludeRegexTransform: 
 
 C:/VScode/ex3/partA/Auxiliaries.h
+iostream
+-
 string
 -
-iostream
+cmath
 -
 
 C:/VScode/ex3/partA/IntMatrix.cpp

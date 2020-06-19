@@ -5,15 +5,17 @@
 #include "Auxiliaries.h"
 #include "Character.h"
 
-namespace mtm{
-    class Sniper : public Character {
+namespace mtm
+{
+    class Sniper : public Character
+    {
     private:
         int attack_count;
-    public:
-        void character_attack(const GridPoint& location) const override;
-        void move()override; // add arguments and return type
-    }; 
-}
 
+    public:
+        void character_attack(const GridPoint &location) const override;
+        void move() override; // add arguments and return type
+    };
+} // namespace mtm
 
 #endif

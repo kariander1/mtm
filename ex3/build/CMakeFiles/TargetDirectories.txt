@@ -2,5 +2,6 @@ C:/VScode/ex3/build/CMakeFiles/MatrixTester.dir
 C:/VScode/ex3/build/CMakeFiles/intMatrix_Tester.dir
 C:/VScode/ex3/build/CMakeFiles/intMatrix_TestPartA.dir
 C:/VScode/ex3/build/CMakeFiles/Matrix_TestPartB.dir
+C:/VScode/ex3/build/CMakeFiles/test_part_C.dir
 C:/VScode/ex3/build/CMakeFiles/edit_cache.dir
 C:/VScode/ex3/build/CMakeFiles/rebuild_cache.dir
