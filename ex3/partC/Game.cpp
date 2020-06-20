@@ -23,7 +23,9 @@ namespace mtm
         {
             for (int j = 0; j < grid_columns; j++)
             {
-                new_game->game_grid(i, j) = other_game.game_grid(i, j)->clone(); // copy pointers and their value
+                if (other_game.game_grid(i, j) != nullptr){// copy pointers and their value
+                    new_game->game_grid(i, j) = other_game.game_grid(i, j)->clone(); 
+                } 
             }
         }
     }

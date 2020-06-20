@@ -25,7 +25,7 @@ namespace mtm
         // helper functions
         void checkBounds(const GridPoint& coordinates) const;
         void checkAttackPrerequisites(const GridPoint &src_coordinates, const GridPoint &dst_coordinates, std::shared_ptr<Character> &character) const;
-        void cloneGameGrid(Game* new_game, const Game& other_game );
+        static void cloneGameGrid(Game* new_game, const Game& other_game );
         void isEmpty(const GridPoint& coordinates) const; // for source coordinates
         void isNotEmpty(const GridPoint& coordinates) const; // for destination coordinates
         void outOfCharacterRange(const Character& character,const GridPoint& point1, const GridPoint& point2);
