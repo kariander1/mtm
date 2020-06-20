@@ -73,18 +73,15 @@ namespace mtm
     }
     IntMatrix &IntMatrix::operator=(const IntMatrix &matrix)
     {
-        if (this == &matrix)
-        {
-            return *this; // Same matrix being assigned
-        }
         dim = matrix.dim;
-        delete[] array;
-
-        array = new int[size()];
-
+        int *temp_array = new int[size()]; // Will throw bad_alloc if allocation failed.
         copyMatrixValues(matrix);
+        delete[] array; // If reached here, then allocation and transfer was successful
+        array = temp_array;
 
         return *this;
+
+        
     }
 
     IntMatrix IntMatrix::operator<(const int &num) const

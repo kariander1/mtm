@@ -21,7 +21,7 @@ namespace mtm
     class Game
     {
     private:
-        Matrix<Character*> game_grid;
+        Matrix<std::shared_ptr<Character>> game_grid;
 
         // helper functions
         void checkBounds(const GridPoint& coordinates) const;
@@ -55,8 +55,7 @@ namespace mtm
         class MoveTooFar;
     };
 
-
-    class Game::IllegalArgument : public Exception{
+     class Game::IllegalArgument : public Exception{
     public:
         std::string what() noexcept
         {
@@ -113,6 +112,7 @@ namespace mtm
             return GAME_ILLEGAL_TARGET;
         }
     };
+   
     
     
    

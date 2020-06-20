@@ -171,6 +171,7 @@ namespace mtm
     * @param matrix - The matrix to copy its values
     * @return
     * 	Nothing.
+    * ASSUMPTIONS: T has assignment operator
     */
     template <class T>
     void Matrix<T>::copyMatrixValues(const Matrix &matrix)
@@ -178,7 +179,7 @@ namespace mtm
         int max_size = size();
         for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
         {
-            array[i] = matrix.array[i]; //Or maybe should use iterator?
+            array[i] = matrix.array[i];  // assuming T has assignment operator
         }
     }
     /**
@@ -187,14 +188,15 @@ namespace mtm
     * @param initial_value - The value to initiate the matrix with
     * @return
     * 	Nothing.
+    * ASSUMPTIONS: T has assignment operator
     */
     template <class T>
     void Matrix<T>::copyMatrixValues(const T &initial_value)
     {
         int max_size = size();
-        for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
+        for (int i = 0; i < max_size; i++) 
         {
-            array[i] = initial_value; //Or maybe should use iterator?
+            array[i] = initial_value; // assuming T has assignment operator
         }
     }
 
@@ -322,7 +324,7 @@ namespace mtm
     /**
     * Matrix::&operator=(): assignment operator, assigns the given matrix to this
     *
-    * ASSUMPTIONS: T has destructor and default c'tor
+    * ASSUMPTIONS: T has destructor and default c'tor and assignment operator
     * @param matrix - The matrix to copy to this
     * @return
     * 	returns reference to the new copied matrix
@@ -333,10 +335,19 @@ namespace mtm
         dim = matrix.dim;
         T *temp_array = new T[size()]; // Will throw bad_alloc if allocation failed.
 
-        delete[] array; // If reached here, then allocation was successful
+        try // T assignment might throw an exception! We can't use here STL yet.
+        {
+            copyMatrixValues(matrix);
+        }
+        catch(...)
+        {
+            delete[] temp_array;
+            throw;
+        }
+        
+        
+        delete[] array; // If reached here, then allocation and transfer was successful
         array = temp_array;
-
-        copyMatrixValues(matrix);
 
         return *this;
     }
@@ -511,13 +522,14 @@ namespace mtm
         int width = matrix.width();
         return mtm::printMatrix(os, begin, end, width);
     }
-        /**
+
+    /**
         *   Exception Class
         * 
         *   A generic expection in mtm namespace providing a mother class to be inherited.
         *   The class inherits the std exception
         */
-        /**
+    /**
         *   AccessIllegalElement Class
         * 
         *   An exception an accesss to an illegal elemnt when iterating over matrix
@@ -525,14 +537,16 @@ namespace mtm
     template <class T>
     class Matrix<T>::AccessIllegalElement : public Exception
     {
-    private:
-        // const std::string description; // dont need ???????????????????
 
-    public:
-        std::string what() noexcept
+
+    public:        
+        
+        const std::string what() noexcept
         {
-            return ILLEGAL_ACCESS;
+
+            return (ILLEGAL_ACCESS);
         }
+        
     };
         /**
         *   IllegalInitialization Class

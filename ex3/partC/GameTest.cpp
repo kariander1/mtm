@@ -11,12 +11,6 @@
 #include "Sniper.h"
 #include "../partB/Matrix.h"
 
-#include "Auxiliaries.cpp"
-#include "Game.cpp"
-#include "Character.cpp"
-#include "Soldier.cpp"
-#include "Medic.cpp"
-#include "Sniper.cpp"
 
 using namespace mtm;
 

@@ -12,7 +12,7 @@ namespace mtm
         if (height <= 0 || width <=0){
             throw IllegalArgument();
         }
-    };
+    }
 
     void Game::cloneGameGrid(Game* new_game, const Game& other_game )
     {
@@ -60,22 +60,18 @@ namespace mtm
     {
         checkBounds(coordinates);
         isNotEmpty(coordinates);
-        /*if (!game_grid(coordinates.row, coordinates.col)->isEmpty())
-        {
-            throw CellOccupied();
-        }*/
-        game_grid(coordinates.row, coordinates.col) = character->clone();
+        game_grid(coordinates.row, coordinates.col) = character;
     }
     void Game::attack(const GridPoint &src_coordinates, const GridPoint &dst_coordinates)
     {
         checkBounds(src_coordinates);
         checkBounds(dst_coordinates);
         isEmpty(src_coordinates);
-        /*if (game_grid(src_coordinates.row, src_coordinates.col)->isEmpty())
-        {
-            throw CellEmpty();
-        }*/
-        game_grid(src_coordinates.row, src_coordinates.col)->characterAttack(dst_coordinates,game_grid);
+        std::shared_ptr<Character> character = game_grid(src_coordinates.row, src_coordinates.col);
+        character->checkAttackPrerequisites(src_coordinates,dst_coordinates,game_grid);
+
+        // All Prerequisites checked, ready to attack. No exceptions expected from here on
+        game_grid(src_coordinates.row, src_coordinates.col)->characterAttack(src_coordinates,dst_coordinates,game_grid);
     }
     std::shared_ptr<Character> Game::makeCharacter(CharacterType type,
         Team team, units_t health, units_t ammo, units_t range, units_t power)
@@ -124,6 +120,7 @@ namespace mtm
         isEmpty(coordinates);
         int row = game_grid.height();
         int column = game_grid.width();
-        game_grid(row,column)->Character::characterReload();
+        game_grid(row,column)->characterReload();
     }
+
 } // namespace mtm
