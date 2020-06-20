@@ -34,23 +34,19 @@ C:/VScode/ex3/partC/Auxiliaries.h
 ../partB/Matrix.h
 C:/VScode/ex3/partB/Matrix.h
 
-C:/VScode/ex3/partC/Game.h
+C:/VScode/ex3/partC/Soldier.cpp
+Soldier.h
+C:/VScode/ex3/partC/Soldier.h
+math.h
+-
+
+C:/VScode/ex3/partC/Soldier.h
+string
+-
 iostream
 -
-memory
--
-../partB/Matrix.h
-C:/VScode/ex3/partB/Matrix.h
 Auxiliaries.h
 C:/VScode/ex3/partC/Auxiliaries.h
 Character.h
 C:/VScode/ex3/partC/Character.h
-
-C:/VScode/ex3/partC/test_partC.cpp
-iostream
--
-cassert
--
-Game.h
-C:/VScode/ex3/partC/Game.h
 

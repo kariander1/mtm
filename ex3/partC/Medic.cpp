@@ -40,7 +40,7 @@ namespace mtm
         {
             if (target->receiveDamage(power))
             {
-                target = nullptr;
+                game_grid(dst_location.row, dst_location.col) = nullptr;
             }
             --ammo;
         }

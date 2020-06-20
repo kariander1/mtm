@@ -7,14 +7,17 @@
 namespace mtm
 {
 
-    Game::Game(int height, int width) : game_grid(Dimensions(height, width), nullptr) // resent the game grid with all nullptr
+    Game::Game(int height, int width) : game_grid(checkGameSize(height, width), nullptr) // init with nullptr
     {
-        if (height <= 0 || width <= 0)
+    }
+    Dimensions Game::checkGameSize(const int &height, const int &width)
+    {
+        if (height <= 0 || width <= 0) 
         {
             throw IllegalArgument();
         }
+        return Dimensions(height, width);
     }
-
     void Game::cloneGameGrid(Game *new_game, const Game &other_game)
     {
         int grid_rows = other_game.game_grid.height();
@@ -45,6 +48,7 @@ namespace mtm
         if (game_grid(coordinates.row, coordinates.col) == nullptr)
         {
             throw CellEmpty();
+
         }
     }
     void Game::isNotEmpty(const GridPoint &coordinates) const
@@ -56,7 +60,9 @@ namespace mtm
     }
     void Game::checkBounds(const GridPoint &coordinates) const
     {
-        if (coordinates.col >= game_grid.width() || coordinates.row < 0)
+        float width_suprimum = (float)game_grid.width()/2;    
+        float height_suprimum = (float)game_grid.height()/2;
+        if (!(abs(coordinates.row-height_suprimum)<=height_suprimum && abs(coordinates.col-width_suprimum)<=width_suprimum))
         {
             throw IllegalCell();
         }
@@ -67,7 +73,7 @@ namespace mtm
         isNotEmpty(coordinates);
         game_grid(coordinates.row, coordinates.col) = character;
     }
-    void Game::checkAttackPrerequisites(const GridPoint &src_coordinates, const GridPoint &dst_coordinates, std::shared_ptr<Character> &character) const
+    void Game::checkAttackPrerequisites(const GridPoint &src_coordinates, const GridPoint &dst_coordinates,const std::shared_ptr<Character> &character) const
     {
         if (!character->checkAttackRange(src_coordinates, dst_coordinates))
         {
@@ -141,8 +147,8 @@ namespace mtm
     {
         checkBounds(coordinates);
         isEmpty(coordinates);
-        int row = game_grid.height();
-        int column = game_grid.width();
+        int row = coordinates.row;
+        int column = coordinates.col;
         game_grid(row, column)->characterReload();
     }
 
@@ -183,8 +189,8 @@ namespace mtm
         for (mtm::Matrix<std::shared_ptr<Character>>::const_iterator it = game.game_grid.begin(); it != game.game_grid.end(); it++)
         {
             const Soldier* soldier= dynamic_cast<const Soldier*>((*it).get());
-            const Soldier* medic = dynamic_cast<const Soldier*>((*it).get());
-            const Soldier* sniper = dynamic_cast<const Soldier*>((*it).get());
+            const Medic* medic = dynamic_cast<const Medic*>((*it).get());
+            const Sniper* sniper = dynamic_cast<const Sniper*>((*it).get());
             char char_to_concatenate=' ';
             if (soldier)
             {
@@ -192,14 +198,14 @@ namespace mtm
             }
             else if(medic)
             {
-                char_to_concatenate='N';
+                char_to_concatenate='M';
             }
             else if(sniper)
             {
-                char_to_concatenate='M';
+                char_to_concatenate='N';
             }
 
-            if((*it)->sameTeam(PYTHON))
+            if(*it && (*it)->sameTeam(PYTHON))
             {
                 char_to_concatenate = tolower(char_to_concatenate);
             }

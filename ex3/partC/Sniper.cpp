@@ -36,7 +36,8 @@ namespace mtm
         std::shared_ptr<Character> target = game_grid(dst_location.row, dst_location.col);
         if(target->receiveDamage(current_power))
         {
-            target=nullptr;
+            game_grid(dst_location.row, dst_location.col) =nullptr;
+           
         }
 
         --ammo;

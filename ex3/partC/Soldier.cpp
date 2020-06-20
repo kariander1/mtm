@@ -42,12 +42,12 @@ namespace mtm
         if (!affected_cells(location.row, location.col))
         {
             std::shared_ptr<Character> target = game_grid(location.row, location.col);
-            if (target || target->sameTeam(this->team))
+            if (target && !target->sameTeam(this->team))
             {
                 if (target->receiveDamage(damage))
                 { // Target was killed!
 
-                    target = nullptr; // Not sure about this
+                  game_grid(location.row, location.col) =nullptr;
                 }
             }
             affected_cells(location.row, location.col) = true;

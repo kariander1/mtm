@@ -10,15 +10,10 @@
 #include "Medic.h"
 #include "Sniper.h"
 #include "../partB/Matrix.h"
-#include "Auxiliaries.cpp"
-#include "Game.cpp"
-#include "Character.cpp"
-#include "Soldier.cpp"
-#include "Medic.cpp"
-#include "Sniper.cpp"
+
 
 using namespace mtm;
-
+ // TODO ask i can use math and str copy method to char*
 int main()
 {
     Game new_game(2,2);

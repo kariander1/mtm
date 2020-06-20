@@ -84,10 +84,12 @@ void example1() {
 	} catch (mtm::Game::IllegalTarget& e) {
 		std::cout << e.what() << std::endl;
 	}
+
+	Team winning_team = Team::PYTHON;
 	
-	mtm::Team winning_team = mtm::Team::PYTHON;
-	assert(g1.isOver(&winning_team) == false);
-	
+	std::cout << "isOver: " << g1.isOver(&winning_team) << std::endl;
+	std::cout << "is cpp the winning team? " << (winning_team == Team::CPP) << std::endl;
+
 	g1.reload(GridPoint(3,4));
 	g1.attack(GridPoint(3,4), GridPoint(6,4)); // now can shoot
 	
@@ -100,10 +102,8 @@ void example1() {
 		std::cout << e.what() << std::endl;
 	}
 	
-	assert(g1.isOver(&winning_team) == true);
-	assert(winning_team == mtm::Team::CPP);
-	int c =winning_team;
-	c++;
+	std::cout << "isOver: " << g1.isOver(&winning_team) << std::endl;
+	std::cout << "is cpp the winning team? " << (winning_team == Team::CPP) << std::endl;
 }
 
 void example2() {

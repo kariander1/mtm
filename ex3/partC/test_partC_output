@@ -66,7 +66,9 @@ A game related error has occured: OutOfRange
 A game related error has occured: CellEmpty
 A game related error has occured: OutOfAmmo
 A game related error has occured: IllegalTarget
-isOver: 0*****************
+isOver: 0
+is cpp the winning team? 0
+*****************
 | | | | | | | | |
 | | |M| | | | | |
 | | | | | | | | |
@@ -77,7 +79,9 @@ isOver: 0*****************
 | | | | | | | | |
 *****************
 A game related error has occured: CellEmpty
-isOver: 1------example 2------
+isOver: 1
+is cpp the winning team? 1
+------example 2------
 *********************
 | | | | | | | | | | |
 | | | | | | | | | | |

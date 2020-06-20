@@ -23,8 +23,9 @@ namespace mtm
     private:
         Matrix<std::shared_ptr<Character>> game_grid;
         // helper functions
+        static Dimensions checkGameSize(const int &height,const int &width);
         void checkBounds(const GridPoint& coordinates) const;
-        void checkAttackPrerequisites(const GridPoint &src_coordinates, const GridPoint &dst_coordinates, std::shared_ptr<Character> &character) const;
+        void checkAttackPrerequisites(const GridPoint &src_coordinates, const GridPoint &dst_coordinates,const std::shared_ptr<Character> &character) const;
         static void cloneGameGrid(Game* new_game, const Game& other_game );
         void isEmpty(const GridPoint& coordinates) const; // for source coordinates
         void isNotEmpty(const GridPoint& coordinates) const; // for destination coordinates
