@@ -11,22 +11,17 @@ namespace mtm
     {
         return std::shared_ptr<Character>(new Sniper(health, ammo, range, power, team));
     }
-    void Sniper::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
+    bool Sniper::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
     {
         int distance = GridPoint::distance(src_location, dst_location);
         int min_distance = ceil(range / 2);
-        if (min_distance > distance || distance > range)
-        {
-            throw Game::OutOfRange();
-        }
+        return !(min_distance > distance || distance > range);
     }
-    void Sniper::checkTarget(const GridPoint &dst_location, Matrix<std::shared_ptr<Character>> &game_grid) const
+    bool Sniper::checkTarget(const GridPoint &dst_location,const std::shared_ptr<Character> &target ) const
     {
-        std::shared_ptr<Character> target = game_grid(dst_location.row, dst_location.col);
-        if (!target || target->sameTeam(team))
-        {
-            throw Game::IllegalTarget();
-        }
+       
+        return !(!target || target->sameTeam(team));
+
     }
     void Sniper::characterAttack(const GridPoint &src_location, const GridPoint &dst_location, Matrix<std::shared_ptr<Character>> &game_grid)
     {

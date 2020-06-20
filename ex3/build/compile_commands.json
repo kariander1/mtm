@@ -71,6 +71,11 @@
 },
 {
   "directory": "C:/VScode/ex3/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\test_part_C.dir\\partC\\Character.cpp.obj -c C:\\VScode\\ex3\\partC\\Character.cpp",
+  "file": "C:/VScode/ex3/partC/Character.cpp"
+},
+{
+  "directory": "C:/VScode/ex3/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\test_part_C.dir\\partC\\Game.cpp.obj -c C:\\VScode\\ex3\\partC\\Game.cpp",
   "file": "C:/VScode/ex3/partC/Game.cpp"
 },
@@ -88,10 +93,5 @@
   "directory": "C:/VScode/ex3/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\test_part_C.dir\\partC\\Sniper.cpp.obj -c C:\\VScode\\ex3\\partC\\Sniper.cpp",
   "file": "C:/VScode/ex3/partC/Sniper.cpp"
-},
-{
-  "directory": "C:/VScode/ex3/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\test_part_C.dir\\partC\\Character.cpp.obj -c C:\\VScode\\ex3\\partC\\Character.cpp",
-  "file": "C:/VScode/ex3/partC/Character.cpp"
 }
 ]

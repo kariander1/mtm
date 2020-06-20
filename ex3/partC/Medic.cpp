@@ -4,22 +4,17 @@
 
 namespace mtm
 {
-    void Medic::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
+    bool Medic::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
     {
         bool same_line_col_violation = src_location.col != dst_location.col && src_location.row != dst_location.row;
         bool distance_violation = GridPoint::distance(src_location, dst_location) > range;
-        if (same_line_col_violation || distance_violation)
-        {
-            throw Game::OutOfRange();
-        }
+        return !(same_line_col_violation || distance_violation);
+
     }
-    void Medic::checkTarget(const GridPoint &dst_location, Matrix<std::shared_ptr<Character>> &game_grid) const
+    bool Medic::checkTarget(const GridPoint &dst_location,const std::shared_ptr<Character> &target ) const
     {
-        std::shared_ptr<Character> target = game_grid(dst_location.row, dst_location.col);
-        if (!target || target.get()==this) // Check if pointers will be equal....
-        {
-            throw Game::IllegalTarget();
-        }
+        return !(!target || target.get()==this); // Check if pointers will be equal....
+
     }
 
     Medic::Medic(units_t health, units_t ammo, units_t range, units_t power, Team team) : Character(health, ammo, range, power, team)

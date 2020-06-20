@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 #include <memory>
-#include "Game.h"
 #include "Auxiliaries.h"
 #include "../partB/Matrix.h"
 namespace mtm
@@ -16,24 +15,24 @@ namespace mtm
         const units_t range;
         const units_t power;
         const Team team;
-
-        void checkAmmo() const; // Same for all inheriting classes
-        virtual void checkTarget(const GridPoint &dst_location,Matrix<std::shared_ptr<Character>> &game_grid ) const;
-    private:
-        virtual void checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const;
        
     public:
-        Character(const units_t &health_initial, const units_t &ammo_initial,
-                  const units_t &range_initial, const units_t &power_initial,const Team &team);
-        Character(const Character& new_character) = default;
-        virtual ~Character() = default;
-        bool sameTeam(const Team &other) const;
+        Character(const units_t &health_initial, const units_t &ammo_initial, 
+                  const units_t &range_initial, const units_t &power_initial,const Team &team); //C'tor
+        Character(const Character& new_character) = default; // Copy c'tor
+        virtual ~Character() = default; // D'tor
+        
         virtual std::shared_ptr<Character> clone() const = 0;
-        virtual void characterAttack(const GridPoint &src_location, const GridPoint &dst_location, Matrix<std::shared_ptr<Character>> &game_grid) = 0;
-        bool receiveDamage(const int &damage); // True if killed
-        void checkAttackPrerequisites(const GridPoint &src_location, const GridPoint &dst_location, Matrix<std::shared_ptr<Character>> &game_grid) const; // Same for all
         virtual void characterReload() = 0;
         virtual int getMoveRange() const = 0; // should be in protected?
+    
+
+        bool sameTeam(const Team &other) const;
+        virtual void characterAttack(const GridPoint &src_location, const GridPoint &dst_location, Matrix<std::shared_ptr<Character>> &game_grid) = 0;
+        bool checkAmmo() const; // Same for all inheriting classes
+        virtual bool checkTarget(const GridPoint &dst_location,const std::shared_ptr<Character> &target ) const=0;
+        virtual bool checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const =0;
+        bool receiveDamage(const int &damage); // True if killed
     };
 
 } // namespace mtm
