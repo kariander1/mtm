@@ -12,7 +12,7 @@ namespace mtm
     const std::string GAME_ERROR_PREFIX="A game related error has occurred: ";
     const std::string GAME_ILLEGAL_ARGUMENT = GAME_ERROR_PREFIX + "IllegalArgument";
     const std::string GAME_ILLEGAL_CELL = GAME_ERROR_PREFIX + "IllegalCell";
-    const std::string GAME_ILLEGAL_CELL = GAME_ERROR_PREFIX + "CellEmpty";
+    const std::string GAME_CELL_EMPTY = GAME_ERROR_PREFIX + "CellEmpty";
     const std::string GAME_MOVE_TOO_FAR = GAME_ERROR_PREFIX + "MoveTooFar";
     const std::string GAME_CELL_OCCUPIED = GAME_ERROR_PREFIX + "CellOccupied";
     const std::string GAME_OUT_OF_RANGE = GAME_ERROR_PREFIX + "OutOfRange";
@@ -22,10 +22,12 @@ namespace mtm
     {
     private:
         Matrix<Character*> game_grid;
+
+        // helper functions
         void checkBounds(const GridPoint& coordinates) const;
         void cloneGameGrid(Game* new_game, const Game& other_game );
-        void isEmpty(const GridPoint& coordinates) const;
-        void isNotEmpty(const GridPoint& coordinates) const;
+        void isEmpty(const GridPoint& coordinates) const; // for source coordinates
+        void isNotEmpty(const GridPoint& coordinates) const; // for destination coordinates
         void outOfCharacterRange(const Character& character,const GridPoint& point1, const GridPoint& point2);
     public:
         Game(int height, int width);        // C'tor
@@ -73,7 +75,7 @@ namespace mtm
     public:
         std::string what() noexcept
         {
-            return GAME_ILLEGAL_CELL;
+            return GAME_CELL_EMPTY;
         }
     };
     class Game::MoveTooFar : public Exception{

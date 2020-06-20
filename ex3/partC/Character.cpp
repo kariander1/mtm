@@ -21,9 +21,5 @@ namespace mtm
         health -= damage;
         return health <= 0;
     }
-    int Character::getRange() const
-    {
-        return this->range;
-    }
 
 } // namespace mtm

@@ -23,10 +23,8 @@ namespace mtm
         virtual void characterAttack(const GridPoint &location, Matrix<Character *> &game_grid) const = 0;
         bool receiveDamage(const int &damage); // True if killed
         bool sameTeam(const Team &other) const; // True if killed
-        // virtual void reload() = 0; just for now
-        virtual void move() = 0;      // add arguments and return type
-        virtual bool isEmpty() const; // add arguments and return type
-        int getRange() const;
+        virtual void characterReload() = 0;
+        virtual int getMoveRange() const = 0; // should be in protected?
     };
 
 } // namespace mtm

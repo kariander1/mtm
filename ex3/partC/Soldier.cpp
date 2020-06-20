@@ -5,10 +5,14 @@ namespace mtm
     Soldier::Soldier(units_t health, units_t ammo, units_t range, units_t power, Team team):
             Character(health, ammo,range, power, team )        
     {
-        
+
     }
     Character* Soldier::clone() const{
         return new Soldier(*this);
+    }
+    int Soldier::getMoveRange() const
+    {
+        return SOLDIER_MOVE_RANGE;
     }
 
     bool Soldier::outOfBounds(const GridPoint &location, const Matrix<Character *> &game_grid)
@@ -38,7 +42,7 @@ namespace mtm
         if(!affected_cells(location.row,location.col))
         {
             Character* target =game_grid(location.row,location.col);
-            if(!target->isEmpty() || target->sameTeam(this->team))
+            if(target == nullptr|| target->sameTeam(this->team))
             {
                 if(target->receiveDamage(damage))
                 { // Target was killed!
@@ -66,6 +70,9 @@ namespace mtm
         Matrix<bool> affected_cells(matrix_dims, false);
 
         ApplyDamage(power,ceil(range/3), location, affected_cells, game_grid);
+    }
+    void Soldier::characterReload(){
+        ammo += SOLDIER_RELOAD;
     }
 
 } // namespace mtm

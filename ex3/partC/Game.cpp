@@ -7,7 +7,7 @@
 namespace mtm
 {
     
-    Game::Game(int height, int width) : game_grid(Dimensions(height, width), nullptr)
+    Game::Game(int height, int width) : game_grid(Dimensions(height, width), nullptr) // resent the game grid with all nullptr 
     {
         if (height <= 0 || width <=0){
             throw IllegalArgument();
@@ -20,7 +20,7 @@ namespace mtm
         int grid_columns = other_game.game_grid.width();
         for (int i = 0; i<grid_rows;i++){
             for(int j = 0; j < grid_columns; j++){
-                new_game->game_grid(i,j) = other_game.game_grid(i,j)->clone(); // copy pointers value
+                new_game->game_grid(i,j) = other_game.game_grid(i,j)->clone(); // copy pointers and their value
             }
         }
     }
@@ -37,6 +37,18 @@ namespace mtm
         return *this;
 
     }
+    void Game::isEmpty(const GridPoint& coordinates) const
+    {
+        if (game_grid(coordinates.row, coordinates.col) == nullptr){
+            throw CellEmpty();
+        }
+    }
+    void Game::isNotEmpty(const GridPoint& coordinates) const
+    {
+        if (game_grid(coordinates.row, coordinates.col) != nullptr){
+            throw CellOccupied();
+        }
+    }
     void Game::checkBounds(const GridPoint &coordinates) const
     {
         if (coordinates.col >= game_grid.width() || coordinates.row < 0)
@@ -47,20 +59,22 @@ namespace mtm
     void Game::addCharacter(const GridPoint &coordinates, std::shared_ptr<Character> character)
     {
         checkBounds(coordinates);
-        if (!game_grid(coordinates.row, coordinates.col)->isEmpty())
+        isNotEmpty(coordinates);
+        /*if (!game_grid(coordinates.row, coordinates.col)->isEmpty())
         {
             throw CellOccupied();
-        }
+        }*/
         game_grid(coordinates.row, coordinates.col) = character->clone();
     }
     void Game::attack(const GridPoint &src_coordinates, const GridPoint &dst_coordinates)
     {
         checkBounds(src_coordinates);
         checkBounds(dst_coordinates);
-        if (game_grid(src_coordinates.row, src_coordinates.col)->isEmpty())
+        isEmpty(src_coordinates);
+        /*if (game_grid(src_coordinates.row, src_coordinates.col)->isEmpty())
         {
             throw CellEmpty();
-        }
+        }*/
         game_grid(src_coordinates.row, src_coordinates.col)->characterAttack(dst_coordinates,game_grid);
     }
     std::shared_ptr<Character> Game::makeCharacter(CharacterType type,
@@ -85,24 +99,14 @@ namespace mtm
         
     }
 
-    void Game::isEmpty(const GridPoint& coordinates) const
-    {
-        if (game_grid(coordinates.row, coordinates.col) == nullptr){
-            throw CellEmpty();
-        }
-    }
+    
     void Game::outOfCharacterRange(const Character& character, const GridPoint& point1, const GridPoint& point2)
     {
-        if (GridPoint::distance(point1, point2) > character.getRange()){
+        if (GridPoint::distance(point1, point2) > character.getMoveRange()){
             throw Game::MoveTooFar();
         }
     }
-    void Game::isNotEmpty(const GridPoint& coordinates) const
-    {
-        if (game_grid(coordinates.row, coordinates.col) != nullptr){
-            throw CellOccupied();
-        }
-    }
+
     void Game::move(const GridPoint &src_coordinates, const GridPoint &dst_coordinates)
     {
         checkBounds(src_coordinates);
@@ -110,7 +114,16 @@ namespace mtm
         isEmpty(src_coordinates); // check if the src cell is empty (shouldn't be)
         outOfCharacterRange(*(game_grid(src_coordinates.row, src_coordinates.col)), src_coordinates,dst_coordinates);
         isNotEmpty(dst_coordinates); // check if the dst cell is empty (should be)
-        game_grid(dst_coordinates.row, dst_coordinates.col) = game_grid(src_coordinates.row, src_coordinates.col);
-        game_grid(src_coordinates.row, src_coordinates.col) = nullptr;
+        game_grid(dst_coordinates.row, dst_coordinates.col) = game_grid(src_coordinates.row, src_coordinates.col); // moves the character
+        game_grid(src_coordinates.row, src_coordinates.col) = nullptr;//  reset the old coordinates to point to Null
+    }
+
+    void Game::reload(const GridPoint &coordinates)
+    {
+        checkBounds(coordinates);
+        isEmpty(coordinates);
+        int row = game_grid.height();
+        int column = game_grid.width();
+        game_grid(row,column)->Character::characterReload();
     }
 } // namespace mtm

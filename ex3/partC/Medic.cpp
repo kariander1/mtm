@@ -12,4 +12,11 @@ namespace mtm
     Character* Medic::clone() const{
         return new Medic(*this);
     }
+    int Medic::getMoveRange() const
+    {
+        return MEDIC_MOVE_RANGE;
+    }
+    void Medic::characterReload(){
+        ammo += MEDIC_RELOAD;
+    }
 }

@@ -12,4 +12,11 @@ namespace mtm
     Character* Sniper::clone() const{
         return new Sniper(*this);
     }
+    int Sniper::getMoveRange() const
+    {
+        return SNIPER_MOVE_RANGE;
+    }
+    void Sniper::characterReload(){
+        ammo += SNIPER_RELOAD;
+    }
 }
