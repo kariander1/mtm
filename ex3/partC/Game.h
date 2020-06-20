@@ -34,7 +34,7 @@ namespace mtm
         
     public:
         Game(int height, int width);        // C'tor
-        ~Game() = default; // why delete?   // D'tor
+        ~Game() = default;                  // D'tor
         Game(const Game &other);            // Copt c'tor
         Game &operator=(const Game &other); // Assignment operator
         void addCharacter(const GridPoint &coordinates, std::shared_ptr<Character> character); // need TODO

@@ -55,7 +55,7 @@ namespace mtm
         if (!adjacent_cell)
         { // From now on affecting adjcent cells
             adjacent_cell = true;
-            damage = ceil(damage / 2);
+            damage = ceil((double)damage / 2);
         }
         --distance;
         ApplyDamage(damage, distance, GridPoint(location.row - 1, location.col), affected_cells, game_grid, adjacent_cell);
@@ -77,7 +77,7 @@ namespace mtm
     {
         Dimensions matrix_dims(game_grid.height(), game_grid.width());
         Matrix<bool> affected_cells(matrix_dims, false);
-        ApplyDamage(power, ceil(range / 3), dst_location, affected_cells, game_grid);
+        ApplyDamage(power, ceil((double)range / 3), dst_location, affected_cells, game_grid);
         --ammo;
     }
     void Soldier::characterReload()

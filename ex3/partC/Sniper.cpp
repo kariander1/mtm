@@ -14,7 +14,7 @@ namespace mtm
     bool Sniper::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
     {
         int distance = GridPoint::distance(src_location, dst_location);
-        int min_distance = ceil(range / 2);
+        int min_distance = ceil((double)range / 2);
         return !(min_distance > distance || distance > range);
     }
     bool Sniper::checkTarget(const GridPoint &dst_location,const std::shared_ptr<Character> &target ) const

@@ -39,3 +39,6 @@ add_executable(MatrixTester ./partB/MatrixTester.cpp ./partB/Auxiliaries.cpp  ./
 
 # EXE for partC
 add_executable(test_part_C ./partC/test_partC.cpp ./partC/Auxiliaries.cpp ./partC/Character.cpp ./partC/Game.cpp ./partC/Soldier.cpp ./partC/Medic.cpp ./partC/Sniper.cpp )
+
+# EXE for partC
+add_executable(GameTester ./partC/GameTest.cpp ./partC/Auxiliaries.cpp ./partC/Character.cpp ./partC/Game.cpp ./partC/Soldier.cpp ./partC/Medic.cpp ./partC/Sniper.cpp )
