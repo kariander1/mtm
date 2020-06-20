@@ -102,6 +102,8 @@ void example1() {
 	
 	assert(g1.isOver(&winning_team) == true);
 	assert(winning_team == mtm::Team::CPP);
+	int c =winning_team;
+	c++;
 }
 
 void example2() {

@@ -73,18 +73,18 @@ include CMakeFiles/test_part_C.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test_part_C.dir/flags.make
 
-CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj: CMakeFiles/test_part_C.dir/flags.make
-CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj: ../partC/GameTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\test_part_C.dir\partC\GameTest.cpp.obj -c C:\VScode\ex3\partC\GameTest.cpp
+CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj: CMakeFiles/test_part_C.dir/flags.make
+CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj: ../partC/test_partC.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\test_part_C.dir\partC\test_partC.cpp.obj -c C:\VScode\ex3\partC\test_partC.cpp
 
-CMakeFiles/test_part_C.dir/partC/GameTest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_part_C.dir/partC/GameTest.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\partC\GameTest.cpp > CMakeFiles\test_part_C.dir\partC\GameTest.cpp.i
+CMakeFiles/test_part_C.dir/partC/test_partC.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_part_C.dir/partC/test_partC.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\partC\test_partC.cpp > CMakeFiles\test_part_C.dir\partC\test_partC.cpp.i
 
-CMakeFiles/test_part_C.dir/partC/GameTest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_part_C.dir/partC/GameTest.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partC\GameTest.cpp -o CMakeFiles\test_part_C.dir\partC\GameTest.cpp.s
+CMakeFiles/test_part_C.dir/partC/test_partC.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_part_C.dir/partC/test_partC.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partC\test_partC.cpp -o CMakeFiles\test_part_C.dir\partC\test_partC.cpp.s
 
 CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj: CMakeFiles/test_part_C.dir/flags.make
 CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj: ../partC/Auxiliaries.cpp
@@ -166,7 +166,7 @@ CMakeFiles/test_part_C.dir/partC/Sniper.cpp.s: cmake_force
 
 # Object files for target test_part_C
 test_part_C_OBJECTS = \
-"CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj" \
+"CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj" \
 "CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj" \
 "CMakeFiles/test_part_C.dir/partC/Character.cpp.obj" \
 "CMakeFiles/test_part_C.dir/partC/Game.cpp.obj" \
@@ -177,7 +177,7 @@ test_part_C_OBJECTS = \
 # External object files for target test_part_C
 test_part_C_EXTERNAL_OBJECTS =
 
-test_part_C.exe: CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj
+test_part_C.exe: CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj
 test_part_C.exe: CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj
 test_part_C.exe: CMakeFiles/test_part_C.dir/partC/Character.cpp.obj
 test_part_C.exe: CMakeFiles/test_part_C.dir/partC/Game.cpp.obj

@@ -132,7 +132,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "partC/GameTest.cpp",
+			"path" : "partC/test_partC.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

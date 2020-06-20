@@ -7,10 +7,10 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/VScode/ex3/partC/Auxiliaries.cpp" "C:/VScode/ex3/build/CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj"
   "C:/VScode/ex3/partC/Character.cpp" "C:/VScode/ex3/build/CMakeFiles/test_part_C.dir/partC/Character.cpp.obj"
   "C:/VScode/ex3/partC/Game.cpp" "C:/VScode/ex3/build/CMakeFiles/test_part_C.dir/partC/Game.cpp.obj"
-  "C:/VScode/ex3/partC/GameTest.cpp" "C:/VScode/ex3/build/CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj"
   "C:/VScode/ex3/partC/Medic.cpp" "C:/VScode/ex3/build/CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj"
   "C:/VScode/ex3/partC/Sniper.cpp" "C:/VScode/ex3/build/CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj"
   "C:/VScode/ex3/partC/Soldier.cpp" "C:/VScode/ex3/build/CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj"
+  "C:/VScode/ex3/partC/test_partC.cpp" "C:/VScode/ex3/build/CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

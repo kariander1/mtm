@@ -175,6 +175,39 @@ namespace mtm
         }
         return false;
     }
+   std::ostream &operator<<(std::ostream &os, const Game &game)
+    {
+        std::string representingString = "";
+        for (mtm::Matrix<std::shared_ptr<Character>>::const_iterator it = game.game_grid.begin(); it != game.game_grid.end(); it++)
+        {
+            const Soldier* soldier= dynamic_cast<const Soldier*>((*it).get());
+            const Soldier* medic = dynamic_cast<const Soldier*>((*it).get());
+            const Soldier* sniper = dynamic_cast<const Soldier*>((*it).get());
+            char char_to_concatenate=' ';
+            if (soldier)
+            {
+                char_to_concatenate='S';
+            }
+            else if(medic)
+            {
+                char_to_concatenate='N';
+            }
+            else if(sniper)
+            {
+                char_to_concatenate='M';
+            }
+
+            if((*it)->sameTeam(PYTHON))
+            {
+                char_to_concatenate = tolower(char_to_concatenate);
+            }
+            representingString+=char_to_concatenate;
+        }       
+     
+        const char* start =  representingString.c_str();
+        const char* end_ptr =  start+representingString.length();
+        return printGameBoard(os,start,end_ptr,game.game_grid.width());
+    }
     bool Game::isOver(Team *winningTeam) const
     {
         Team winner;

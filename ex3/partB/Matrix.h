@@ -704,7 +704,7 @@ namespace mtm
         }
         const_iterator operator++(int) // Postfix
         {
-            iterator result = *this;
+            const_iterator result = *this;
             ++*this;
             return result;
         }

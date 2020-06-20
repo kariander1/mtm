@@ -500,33 +500,6 @@ partC/Game.cpp.s:
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Game.cpp.s
 .PHONY : partC/Game.cpp.s
 
-partC/GameTest.obj: partC/GameTest.cpp.obj
-
-.PHONY : partC/GameTest.obj
-
-# target to build an object file
-partC/GameTest.cpp.obj:
-	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/GameTest.cpp.obj
-.PHONY : partC/GameTest.cpp.obj
-
-partC/GameTest.i: partC/GameTest.cpp.i
-
-.PHONY : partC/GameTest.i
-
-# target to preprocess a source file
-partC/GameTest.cpp.i:
-	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/GameTest.cpp.i
-.PHONY : partC/GameTest.cpp.i
-
-partC/GameTest.s: partC/GameTest.cpp.s
-
-.PHONY : partC/GameTest.s
-
-# target to generate assembly for a file
-partC/GameTest.cpp.s:
-	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/GameTest.cpp.s
-.PHONY : partC/GameTest.cpp.s
-
 partC/Medic.obj: partC/Medic.cpp.obj
 
 .PHONY : partC/Medic.obj
@@ -608,6 +581,33 @@ partC/Soldier.cpp.s:
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Soldier.cpp.s
 .PHONY : partC/Soldier.cpp.s
 
+partC/test_partC.obj: partC/test_partC.cpp.obj
+
+.PHONY : partC/test_partC.obj
+
+# target to build an object file
+partC/test_partC.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj
+.PHONY : partC/test_partC.cpp.obj
+
+partC/test_partC.i: partC/test_partC.cpp.i
+
+.PHONY : partC/test_partC.i
+
+# target to preprocess a source file
+partC/test_partC.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/test_partC.cpp.i
+.PHONY : partC/test_partC.cpp.i
+
+partC/test_partC.s: partC/test_partC.cpp.s
+
+.PHONY : partC/test_partC.s
+
+# target to generate assembly for a file
+partC/test_partC.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/test_partC.cpp.s
+.PHONY : partC/test_partC.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -654,9 +654,6 @@ help:
 	@echo ... partC/Game.obj
 	@echo ... partC/Game.i
 	@echo ... partC/Game.s
-	@echo ... partC/GameTest.obj
-	@echo ... partC/GameTest.i
-	@echo ... partC/GameTest.s
 	@echo ... partC/Medic.obj
 	@echo ... partC/Medic.i
 	@echo ... partC/Medic.s
@@ -666,6 +663,9 @@ help:
 	@echo ... partC/Soldier.obj
 	@echo ... partC/Soldier.i
 	@echo ... partC/Soldier.s
+	@echo ... partC/test_partC.obj
+	@echo ... partC/test_partC.i
+	@echo ... partC/test_partC.s
 .PHONY : help
 
 
