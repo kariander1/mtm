@@ -146,7 +146,7 @@ namespace mtm
         game_grid(row, column)->characterReload();
     }
 
-    bool Game::checkWinnerExsistance(Team &put_winner) const
+    bool Game::checkWinnerExistance(Team &put_winner) const
     {
         int player_python = 0;
         int players_cpp = 0;
@@ -180,7 +180,7 @@ namespace mtm
     bool Game::isOver(Team *winningTeam) const
     {
         Team winner;
-        if (checkWinnerExsistance(winner))
+        if (checkWinnerExistance(winner))
         {
             if (winningTeam != nullptr)
             {

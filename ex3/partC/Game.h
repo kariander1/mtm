@@ -29,7 +29,7 @@ namespace mtm
         void isEmpty(const GridPoint& coordinates) const; // for source coordinates
         void isNotEmpty(const GridPoint& coordinates) const; // for destination coordinates
         void outOfCharacterRange(const Character& character,const GridPoint& point1, const GridPoint& point2);
-        bool checkWinnerExsistance(Team& put_winner)const;
+        bool checkWinnerExistance(Team& put_winner)const;
         
     public:
         Game(int height, int width);        // C'tor
