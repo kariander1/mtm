@@ -23,7 +23,9 @@ namespace mtm
         {
             for (int j = 0; j < grid_columns; j++)
             {
-                new_game->game_grid(i, j) = other_game.game_grid(i, j)->clone(); // copy pointers and their value
+                if (other_game.game_grid(i, j) != nullptr){// copy pointers and their value
+                    new_game->game_grid(i, j) = other_game.game_grid(i, j)->clone(); 
+                } 
             }
         }
     }
@@ -94,7 +96,7 @@ namespace mtm
     std::shared_ptr<Character> Game::makeCharacter(CharacterType type,
                                                    Team team, units_t health, units_t ammo, units_t range, units_t power)
     {
-        if (health <= 0)
+        if ((health <= 0) || (ammo <0) || (range <0) || (power <0)) 
         {
             throw IllegalArgument();
         }
@@ -144,7 +146,7 @@ namespace mtm
         game_grid(row, column)->characterReload();
     }
 
-    bool Game::checkWinnerExsistance(Team &put_winner) const
+    bool Game::checkWinnerExistance(Team &put_winner) const
     {
         int player_python = 0;
         int players_cpp = 0;
@@ -211,7 +213,7 @@ namespace mtm
     bool Game::isOver(Team *winningTeam) const
     {
         Team winner;
-        if (checkWinnerExsistance(winner))
+        if (checkWinnerExistance(winner))
         {
             if (winningTeam != nullptr)
             {
