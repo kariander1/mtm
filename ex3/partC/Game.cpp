@@ -126,4 +126,40 @@ namespace mtm
         int column = game_grid.width();
         game_grid(row,column)->Character::characterReload();
     }
+    
+    bool Game::checkWinnerExsistance(Team& put_winner) const{
+        int player_python = 0;
+        int players_cpp = 0;
+        int grid_rows = game_grid.height();
+        int grid_columns = game_grid.width();
+        for (int i = 0; i<grid_rows;i++){
+            for(int j = 0; j < grid_columns; j++){
+                if (game_grid(i,j) == nullptr){
+                    continue;
+                }
+                if (game_grid(i,j)->sameTeam(CPP) ){
+                    players_cpp++;
+                }
+                else if (game_grid(i,j)->sameTeam(PYTHON)){
+                   player_python++; 
+                }
+            }
+        }
+        if (player_python ==0 ||players_cpp ==0 ){
+            put_winner = (player_python == 0 ? CPP : PYTHON);
+            return true;
+        }
+        return false;
+    }
+    bool Game::isOver(Team* winningTeam) const
+    {
+        Team winner;
+        if (checkWinnerExsistance(winner))
+        {
+            if (winningTeam != nullptr){
+                *winningTeam = winner;
+            }
+            return true;
+        }
+    }
 } // namespace mtm
