@@ -514,7 +514,7 @@ void runTestCases()
         }
     }
     Game assigned_arena = Game(1,1);
-    assignGame = gladiator_arena;
+    assigned_arena = gladiator_arena;
     std::shared_ptr<mtm::Character> ULTRA_MEGA_SUPER_MEDIC(Game::makeCharacter(CharacterType::MEDIC, Team::CPP, 1000, 1000, 40, 50));
     cout << "GENERATING ULTRA_MEGA_SUPER_MEDIC!!" << endl;
     cout << '\a';
