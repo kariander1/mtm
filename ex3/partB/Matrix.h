@@ -31,7 +31,7 @@ namespace mtm
 
         // Helper Functions, see implementation
         int calcMatSize(const mtm::Dimensions &dim) const;
-        void copyMatrixValues(const Matrix &matrix);
+        static void copyMatrixValues(T* array,const Matrix &matrix);
         void copyMatrixValues(const T &initial_value);
         static void checkDimensions(const Matrix<T> matrix_a, const Matrix<T> matrix_b);
         //-------------------------------------------------------------
@@ -61,7 +61,7 @@ namespace mtm
         Matrix(const Matrix &matrix) : array(new T[calcMatSize(matrix.dim)]),
                                        dim(matrix.dim)
         {
-            copyMatrixValues(matrix);
+            copyMatrixValues(array,matrix);
         }
         //-------------------------------------------------------------
         // Matrix D'tor
@@ -169,14 +169,15 @@ namespace mtm
     * Matrix::copyMatrixValues: copys all the values from the given matrix
     * to the "this" matrix. 
     * @param matrix - The matrix to copy its values
+    * @param T* - The array to copy the values to
     * @return
     * 	Nothing.
     * ASSUMPTIONS: T has assignment operator
     */
     template <class T>
-    void Matrix<T>::copyMatrixValues(const Matrix &matrix)
+    void Matrix<T>::copyMatrixValues(T* array,const Matrix &matrix)
     {
-        int max_size = size();
+        int max_size = matrix.size();
         for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
         {
             array[i] = matrix.array[i];  // assuming T has assignment operator
@@ -337,7 +338,7 @@ namespace mtm
 
         try // T assignment might throw an exception! We can't use here STL yet.
         {
-            copyMatrixValues(matrix);
+            copyMatrixValues(temp_array,matrix);
         }
         catch(...)
         {

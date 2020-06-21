@@ -5,10 +5,9 @@
 namespace mtm
 {
     bool Medic::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
-    {
-        bool same_line_col_violation = src_location.col != dst_location.col && src_location.row != dst_location.row;
+    {     
         bool distance_violation = GridPoint::distance(src_location, dst_location) > range;
-        return !(same_line_col_violation || distance_violation);
+        return !(distance_violation);
 
     }
     bool Medic::checkTarget(const GridPoint &dst_location,const std::shared_ptr<Character> &target ) const

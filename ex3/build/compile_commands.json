@@ -1,21 +1,6 @@
 [
 {
   "directory": "C:/VScode/ex3/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\MatrixTester.dir\\partB\\MatrixTester.cpp.obj -c C:\\VScode\\ex3\\partB\\MatrixTester.cpp",
-  "file": "C:/VScode/ex3/partB/MatrixTester.cpp"
-},
-{
-  "directory": "C:/VScode/ex3/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\MatrixTester.dir\\partB\\Auxiliaries.cpp.obj -c C:\\VScode\\ex3\\partB\\Auxiliaries.cpp",
-  "file": "C:/VScode/ex3/partB/Auxiliaries.cpp"
-},
-{
-  "directory": "C:/VScode/ex3/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\MatrixTester.dir\\partA\\IntMatrix.cpp.obj -c C:\\VScode\\ex3\\partA\\IntMatrix.cpp",
-  "file": "C:/VScode/ex3/partA/IntMatrix.cpp"
-},
-{
-  "directory": "C:/VScode/ex3/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\intMatrix_Tester.dir\\partA\\tester.cpp.obj -c C:\\VScode\\ex3\\partA\\tester.cpp",
   "file": "C:/VScode/ex3/partA/tester.cpp"
 },

@@ -44,7 +44,7 @@ namespace mtm
     IntMatrix::IntMatrix(const IntMatrix &matrix) : array(new int[calcMatSize(matrix.dim)]),
                                                     dim(matrix.dim)
     {
-        copyMatrixValues(matrix);
+        copyMatrixValues(array,matrix);
     }
 
     IntMatrix::~IntMatrix()
@@ -75,7 +75,7 @@ namespace mtm
     {
         dim = matrix.dim;
         int *temp_array = new int[size()]; // Will throw bad_alloc if allocation failed.
-        copyMatrixValues(matrix);
+        copyMatrixValues(temp_array,matrix);
         delete[] array; // If reached here, then allocation and transfer was successful
         array = temp_array;
 
@@ -117,9 +117,9 @@ namespace mtm
         return (all_diff_matrix - ((*this) == num));
     }
 
-    void IntMatrix::copyMatrixValues(const IntMatrix &matrix)
+    void IntMatrix::copyMatrixValues(int* array,const IntMatrix &matrix)
     {
-        int max_size = size();
+        int max_size = matrix.size();
         for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
         {
             array[i] = matrix.array[i]; //Or maybe should use iterator?

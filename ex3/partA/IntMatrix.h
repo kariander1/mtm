@@ -22,10 +22,11 @@ namespace mtm {
         * IntMatrix::copyMatrixValues: copys all the values from the given matrix
         * to the "this" matrix. 
         * @param matrix - The matrix to copy its values
+        * @param array - Array to copy the values to
         * @return
         * 	Nothing.
         */
-        void copyMatrixValues(const IntMatrix& matrix);
+        static void copyMatrixValues(int* array,const IntMatrix& matrix);
         /**
         * IntMatrix::copyMatrixValues: sets all the values of the given matrix 
         * to the init_number.

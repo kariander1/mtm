@@ -34,7 +34,7 @@ add_executable(intMatrix_TestPartA ./partA/test_partA.cpp ./partA/intMatrix.cpp 
 add_executable(Matrix_TestPartB ./partB/test_partB.cpp ./partB/Matrix.cpp  ./partB/Auxiliaries.cpp)
 
 # EXE for matrix tester
-add_executable(MatrixTester ./partB/MatrixTester.cpp ./partB/Auxiliaries.cpp  ./partA/IntMatrix.cpp)
+#add_executable(MatrixTester ./partB/MatrixTester.cpp ./partB/Auxiliaries.cpp  ./partA/IntMatrix.cpp)
 
 
 # EXE for partC

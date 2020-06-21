@@ -38,10 +38,7 @@ public:
     }
 };
 
-        IntMatrix::IntMatrix() :array(new int[1]), dim(Dimensions(1,1))
-        {
 
-        } 
 class NullClass
 {
 

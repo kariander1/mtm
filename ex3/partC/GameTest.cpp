@@ -513,6 +513,8 @@ void runTestCases()
             }
         }
     }
+    Game assigned_arena = Game(1,1);
+    assignGame = gladiator_arena;
     std::shared_ptr<mtm::Character> ULTRA_MEGA_SUPER_MEDIC(Game::makeCharacter(CharacterType::MEDIC, Team::CPP, 1000, 1000, 40, 50));
     cout << "GENERATING ULTRA_MEGA_SUPER_MEDIC!!" << endl;
     cout << '\a';
@@ -644,7 +646,7 @@ void reload()
     cout << "Now input the source coordinates:" << endl;
     GridPoint source = getPoint();
 
-    TRY_AND_PRINT_CATCH(games[sel].reload(source));
+    TRY_AND_PRINT_CATCH(games.at(sel).reload(source));
 }
 void charMove()
 {
@@ -653,7 +655,7 @@ void charMove()
     GridPoint source = getPoint();
     cout << "Now input the dest coordinates:" << endl;
     GridPoint dest = getPoint();
-    TRY_AND_PRINT_CATCH(games[sel].move(source, dest));
+    TRY_AND_PRINT_CATCH(games.at(sel).move(source, dest));
 }
 void charAttack()
 {
@@ -662,14 +664,14 @@ void charAttack()
     GridPoint source = getPoint();
     cout << "Now input the dest coordinates:" << endl;
     GridPoint dest = getPoint();
-    TRY_AND_PRINT_CATCH(games[sel].attack(source, dest));
+    TRY_AND_PRINT_CATCH(games.at(sel).attack(source, dest));
 }
 void isOver()
 {
     int sel = getSelGames("isOver");
     Team winning_team = Team::PYTHON;
 
-    std::cout << "isOver: " << games[sel].isOver(&winning_team) << std::endl;
+    std::cout << "isOver: " << games.at(sel).isOver(&winning_team) << std::endl;
     std::cout << "is cpp the winning team? " << (winning_team == Team::CPP) << std::endl;
 }
 void makeCharacter()
@@ -732,7 +734,7 @@ void addCharacter()
     }
     int sel2 = 0;
     cin >> sel2;
-    Game selected_game = games[sel];
+    Game & selected_game = games.at(sel);
     std::shared_ptr<Character> ch = saved_characters[sel2];
 
     cout << "To what row?" << endl;
@@ -759,30 +761,27 @@ void createGame()
 void copyGame()
 {
     int sel = getSelGames("copy");
-    TRY_AND_PRINT_CATCH(Game newGame = games[sel]);
-    Game newGame = games[sel];
+    TRY_AND_PRINT_CATCH(Game newGame = games.at(sel));
+    Game & newGame = games.at(sel);
     games.push_back(newGame);
 }
 void assignGame()
 {
     int sel1 = getSelGames("assign");
     int sel2 = getSelGames("assigned");
-    TRY_AND_PRINT_CATCH(games[sel2] = games[sel1]);
+    TRY_AND_PRINT_CATCH(games.at(sel2) = games.at(sel1));
 }
 void destroyGame()
 {
     int sel = getSelGames("remove");
     games.erase(games.begin() + sel);
 }
-void printGame(Game g)
-{
-    TRY_AND_PRINT_CATCH(cout << g);
-}
 void printGames()
 {
     for (int i = 0; i < (int)games.size(); i++)
     {
-        printGame(games[i]);
+          TRY_AND_PRINT_CATCH(cout << games.at(i));
+   
     }
     cout<<endl;
 }
@@ -922,6 +921,8 @@ Y88b  d88P 888  888 Y8b.     888 888 Y88b 888      888     888    888  888 888  
     cout << cred << endl;
     initCharacter();
     bool stop = false;
+
+   
     while (!stop)
     {
 
