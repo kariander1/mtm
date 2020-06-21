@@ -6,13 +6,19 @@
 #include "Sniper.h"
 namespace mtm
 {
+    const Team LOWER_CASE_TEAM = PYTHON;
+    const std::string REPRESENTING_STRING_INIT ="";
+    const char STRING_DELIMITER =' ';
+    const char SOLDIER_LITERAL = 'S';
+    const char SNIPER_LITERAL = 'N';
+    const char MEDIC_LITERAL = 'M';
 
     Game::Game(int height, int width) : game_grid(checkGameSize(height, width), nullptr) // init with nullptr
     {
     }
     Dimensions Game::checkGameSize(const int &height, const int &width)
     {
-        if (height <= 0 || width <= 0) 
+        if (height <= 0 || width <= 0)
         {
             throw IllegalArgument();
         }
@@ -26,9 +32,10 @@ namespace mtm
         {
             for (int j = 0; j < grid_columns; j++)
             {
-                if (other_game.game_grid(i, j) != nullptr){// copy pointers and their value
-                    new_game->game_grid(i, j) = other_game.game_grid(i, j)->clone(); 
-                } 
+                if (other_game.game_grid(i, j) != nullptr)
+                { // copy pointers and their value
+                    new_game->game_grid(i, j) = other_game.game_grid(i, j)->clone();
+                }
             }
         }
     }
@@ -48,7 +55,6 @@ namespace mtm
         if (game_grid(coordinates.row, coordinates.col) == nullptr)
         {
             throw CellEmpty();
-
         }
     }
     void Game::isNotEmpty(const GridPoint &coordinates) const
@@ -60,9 +66,10 @@ namespace mtm
     }
     void Game::checkBounds(const GridPoint &coordinates) const
     {
-        float width_suprimum = (float)game_grid.width()/2;    
-        float height_suprimum = (float)game_grid.height()/2;
-        if (!(abs(coordinates.row-height_suprimum)<=height_suprimum && abs(coordinates.col-width_suprimum)<=width_suprimum))
+        float width_suprimum = (float)game_grid.width() / 2;
+        float height_suprimum = (float)game_grid.height() / 2;
+        if (!(abs(coordinates.row - height_suprimum) <= height_suprimum &&
+             abs(coordinates.col - width_suprimum) <= width_suprimum))
         {
             throw IllegalCell();
         }
@@ -73,17 +80,19 @@ namespace mtm
         isNotEmpty(coordinates);
         game_grid(coordinates.row, coordinates.col) = character;
     }
-    void Game::checkAttackPrerequisites(const GridPoint &src_coordinates, const GridPoint &dst_coordinates,const std::shared_ptr<Character> &character) const
+    void Game::checkAttackPrerequisites(const GridPoint &src_coordinates, const GridPoint &dst_coordinates) const
     {
+        std::shared_ptr<Character> character = game_grid(src_coordinates.row, src_coordinates.col);
+        std::shared_ptr<Character> target = game_grid(dst_coordinates.row, dst_coordinates.col);
         if (!character->checkAttackRange(src_coordinates, dst_coordinates))
         {
             throw OutOfRange();
         }
-        if(!character->checkAmmo())
+        if (!character->checkAmmo(target))
         {
             throw OutOfAmmo();
         }
-        if(!character->checkTarget(dst_coordinates,game_grid(dst_coordinates.row,dst_coordinates.col)))
+        if (!character->checkTarget(game_grid(dst_coordinates.row, dst_coordinates.col)))
         {
             throw IllegalTarget();
         }
@@ -93,16 +102,16 @@ namespace mtm
         checkBounds(src_coordinates);
         checkBounds(dst_coordinates);
         isEmpty(src_coordinates);
-        std::shared_ptr<Character> character = game_grid(src_coordinates.row, src_coordinates.col);
-        checkAttackPrerequisites(src_coordinates, dst_coordinates, character);
+        checkAttackPrerequisites(src_coordinates, dst_coordinates);
 
         // All Prerequisites checked, ready to attack. No exceptions expected from here on
-        game_grid(src_coordinates.row, src_coordinates.col)->characterAttack(src_coordinates, dst_coordinates, game_grid);
+        game_grid(src_coordinates.row, src_coordinates.col)->characterAttack(src_coordinates,
+                                                                             dst_coordinates, game_grid);
     }
-    std::shared_ptr<Character> Game::makeCharacter(CharacterType type,
-                                                   Team team, units_t health, units_t ammo, units_t range, units_t power)
+    std::shared_ptr<Character> Game::makeCharacter(CharacterType type, Team team, units_t health,
+                                                   units_t ammo, units_t range, units_t power)
     {
-        if ((health <= 0) || (ammo <0) || (range <0) || (power <0)) 
+        if ((health <= 0) || (ammo < 0) || (range < 0) || (power < 0))
         {
             throw IllegalArgument();
         }
@@ -138,9 +147,10 @@ namespace mtm
         checkBounds(dst_coordinates);
         isEmpty(src_coordinates); // check if the src cell is empty (shouldn't be)
         outOfCharacterRange(*(game_grid(src_coordinates.row, src_coordinates.col)), src_coordinates, dst_coordinates);
-        isNotEmpty(dst_coordinates);                                                                               // check if the dst cell is empty (should be)
-        game_grid(dst_coordinates.row, dst_coordinates.col) = game_grid(src_coordinates.row, src_coordinates.col); // moves the character
-        game_grid(src_coordinates.row, src_coordinates.col) = nullptr;                                             //  reset the old coordinates to point to Null
+        isNotEmpty(dst_coordinates);             // check if the dst cell is empty (should be)
+         // moves the character
+        game_grid(dst_coordinates.row, dst_coordinates.col) = game_grid(src_coordinates.row, src_coordinates.col);
+        game_grid(src_coordinates.row, src_coordinates.col) = nullptr;  //  reset the old coordinates to point to Null                                         
     }
 
     void Game::reload(const GridPoint &coordinates)
@@ -170,7 +180,7 @@ namespace mtm
                 {
                     players_cpp++;
                 }
-                else if (game_grid(i, j)->sameTeam(PYTHON))
+                else
                 {
                     player_python++;
                 }
@@ -183,38 +193,39 @@ namespace mtm
         }
         return false;
     }
-   std::ostream &operator<<(std::ostream &os, const Game &game)
+    std::ostream &operator<<(std::ostream &os, const Game &game)
     {
-        std::string representingString = "";
-        for (mtm::Matrix<std::shared_ptr<Character>>::const_iterator it = game.game_grid.begin(); it != game.game_grid.end(); it++)
+        std::string representingString = REPRESENTING_STRING_INIT;
+        for (mtm::Matrix<std::shared_ptr<Character>>::const_iterator it = game.game_grid.begin();
+             it != game.game_grid.end(); it++)
         {
-            const Soldier* soldier= dynamic_cast<const Soldier*>((*it).get());
-            const Medic* medic = dynamic_cast<const Medic*>((*it).get());
-            const Sniper* sniper = dynamic_cast<const Sniper*>((*it).get());
-            char char_to_concatenate=' ';
+            const Soldier *soldier = dynamic_cast<const Soldier *>((*it).get());
+            const Medic *medic = dynamic_cast<const Medic *>((*it).get());
+            const Sniper *sniper = dynamic_cast<const Sniper *>((*it).get());
+            char char_to_concatenate = STRING_DELIMITER;
             if (soldier)
             {
-                char_to_concatenate='S';
+                char_to_concatenate = SOLDIER_LITERAL;
             }
-            else if(medic)
+            else if (medic)
             {
-                char_to_concatenate='M';
+                char_to_concatenate = MEDIC_LITERAL;
             }
-            else if(sniper)
+            else if (sniper)
             {
-                char_to_concatenate='N';
+                char_to_concatenate = SNIPER_LITERAL;
             }
 
-            if(*it && (*it)->sameTeam(PYTHON))
-            {
+            if (*it && (*it)->sameTeam(LOWER_CASE_TEAM))
+            { // Not sure if allowed..
                 char_to_concatenate = tolower(char_to_concatenate);
             }
-            representingString+=char_to_concatenate;
-        }       
-     
-        const char* start =  representingString.c_str();
-        const char* end_ptr =  start+representingString.length();
-        return printGameBoard(os,start,end_ptr,game.game_grid.width());
+            representingString += char_to_concatenate;
+        }
+
+        const char *start = representingString.c_str();
+        const char *end_ptr = start + representingString.length();
+        return printGameBoard(os, start, end_ptr, game.game_grid.width());
     }
     bool Game::isOver(Team *winningTeam) const
     {

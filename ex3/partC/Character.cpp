@@ -21,16 +21,8 @@ namespace mtm
         health -= damage;
         return health <= 0;
     }
-    bool Character::checkAmmo() const
+    bool Character::checkAmmo(const std::shared_ptr<Character> &target) const
     {
         return !(ammo<=0);
     }
-    /*
-    void Character::checkAttackPrerequisites(const GridPoint &src_location, const GridPoint &dst_location, Matrix<std::shared_ptr<Character>> &game_grid) const
-    {
-        checkAttackRange(src_location,dst_location);
-        checkAmmo();
-        checkTarget(dst_location,game_grid);
-    }
-    */
 } // namespace mtm

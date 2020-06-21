@@ -6,6 +6,7 @@
 namespace mtm
 {
     const int IDENTITIY = 1;
+    // Status for the all/any function to determine exact result
     enum MATRIX_STATUS
     {
         ALL_ONES = -1,
