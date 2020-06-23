@@ -65,12 +65,12 @@ namespace mtm
     /**
     * Game::cloneGameGrid: Copies all the game grid and it's characters.
     *
-    * @param new_game - The game to copy values to.
+    * @param source_matrix - The matrix to copy values to.
     * @param other_game - The game to copy values from.
     * @return
     * 	Nothing
     */ 
-        static void cloneGameGrid(Game* new_game, const Game& other_game );
+    static void cloneGameGrid(Matrix<std::shared_ptr<Character>> &source_matrix, const Game &other_game);
     /**
     * Game::isEmpty: Checks if the given coordinates are not empty
     *

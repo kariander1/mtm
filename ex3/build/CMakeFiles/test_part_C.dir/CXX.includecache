@@ -60,14 +60,6 @@ C:/VScode/ex3/partC/Auxiliaries.h
 Character.h
 C:/VScode/ex3/partC/Character.h
 
-C:/VScode/ex3/partC/Medic.cpp
-Medic.h
-C:/VScode/ex3/partC/Medic.h
-math.h
--
-iostream
--
-
 C:/VScode/ex3/partC/Medic.h
 string
 -
@@ -77,14 +69,6 @@ Auxiliaries.h
 C:/VScode/ex3/partC/Auxiliaries.h
 Character.h
 C:/VScode/ex3/partC/Character.h
-
-C:/VScode/ex3/partC/Sniper.cpp
-Sniper.h
-C:/VScode/ex3/partC/Sniper.h
-math.h
--
-iostream
--
 
 C:/VScode/ex3/partC/Sniper.h
 string
@@ -96,12 +80,6 @@ C:/VScode/ex3/partC/Auxiliaries.h
 Character.h
 C:/VScode/ex3/partC/Character.h
 
-C:/VScode/ex3/partC/Soldier.cpp
-Soldier.h
-C:/VScode/ex3/partC/Soldier.h
-math.h
--
-
 C:/VScode/ex3/partC/Soldier.h
 string
 -
@@ -111,4 +89,12 @@ Auxiliaries.h
 C:/VScode/ex3/partC/Auxiliaries.h
 Character.h
 C:/VScode/ex3/partC/Character.h
+
+C:/VScode/ex3/partC/test_partC.cpp
+iostream
+-
+cassert
+-
+Game.h
+C:/VScode/ex3/partC/Game.h
 

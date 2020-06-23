@@ -162,7 +162,7 @@ namespace mtm
     int Matrix<T>::calcMatSize(const mtm::Dimensions &dim) const
     {
         if (dim.getCol() < 0 || dim.getRow() < 0)
-            throw IllegalInitialization(); //TODO we will get this error before getting illegal arguement error!
+            throw IllegalInitialization();
         return dim.getCol() * dim.getRow();
     }
     /**

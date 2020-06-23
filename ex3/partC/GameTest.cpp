@@ -23,7 +23,9 @@ using std::vector;
     }                                          \
                                                \
     // TODO ask i can use math and str copy method to char*
-
+    // TODO ask if OK to use math.h
+    // TODO check that iterface was not modified
+    // Check what to do with exception overriding
 enum SelectType
 {
     CREATE = 0,

@@ -24,7 +24,7 @@ namespace mtm
         }
         return Dimensions(height, width);
     }
-    void Game::cloneGameGrid(Game *new_game, const Game &other_game)
+    void Game::cloneGameGrid(Matrix<std::shared_ptr<Character>> &source_matrix, const Game &other_game)
     {
         int grid_rows = other_game.game_grid.height();
         int grid_columns = other_game.game_grid.width();
@@ -34,20 +34,26 @@ namespace mtm
             {
                 if (other_game.game_grid(i, j) != nullptr)
                 { // copy pointers and their value
-                    new_game->game_grid(i, j) = other_game.game_grid(i, j)->clone();
+                    source_matrix(i, j) = other_game.game_grid(i, j)->clone(); // Clone might throw bad_alloc
                 }
             }
         }
     }
 
-    Game::Game(const Game &other) : game_grid(other.game_grid) // copy only pointers
+    Game::Game(const Game &other) : game_grid(Dimensions(other.game_grid.height()
+                                            ,other.game_grid.width()),nullptr) // copy only pointers
     {
-        cloneGameGrid(this, other);
+        cloneGameGrid(game_grid, other);
     }
     Game &Game::operator=(const Game &other)
     {
-        game_grid = other.game_grid; // copy only pointers
-        cloneGameGrid(this, other);
+
+        Dimensions other_dimensions(other.game_grid.height(),other.game_grid.width());
+        Matrix<std::shared_ptr<Character>> temp_matrix(other_dimensions,nullptr);
+        
+        cloneGameGrid(temp_matrix, other); // First try and copy values to temp matrix. might throw bad_alloc!
+                                        // If an exception is thrown, the d'tor of temp_matirx will be called - OK
+        game_grid =temp_matrix; // apply changes to games matrix
         return *this;
     }
     void Game::isEmpty(const GridPoint &coordinates) const
