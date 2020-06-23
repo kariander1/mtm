@@ -2,6 +2,8 @@
 #include <math.h>
 namespace mtm
 {
+    const int SOLDIER_MOVE_RANGE = 3;
+    const int SOLDIER_RELOAD = 3;
     const int SOLDIER_DISTANCE_MODIFIER = 3;
     const int SOLDIER_DAMAGE_MODIFIER = 2;
     Soldier::Soldier(units_t health, units_t ammo, units_t range, units_t power, Team team)

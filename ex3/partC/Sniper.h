@@ -7,8 +7,7 @@
 
 namespace mtm
 {
-    const int SNIPER_MOVE_RANGE = 4;
-    const int SNIPER_RELOAD = 2;
+    
     class Sniper : public Character
     {
     private:

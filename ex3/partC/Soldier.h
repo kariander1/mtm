@@ -7,8 +7,7 @@
 
 namespace mtm
 {
-    const int SOLDIER_MOVE_RANGE = 3;
-    const int SOLDIER_RELOAD = 3;
+    
     class Soldier : public Character
     {
     private:

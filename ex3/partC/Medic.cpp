@@ -4,6 +4,8 @@
 
 namespace mtm
 {
+    const int MEDIC_MOVE_RANGE = 5;
+    const int MEDIC_RELOAD = 5;
     bool Medic::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
     {     
         bool distance_violation = GridPoint::distance(src_location, dst_location) > range;
@@ -48,7 +50,12 @@ namespace mtm
     }
     bool Medic::checkAmmo(const std::shared_ptr<Character> &target) const
     {
-        return (target->sameTeam(team) ? true : !(ammo<=0));
+        bool ammo_non_negative=!(ammo<=0);
+        if(target)
+        {
+            return (target->sameTeam(team) ? true : ammo_non_negative);
+        }
+        return ammo_non_negative;   
     }
     void Medic::characterReload()
     {

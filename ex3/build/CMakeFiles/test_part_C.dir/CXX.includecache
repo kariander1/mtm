@@ -22,16 +22,6 @@ string
 cmath
 -
 
-C:/VScode/ex3/partC/Character.cpp
-string
--
-iostream
--
-Auxiliaries.h
-C:/VScode/ex3/partC/Auxiliaries.h
-Character.h
-C:/VScode/ex3/partC/Character.h
-
 C:/VScode/ex3/partC/Character.h
 string
 -
@@ -121,12 +111,4 @@ Auxiliaries.h
 C:/VScode/ex3/partC/Auxiliaries.h
 Character.h
 C:/VScode/ex3/partC/Character.h
-
-C:/VScode/ex3/partC/test_partC.cpp
-iostream
--
-cassert
--
-Game.h
-C:/VScode/ex3/partC/Game.h
 

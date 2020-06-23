@@ -4,6 +4,8 @@
 
 namespace mtm
 {
+    const int SNIPER_MOVE_RANGE = 4;
+    const int SNIPER_RELOAD = 2;
     const int SNIPER_DISTANCE_MODIFIER = 2;
     const int SNIPER_ATTACK_COUNT_FOR_MODIFIER = 3;
     const int SNIPER_DAMAGE_MODIFIER = 2;

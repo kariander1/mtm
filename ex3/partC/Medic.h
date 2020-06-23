@@ -6,8 +6,7 @@
 #include "Character.h"
 
 namespace mtm{
-    const int MEDIC_MOVE_RANGE = 5;
-    const int MEDIC_RELOAD = 5;
+    
     class Medic : public Character {
       
     public:
