@@ -1,8 +1,6 @@
 #ifndef HW3_SOLDIER_H
 #define HW3_SOLDIER_H
-#include <string>
-#include <iostream>
-#include "Auxiliaries.h"
+
 #include "Character.h"
 
 namespace mtm

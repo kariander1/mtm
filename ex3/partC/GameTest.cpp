@@ -22,8 +22,7 @@ using std::vector;
         std::cout << e.what() << '\n';         \
     }                                          \
                                                \
-    // TODO ask i can use math and str copy method to char*
-    // TODO ask if OK to use math.h
+    // TODO ask i can usestr copy method to char*
     // TODO check that iterface was not modified
     // Check what to do with exception overriding
 enum SelectType

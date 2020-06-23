@@ -1,5 +1,4 @@
 #include "Soldier.h"
-#include <math.h>
 namespace mtm
 {
     const int SOLDIER_MOVE_RANGE = 3;

@@ -1,5 +1,4 @@
 #include "Sniper.h"
-#include <math.h>
 #include <iostream>
 
 namespace mtm

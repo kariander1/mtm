@@ -1,5 +1,5 @@
 #include "Medic.h"
-#include <math.h>
+
 #include <iostream>
 
 namespace mtm

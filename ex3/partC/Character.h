@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <math.h>
 #include "Auxiliaries.h"
 #include "../partB/Matrix.h"
 namespace mtm
