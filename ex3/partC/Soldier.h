@@ -42,7 +42,8 @@ namespace mtm
         * 	whether to continue applying damge
         */
         void ApplyDamage(int damage, int distance, GridPoint location, Matrix<bool> &affected_cells,
-                         Matrix<std::shared_ptr<Character>> &game_grid, bool adjacent_cell = false) const;
+                         Matrix<std::shared_ptr<Character>> &game_grid,std::vector<GridPoint> &killed_characters
+                         , bool adjacent_cell = false) const;
 
     public:
         /// C'tor, Copy C'tor and D'tor, same as character
@@ -52,7 +53,8 @@ namespace mtm
 
         // Overriden public functions:
         std::shared_ptr<Character> clone() const override;
-        void characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
+        std::vector<GridPoint> characterAttack(const GridPoint &src_location
+                                                                , const GridPoint &dst_location,
                              Matrix<std::shared_ptr<Character>> &game_grid) override;
         bool checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const override;
         bool checkTarget(const std::shared_ptr<Character> &target) const override;

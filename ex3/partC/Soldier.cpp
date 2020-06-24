@@ -1,10 +1,10 @@
 #include "Soldier.h"
 namespace mtm
 {
-    const int SOLDIER_MOVE_RANGE = 3;
-    const int SOLDIER_RELOAD = 3;
-    const int SOLDIER_DISTANCE_MODIFIER = 3;
-    const int SOLDIER_DAMAGE_MODIFIER = 2;
+    const units_t SOLDIER_MOVE_RANGE = 3;
+    const units_t SOLDIER_RELOAD = 3;
+    const units_t SOLDIER_DISTANCE_MODIFIER = 3;
+    const units_t SOLDIER_DAMAGE_MODIFIER = 2;
     Soldier::Soldier(units_t health, units_t ammo, units_t range, units_t power, Team team)
         : Character(health, ammo, range, power, team)
     {
@@ -40,7 +40,8 @@ namespace mtm
         return false;
     }
     void Soldier::ApplyDamage(int damage, int distance, GridPoint location, Matrix<bool> &affected_cells,
-                              Matrix<std::shared_ptr<Character>> &game_grid, bool adjacent_cell) const
+                         Matrix<std::shared_ptr<Character>> &game_grid,std::vector<GridPoint> &killed_characters
+                         , bool adjacent_cell) const
     {
         if (checkStopCondition(distance, location, game_grid))
         {
@@ -53,8 +54,7 @@ namespace mtm
             {
                 if (target->receiveDamage(damage))
                 { // Target was killed!
-
-                    game_grid(location.row, location.col) = nullptr;
+                    killed_characters.push_back(location);
                 }
             }
             affected_cells(location.row, location.col) = true;
@@ -66,13 +66,13 @@ namespace mtm
         }
         --distance;
         ApplyDamage(damage, distance, GridPoint(location.row - 1, location.col),
-                    affected_cells, game_grid, adjacent_cell); // Attack top
+                    affected_cells, game_grid,killed_characters, adjacent_cell); // Attack top
         ApplyDamage(damage, distance, GridPoint(location.row, location.col - 1),
-                    affected_cells, game_grid, adjacent_cell); // Attack left
+                    affected_cells, game_grid,killed_characters, adjacent_cell); // Attack left
         ApplyDamage(damage, distance, GridPoint(location.row + 1, location.col),
-                    affected_cells, game_grid, adjacent_cell); // Attack bottom
+                    affected_cells, game_grid,killed_characters, adjacent_cell); // Attack bottom
         ApplyDamage(damage, distance, GridPoint(location.row, location.col + 1),
-                    affected_cells, game_grid, adjacent_cell); // Attack right
+                    affected_cells, game_grid,killed_characters, adjacent_cell); // Attack right
     }
     bool Soldier::checkTarget(const std::shared_ptr<Character> &target) const
     {
@@ -85,13 +85,17 @@ namespace mtm
         bool distance_violation = GridPoint::distance(src_location, dst_location) > range;
         return !(same_line_col_violation || distance_violation);
     }
-    void Soldier::characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
-                                  Matrix<std::shared_ptr<Character>> &game_grid)
+     std::vector<GridPoint> Soldier::characterAttack(const GridPoint &src_location
+                                                                , const GridPoint &dst_location,
+                             Matrix<std::shared_ptr<Character>> &game_grid) 
     {
         Dimensions matrix_dims(game_grid.height(), game_grid.width());
         Matrix<bool> affected_cells(matrix_dims, false);
-        ApplyDamage(power, ceil((double)range / SOLDIER_DISTANCE_MODIFIER), dst_location, affected_cells, game_grid);
+        std::vector<GridPoint> killed_characters;
+        ApplyDamage(power, ceil((double)range / SOLDIER_DISTANCE_MODIFIER), dst_location
+                                                            , affected_cells, game_grid,killed_characters);
         --ammo;
+        return killed_characters;
     }
     void Soldier::characterReload()
     {

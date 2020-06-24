@@ -542,10 +542,10 @@ namespace mtm
 
     public:        
         
-        const std::string what() noexcept
+        const char* what() const noexcept override
         {
 
-            return (ILLEGAL_ACCESS);
+            return (ILLEGAL_ACCESS.c_str());
         }
         
     };
@@ -559,9 +559,9 @@ namespace mtm
     {
     private:
     public:
-        std::string what() noexcept
+         const char* what() const noexcept override
         {
-            return ILLEGAL_INITIAL;
+            return ILLEGAL_INITIAL.c_str();
         }
     };
         /**
@@ -587,9 +587,9 @@ namespace mtm
         {
         }
 
-        std::string what() noexcept
+         const char* what() const noexcept override
         {
-            return MISMATCH+ dim_a.toString() + " " + dim_b.toString();
+            return (MISMATCH+ dim_a.toString() + " " + dim_b.toString()).c_str();
         }
     };
     template <class T>

@@ -4,8 +4,8 @@
 
 namespace mtm
 {
-    const int MEDIC_MOVE_RANGE = 5;
-    const int MEDIC_RELOAD = 5;
+    const units_t MEDIC_MOVE_RANGE = 5;
+    const units_t MEDIC_RELOAD = 5;
     bool Medic::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
     {     
         bool distance_violation = GridPoint::distance(src_location, dst_location) > range;
@@ -14,7 +14,7 @@ namespace mtm
     }
     bool Medic::checkTarget(const std::shared_ptr<Character> &target ) const
     {
-        return !(!target || target.get()==this); // Check if pointers will be equal....
+        return !(!target || target.get()==this); // Check if pointers will be equal
 
     }
 
@@ -30,10 +30,10 @@ namespace mtm
     {
         return MEDIC_MOVE_RANGE;
     }
-    void Medic::characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
+    std::vector<GridPoint> Medic::characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
                                  Matrix<std::shared_ptr<Character>> &game_grid)
     {
-
+        std::vector<GridPoint> killed_characters;
         std::shared_ptr<Character> target = game_grid(dst_location.row, dst_location.col);
         if (target->sameTeam(team))
         {
@@ -43,10 +43,11 @@ namespace mtm
         {
             if (target->receiveDamage(power))
             {
-                game_grid(dst_location.row, dst_location.col) = nullptr;
+                killed_characters.push_back(dst_location);
             }
             --ammo;
         }
+        return killed_characters;
     }
     bool Medic::checkAmmo(const std::shared_ptr<Character> &target) const
     {

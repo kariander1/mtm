@@ -87,7 +87,6 @@ int main()
 
     Dimensions dim(2, 3);
     Matrix<IntMatrix> mat_of_mats(dim);
-    
     dim = Dimensions(2, 2);
     Matrix<IntMatrix>::iterator it = mat_of_mats.begin();
     int count = 0;

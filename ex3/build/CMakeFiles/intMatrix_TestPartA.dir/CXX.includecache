@@ -14,21 +14,21 @@ string
 cmath
 -
 
-C:/VScode/ex3/partA/IntMatrix.cpp
+C:/VScode/ex3/partA/IntMatrix.h
+string
+-
+iostream
+-
+Auxiliaries.h
+C:/VScode/ex3/partA/Auxiliaries.h
+
+C:/VScode/ex3/partA/test_partA.cpp
+functional
+-
 string
 -
 iostream
 -
 IntMatrix.h
 C:/VScode/ex3/partA/IntMatrix.h
-Auxiliaries.h
-C:/VScode/ex3/partA/Auxiliaries.h
-
-C:/VScode/ex3/partA/IntMatrix.h
-string
--
-iostream
--
-Auxiliaries.h
-C:/VScode/ex3/partA/Auxiliaries.h
 

@@ -7,8 +7,7 @@
 #include "Auxiliaries.h"
 #include "Character.h"
 namespace mtm
-{
-    // Should thing if we need to override
+{   
     const std::string GAME_ERROR_PREFIX="A game related error has occurred: ";
     const std::string GAME_ILLEGAL_ARGUMENT = GAME_ERROR_PREFIX + "IllegalArgument";
     const std::string GAME_ILLEGAL_CELL = GAME_ERROR_PREFIX + "IllegalCell";
@@ -33,7 +32,7 @@ namespace mtm
     * @param height - The number of rows in the matrix
     * @param width - The number of columns in the matrix
     * @return
-    * 	returns a Dimention of the height and width 
+    * 	returns a Dimensions of the height and width 
     */
         static Dimensions checkGameSize(const int &height,const int &width);
     /**
@@ -201,7 +200,7 @@ namespace mtm
     * 	None
     */
         friend std::ostream &operator<<(std::ostream &os, const Game &game);
-    /**
+        /**
     * Game::isOver: Checks if the game has a winner.
     *
     * @param winningTeam - The winning team , if exsists, is copied to here.
@@ -209,80 +208,63 @@ namespace mtm
     * 	True - if the game has a winner
     *   False - otherwise. 
     */
-        bool isOver(Team* winningTeam=NULL) const;
+        bool isOver(Team *winningTeam = NULL) const;
 
-        class Exception : public mtm::Exception{};
-        class IllegalArgument;
-        class IllegalCell;
-        class CellEmpty;
-        class CellOccupied;
-        class OutOfRange;
-        class OutOfAmmo;
-        class IllegalTarget;
-        class MoveTooFar;
+        class Exception : public mtm::Exception
+        {
+        protected:
+            const std::string error_string;
+
+        public:
+            Exception(const std::string error_string) : error_string(error_string){};
+            const char *what() const noexcept override
+            {
+                return error_string.c_str();
+            }
+        };
+        class IllegalCell : public Exception
+        {
+        public:
+            IllegalCell() : Exception(GAME_ILLEGAL_CELL){};
+        };
+        class IllegalArgument : public Exception
+        {
+        public:
+            IllegalArgument() : Exception(GAME_ILLEGAL_ARGUMENT){};
+        };
+        class CellEmpty : public Exception
+        {
+        public:
+            CellEmpty() : Exception(GAME_CELL_EMPTY){};
+        };
+
+        class MoveTooFar : public Exception
+        {
+        public:
+            MoveTooFar() : Exception(GAME_MOVE_TOO_FAR){};
+        };
+        class CellOccupied : public Exception
+        {
+        public:
+            CellOccupied() : Exception(GAME_CELL_OCCUPIED){};
+        };
+        class OutOfRange : public Exception
+        {
+        public:
+            OutOfRange() : Exception(GAME_OUT_OF_RANGE){};
+        };
+        class OutOfAmmo : public Exception
+        {
+        public:
+            OutOfAmmo() : Exception(GAME_OUT_OF_AMMO){};
+        };
+        class IllegalTarget : public Exception
+        {
+        public:
+            IllegalTarget() : Exception(GAME_ILLEGAL_TARGET){};
+        };
     };
 
-     class Game::IllegalArgument : public Exception{
-    public:
-        std::string what() noexcept
-        {
-            return GAME_ILLEGAL_ARGUMENT;
-        }
-    };
-
-    class Game::IllegalCell : public Exception{
-    public:
-        std::string what() noexcept
-        {
-            return GAME_ILLEGAL_CELL;
-        }
-    };
-    class Game::CellEmpty : public Exception{
-    public:
-        std::string what() noexcept
-        {
-            return GAME_CELL_EMPTY;
-        }
-    };
-    class Game::MoveTooFar : public Exception{
-    public:
-        std::string what() noexcept
-        {
-            return GAME_MOVE_TOO_FAR;
-        }
-    };
-    class Game::CellOccupied : public Exception{
-    public:
-        std::string what() noexcept
-        {
-            return GAME_CELL_OCCUPIED;
-        }
-    };
-    class Game::OutOfRange : public Exception{
-    public:
-        std::string what() noexcept
-        {
-            return GAME_OUT_OF_RANGE;
-        }
-    };
-    class Game::OutOfAmmo : public Exception{
-    public:
-        std::string what() noexcept
-        {
-            return GAME_OUT_OF_AMMO;
-        }
-    };
-    class Game::IllegalTarget : public Exception{
-    public:
-        std::string what() noexcept
-        {
-            return GAME_ILLEGAL_TARGET;
-        }
-    };
-   
-    
-    
-   
 } // namespace mtm
 
 #endif //HW3_GAME_H

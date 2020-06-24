@@ -13,6 +13,7 @@ namespace mtm
     const char SNIPER_LITERAL = 'N';
     const char MEDIC_LITERAL = 'M';
 
+
     Game::Game(int height, int width) : game_grid(checkGameSize(height, width), nullptr) // init with nullptr
     {
     }
@@ -20,7 +21,7 @@ namespace mtm
     {
         if (height <= 0 || width <= 0)
         {
-            throw IllegalArgument();
+            throw Game::IllegalArgument();
         }
         return Dimensions(height, width);
     }
@@ -71,11 +72,9 @@ namespace mtm
         }
     }
     void Game::checkBounds(const GridPoint &coordinates) const
-    {
-        float width_suprimum = (float)game_grid.width() / 2;
-        float height_suprimum = (float)game_grid.height() / 2;
-        if (!(abs(coordinates.row - height_suprimum) <= height_suprimum &&
-             abs(coordinates.col - width_suprimum) <= width_suprimum))
+    {     
+        if(coordinates.row<0 || coordinates.row>=game_grid.height() ||
+            coordinates.col<0 || coordinates.col>=game_grid.width())
         {
             throw IllegalCell();
         }
@@ -111,15 +110,22 @@ namespace mtm
         checkAttackPrerequisites(src_coordinates, dst_coordinates);
 
         // All Prerequisites checked, ready to attack. No exceptions expected from here on
-        game_grid(src_coordinates.row, src_coordinates.col)->characterAttack(src_coordinates,
-                                                                             dst_coordinates, game_grid);
+       std::vector<GridPoint> killed_characters= game_grid(src_coordinates.row, src_coordinates.col)
+                ->characterAttack(src_coordinates,dst_coordinates, game_grid);
+
+        // Remove dead characters
+         for (std::vector<GridPoint>::iterator it = killed_characters.begin() ; it != killed_characters.end(); ++it)
+         {
+             game_grid(it->row,it->col) =nullptr;
+         }
+
     }
     std::shared_ptr<Character> Game::makeCharacter(CharacterType type, Team team, units_t health,
                                                    units_t ammo, units_t range, units_t power)
     {
         if ((health <= 0) || (ammo < 0) || (range < 0) || (power < 0))
         {
-            throw IllegalArgument();
+            throw Game::IllegalArgument();
         }
         if (type == SOLDIER)
         {
@@ -143,7 +149,7 @@ namespace mtm
     {
         if (GridPoint::distance(point1, point2) > character.getMoveRange())
         {
-            throw Game::MoveTooFar();
+            throw MoveTooFar();
         }
     }
 
@@ -192,9 +198,9 @@ namespace mtm
                 }
             }
         }
-        if (player_python == 0 || players_cpp == 0)
+        if (player_python*players_cpp == 0 && (players_cpp+player_python)>0) // There is a winner!
         {
-            put_winner = (player_python == 0 ? CPP : PYTHON);
+            put_winner = (player_python > 0 ? PYTHON : CPP);
             return true;
         }
         return false;
@@ -238,7 +244,7 @@ namespace mtm
         Team winner;
         if (checkWinnerExistance(winner))
         {
-            if (winningTeam != nullptr)
+            if (winningTeam)
             {
                 *winningTeam = winner;
             }
@@ -246,4 +252,7 @@ namespace mtm
         }
         return false;
     }
+    //Exceptions
+
+    
 } // namespace mtm

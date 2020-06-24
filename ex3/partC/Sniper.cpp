@@ -3,11 +3,11 @@
 
 namespace mtm
 {
-    const int SNIPER_MOVE_RANGE = 4;
-    const int SNIPER_RELOAD = 2;
-    const int SNIPER_DISTANCE_MODIFIER = 2;
-    const int SNIPER_ATTACK_COUNT_FOR_MODIFIER = 3;
-    const int SNIPER_DAMAGE_MODIFIER = 2;
+    const units_t SNIPER_MOVE_RANGE = 4;
+    const units_t SNIPER_RELOAD = 2;
+    const units_t SNIPER_DISTANCE_MODIFIER = 2;
+    const units_t SNIPER_ATTACK_COUNT_FOR_MODIFIER = 3;
+    const units_t SNIPER_DAMAGE_MODIFIER = 2;
     Sniper::Sniper(units_t health, units_t ammo, units_t range, units_t power, Team team) 
                             : Character(health, ammo, range, power, team), attack_count(0)
     {
@@ -28,11 +28,12 @@ namespace mtm
         return !(!target || target->sameTeam(team));
 
     }
-    void Sniper::characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
+     std::vector<GridPoint> Sniper::characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
                                  Matrix<std::shared_ptr<Character>> &game_grid)
     {
-        ++attack_count;
+        std::vector<GridPoint> killed_characters;
         int current_power=power;
+        ++attack_count;
         if(attack_count==SNIPER_ATTACK_COUNT_FOR_MODIFIER)
         {
             current_power*=SNIPER_DAMAGE_MODIFIER;
@@ -42,11 +43,12 @@ namespace mtm
         std::shared_ptr<Character> target = game_grid(dst_location.row, dst_location.col);
         if(target->receiveDamage(current_power))
         {
-            game_grid(dst_location.row, dst_location.col) =nullptr;
+            killed_characters.push_back(dst_location);
            
         }
 
         --ammo;
+        return killed_characters;
     }
     int Sniper::getMoveRange() const
     {

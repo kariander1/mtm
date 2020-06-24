@@ -445,21 +445,27 @@ void runTestCases()
             {
             case 0:
                 gladiator_arena.addCharacter(GridPoint(i, j), M);
+                M=Game::makeCharacter(CharacterType::MEDIC, Team::CPP, 10, 4, 4, 3);
                 break;
             case 1:
                 gladiator_arena.addCharacter(GridPoint(i, j), n);
+                n=(Game::makeCharacter(CharacterType::SNIPER, Team::PYTHON, 10, 4, 4, 3));
                 break;
             case 2:
                 gladiator_arena.addCharacter(GridPoint(i, j), S);
+                S=Game::makeCharacter(CharacterType::SOLDIER, Team::CPP, 10, 4, 4, 3);
                 break;
             case 3:
                 gladiator_arena.addCharacter(GridPoint(i, j), m);
+                m=Game::makeCharacter(CharacterType::MEDIC, Team::PYTHON, 10, 4, 4, 3);
                 break;
             case 4:
                 gladiator_arena.addCharacter(GridPoint(i, j), N);
+                N=Game::makeCharacter(CharacterType::SNIPER, Team::CPP, 10, 4, 4, 3);
                 break;
             case 5:
                 gladiator_arena.addCharacter(GridPoint(i, j), s);
+                s=Game::makeCharacter(CharacterType::SOLDIER, Team::PYTHON, 10, 4, 4, 3);
                 break;
             default:
                 break;
@@ -467,6 +473,7 @@ void runTestCases()
         }
     }
     cout << gladiator_arena;
+    int attack_count=0;
     for (int i = 0; i < 6; i++)
     {
         for (int j = 0; j < 6; j++)
@@ -477,8 +484,16 @@ void runTestCases()
                 for (int m = 0; m < 6; m++)
                 {
                     GridPoint dest(k, m);
+                    if(attack_count == 468)
+                    {
+                        int c=0;
+                        c++;
+                    }
+                    cout<< "After attack N."<<attack_count <<" Source:" << source.row <<","<<source.col << " Dest:" << dest.row <<","<<dest.col <<endl;
+                 
                     TRY_AND_PRINT_CATCH(gladiator_arena.attack(source, dest));
-                    cout << gladiator_arena;
+                       cout << gladiator_arena<<endl;
+                    attack_count++;
                 }
             }
         }
@@ -516,7 +531,7 @@ void runTestCases()
     }
     Game assigned_arena = Game(1,1);
     assigned_arena = gladiator_arena;
-    std::shared_ptr<mtm::Character> ULTRA_MEGA_SUPER_MEDIC(Game::makeCharacter(CharacterType::MEDIC, Team::CPP, 1000, 1000, 40, 50));
+    std::shared_ptr<mtm::Character> ULTRA_MEGA_SUPER_MEDIC(Game::makeCharacter(CharacterType::MEDIC, Team::PYTHON, 1000, 1000, 40, 50));
     cout << "GENERATING ULTRA_MEGA_SUPER_MEDIC!!" << endl;
     cout << '\a';
     string sup = R"(                                                                                            

@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <vector>
 #include <math.h>
 #include "Auxiliaries.h"
 #include "../partB/Matrix.h"
@@ -74,7 +75,8 @@ namespace mtm
         * @return
         * 	whether the characters is on the same team given
         */
-        virtual void characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
+        virtual std::vector<GridPoint> characterAttack(const GridPoint &src_location
+                                                                        , const GridPoint &dst_location,
                                      Matrix<std::shared_ptr<Character>> &game_grid) = 0;
         /**
         * checkAmmo: checks if the character has ammo to perform the action
