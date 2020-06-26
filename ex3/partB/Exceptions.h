@@ -2,8 +2,14 @@
 #define HW3_EXCEPTIONS_H
 
 #include "Auxiliaries.h"
+
 namespace mtm
 {
+    const std::string MATRIX_ERROR_PREFIX="Mtm matrix error: ";
+    const std::string ILLEGAL_ACCESS=MATRIX_ERROR_PREFIX+"An attempt to access an illegal element";
+    const std::string ILLEGAL_INITIAL = MATRIX_ERROR_PREFIX+"Illegal initialization values";
+    const std::string MISMATCH=MATRIX_ERROR_PREFIX+"Dimension mismatch: ";
+
     const std::string GAME_ERROR_PREFIX = "A game related error has occurred: ";
     const std::string GAME_ILLEGAL_ARGUMENT = GAME_ERROR_PREFIX + "IllegalArgument";
     const std::string GAME_ILLEGAL_CELL = GAME_ERROR_PREFIX + "IllegalCell";
@@ -34,6 +40,9 @@ namespace mtm
     */
         const char *what() const noexcept override;
     };
+
+ 
+
     /**
     * Class GameException
     * @exception

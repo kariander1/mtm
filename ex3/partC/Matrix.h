@@ -7,10 +7,6 @@
 #include "Exceptions.h"
 namespace mtm
 {
-    const std::string ERROR_PREFIX="Mtm matrix error: ";
-    const std::string ILLEGAL_ACCESS=ERROR_PREFIX+"An attempt to access an illegal element";
-    const std::string ILLEGAL_INITIAL = ERROR_PREFIX+"Illegal initialization values";
-    const std::string MISMATCH=ERROR_PREFIX+"Dimension mismatch: ";
     //-------------------------------------------------------------
     // Enum values for checking all/any functions implemented later in file
     //-------------------------------------------------------------
@@ -522,14 +518,7 @@ namespace mtm
         typename Matrix<T>::const_iterator end = matrix.end();
         int width = matrix.width();
         return mtm::printMatrix(os, begin, end, width);
-    }
-
-    /**
-        *   Exception Class
-        * 
-        *   A generic expection in mtm namespace providing a mother class to be inherited.
-        *   The class inherits the std exception
-        */
+    }  
     /**
         *   AccessIllegalElement Class
         * 

@@ -17,7 +17,7 @@ namespace mtm {
         * @return
         * 	returns the size of the matrix (rows*columns) .
         */
-        int calcMatSize(const mtm::Dimensions& dim) const;
+        static int calcMatSize(const mtm::Dimensions& dim);
         /**
         * IntMatrix::copyMatrixValues: copys all the values from the given matrix
         * to the "this" matrix. 
@@ -28,7 +28,7 @@ namespace mtm {
         */
         static void copyMatrixValues(int* array,const IntMatrix& matrix);
         /**
-        * IntMatrix::copyMatrixValues: sets all the values of the given matrix 
+        * IntMatrix::copyMatrixValues: sets all the values of the "this" matrix 
         * to the init_number.
         * @param init_value - The value to initiate the matrix with
         * @return

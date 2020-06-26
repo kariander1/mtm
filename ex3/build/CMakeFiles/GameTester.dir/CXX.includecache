@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/VScode/ex3/partB/Exceptions.h
-Auxiliaries.h
-C:/VScode/ex3/partB/Auxiliaries.h
-
 C:/VScode/ex3/partB/Matrix.h
 string
 -
@@ -27,16 +23,6 @@ string
 -
 cmath
 -
-
-C:/VScode/ex3/partC/Character.cpp
-string
--
-iostream
--
-Auxiliaries.h
-C:/VScode/ex3/partC/Auxiliaries.h
-Character.h
-C:/VScode/ex3/partC/Character.h
 
 C:/VScode/ex3/partC/Character.h
 string
@@ -108,29 +94,13 @@ C:/VScode/ex3/partC/Auxiliaries.h
 Exceptions.h
 C:/VScode/ex3/partC/Exceptions.h
 
-C:/VScode/ex3/partC/Medic.cpp
-Medic.h
-C:/VScode/ex3/partC/Medic.h
-iostream
--
-
 C:/VScode/ex3/partC/Medic.h
 Character.h
 C:/VScode/ex3/partC/Character.h
 
-C:/VScode/ex3/partC/Sniper.cpp
-Sniper.h
-C:/VScode/ex3/partC/Sniper.h
-iostream
--
-
 C:/VScode/ex3/partC/Sniper.h
 Character.h
 C:/VScode/ex3/partC/Character.h
-
-C:/VScode/ex3/partC/Soldier.cpp
-Soldier.h
-C:/VScode/ex3/partC/Soldier.h
 
 C:/VScode/ex3/partC/Soldier.h
 Character.h

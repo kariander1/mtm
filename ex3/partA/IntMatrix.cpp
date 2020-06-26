@@ -134,7 +134,7 @@ namespace mtm
             array[i] = init_value; //Or maybe should use iterator?
         }
     }
-    int IntMatrix::calcMatSize(const Dimensions &dim) const
+    int IntMatrix::calcMatSize(const Dimensions &dim)
     {
         return dim.getCol() * dim.getRow();
     }
