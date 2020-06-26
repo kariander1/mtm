@@ -6,7 +6,7 @@
 #include <vector>
 #include <math.h>
 #include "Auxiliaries.h"
-#include "../partB/Matrix.h"
+#include "Matrix.h"
 namespace mtm
 {
     class Character
@@ -19,11 +19,11 @@ namespace mtm
         const Team team;
        
     public:
-    /**
-    * Character: C'tor
-    * Constructor of character. Gets the five defining properties of charcter:
-    * Health,Ammo,Range,Power and team. Character type is defined via inheritence
-    */
+        /**
+        * Character: C'tor
+        * Constructor of character. Gets the five defining properties of charcter:
+        * Health,Ammo,Range,Power and team. Character type is defined via inheritence
+        */
         Character(const units_t &health_initial, const units_t &ammo_initial, 
                   const units_t &range_initial, const units_t &power_initial,const Team &team); //C'tor
         
@@ -73,11 +73,10 @@ namespace mtm
         * @param dst_location - The destination cell
         * @param game_grid - The game_grid, in order to perform a an attack on characters there
         * @return
-        * 	whether the characters is on the same team given
+        * 	Return a vector with all dead characters locations.
         */
-        virtual std::vector<GridPoint> characterAttack(const GridPoint &src_location
-                                                                        , const GridPoint &dst_location,
-                                     Matrix<std::shared_ptr<Character>> &game_grid) = 0;
+        virtual std::vector<GridPoint> characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
+                                                          Matrix<std::shared_ptr<Character>> &game_grid) = 0;
         /**
         * checkAmmo: checks if the character has ammo to perform the action
         * @param target - The target the character has to consier when cheking ammo

@@ -14,7 +14,7 @@ namespace mtm
     }
     bool Medic::checkTarget(const std::shared_ptr<Character> &target ) const
     {
-        return !(!target || target.get()==this); // Check if pointers will be equal
+        return !(!target || target.get()==this); // Check if pointers are equal
 
     }
 

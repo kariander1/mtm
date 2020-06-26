@@ -16,7 +16,7 @@ namespace mtm
     private:
         Matrix<std::shared_ptr<Character>> game_grid;
         
-        // helper functions
+    // helper functions
     /**
     * Game::checkGameSize: check if the height and width are valid 
     * and creates a Dimension from them.  
@@ -96,8 +96,7 @@ namespace mtm
     * @exception 
     * If the move request is to far throws an MoveTooFar exception. 
     */
-        void outOfCharacterRange(const Character& character,const GridPoint& point1,
-                                     const GridPoint& point2);
+        void outOfCharacterRange(const Character& character,const GridPoint& point1, const GridPoint& point2);
     /**
     * Game::checkWinnerExistance: Checks the number of CPP and PYTHON players on the board game.
     *
@@ -117,8 +116,11 @@ namespace mtm
     * @return
     * 	Nothing
     */ 
-        Game(int height, int width);        // C'tor
-        ~Game() = default;                  // D'tor
+        Game(int height, int width); 
+    /**
+    * ~Game : Game distructor.
+    */        
+        ~Game() = default;                  
     /**
     * Game::Game : Game copy constructor.
     *
@@ -126,7 +128,7 @@ namespace mtm
     * @return
     * 	Nothing
     */
-        Game(const Game &other);            // Copy c'tor
+        Game(const Game &other);           
     /**
     * Game::&operator=(): assignment operator, assigns the given game to this
     *

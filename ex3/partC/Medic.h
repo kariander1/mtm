@@ -15,8 +15,7 @@ namespace mtm{
 
         // Overriden public functions. Documentation at character.h
         std::shared_ptr<Character> clone() const override;
-        std::vector<GridPoint> characterAttack(const GridPoint &src_location
-                                                                , const GridPoint &dst_location,
+        std::vector<GridPoint> characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
                                                             Matrix<std::shared_ptr<Character>> &game_grid) override;
         bool checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const override;
         bool checkTarget(const std::shared_ptr<Character> &target ) const override;

@@ -5,6 +5,7 @@ namespace mtm
     const units_t SOLDIER_RELOAD = 3;
     const units_t SOLDIER_DISTANCE_MODIFIER = 3;
     const units_t SOLDIER_DAMAGE_MODIFIER = 2;
+    
     Soldier::Soldier(units_t health, units_t ammo, units_t range, units_t power, Team team)
         : Character(health, ammo, range, power, team)
     {

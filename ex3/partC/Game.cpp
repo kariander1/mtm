@@ -15,7 +15,7 @@ namespace mtm
     const char MEDIC_LITERAL = 'M';
 
 
-    Game::Game(int height, int width) : game_grid(checkGameSize(height, width), nullptr) // init with nullptr
+    Game::Game(int height, int width) : game_grid(checkGameSize(height, width), nullptr) // initial with nullptr
     {
     }
     Dimensions Game::checkGameSize(const int &height, const int &width)
@@ -35,7 +35,7 @@ namespace mtm
             for (int j = 0; j < grid_columns; j++)
             {
                 if (other_game.game_grid(i, j) != nullptr)
-                { // copy pointers and their value
+                { 
                     source_matrix(i, j) = other_game.game_grid(i, j)->clone(); // Clone might throw bad_alloc
                 }
             }
@@ -43,7 +43,7 @@ namespace mtm
     }
 
     Game::Game(const Game &other) : game_grid(Dimensions(other.game_grid.height()
-                                            ,other.game_grid.width()),nullptr) // copy only pointers
+                                            ,other.game_grid.width()),nullptr) 
     {
         cloneGameGrid(game_grid, other);
     }
@@ -54,7 +54,7 @@ namespace mtm
         Matrix<std::shared_ptr<Character>> temp_matrix(other_dimensions,nullptr);
         
         cloneGameGrid(temp_matrix, other); // First try and copy values to temp matrix. might throw bad_alloc!
-                                        // If an exception is thrown, the d'tor of temp_matirx will be called - OK
+                                        // If an exception is thrown, the d'tor of temp_matirx will be called
         game_grid =temp_matrix; // apply changes to games matrix
         return *this;
     }
@@ -158,9 +158,9 @@ namespace mtm
     {
         checkBounds(src_coordinates);
         checkBounds(dst_coordinates);
-        isEmpty(src_coordinates); // check if the src cell is empty (shouldn't be)
+        isEmpty(src_coordinates); // check if the source cell is empty (shouldn't be)
         outOfCharacterRange(*(game_grid(src_coordinates.row, src_coordinates.col)), src_coordinates, dst_coordinates);
-        isNotEmpty(dst_coordinates);             // check if the dst cell is empty (should be)
+        isNotEmpty(dst_coordinates);             // check if the destination cell is empty (should be)
          // moves the character
         game_grid(dst_coordinates.row, dst_coordinates.col) = game_grid(src_coordinates.row, src_coordinates.col);
         game_grid(src_coordinates.row, src_coordinates.col) = nullptr;  //  reset the old coordinates to point to Null                                         
@@ -170,9 +170,7 @@ namespace mtm
     {
         checkBounds(coordinates);
         isEmpty(coordinates);
-        int row = coordinates.row;
-        int column = coordinates.col;
-        game_grid(row, column)->characterReload();
+        game_grid(coordinates.row, coordinates.col)->characterReload();
     }
 
     bool Game::checkWinnerExistance(Team &put_winner) const
@@ -208,7 +206,7 @@ namespace mtm
     }
     std::ostream &operator<<(std::ostream &os, const Game &game)
     {
-        std::string representingString = REPRESENTING_STRING_INIT;
+        std::string representing_String = REPRESENTING_STRING_INIT;
         for (mtm::Matrix<std::shared_ptr<Character>>::const_iterator it = game.game_grid.begin();
              it != game.game_grid.end(); it++)
         {
@@ -230,14 +228,14 @@ namespace mtm
             }
 
             if (*it && (*it)->sameTeam(LOWER_CASE_TEAM))
-            { // Not sure if allowed..
+            { 
                 char_to_concatenate = tolower(char_to_concatenate);
             }
-            representingString += char_to_concatenate;
+            representing_String += char_to_concatenate;
         }
 
-        const char *start = representingString.c_str();
-        const char *end_ptr = start + representingString.length();
+        const char *start = representing_String.c_str();
+        const char *end_ptr = start + representing_String.length();
         return printGameBoard(os, start, end_ptr, game.game_grid.width());
     }
     bool Game::isOver(Team *winningTeam) const
@@ -253,7 +251,6 @@ namespace mtm
         }
         return false;
     }
-    //Exceptions
 
     
 } // namespace mtm

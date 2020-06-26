@@ -5,7 +5,6 @@
 
 namespace mtm
 {
-
     Character::Character(const units_t &health_initial, const units_t &ammo_initial,
                   const units_t &range_initial, const units_t &power_initial,const Team &team)
                          : health(health_initial),
