@@ -11,6 +11,7 @@ namespace mtm {
         mtm::Dimensions dim;
 
         // Helper Functions
+        
         /**
         * IntMatrix::calcMatSize: gets the size of the matrix (rows*columns). 
         * @param dim - The dimentions of the matrix
@@ -216,7 +217,7 @@ namespace mtm {
         */
         int &operator*() const;
         /**
-        * iretaror::operator++(): promotes the iterator index by 1. 
+        * iterator::operator++(): promotes the iterator index by 1. 
         *
         * @return
         *  --The prefix increment returns the value of a variable after it has been incremented.
@@ -239,7 +240,7 @@ namespace mtm {
     }; 
     /**
     *    Class const_iterator
-    *   same as iterator, inly differences is in handling a const matrix.
+    *   same as iterator, only differences is in handling a const matrix.
     *   Differences in decalrations are in:
     * 
     *   Const IntMatrix *matrix
@@ -268,7 +269,7 @@ namespace mtm {
     /**
     * operator+(): creates a new matrix with the current element value plus the num specified.
     *
-    * @param num - The number to add to the exsisting value
+    * @param num - The number to add to the existing value
     * @param matrix_a - The matrix to take the values from
     * @return
     * 	returns a copy of the new matrix

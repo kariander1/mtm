@@ -26,7 +26,7 @@ namespace mtm
         Dimensions dim;
 
         // Helper Functions, see implementation
-        int calcMatSize(const mtm::Dimensions &dim) const;
+        static int calcMatSize(const mtm::Dimensions &dim);
         static void copyMatrixValues(T* array,const Matrix &matrix);
         void copyMatrixValues(const T &initial_value);
         static void checkDimensions(const Matrix<T> matrix_a, const Matrix<T> matrix_b);
@@ -44,9 +44,9 @@ namespace mtm
         // Matrix C'tor
         // ASSUMPTIONS: T has a default constructor.
         //-------------------------------------------------------------
-        Matrix(mtm::Dimensions dimensions, T initial_value = T()) : array(new T[calcMatSize(dimensions)]), // New will throw bad_alloc if allocation failed
+        Matrix(mtm::Dimensions dimensions, T initial_value = T()) : array(new T[calcMatSize(dimensions)]), 
                                                                  dim(dimensions)
-        {
+        {// New will throw bad_alloc if allocation failed
 
             copyMatrixValues(initial_value);
         }
@@ -70,7 +70,7 @@ namespace mtm
 
         //-------------------------------------------------------------
         // Matrix operators
-        // ASSUMPTIONS: T has destructor
+        // Detalied Documentation later in implementation
         //-------------------------------------------------------------
         Matrix &operator=(const Matrix &matrix);
 
@@ -111,7 +111,7 @@ namespace mtm
 
         class iterator;
         /**
-        * IntMatrix::begin/end(): creates an iterator for the given matrix and retets it 
+        * IntMatrix::begin/end(): creates an iterator for the given matrix and resets it 
         * to be the begin/end of the matrix
         *
         * @return
@@ -140,7 +140,7 @@ namespace mtm
             return const_iterator(this, this->size());
         }
         
-       
+        // Class exceptions, will be implemented out of the class declaration
         class AccessIllegalElement;
 
         class IllegalInitialization;
@@ -152,10 +152,11 @@ namespace mtm
     * Matrix::calcMatSize: gets the size of the matrix (rows*columns). 
     * @param dim - The dimentions of the matrix
     * @return
-    * 	returns the size of the matrix (rows*columns) .
+    * 	returns the size of the matrix (rows*columns).
+    * @exception - Will throw an IllegalInitialization if dimenstions are invalid
     */
     template <class T>
-    int Matrix<T>::calcMatSize(const mtm::Dimensions &dim) const
+    int Matrix<T>::calcMatSize(const mtm::Dimensions &dim)
     {
         if (dim.getCol() < 0 || dim.getRow() < 0)
             throw IllegalInitialization();
@@ -197,7 +198,11 @@ namespace mtm
         }
     }
 
-    //*************** helper classes ************
+    //*************** Helper classes ************
+    //-------------------------------------------------------------
+    // BooleanNot
+    // ASSUMPTIONS: T has a ! operator
+    //-------------------------------------------------------------
     template <class T>
     class Matrix<T>::BooleanNot
     {
@@ -274,7 +279,7 @@ namespace mtm
     }
 /**
     * Matrix::&operator+(): creates a new matrix with the current element value plus the value specified.
-    * ASSUMPTIONS: T has + operator
+    * ASSUMPTIONS: T has + operator (used in + operator of matrices)
     *
     * @param initial_value - The value to add to the exsisting value
     * @return
@@ -332,18 +337,18 @@ namespace mtm
         dim = matrix.dim;
         T *temp_array = new T[size()]; // Will throw bad_alloc if allocation failed.
 
-        try // T assignment might throw an exception! We can't use here STL yet.
+        try // T assignment might throw an exception! We can't use here STL yet, so we'll try and catch.
         {
             copyMatrixValues(temp_array,matrix);
         }
         catch(...)
         {
             delete[] temp_array;
-            throw;
+            throw; // Throw the error to the user
         }
         
         
-        delete[] array; // If reached here, then allocation and transfer was successful
+        delete[] array; // If reached here, then allocation and transfer were successful
         array = temp_array;
 
         return *this;
@@ -398,7 +403,7 @@ namespace mtm
     template <class T>
     Matrix<bool> Matrix<T>::operator>(const T &value) const
     {
-        return ((*this) < value).apply(BooleanNot());
+        return ((*this) <= value).apply(BooleanNot());
     }
     //-------------------------------------------------------------
     // operator>=
@@ -448,7 +453,7 @@ namespace mtm
     Matrix<T> Matrix<T>::Diagonal(const int size, const T initial_value)
     {
         Dimensions dims(size, size);
-        Matrix new_diagonal(dims); // initiate the matrix to T() values. Will throw illegal init/bad alloc from constructor
+        Matrix new_diagonal(dims); // initiate the matrix to T() values. Will throw illegal init/bad alloc from c'tor
         int matrix_size = new_diagonal.size();
 
         for (int i = 0; i < matrix_size; i += size + 1)
@@ -508,7 +513,7 @@ namespace mtm
         /**
         * Output operator: Prints the given matrix.
         * @return
-        * 	None
+        * 	ostream of the given stream
         * ASSUMPTIONS: T has an operator<< definition (which is being used in mtm::printMatrix)
         */
     template <class T>
@@ -761,7 +766,7 @@ namespace mtm
         return new_matrix;
     }
     /**
-    * checkBooleanMatrix: checks boolean value of T values in matrix, helper function to All and Any
+    * checkBooleanMatrix: checks boolean value of T values in matrix, Helper function to All and Any
     * @return
     * 	ENUM value describing whether Any/All of the values are true:
     *    ALL_TRUE = all T value are true when converted

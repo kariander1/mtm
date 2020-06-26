@@ -36,9 +36,6 @@ default_target: all
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
-# Command-line flag to silence nested $(MAKE).
-$(VERBOSE)MAKESILENT = -s
-
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -99,15 +96,15 @@ clean: CMakeFiles/GameTester.dir/clean
 
 # All Build rule for target.
 CMakeFiles/intMatrix_Tester.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/build
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/depend
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=18,19,20,21 "Built target intMatrix_Tester"
 .PHONY : CMakeFiles/intMatrix_Tester.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/intMatrix_Tester.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/intMatrix_Tester.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/intMatrix_Tester.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
 .PHONY : CMakeFiles/intMatrix_Tester.dir/rule
 
@@ -118,7 +115,7 @@ intMatrix_Tester: CMakeFiles/intMatrix_Tester.dir/rule
 
 # clean rule for target.
 CMakeFiles/intMatrix_Tester.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/clean
+	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/clean
 .PHONY : CMakeFiles/intMatrix_Tester.dir/clean
 
 #=============================================================================
@@ -126,15 +123,15 @@ CMakeFiles/intMatrix_Tester.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/intMatrix_TestPartA.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/build
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/depend
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=14,15,16,17 "Built target intMatrix_TestPartA"
 .PHONY : CMakeFiles/intMatrix_TestPartA.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/intMatrix_TestPartA.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/intMatrix_TestPartA.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/intMatrix_TestPartA.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
 .PHONY : CMakeFiles/intMatrix_TestPartA.dir/rule
 
@@ -145,7 +142,7 @@ intMatrix_TestPartA: CMakeFiles/intMatrix_TestPartA.dir/rule
 
 # clean rule for target.
 CMakeFiles/intMatrix_TestPartA.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/clean
+	$(MAKE) -f CMakeFiles\intMatrix_TestPartA.dir\build.make CMakeFiles/intMatrix_TestPartA.dir/clean
 .PHONY : CMakeFiles/intMatrix_TestPartA.dir/clean
 
 #=============================================================================
@@ -153,15 +150,15 @@ CMakeFiles/intMatrix_TestPartA.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/Matrix_TestPartB.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/build
+	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/depend
+	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=10,11,12,13 "Built target Matrix_TestPartB"
 .PHONY : CMakeFiles/Matrix_TestPartB.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Matrix_TestPartB.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Matrix_TestPartB.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Matrix_TestPartB.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
 .PHONY : CMakeFiles/Matrix_TestPartB.dir/rule
 
@@ -172,7 +169,7 @@ Matrix_TestPartB: CMakeFiles/Matrix_TestPartB.dir/rule
 
 # clean rule for target.
 CMakeFiles/Matrix_TestPartB.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/clean
+	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/clean
 .PHONY : CMakeFiles/Matrix_TestPartB.dir/clean
 
 #=============================================================================
@@ -180,15 +177,15 @@ CMakeFiles/Matrix_TestPartB.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/test_part_C.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/build
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/depend
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=22,23,24,25,26,27,28,29,30 "Built target test_part_C"
 .PHONY : CMakeFiles/test_part_C.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_part_C.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/test_part_C.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/test_part_C.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
 .PHONY : CMakeFiles/test_part_C.dir/rule
 
@@ -199,7 +196,7 @@ test_part_C: CMakeFiles/test_part_C.dir/rule
 
 # clean rule for target.
 CMakeFiles/test_part_C.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/clean
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/clean
 .PHONY : CMakeFiles/test_part_C.dir/clean
 
 #=============================================================================
@@ -207,15 +204,15 @@ CMakeFiles/test_part_C.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/GameTester.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/build
+	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/depend
+	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target GameTester"
 .PHONY : CMakeFiles/GameTester.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/GameTester.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/GameTester.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/GameTester.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
 .PHONY : CMakeFiles/GameTester.dir/rule
 
@@ -226,7 +223,7 @@ GameTester: CMakeFiles/GameTester.dir/rule
 
 # clean rule for target.
 CMakeFiles/GameTester.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/clean
+	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/clean
 .PHONY : CMakeFiles/GameTester.dir/clean
 
 #=============================================================================

@@ -4,17 +4,16 @@
 CMakeFiles/GameTester.dir/partC/Auxiliaries.cpp.obj: ../partC/Auxiliaries.cpp
 CMakeFiles/GameTester.dir/partC/Auxiliaries.cpp.obj: ../partC/Auxiliaries.h
 
-CMakeFiles/GameTester.dir/partC/Character.cpp.obj: ../partB/Exceptions.h
-CMakeFiles/GameTester.dir/partC/Character.cpp.obj: ../partB/Matrix.h
 CMakeFiles/GameTester.dir/partC/Character.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/GameTester.dir/partC/Character.cpp.obj: ../partC/Character.cpp
 CMakeFiles/GameTester.dir/partC/Character.cpp.obj: ../partC/Character.h
+CMakeFiles/GameTester.dir/partC/Character.cpp.obj: ../partC/Exceptions.h
+CMakeFiles/GameTester.dir/partC/Character.cpp.obj: ../partC/Matrix.h
 
 CMakeFiles/GameTester.dir/partC/Exceptions.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/GameTester.dir/partC/Exceptions.cpp.obj: ../partC/Exceptions.cpp
 CMakeFiles/GameTester.dir/partC/Exceptions.cpp.obj: ../partC/Exceptions.h
 
-CMakeFiles/GameTester.dir/partC/Game.cpp.obj: ../partB/Matrix.h
 CMakeFiles/GameTester.dir/partC/Game.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/GameTester.dir/partC/Game.cpp.obj: ../partC/Character.h
 CMakeFiles/GameTester.dir/partC/Game.cpp.obj: ../partC/Exceptions.h
@@ -25,7 +24,6 @@ CMakeFiles/GameTester.dir/partC/Game.cpp.obj: ../partC/Medic.h
 CMakeFiles/GameTester.dir/partC/Game.cpp.obj: ../partC/Sniper.h
 CMakeFiles/GameTester.dir/partC/Game.cpp.obj: ../partC/Soldier.h
 
-CMakeFiles/GameTester.dir/partC/GameTest.cpp.obj: ../partB/Matrix.h
 CMakeFiles/GameTester.dir/partC/GameTest.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/GameTester.dir/partC/GameTest.cpp.obj: ../partC/Character.h
 CMakeFiles/GameTester.dir/partC/GameTest.cpp.obj: ../partC/Exceptions.h
@@ -33,24 +31,24 @@ CMakeFiles/GameTester.dir/partC/GameTest.cpp.obj: ../partC/Game.h
 CMakeFiles/GameTester.dir/partC/GameTest.cpp.obj: ../partC/GameTest.cpp
 CMakeFiles/GameTester.dir/partC/GameTest.cpp.obj: ../partC/Matrix.h
 
-CMakeFiles/GameTester.dir/partC/Medic.cpp.obj: ../partB/Exceptions.h
-CMakeFiles/GameTester.dir/partC/Medic.cpp.obj: ../partB/Matrix.h
 CMakeFiles/GameTester.dir/partC/Medic.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/GameTester.dir/partC/Medic.cpp.obj: ../partC/Character.h
+CMakeFiles/GameTester.dir/partC/Medic.cpp.obj: ../partC/Exceptions.h
+CMakeFiles/GameTester.dir/partC/Medic.cpp.obj: ../partC/Matrix.h
 CMakeFiles/GameTester.dir/partC/Medic.cpp.obj: ../partC/Medic.cpp
 CMakeFiles/GameTester.dir/partC/Medic.cpp.obj: ../partC/Medic.h
 
-CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj: ../partB/Exceptions.h
-CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj: ../partB/Matrix.h
 CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj: ../partC/Character.h
+CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj: ../partC/Exceptions.h
+CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj: ../partC/Matrix.h
 CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj: ../partC/Sniper.cpp
 CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj: ../partC/Sniper.h
 
-CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj: ../partB/Exceptions.h
-CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj: ../partB/Matrix.h
 CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj: ../partC/Character.h
+CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj: ../partC/Exceptions.h
+CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj: ../partC/Matrix.h
 CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj: ../partC/Soldier.cpp
 CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj: ../partC/Soldier.h
 

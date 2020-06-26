@@ -4,17 +4,16 @@
 CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj: ../partC/Auxiliaries.cpp
 CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj: ../partC/Auxiliaries.h
 
-CMakeFiles/test_part_C.dir/partC/Character.cpp.obj: ../partB/Exceptions.h
-CMakeFiles/test_part_C.dir/partC/Character.cpp.obj: ../partB/Matrix.h
 CMakeFiles/test_part_C.dir/partC/Character.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/Character.cpp.obj: ../partC/Character.cpp
 CMakeFiles/test_part_C.dir/partC/Character.cpp.obj: ../partC/Character.h
+CMakeFiles/test_part_C.dir/partC/Character.cpp.obj: ../partC/Exceptions.h
+CMakeFiles/test_part_C.dir/partC/Character.cpp.obj: ../partC/Matrix.h
 
 CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.obj: ../partC/Exceptions.cpp
 CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.obj: ../partC/Exceptions.h
 
-CMakeFiles/test_part_C.dir/partC/Game.cpp.obj: ../partB/Matrix.h
 CMakeFiles/test_part_C.dir/partC/Game.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/Game.cpp.obj: ../partC/Character.h
 CMakeFiles/test_part_C.dir/partC/Game.cpp.obj: ../partC/Exceptions.h
@@ -25,28 +24,27 @@ CMakeFiles/test_part_C.dir/partC/Game.cpp.obj: ../partC/Medic.h
 CMakeFiles/test_part_C.dir/partC/Game.cpp.obj: ../partC/Sniper.h
 CMakeFiles/test_part_C.dir/partC/Game.cpp.obj: ../partC/Soldier.h
 
-CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj: ../partB/Exceptions.h
-CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj: ../partB/Matrix.h
 CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj: ../partC/Character.h
+CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj: ../partC/Exceptions.h
+CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj: ../partC/Matrix.h
 CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj: ../partC/Medic.cpp
 CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj: ../partC/Medic.h
 
-CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj: ../partB/Exceptions.h
-CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj: ../partB/Matrix.h
 CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj: ../partC/Character.h
+CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj: ../partC/Exceptions.h
+CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj: ../partC/Matrix.h
 CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj: ../partC/Sniper.cpp
 CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj: ../partC/Sniper.h
 
-CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj: ../partB/Exceptions.h
-CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj: ../partB/Matrix.h
 CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj: ../partC/Character.h
+CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj: ../partC/Exceptions.h
+CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj: ../partC/Matrix.h
 CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj: ../partC/Soldier.cpp
 CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj: ../partC/Soldier.h
 
-CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj: ../partB/Matrix.h
 CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj: ../partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj: ../partC/Character.h
 CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj: ../partC/Exceptions.h

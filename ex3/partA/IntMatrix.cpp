@@ -20,6 +20,9 @@ namespace mtm
     * @param matrix - The matrix to check the properites on
     * @return
     * 	enumerable value of MATRIX_STATUS, whether atrix contatins all ones, all zeroes, and if at least one.
+    * NOTE: this function is declared here since return type is enum MATRIX_STATUS which
+    * we didn't want to include in header file, so that the interface won't export MATRIX_STATUS
+    * to users.
     */
     static MATRIX_STATUS checkMatrix(const IntMatrix &matrix);
 
@@ -38,7 +41,7 @@ namespace mtm
 
         for (int i = 0; i < matrix_size; i += size + 1)
         {
-            new_identity.array[i] = IDENTITIY; //add "1" in the diagonal
+            new_identity.array[i] = IDENTITIY; //put "1" in the diagonal
         }
         return new_identity;
     }
@@ -69,7 +72,7 @@ namespace mtm
     IntMatrix operator-(const IntMatrix &matrix_a, const IntMatrix &matrix_b)
     {
         IntMatrix new_matrix(matrix_a);
-        new_matrix = new_matrix + (-matrix_b); // Will be ok with unary operator
+        new_matrix = new_matrix + (-matrix_b); // Using unary operator
         return new_matrix;
     }
     IntMatrix &IntMatrix::operator=(const IntMatrix &matrix)
@@ -123,7 +126,7 @@ namespace mtm
         int max_size = matrix.size();
         for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
         {
-            array[i] = matrix.array[i]; //Or maybe should use iterator?
+            array[i] = matrix.array[i];
         }
     }
     void IntMatrix::copyMatrixValues(const int &init_value)
@@ -131,7 +134,7 @@ namespace mtm
         int max_size = size();
         for (int i = 0; i < max_size; i++) //size is the amount of elements in *this
         {
-            array[i] = init_value; //Or maybe should use iterator?
+            array[i] = init_value;
         }
     }
     int IntMatrix::calcMatSize(const Dimensions &dim)
@@ -248,11 +251,7 @@ namespace mtm
     }
     // **************************************************** ITERATOR CLASS************************
     IntMatrix::iterator::iterator(IntMatrix *matrix_a, int index) : matrix(matrix_a),
-                                                                    index(index)
-    {
-        
-    }
-
+                                                                    index(index){}
     bool IntMatrix::iterator::operator==(const iterator &it) const
     {
         return index == it.index;
@@ -288,12 +287,9 @@ namespace mtm
     // **************************************************** ITERATOR CLASS*************************
     // **************************************************** CONST ITERATOR CLASS*******************
     IntMatrix::const_iterator::const_iterator(const IntMatrix *matrix_a, int index) : matrix(matrix_a),
-                                                                                      index(index)
-    {
-    }
+                                                                                      index(index){}
     bool IntMatrix::const_iterator::operator==(const const_iterator &it) const
     {
-        //return iterator(*this)==iterator(it);
         return index == it.index;
     }
 
@@ -303,7 +299,6 @@ namespace mtm
     }
     const int &IntMatrix::const_iterator::operator*() const
     {
-        //return *(iterator(*this));
         return matrix->array[index];
     }
     IntMatrix::const_iterator &IntMatrix::const_iterator::operator++()
