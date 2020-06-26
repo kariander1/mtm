@@ -5,32 +5,42 @@ CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj
  C:/VScode/ex3/partC/Auxiliaries.cpp
  C:/VScode/ex3/partC/Auxiliaries.h
 CMakeFiles/test_part_C.dir/partC/Character.cpp.obj
+ C:/VScode/ex3/partB/Exceptions.h
  C:/VScode/ex3/partB/Matrix.h
  C:/VScode/ex3/partC/Auxiliaries.h
  C:/VScode/ex3/partC/Character.cpp
  C:/VScode/ex3/partC/Character.h
+CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.obj
+ C:/VScode/ex3/partC/Auxiliaries.h
+ C:/VScode/ex3/partC/Exceptions.cpp
+ C:/VScode/ex3/partC/Exceptions.h
 CMakeFiles/test_part_C.dir/partC/Game.cpp.obj
  C:/VScode/ex3/partB/Matrix.h
  C:/VScode/ex3/partC/Auxiliaries.h
  C:/VScode/ex3/partC/Character.h
+ C:/VScode/ex3/partC/Exceptions.h
  C:/VScode/ex3/partC/Game.cpp
  C:/VScode/ex3/partC/Game.h
+ C:/VScode/ex3/partC/Matrix.h
  C:/VScode/ex3/partC/Medic.h
  C:/VScode/ex3/partC/Sniper.h
  C:/VScode/ex3/partC/Soldier.h
 CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj
+ C:/VScode/ex3/partB/Exceptions.h
  C:/VScode/ex3/partB/Matrix.h
  C:/VScode/ex3/partC/Auxiliaries.h
  C:/VScode/ex3/partC/Character.h
  C:/VScode/ex3/partC/Medic.cpp
  C:/VScode/ex3/partC/Medic.h
 CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj
+ C:/VScode/ex3/partB/Exceptions.h
  C:/VScode/ex3/partB/Matrix.h
  C:/VScode/ex3/partC/Auxiliaries.h
  C:/VScode/ex3/partC/Character.h
  C:/VScode/ex3/partC/Sniper.cpp
  C:/VScode/ex3/partC/Sniper.h
 CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj
+ C:/VScode/ex3/partB/Exceptions.h
  C:/VScode/ex3/partB/Matrix.h
  C:/VScode/ex3/partC/Auxiliaries.h
  C:/VScode/ex3/partC/Character.h
@@ -40,5 +50,7 @@ CMakeFiles/test_part_C.dir/partC/test_partC.cpp.obj
  C:/VScode/ex3/partB/Matrix.h
  C:/VScode/ex3/partC/Auxiliaries.h
  C:/VScode/ex3/partC/Character.h
+ C:/VScode/ex3/partC/Exceptions.h
  C:/VScode/ex3/partC/Game.h
+ C:/VScode/ex3/partC/Matrix.h
  C:/VScode/ex3/partC/test_partC.cpp

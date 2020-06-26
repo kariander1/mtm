@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj"
-  "CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj"
+  "CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj"
   "CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj"
   "Matrix_TestPartB.exe"
   "Matrix_TestPartB.exe.manifest"

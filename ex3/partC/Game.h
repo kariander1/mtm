@@ -3,20 +3,13 @@
 
 #include <iostream>
 #include <memory>
-#include "../partB/Matrix.h"
+#include "Matrix.h"
 #include "Auxiliaries.h"
 #include "Character.h"
+#include "Exceptions.h"
 namespace mtm
 {   
-    const std::string GAME_ERROR_PREFIX="A game related error has occurred: ";
-    const std::string GAME_ILLEGAL_ARGUMENT = GAME_ERROR_PREFIX + "IllegalArgument";
-    const std::string GAME_ILLEGAL_CELL = GAME_ERROR_PREFIX + "IllegalCell";
-    const std::string GAME_CELL_EMPTY = GAME_ERROR_PREFIX + "CellEmpty";
-    const std::string GAME_MOVE_TOO_FAR = GAME_ERROR_PREFIX + "MoveTooFar";
-    const std::string GAME_CELL_OCCUPIED = GAME_ERROR_PREFIX + "CellOccupied";
-    const std::string GAME_OUT_OF_RANGE = GAME_ERROR_PREFIX + "OutOfRange";
-    const std::string GAME_OUT_OF_AMMO = GAME_ERROR_PREFIX + "OutOfAmmo";
-    const std::string GAME_ILLEGAL_TARGET = GAME_ERROR_PREFIX + "IllegalTarget";
+    
     class Game
     {
       
@@ -210,59 +203,7 @@ namespace mtm
     */
         bool isOver(Team *winningTeam = NULL) const;
 
-        class Exception : public mtm::Exception
-        {
-        protected:
-            const std::string error_string;
-
-        public:
-            Exception(const std::string error_string) : error_string(error_string){};
-            const char *what() const noexcept override
-            {
-                return error_string.c_str();
-            }
-        };
-        class IllegalCell : public Exception
-        {
-        public:
-            IllegalCell() : Exception(GAME_ILLEGAL_CELL){};
-        };
-        class IllegalArgument : public Exception
-        {
-        public:
-            IllegalArgument() : Exception(GAME_ILLEGAL_ARGUMENT){};
-        };
-        class CellEmpty : public Exception
-        {
-        public:
-            CellEmpty() : Exception(GAME_CELL_EMPTY){};
-        };
-
-        class MoveTooFar : public Exception
-        {
-        public:
-            MoveTooFar() : Exception(GAME_MOVE_TOO_FAR){};
-        };
-        class CellOccupied : public Exception
-        {
-        public:
-            CellOccupied() : Exception(GAME_CELL_OCCUPIED){};
-        };
-        class OutOfRange : public Exception
-        {
-        public:
-            OutOfRange() : Exception(GAME_OUT_OF_RANGE){};
-        };
-        class OutOfAmmo : public Exception
-        {
-        public:
-            OutOfAmmo() : Exception(GAME_OUT_OF_AMMO){};
-        };
-        class IllegalTarget : public Exception
-        {
-        public:
-            IllegalTarget() : Exception(GAME_ILLEGAL_TARGET){};
-        };
+     
     };
 
 } // namespace mtm

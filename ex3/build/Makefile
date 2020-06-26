@@ -332,32 +332,32 @@ partB/Auxiliaries.cpp.s:
 	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.s
 .PHONY : partB/Auxiliaries.cpp.s
 
-partB/Matrix.obj: partB/Matrix.cpp.obj
+partB/Exceptions.obj: partB/Exceptions.cpp.obj
 
-.PHONY : partB/Matrix.obj
+.PHONY : partB/Exceptions.obj
 
 # target to build an object file
-partB/Matrix.cpp.obj:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj
-.PHONY : partB/Matrix.cpp.obj
+partB/Exceptions.cpp.obj:
+	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj
+.PHONY : partB/Exceptions.cpp.obj
 
-partB/Matrix.i: partB/Matrix.cpp.i
+partB/Exceptions.i: partB/Exceptions.cpp.i
 
-.PHONY : partB/Matrix.i
+.PHONY : partB/Exceptions.i
 
 # target to preprocess a source file
-partB/Matrix.cpp.i:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.i
-.PHONY : partB/Matrix.cpp.i
+partB/Exceptions.cpp.i:
+	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.i
+.PHONY : partB/Exceptions.cpp.i
 
-partB/Matrix.s: partB/Matrix.cpp.s
+partB/Exceptions.s: partB/Exceptions.cpp.s
 
-.PHONY : partB/Matrix.s
+.PHONY : partB/Exceptions.s
 
 # target to generate assembly for a file
-partB/Matrix.cpp.s:
-	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.s
-.PHONY : partB/Matrix.cpp.s
+partB/Exceptions.cpp.s:
+	$(MAKE) -f CMakeFiles\Matrix_TestPartB.dir\build.make CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.s
+.PHONY : partB/Exceptions.cpp.s
 
 partB/test_partB.obj: partB/test_partB.cpp.obj
 
@@ -445,6 +445,36 @@ partC/Character.cpp.s:
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Character.cpp.s
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Character.cpp.s
 .PHONY : partC/Character.cpp.s
+
+partC/Exceptions.obj: partC/Exceptions.cpp.obj
+
+.PHONY : partC/Exceptions.obj
+
+# target to build an object file
+partC/Exceptions.cpp.obj:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.obj
+	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Exceptions.cpp.obj
+.PHONY : partC/Exceptions.cpp.obj
+
+partC/Exceptions.i: partC/Exceptions.cpp.i
+
+.PHONY : partC/Exceptions.i
+
+# target to preprocess a source file
+partC/Exceptions.cpp.i:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.i
+	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Exceptions.cpp.i
+.PHONY : partC/Exceptions.cpp.i
+
+partC/Exceptions.s: partC/Exceptions.cpp.s
+
+.PHONY : partC/Exceptions.s
+
+# target to generate assembly for a file
+partC/Exceptions.cpp.s:
+	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.s
+	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Exceptions.cpp.s
+.PHONY : partC/Exceptions.cpp.s
 
 partC/Game.obj: partC/Game.cpp.obj
 
@@ -648,9 +678,9 @@ help:
 	@echo ... partB/Auxiliaries.obj
 	@echo ... partB/Auxiliaries.i
 	@echo ... partB/Auxiliaries.s
-	@echo ... partB/Matrix.obj
-	@echo ... partB/Matrix.i
-	@echo ... partB/Matrix.s
+	@echo ... partB/Exceptions.obj
+	@echo ... partB/Exceptions.i
+	@echo ... partB/Exceptions.s
 	@echo ... partB/test_partB.obj
 	@echo ... partB/test_partB.i
 	@echo ... partB/test_partB.s
@@ -660,6 +690,9 @@ help:
 	@echo ... partC/Character.obj
 	@echo ... partC/Character.i
 	@echo ... partC/Character.s
+	@echo ... partC/Exceptions.obj
+	@echo ... partC/Exceptions.i
+	@echo ... partC/Exceptions.s
 	@echo ... partC/Game.obj
 	@echo ... partC/Game.i
 	@echo ... partC/Game.s

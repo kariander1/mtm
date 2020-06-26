@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/VScode/ex3/partC/Auxiliaries.cpp" "C:/VScode/ex3/build/CMakeFiles/GameTester.dir/partC/Auxiliaries.cpp.obj"
   "C:/VScode/ex3/partC/Character.cpp" "C:/VScode/ex3/build/CMakeFiles/GameTester.dir/partC/Character.cpp.obj"
+  "C:/VScode/ex3/partC/Exceptions.cpp" "C:/VScode/ex3/build/CMakeFiles/GameTester.dir/partC/Exceptions.cpp.obj"
   "C:/VScode/ex3/partC/Game.cpp" "C:/VScode/ex3/build/CMakeFiles/GameTester.dir/partC/Game.cpp.obj"
   "C:/VScode/ex3/partC/GameTest.cpp" "C:/VScode/ex3/build/CMakeFiles/GameTester.dir/partC/GameTest.cpp.obj"
   "C:/VScode/ex3/partC/Medic.cpp" "C:/VScode/ex3/build/CMakeFiles/GameTester.dir/partC/Medic.cpp.obj"

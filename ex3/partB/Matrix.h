@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include "Auxiliaries.h"
-
+#include "Exceptions.h"
 namespace mtm
 {
     const std::string ERROR_PREFIX="Mtm matrix error: ";
@@ -538,15 +538,8 @@ namespace mtm
     template <class T>
     class Matrix<T>::AccessIllegalElement : public Exception
     {
-
-
-    public:        
-        
-        const char* what() const noexcept override
-        {
-
-            return (ILLEGAL_ACCESS.c_str());
-        }
+        public:
+            AccessIllegalElement() : Exception(ILLEGAL_ACCESS){};
         
     };
         /**
@@ -557,12 +550,8 @@ namespace mtm
     template <class T>
     class Matrix<T>::IllegalInitialization : public Exception
     {
-    private:
-    public:
-         const char* what() const noexcept override
-        {
-            return ILLEGAL_INITIAL.c_str();
-        }
+  public:
+            IllegalInitialization() : Exception(ILLEGAL_INITIAL){};
     };
         /**
         *   DimensionMismatch Class
@@ -572,25 +561,14 @@ namespace mtm
     template <class T>
     class Matrix<T>::DimensionMismatch : public Exception
     {
-    private:
-        const Dimensions dim_a;
-        const Dimensions dim_b;
 
     public:
-        /**
-        *   DimensionMismatch C'tor
-        * 
-        *   Receives two dimensions which mismatched, and saves them for later throwing the appropriate error.
-        */
-        DimensionMismatch(const Dimensions dim_a, const Dimensions dim_b)
-            : dim_a(dim_a), dim_b(dim_b)
-        {
-        }
 
-         const char* what() const noexcept override
-        {
-            return (MISMATCH+ dim_a.toString() + " " + dim_b.toString()).c_str();
-        }
+        DimensionMismatch(const Dimensions dim_a, const Dimensions dim_b) 
+        : Exception(MISMATCH+ dim_a.toString() + " " + dim_b.toString()){};
+        
+        
+
     };
     template <class T>
     class Matrix<T>::iterator

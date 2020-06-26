@@ -86,22 +86,9 @@ CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partB\test_partB.cpp -o CMakeFiles\Matrix_TestPartB.dir\partB\test_partB.cpp.s
 
-CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj: CMakeFiles/Matrix_TestPartB.dir/flags.make
-CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj: ../partB/Matrix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Matrix_TestPartB.dir\partB\Matrix.cpp.obj -c C:\VScode\ex3\partB\Matrix.cpp
-
-CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\partB\Matrix.cpp > CMakeFiles\Matrix_TestPartB.dir\partB\Matrix.cpp.i
-
-CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partB\Matrix.cpp -o CMakeFiles\Matrix_TestPartB.dir\partB\Matrix.cpp.s
-
 CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj: CMakeFiles/Matrix_TestPartB.dir/flags.make
 CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj: ../partB/Auxiliaries.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Matrix_TestPartB.dir\partB\Auxiliaries.cpp.obj -c C:\VScode\ex3\partB\Auxiliaries.cpp
 
 CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.i: cmake_force
@@ -112,18 +99,31 @@ CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partB\Auxiliaries.cpp -o CMakeFiles\Matrix_TestPartB.dir\partB\Auxiliaries.cpp.s
 
+CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj: CMakeFiles/Matrix_TestPartB.dir/flags.make
+CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj: ../partB/Exceptions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Matrix_TestPartB.dir\partB\Exceptions.cpp.obj -c C:\VScode\ex3\partB\Exceptions.cpp
+
+CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\VScode\ex3\partB\Exceptions.cpp > CMakeFiles\Matrix_TestPartB.dir\partB\Exceptions.cpp.i
+
+CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\VScode\ex3\partB\Exceptions.cpp -o CMakeFiles\Matrix_TestPartB.dir\partB\Exceptions.cpp.s
+
 # Object files for target Matrix_TestPartB
 Matrix_TestPartB_OBJECTS = \
 "CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj" \
-"CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj" \
-"CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj"
+"CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj" \
+"CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj"
 
 # External object files for target Matrix_TestPartB
 Matrix_TestPartB_EXTERNAL_OBJECTS =
 
 Matrix_TestPartB.exe: CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj
-Matrix_TestPartB.exe: CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj
 Matrix_TestPartB.exe: CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj
+Matrix_TestPartB.exe: CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj
 Matrix_TestPartB.exe: CMakeFiles/Matrix_TestPartB.dir/build.make
 Matrix_TestPartB.exe: CMakeFiles/Matrix_TestPartB.dir/linklibs.rsp
 Matrix_TestPartB.exe: CMakeFiles/Matrix_TestPartB.dir/objects1.rsp

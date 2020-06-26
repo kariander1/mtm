@@ -14,15 +14,13 @@ string
 cmath
 -
 
-C:/VScode/ex3/partB/Matrix.cpp
-string
--
-iostream
--
+C:/VScode/ex3/partB/Exceptions.cpp
+Exceptions.h
+C:/VScode/ex3/partB/Exceptions.h
+
+C:/VScode/ex3/partB/Exceptions.h
 Auxiliaries.h
 C:/VScode/ex3/partB/Auxiliaries.h
-Matrix.h
-C:/VScode/ex3/partB/Matrix.h
 
 C:/VScode/ex3/partB/Matrix.h
 string
@@ -31,6 +29,8 @@ iostream
 -
 Auxiliaries.h
 C:/VScode/ex3/partB/Auxiliaries.h
+Exceptions.h
+C:/VScode/ex3/partB/Exceptions.h
 
 C:/VScode/ex3/partB/test_partB.cpp
 iostream

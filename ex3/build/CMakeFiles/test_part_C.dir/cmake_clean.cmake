@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj"
   "CMakeFiles/test_part_C.dir/partC/Character.cpp.obj"
+  "CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.obj"
   "CMakeFiles/test_part_C.dir/partC/Game.cpp.obj"
   "CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj"
   "CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj"

@@ -4,11 +4,12 @@
 CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj: ../partB/Auxiliaries.cpp
 CMakeFiles/Matrix_TestPartB.dir/partB/Auxiliaries.cpp.obj: ../partB/Auxiliaries.h
 
-CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj: ../partB/Auxiliaries.h
-CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj: ../partB/Matrix.cpp
-CMakeFiles/Matrix_TestPartB.dir/partB/Matrix.cpp.obj: ../partB/Matrix.h
+CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj: ../partB/Auxiliaries.h
+CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj: ../partB/Exceptions.cpp
+CMakeFiles/Matrix_TestPartB.dir/partB/Exceptions.cpp.obj: ../partB/Exceptions.h
 
 CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj: ../partB/Auxiliaries.h
+CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj: ../partB/Exceptions.h
 CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj: ../partB/Matrix.h
 CMakeFiles/Matrix_TestPartB.dir/partB/test_partB.cpp.obj: ../partB/test_partB.cpp
 

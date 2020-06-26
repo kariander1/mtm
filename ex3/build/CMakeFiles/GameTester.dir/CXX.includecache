@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+C:/VScode/ex3/partB/Exceptions.h
+Auxiliaries.h
+C:/VScode/ex3/partB/Auxiliaries.h
+
 C:/VScode/ex3/partB/Matrix.h
 string
 -
@@ -13,6 +17,8 @@ iostream
 -
 Auxiliaries.h
 C:/VScode/ex3/partB/Auxiliaries.h
+Exceptions.h
+C:/VScode/ex3/partB/Exceptions.h
 
 C:/VScode/ex3/partC/Auxiliaries.h
 iostream
@@ -21,6 +27,16 @@ string
 -
 cmath
 -
+
+C:/VScode/ex3/partC/Character.cpp
+string
+-
+iostream
+-
+Auxiliaries.h
+C:/VScode/ex3/partC/Auxiliaries.h
+Character.h
+C:/VScode/ex3/partC/Character.h
 
 C:/VScode/ex3/partC/Character.h
 string
@@ -37,6 +53,14 @@ Auxiliaries.h
 C:/VScode/ex3/partC/Auxiliaries.h
 ../partB/Matrix.h
 C:/VScode/ex3/partB/Matrix.h
+
+C:/VScode/ex3/partC/Exceptions.cpp
+Exceptions.h
+C:/VScode/ex3/partC/Exceptions.h
+
+C:/VScode/ex3/partC/Exceptions.h
+Auxiliaries.h
+C:/VScode/ex3/partC/Auxiliaries.h
 
 C:/VScode/ex3/partC/Game.cpp
 memory
@@ -57,20 +81,56 @@ iostream
 -
 memory
 -
-../partB/Matrix.h
-C:/VScode/ex3/partB/Matrix.h
+Matrix.h
+C:/VScode/ex3/partC/Matrix.h
 Auxiliaries.h
 C:/VScode/ex3/partC/Auxiliaries.h
 Character.h
 C:/VScode/ex3/partC/Character.h
+Exceptions.h
+C:/VScode/ex3/partC/Exceptions.h
+
+C:/VScode/ex3/partC/GameTest.cpp
+iostream
+-
+vector
+-
+Game.h
+C:/VScode/ex3/partC/Game.h
+
+C:/VScode/ex3/partC/Matrix.h
+string
+-
+iostream
+-
+Auxiliaries.h
+C:/VScode/ex3/partC/Auxiliaries.h
+Exceptions.h
+C:/VScode/ex3/partC/Exceptions.h
+
+C:/VScode/ex3/partC/Medic.cpp
+Medic.h
+C:/VScode/ex3/partC/Medic.h
+iostream
+-
 
 C:/VScode/ex3/partC/Medic.h
 Character.h
 C:/VScode/ex3/partC/Character.h
 
+C:/VScode/ex3/partC/Sniper.cpp
+Sniper.h
+C:/VScode/ex3/partC/Sniper.h
+iostream
+-
+
 C:/VScode/ex3/partC/Sniper.h
 Character.h
 C:/VScode/ex3/partC/Character.h
+
+C:/VScode/ex3/partC/Soldier.cpp
+Soldier.h
+C:/VScode/ex3/partC/Soldier.h
 
 C:/VScode/ex3/partC/Soldier.h
 Character.h

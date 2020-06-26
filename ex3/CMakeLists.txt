@@ -31,14 +31,14 @@ add_executable(intMatrix_Tester ./partA/tester.cpp ./partA/intMatrix.cpp ./partA
 add_executable(intMatrix_TestPartA ./partA/test_partA.cpp ./partA/intMatrix.cpp ./partA/Auxiliaries.cpp)
 
 # EXE for test_partB.cpp
-add_executable(Matrix_TestPartB ./partB/test_partB.cpp ./partB/Matrix.cpp  ./partB/Auxiliaries.cpp)
+add_executable(Matrix_TestPartB ./partB/test_partB.cpp ./partB/Auxiliaries.cpp ./partB/Exceptions.cpp)
 
 # EXE for matrix tester
 #add_executable(MatrixTester ./partB/MatrixTester.cpp ./partB/Auxiliaries.cpp  ./partA/IntMatrix.cpp)
 
 
 # EXE for partC
-add_executable(test_part_C ./partC/test_partC.cpp ./partC/Auxiliaries.cpp ./partC/Character.cpp ./partC/Game.cpp ./partC/Soldier.cpp ./partC/Medic.cpp ./partC/Sniper.cpp )
+add_executable(test_part_C ./partC/test_partC.cpp ./partC/Auxiliaries.cpp ./partC/Character.cpp ./partC/Game.cpp ./partC/Soldier.cpp ./partC/Medic.cpp ./partC/Sniper.cpp ./partC/Exceptions.cpp)
 
 # EXE for partC
-add_executable(GameTester ./partC/GameTest.cpp ./partC/Auxiliaries.cpp ./partC/Character.cpp ./partC/Game.cpp ./partC/Soldier.cpp ./partC/Medic.cpp ./partC/Sniper.cpp )
+add_executable(GameTester ./partC/GameTest.cpp ./partC/Auxiliaries.cpp ./partC/Character.cpp ./partC/Game.cpp ./partC/Soldier.cpp ./partC/Medic.cpp ./partC/Sniper.cpp  ./partC/Exceptions.cpp)

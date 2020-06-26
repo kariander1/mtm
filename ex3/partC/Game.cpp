@@ -4,6 +4,7 @@
 #include "Soldier.h"
 #include "Medic.h"
 #include "Sniper.h"
+
 namespace mtm
 {
     const Team LOWER_CASE_TEAM = PYTHON;
@@ -21,7 +22,7 @@ namespace mtm
     {
         if (height <= 0 || width <= 0)
         {
-            throw Game::IllegalArgument();
+            throw IllegalArgument();
         }
         return Dimensions(height, width);
     }
@@ -125,7 +126,7 @@ namespace mtm
     {
         if ((health <= 0) || (ammo < 0) || (range < 0) || (power < 0))
         {
-            throw Game::IllegalArgument();
+            throw IllegalArgument();
         }
         if (type == SOLDIER)
         {
