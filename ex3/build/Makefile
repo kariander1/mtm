@@ -140,6 +140,19 @@ intMatrix_Tester/fast:
 .PHONY : intMatrix_Tester/fast
 
 #=============================================================================
+# Target rules for targets named GameTesterMTM
+
+# Build rule for target.
+GameTesterMTM: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 GameTesterMTM
+.PHONY : GameTesterMTM
+
+# fast build rule for target.
+GameTesterMTM/fast:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/build
+.PHONY : GameTesterMTM/fast
+
+#=============================================================================
 # Target rules for targets named intMatrix_TestPartA
 
 # Build rule for target.
@@ -392,6 +405,7 @@ partC/Auxiliaries.obj: partC/Auxiliaries.cpp.obj
 
 # target to build an object file
 partC/Auxiliaries.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Auxiliaries.cpp.obj
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.obj
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Auxiliaries.cpp.obj
 .PHONY : partC/Auxiliaries.cpp.obj
@@ -402,6 +416,7 @@ partC/Auxiliaries.i: partC/Auxiliaries.cpp.i
 
 # target to preprocess a source file
 partC/Auxiliaries.cpp.i:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Auxiliaries.cpp.i
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.i
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Auxiliaries.cpp.i
 .PHONY : partC/Auxiliaries.cpp.i
@@ -412,6 +427,7 @@ partC/Auxiliaries.s: partC/Auxiliaries.cpp.s
 
 # target to generate assembly for a file
 partC/Auxiliaries.cpp.s:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Auxiliaries.cpp.s
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Auxiliaries.cpp.s
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Auxiliaries.cpp.s
 .PHONY : partC/Auxiliaries.cpp.s
@@ -422,6 +438,7 @@ partC/Character.obj: partC/Character.cpp.obj
 
 # target to build an object file
 partC/Character.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Character.cpp.obj
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Character.cpp.obj
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Character.cpp.obj
 .PHONY : partC/Character.cpp.obj
@@ -432,6 +449,7 @@ partC/Character.i: partC/Character.cpp.i
 
 # target to preprocess a source file
 partC/Character.cpp.i:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Character.cpp.i
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Character.cpp.i
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Character.cpp.i
 .PHONY : partC/Character.cpp.i
@@ -442,6 +460,7 @@ partC/Character.s: partC/Character.cpp.s
 
 # target to generate assembly for a file
 partC/Character.cpp.s:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Character.cpp.s
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Character.cpp.s
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Character.cpp.s
 .PHONY : partC/Character.cpp.s
@@ -452,6 +471,7 @@ partC/Exceptions.obj: partC/Exceptions.cpp.obj
 
 # target to build an object file
 partC/Exceptions.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Exceptions.cpp.obj
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.obj
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Exceptions.cpp.obj
 .PHONY : partC/Exceptions.cpp.obj
@@ -462,6 +482,7 @@ partC/Exceptions.i: partC/Exceptions.cpp.i
 
 # target to preprocess a source file
 partC/Exceptions.cpp.i:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Exceptions.cpp.i
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.i
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Exceptions.cpp.i
 .PHONY : partC/Exceptions.cpp.i
@@ -472,6 +493,7 @@ partC/Exceptions.s: partC/Exceptions.cpp.s
 
 # target to generate assembly for a file
 partC/Exceptions.cpp.s:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Exceptions.cpp.s
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Exceptions.cpp.s
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Exceptions.cpp.s
 .PHONY : partC/Exceptions.cpp.s
@@ -482,6 +504,7 @@ partC/Game.obj: partC/Game.cpp.obj
 
 # target to build an object file
 partC/Game.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Game.cpp.obj
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Game.cpp.obj
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Game.cpp.obj
 .PHONY : partC/Game.cpp.obj
@@ -492,6 +515,7 @@ partC/Game.i: partC/Game.cpp.i
 
 # target to preprocess a source file
 partC/Game.cpp.i:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Game.cpp.i
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Game.cpp.i
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Game.cpp.i
 .PHONY : partC/Game.cpp.i
@@ -502,6 +526,7 @@ partC/Game.s: partC/Game.cpp.s
 
 # target to generate assembly for a file
 partC/Game.cpp.s:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Game.cpp.s
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Game.cpp.s
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Game.cpp.s
 .PHONY : partC/Game.cpp.s
@@ -539,6 +564,7 @@ partC/Medic.obj: partC/Medic.cpp.obj
 
 # target to build an object file
 partC/Medic.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Medic.cpp.obj
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Medic.cpp.obj
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Medic.cpp.obj
 .PHONY : partC/Medic.cpp.obj
@@ -549,6 +575,7 @@ partC/Medic.i: partC/Medic.cpp.i
 
 # target to preprocess a source file
 partC/Medic.cpp.i:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Medic.cpp.i
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Medic.cpp.i
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Medic.cpp.i
 .PHONY : partC/Medic.cpp.i
@@ -559,6 +586,7 @@ partC/Medic.s: partC/Medic.cpp.s
 
 # target to generate assembly for a file
 partC/Medic.cpp.s:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Medic.cpp.s
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Medic.cpp.s
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Medic.cpp.s
 .PHONY : partC/Medic.cpp.s
@@ -569,6 +597,7 @@ partC/Sniper.obj: partC/Sniper.cpp.obj
 
 # target to build an object file
 partC/Sniper.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Sniper.cpp.obj
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Sniper.cpp.obj
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Sniper.cpp.obj
 .PHONY : partC/Sniper.cpp.obj
@@ -579,6 +608,7 @@ partC/Sniper.i: partC/Sniper.cpp.i
 
 # target to preprocess a source file
 partC/Sniper.cpp.i:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Sniper.cpp.i
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Sniper.cpp.i
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Sniper.cpp.i
 .PHONY : partC/Sniper.cpp.i
@@ -589,6 +619,7 @@ partC/Sniper.s: partC/Sniper.cpp.s
 
 # target to generate assembly for a file
 partC/Sniper.cpp.s:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Sniper.cpp.s
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Sniper.cpp.s
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Sniper.cpp.s
 .PHONY : partC/Sniper.cpp.s
@@ -599,6 +630,7 @@ partC/Soldier.obj: partC/Soldier.cpp.obj
 
 # target to build an object file
 partC/Soldier.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Soldier.cpp.obj
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Soldier.cpp.obj
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Soldier.cpp.obj
 .PHONY : partC/Soldier.cpp.obj
@@ -609,6 +641,7 @@ partC/Soldier.i: partC/Soldier.cpp.i
 
 # target to preprocess a source file
 partC/Soldier.cpp.i:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Soldier.cpp.i
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Soldier.cpp.i
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Soldier.cpp.i
 .PHONY : partC/Soldier.cpp.i
@@ -619,9 +652,37 @@ partC/Soldier.s: partC/Soldier.cpp.s
 
 # target to generate assembly for a file
 partC/Soldier.cpp.s:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/Soldier.cpp.s
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/partC/Soldier.cpp.s
 	$(MAKE) -f CMakeFiles\GameTester.dir\build.make CMakeFiles/GameTester.dir/partC/Soldier.cpp.s
 .PHONY : partC/Soldier.cpp.s
+
+partC/partC_tester.obj: partC/partC_tester.cpp.obj
+
+.PHONY : partC/partC_tester.obj
+
+# target to build an object file
+partC/partC_tester.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/partC_tester.cpp.obj
+.PHONY : partC/partC_tester.cpp.obj
+
+partC/partC_tester.i: partC/partC_tester.cpp.i
+
+.PHONY : partC/partC_tester.i
+
+# target to preprocess a source file
+partC/partC_tester.cpp.i:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/partC_tester.cpp.i
+.PHONY : partC/partC_tester.cpp.i
+
+partC/partC_tester.s: partC/partC_tester.cpp.s
+
+.PHONY : partC/partC_tester.s
+
+# target to generate assembly for a file
+partC/partC_tester.cpp.s:
+	$(MAKE) -f CMakeFiles\GameTesterMTM.dir\build.make CMakeFiles/GameTesterMTM.dir/partC/partC_tester.cpp.s
+.PHONY : partC/partC_tester.cpp.s
 
 partC/test_partC.obj: partC/test_partC.cpp.obj
 
@@ -659,6 +720,7 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... GameTester
+	@echo ... GameTesterMTM
 	@echo ... Matrix_TestPartB
 	@echo ... intMatrix_TestPartA
 	@echo ... intMatrix_Tester
@@ -708,6 +770,9 @@ help:
 	@echo ... partC/Soldier.obj
 	@echo ... partC/Soldier.i
 	@echo ... partC/Soldier.s
+	@echo ... partC/partC_tester.obj
+	@echo ... partC/partC_tester.i
+	@echo ... partC/partC_tester.s
 	@echo ... partC/test_partC.obj
 	@echo ... partC/test_partC.i
 	@echo ... partC/test_partC.s

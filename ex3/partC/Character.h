@@ -90,7 +90,8 @@ namespace mtm
         * @return
         * 	whether the dest character is legal
         */
-        virtual bool checkTarget(const std::shared_ptr<Character> &target ) const=0;
+        virtual bool checkTarget(const std::shared_ptr<Character> &target, const GridPoint &src_location
+                                                        , const GridPoint &dst_location) const=0;
         /**
         * checkAttackRange: checks if dst location is within atack racnge
         * @param src_location - The source location of character

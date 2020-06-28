@@ -6,25 +6,6 @@
 namespace mtm
 {
     const int IDENTITIY = 1;
-    // Status for the all/any function to determine exact result
-    enum MATRIX_STATUS
-    {
-        ALL_ONES = -1,
-        ONE_EXISTS,
-        ALL_ZEROS
-    };
-    /**
-    * checkMatrix: checks matrix with special properties for "any" and "all" functions
-    * 
-    *
-    * @param matrix - The matrix to check the properites on
-    * @return
-    * 	enumerable value of MATRIX_STATUS, whether atrix contatins all ones, all zeroes, and if at least one.
-    * NOTE: this function is declared here since return type is enum MATRIX_STATUS which
-    * we didn't want to include in header file, so that the interface won't export MATRIX_STATUS
-    * to users.
-    */
-    static MATRIX_STATUS checkMatrix(const IntMatrix &matrix);
 
     IntMatrix::IntMatrix(Dimensions dimensions, int init_number) 
         : array(new int[calcMatSize(dimensions)]), dim(dimensions)

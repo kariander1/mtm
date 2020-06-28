@@ -12,7 +12,8 @@ namespace mtm
         return !(distance_violation);
 
     }
-    bool Medic::checkTarget(const std::shared_ptr<Character> &target ) const
+    bool Medic::checkTarget(const std::shared_ptr<Character> &target, const GridPoint &src_location
+                                                        , const GridPoint &dst_location ) const
     {
         return !(!target || target.get()==this); // Check if pointers are equal
 

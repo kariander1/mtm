@@ -18,7 +18,8 @@ namespace mtm{
         std::vector<GridPoint> characterAttack(const GridPoint &src_location, const GridPoint &dst_location,
                                                             Matrix<std::shared_ptr<Character>> &game_grid) override;
         bool checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const override;
-        bool checkTarget(const std::shared_ptr<Character> &target ) const override;
+        bool checkTarget(const std::shared_ptr<Character> &target, const GridPoint &src_location
+                                                        , const GridPoint &dst_location) const override;
         bool checkAmmo(const std::shared_ptr<Character> &target) const override;
         int getMoveRange() const override;
         void characterReload() override;

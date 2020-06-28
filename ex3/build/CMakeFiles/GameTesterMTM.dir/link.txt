@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\GameTesterMTM.dir/objects.a
+C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\GameTesterMTM.dir/objects.a @CMakeFiles\GameTesterMTM.dir\objects1.rsp
+C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe -g   -Wl,--whole-archive CMakeFiles\GameTesterMTM.dir/objects.a -Wl,--no-whole-archive  -o GameTesterMTM.exe -Wl,--out-implib,libGameTesterMTM.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\GameTesterMTM.dir\linklibs.rsp

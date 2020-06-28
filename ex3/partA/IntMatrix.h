@@ -4,6 +4,15 @@
 #include <iostream>
 #include "Auxiliaries.h"
 namespace mtm {
+
+     // Status for the all/any function to determine exact result
+    enum MATRIX_STATUS
+    {
+        ALL_ONES = -1,
+        ONE_EXISTS,
+        ALL_ZEROS
+    };
+  
     class IntMatrix {
     private:
         //Private fields
@@ -11,7 +20,20 @@ namespace mtm {
         mtm::Dimensions dim;
 
         // Helper Functions
-        
+          /**
+        * checkMatrix: checks matrix with special properties for "any" and "all" functions
+        * 
+        *
+        * @param matrix - The matrix to check the properites on
+        * @return
+        * 	enumerable value of MATRIX_STATUS, whether atrix contatins all ones, all zeroes, and if at least one.
+        * NOTE: this function is declared here since return type is enum MATRIX_STATUS which
+        * we didn't want to include in header file, so that the interface won't export MATRIX_STATUS
+        * to users.
+        */
+        static MATRIX_STATUS checkMatrix(const IntMatrix &matrix);
+
+    
         /**
         * IntMatrix::calcMatSize: gets the size of the matrix (rows*columns). 
         * @param dim - The dimentions of the matrix

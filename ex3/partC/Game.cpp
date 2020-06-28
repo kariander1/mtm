@@ -34,7 +34,7 @@ namespace mtm
         {
             for (int j = 0; j < grid_columns; j++)
             {
-                if (other_game.game_grid(i, j) != nullptr)
+                if (other_game.game_grid(i, j))
                 { 
                     source_matrix(i, j) = other_game.game_grid(i, j)->clone(); // Clone might throw bad_alloc
                 }
@@ -98,7 +98,7 @@ namespace mtm
         {
             throw OutOfAmmo();
         }
-        if (!character->checkTarget(game_grid(dst_coordinates.row, dst_coordinates.col)))
+        if (!character->checkTarget(target,src_coordinates,dst_coordinates))
         {
             throw IllegalTarget();
         }

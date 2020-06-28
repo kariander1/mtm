@@ -75,16 +75,19 @@ namespace mtm
         ApplyDamage(damage, distance, GridPoint(location.row, location.col + 1),
                     affected_cells, game_grid,killed_characters, adjacent_cell); // Attack right
     }
-    bool Soldier::checkTarget(const std::shared_ptr<Character> &target) const
+    bool Soldier::checkTarget(const std::shared_ptr<Character> &target, const GridPoint &src_location
+                                                                        , const GridPoint &dst_location) const
     {
-        return true; // Can attack everything
+          bool same_line_col_violation = (src_location.col != dst_location.col) &&
+                                       (src_location.row != dst_location.row); // Considered an
+                                                                            //  illegal target as answered in forum
+        return !same_line_col_violation; // Otherwise - can attack all targets
     }
     bool Soldier::checkAttackRange(const GridPoint &src_location, const GridPoint &dst_location) const
     {
-        bool same_line_col_violation = (src_location.col != dst_location.col) &&
-                                       (src_location.row != dst_location.row);
+      
         bool distance_violation = GridPoint::distance(src_location, dst_location) > range;
-        return !(same_line_col_violation || distance_violation);
+        return !(distance_violation);
     }
      std::vector<GridPoint> Soldier::characterAttack(const GridPoint &src_location
                                                                 , const GridPoint &dst_location,

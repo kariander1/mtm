@@ -22,7 +22,8 @@ namespace mtm
         int min_distance = ceil((double)range / SNIPER_DISTANCE_MODIFIER);
         return !(min_distance > distance || distance > range);
     }
-    bool Sniper::checkTarget(const std::shared_ptr<Character> &target ) const
+    bool Sniper::checkTarget(const std::shared_ptr<Character> &target, const GridPoint &src_location
+                                                        , const GridPoint &dst_location) const
     {
        
         return !(!target || target->sameTeam(team));
