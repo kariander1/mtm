@@ -8,9 +8,9 @@ namespace mtm {
      // Status for the all/any function to determine exact result
     enum MATRIX_STATUS
     {
-        ALL_ONES = -1,
+        ALL_ZEROS = -1,        
         ONE_EXISTS,
-        ALL_ZEROS
+        ALL_ONES
     };
   
     class IntMatrix {

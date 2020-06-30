@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\partA_mtm.dir/objects.a
+C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\partA_mtm.dir/objects.a @CMakeFiles\partA_mtm.dir\objects1.rsp
+C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe -g   -Wl,--whole-archive CMakeFiles\partA_mtm.dir/objects.a -Wl,--no-whole-archive  -o partA_mtm.exe -Wl,--out-implib,libpartA_mtm.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\partA_mtm.dir\linklibs.rsp

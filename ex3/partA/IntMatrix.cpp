@@ -81,11 +81,11 @@ namespace mtm
     }
     IntMatrix IntMatrix::operator>(const int &num) const
     {
-        return (*this) < (-num);
+        return (-(*this)) < (-num);
     }
     IntMatrix IntMatrix::operator>=(const int &num) const
     {
-        return (*this) <= (-num);
+        return (-(*this)) <= (-num);
     }
     IntMatrix IntMatrix::operator<=(const int &num) const
     {
@@ -203,13 +203,14 @@ namespace mtm
     bool all(const IntMatrix &matrix)
     {
         IntMatrix compare_matrix = matrix != 0;
-        return checkMatrix(compare_matrix) == ALL_ONES ? true : false;
+        return checkMatrix(compare_matrix) == ALL_ONES;
 
     }
     bool any(const IntMatrix &matrix)
     {
         IntMatrix compare_matrix = matrix != 0;
-        return checkMatrix(compare_matrix) == ONE_EXISTS ? true : false;
+        MATRIX_STATUS matrix_status =checkMatrix(compare_matrix);
+        return  (matrix_status == ALL_ONES || matrix_status == ONE_EXISTS);
     }
     std::ostream &operator<<(std::ostream &os, const IntMatrix &matrix)
     {

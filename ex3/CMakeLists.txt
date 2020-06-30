@@ -30,8 +30,15 @@ add_executable(intMatrix_Tester ./partA/tester.cpp ./partA/intMatrix.cpp ./partA
 # EXE for test_partA.cpp
 add_executable(intMatrix_TestPartA ./partA/test_partA.cpp ./partA/intMatrix.cpp ./partA/Auxiliaries.cpp)
 
+
+# EXE for mtm_tester.cpp
+add_executable(partA_mtm ./partA/partA_tester.cpp ./partA/intMatrix.cpp ./partA/Auxiliaries.cpp)
+
 # EXE for test_partB.cpp
 add_executable(Matrix_TestPartB ./partB/test_partB.cpp ./partB/Auxiliaries.cpp ./partB/Exceptions.cpp)
+
+# EXE for test_partB.cpp
+add_executable(mtm_partB ./partB/partB_tester.cpp ./partB/Auxiliaries.cpp ./partB/Exceptions.cpp)
 
 
 # EXE for matrix tester

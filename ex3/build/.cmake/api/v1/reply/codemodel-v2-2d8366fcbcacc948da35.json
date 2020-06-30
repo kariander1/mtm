@@ -1,0 +1,122 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "IntMatrix",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GameTester::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GameTester-Debug-d1abbbb0536751844755.json",
+					"name" : "GameTester",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "GameTesterMTM::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GameTesterMTM-Debug-3e0641af1be441872afd.json",
+					"name" : "GameTesterMTM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Matrix_TestPartB::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Matrix_TestPartB-Debug-2c641877b76d359bec64.json",
+					"name" : "Matrix_TestPartB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "intMatrix_TestPartA::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-intMatrix_TestPartA-Debug-9d71198612ca98f574f4.json",
+					"name" : "intMatrix_TestPartA",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "intMatrix_Tester::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-intMatrix_Tester-Debug-244a1992acb5b9ad3638.json",
+					"name" : "intMatrix_Tester",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mtm_partB::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mtm_partB-Debug-76b60e2ebdbf3758f9a3.json",
+					"name" : "mtm_partB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "partA_mtm::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-partA_mtm-Debug-6572ca069e2590b46708.json",
+					"name" : "partA_mtm",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_part_C::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_part_C-Debug-3363e0c86409c73efb4a.json",
+					"name" : "test_part_C",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/VScode/ex3/build",
+		"source" : "C:/VScode/ex3"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

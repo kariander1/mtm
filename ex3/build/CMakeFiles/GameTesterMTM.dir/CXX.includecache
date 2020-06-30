@@ -34,20 +34,6 @@ C:/VScode/ex3/partC/Exceptions.h
 Auxiliaries.h
 C:/VScode/ex3/partC/Auxiliaries.h
 
-C:/VScode/ex3/partC/Game.cpp
-memory
--
-Game.h
-C:/VScode/ex3/partC/Game.h
-Auxiliaries.h
-C:/VScode/ex3/partC/Auxiliaries.h
-Soldier.h
-C:/VScode/ex3/partC/Soldier.h
-Medic.h
-C:/VScode/ex3/partC/Medic.h
-Sniper.h
-C:/VScode/ex3/partC/Sniper.h
-
 C:/VScode/ex3/partC/Game.h
 iostream
 -
@@ -72,15 +58,17 @@ C:/VScode/ex3/partC/Auxiliaries.h
 Exceptions.h
 C:/VScode/ex3/partC/Exceptions.h
 
-C:/VScode/ex3/partC/Medic.h
-Character.h
-C:/VScode/ex3/partC/Character.h
-
-C:/VScode/ex3/partC/Sniper.h
-Character.h
-C:/VScode/ex3/partC/Character.h
-
-C:/VScode/ex3/partC/Soldier.h
-Character.h
-C:/VScode/ex3/partC/Character.h
+C:/VScode/ex3/partC/partC_tester.cpp
+map
+-
+iostream
+-
+sstream
+-
+functional
+-
+cmath
+-
+Game.h
+C:/VScode/ex3/partC/Game.h
 

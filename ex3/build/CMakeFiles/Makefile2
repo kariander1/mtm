@@ -70,10 +70,12 @@ CMAKE_BINARY_DIR = C:\VScode\ex3\build
 
 # The main recursive "all" target.
 all: CMakeFiles/intMatrix_Tester.dir/all
+all: CMakeFiles/partA_mtm.dir/all
 all: CMakeFiles/GameTesterMTM.dir/all
 all: CMakeFiles/intMatrix_TestPartA.dir/all
 all: CMakeFiles/Matrix_TestPartB.dir/all
 all: CMakeFiles/test_part_C.dir/all
+all: CMakeFiles/mtm_partB.dir/all
 all: CMakeFiles/GameTester.dir/all
 
 .PHONY : all
@@ -85,10 +87,12 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/intMatrix_Tester.dir/clean
+clean: CMakeFiles/partA_mtm.dir/clean
 clean: CMakeFiles/GameTesterMTM.dir/clean
 clean: CMakeFiles/intMatrix_TestPartA.dir/clean
 clean: CMakeFiles/Matrix_TestPartB.dir/clean
 clean: CMakeFiles/test_part_C.dir/clean
+clean: CMakeFiles/mtm_partB.dir/clean
 clean: CMakeFiles/GameTester.dir/clean
 
 .PHONY : clean
@@ -119,6 +123,33 @@ intMatrix_Tester: CMakeFiles/intMatrix_Tester.dir/rule
 CMakeFiles/intMatrix_Tester.dir/clean:
 	$(MAKE) -f CMakeFiles\intMatrix_Tester.dir\build.make CMakeFiles/intMatrix_Tester.dir/clean
 .PHONY : CMakeFiles/intMatrix_Tester.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/partA_mtm.dir
+
+# All Build rule for target.
+CMakeFiles/partA_mtm.dir/all:
+	$(MAKE) -f CMakeFiles\partA_mtm.dir\build.make CMakeFiles/partA_mtm.dir/depend
+	$(MAKE) -f CMakeFiles\partA_mtm.dir\build.make CMakeFiles/partA_mtm.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=35,36,37,38 "Built target partA_mtm"
+.PHONY : CMakeFiles/partA_mtm.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/partA_mtm.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 4
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/partA_mtm.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
+.PHONY : CMakeFiles/partA_mtm.dir/rule
+
+# Convenience name for target.
+partA_mtm: CMakeFiles/partA_mtm.dir/rule
+
+.PHONY : partA_mtm
+
+# clean rule for target.
+CMakeFiles/partA_mtm.dir/clean:
+	$(MAKE) -f CMakeFiles\partA_mtm.dir\build.make CMakeFiles/partA_mtm.dir/clean
+.PHONY : CMakeFiles/partA_mtm.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/GameTesterMTM.dir
@@ -208,7 +239,7 @@ CMakeFiles/Matrix_TestPartB.dir/clean:
 CMakeFiles/test_part_C.dir/all:
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/depend
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=31,32,33,34,35,36,37,38,39 "Built target test_part_C"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=39,40,41,42,43,44,45,46,47 "Built target test_part_C"
 .PHONY : CMakeFiles/test_part_C.dir/all
 
 # Build rule for subdir invocation for target.
@@ -227,6 +258,33 @@ test_part_C: CMakeFiles/test_part_C.dir/rule
 CMakeFiles/test_part_C.dir/clean:
 	$(MAKE) -f CMakeFiles\test_part_C.dir\build.make CMakeFiles/test_part_C.dir/clean
 .PHONY : CMakeFiles/test_part_C.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/mtm_partB.dir
+
+# All Build rule for target.
+CMakeFiles/mtm_partB.dir/all:
+	$(MAKE) -f CMakeFiles\mtm_partB.dir\build.make CMakeFiles/mtm_partB.dir/depend
+	$(MAKE) -f CMakeFiles\mtm_partB.dir\build.make CMakeFiles/mtm_partB.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\VScode\ex3\build\CMakeFiles --progress-num=31,32,33,34 "Built target mtm_partB"
+.PHONY : CMakeFiles/mtm_partB.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/mtm_partB.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 4
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/mtm_partB.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\VScode\ex3\build\CMakeFiles 0
+.PHONY : CMakeFiles/mtm_partB.dir/rule
+
+# Convenience name for target.
+mtm_partB: CMakeFiles/mtm_partB.dir/rule
+
+.PHONY : mtm_partB
+
+# clean rule for target.
+CMakeFiles/mtm_partB.dir/clean:
+	$(MAKE) -f CMakeFiles\mtm_partB.dir\build.make CMakeFiles/mtm_partB.dir/clean
+.PHONY : CMakeFiles/mtm_partB.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/GameTester.dir
