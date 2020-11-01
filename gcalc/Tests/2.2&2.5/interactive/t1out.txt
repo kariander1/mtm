@@ -1,7 +1,0 @@
-Gcalc> Gcalc> v1
-v2
-v3
-$
-v1 v2
-v1 v3
-Gcalc> 

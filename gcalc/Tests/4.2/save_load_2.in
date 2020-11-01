@@ -1,4 +1,0 @@
-G1 = load(graphLd1.gf)
-print(G1)
-G2 = load(graphLd2.gf)
-print(G2)
