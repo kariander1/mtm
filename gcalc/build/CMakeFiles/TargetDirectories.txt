@@ -1,0 +1,3 @@
+C:/VScode/gcalc/build/CMakeFiles/gcalc.dir
+C:/VScode/gcalc/build/CMakeFiles/edit_cache.dir
+C:/VScode/gcalc/build/CMakeFiles/rebuild_cache.dir

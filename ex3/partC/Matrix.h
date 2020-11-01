@@ -12,9 +12,10 @@ namespace mtm
     //-------------------------------------------------------------
     enum MATRIX_BOOLEAN_STATUS
     {
-        ALL_TRUE = -1,
-        TRUE_EXISTS,
-        ALL_FALSE
+       
+        TRUE_EXISTS = -1,
+        ALL_TRUE,
+        ALL_FALSE,    
     };
 
     template <class T>
@@ -158,7 +159,7 @@ namespace mtm
     template <class T>
     int Matrix<T>::calcMatSize(const mtm::Dimensions &dim)
     {
-        if (dim.getCol() < 0 || dim.getRow() < 0)
+        if (dim.getCol() <= 0 || dim.getRow() <= 0)
             throw IllegalInitialization();
         return dim.getCol() * dim.getRow();
     }
@@ -719,7 +720,11 @@ namespace mtm
     template <class T>
     mtm::Matrix<T> operator+(const T value, const Matrix<T> &matrix_a)
     {
-        return matrix_a + value;
+        int matrix_columns = matrix_a.width();
+        int matrix_rows = matrix_a.height();
+        Dimensions d(matrix_rows, matrix_columns);
+        Matrix<T> initial_matrix(d, value);
+        return  initial_matrix+matrix_a;
     }
     /**
     * operator+(): creates a new matrix with the current element value of matrix_a plus
@@ -820,7 +825,8 @@ namespace mtm
     template <class T>
     bool any(const Matrix<T> &matrix)
     {
-        return checkBooleanMatrix(matrix) == TRUE_EXISTS;
+        MATRIX_BOOLEAN_STATUS matrix_status=checkBooleanMatrix(matrix);
+        return  matrix_status== TRUE_EXISTS || matrix_status==ALL_TRUE;
     }
 
 } // namespace mtm

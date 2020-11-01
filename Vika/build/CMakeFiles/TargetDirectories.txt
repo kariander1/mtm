@@ -1,3 +1,0 @@
-C:/VScode/Vika/build/CMakeFiles/my_executable.dir
-C:/VScode/Vika/build/CMakeFiles/edit_cache.dir
-C:/VScode/Vika/build/CMakeFiles/rebuild_cache.dir

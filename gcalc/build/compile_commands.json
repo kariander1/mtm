@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/VScode/gcalc/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\gcalc.dir\\Gcalc.cpp.obj -c C:\\VScode\\gcalc\\Gcalc.cpp",
+  "file": "C:/VScode/gcalc/Gcalc.cpp"
+},
+{
+  "directory": "C:/VScode/gcalc/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\gcalc.dir\\DiGraph.cpp.obj -c C:\\VScode\\gcalc\\DiGraph.cpp",
+  "file": "C:/VScode/gcalc/DiGraph.cpp"
+},
+{
+  "directory": "C:/VScode/gcalc/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\gcalc.dir\\Auxiliaries.cpp.obj -c C:\\VScode\\gcalc\\Auxiliaries.cpp",
+  "file": "C:/VScode/gcalc/Auxiliaries.cpp"
+},
+{
+  "directory": "C:/VScode/gcalc/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\gcalc.dir\\GraphParser.cpp.obj -c C:\\VScode\\gcalc\\GraphParser.cpp",
+  "file": "C:/VScode/gcalc/GraphParser.cpp"
+},
+{
+  "directory": "C:/VScode/gcalc/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\gcalc.dir\\Exceptions.cpp.obj -c C:\\VScode\\gcalc\\Exceptions.cpp",
+  "file": "C:/VScode/gcalc/Exceptions.cpp"
+},
+{
+  "directory": "C:/VScode/gcalc/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG -std=gnu++11 -o CMakeFiles\\gcalc.dir\\IOManager.cpp.obj -c C:\\VScode\\gcalc\\IOManager.cpp",
+  "file": "C:/VScode/gcalc/IOManager.cpp"
+}
+]

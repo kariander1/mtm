@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/VScode/gcalc/DiGraph.h
+fstream
+-
+set
+-
+iostream
+-
+vector
+-
+
+C:/VScode/gcalc/Exceptions.h
+string
+-
+
+C:/VScode/gcalc/PythonInterface.cpp
+PythonInterface.h
+C:/VScode/gcalc/PythonInterface.h
+Exceptions.h
+C:/VScode/gcalc/Exceptions.h
+
+C:/VScode/gcalc/PythonInterface.h
+DiGraph.h
+C:/VScode/gcalc/DiGraph.h
+

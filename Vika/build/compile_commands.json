@@ -1,7 +1,0 @@
-[
-{
-  "directory": "C:/VScode/Vika/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles\\my_executable.dir\\election.c.obj   -c C:\\VScode\\Vika\\election.c",
-  "file": "C:/VScode/Vika/election.c"
-}
-]
